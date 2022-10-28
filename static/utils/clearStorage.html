@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+        <meta name="theme-color" content="#000000">
+        <title>Community Toolkit</title>
+    </head>
+    <body>
+        <a href="/">Go back home</a>
+        <br>
+        <br>
+        <br>
+        <button onclick="clearStorage()">Clear Local Storage</button>
+        <p id="alert"></p>
+        <script>
+            function clearStorage() {
+                localStorage.clear()
+                document.getElementById('alert').textContent = 'Your local storage has been cleared'
+            }
+        </script>
+    </body>
+</html>

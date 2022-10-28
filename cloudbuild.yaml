@@ -1,0 +1,8 @@
+steps:
+- name: "gcr.io/cloud-builders/gsutil"
+  args: ["cp", "gs://strengthtest-353601.appspot.com/.env", ".env"]
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', 'app.yaml']
+  timeout: 1600s
+
+timeout: 1600s
