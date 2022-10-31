@@ -15,15 +15,15 @@ function statisticsTemplate(config) {
             <section class="section-container-statistics" id="section-container-statistics">
                 <div>
                 <div class="statistics-text">Tests</div>
-                    <h2 class="statistics-value" id="tests-taken">0</h2>
+                    <h2 class="statistics-value" id="tests-taken"></h2>
                 </div>
                 <div>
                 <div class="statistics-text">Devices</div>
-                    <h2 class="statistics-value" id="unique-devices">0</h2>
+                    <h2 class="statistics-value" id="unique-devices"></h2>
                 </div>
                 <div id="county-statistic">
                     <div class="statistics-text">Counties</div>
-                    <h2 class="statistics-value" id="counties">0</h2>
+                    <h2 class="statistics-value" id="counties"></h2>
                 </div>
             </section>
             <section class="section-container-pie-chart">
