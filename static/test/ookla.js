@@ -5,10 +5,10 @@ const ooklaElement = document.getElementById('ookla-test')
 
 /**
  * Runs the ookla speed test
- * @param {*} handlerConfig An object containing callbacks to run on progress updates
+ * @param {*} completeHandler A callback which runs when the ookla test is complete
  * @returns An object containing ookla speed test results
  */
-async function runOoklaTest(handlerConfig) {
+async function runOoklaTest(completeHandler) {
   const ooklaResults = new Promise((resolve) => {
     async function ooklaTestCompleted(event) {
       if (event.origin !== speedtestCustomLink) {
@@ -22,7 +22,7 @@ async function runOoklaTest(handlerConfig) {
         jitter: event.data.latency.jitter.toFixed(2)
       }
 
-      handlerConfig.complete?.(results.download, results.upload, results.latency, results.jitter)
+      completeHandler(results.download, results.upload, results.latency, results.jitter)
     
       resolve(results)
     }
