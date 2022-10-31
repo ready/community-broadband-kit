@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/ready/multi-test#readme",
   "dependencies": {
-    "@maxmind/geoip2-node": "^3.4.0",
+    "@maxmind/geoip2-node": "^3.5.0",
     "@notionhq/client": "^2.1.1",
     "@sendgrid/mail": "^7.7.0",
     "body-parser": "^1.20.0",
