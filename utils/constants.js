@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const LOCAL_TESTING_FLAG = process.env.LOCAL_TESTING_FLAG === 'true'
+const LOCAL_TESTING_FLAG = process.env.NODE_ENV !== 'production'
 
 const BGA_URLS = {
     local: 'http://localhost:4000/graphql',
