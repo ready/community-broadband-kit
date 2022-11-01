@@ -35,5 +35,5 @@ app.get('/reset', function(req, res) {
 })
 
 app.listen(port, () => {
-  console.log(`Multi-test listening on port ${port}`)
+  console.log(`Community Broadband Toolkit listening on port ${port}`)
 })
