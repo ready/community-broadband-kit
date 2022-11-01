@@ -6,7 +6,11 @@
 function calculatePercentage(data) {
     const total = data?.served + data?.underserved + data?.unserved
     const percentage = ((data?.underserved + data?.unserved) / total) * 100
-    return Number.isInteger(percentage) ? percentage : percentage.toFixed(1)
+    if (isNaN(percentage)) {
+        return 0
+    } else {
+        return Number.isInteger(percentage) ? percentage : percentage.toFixed(1)
+    }
 }
 
 /**
@@ -65,7 +69,7 @@ function generatePieChart ({
         })
         .on("mouseout", function() {
             d3.select('.pie-chart-percentage').text(`${calculatePercentage(data?.multitestPerformanceRank)}%`)
-            d3.select('.pie-chart-text').text('Unserved and underserved')
+            d3.select('.pie-chart-text').text('Unserved and Underserved')
         })
   }
 
