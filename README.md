@@ -4,14 +4,22 @@
 
 ## What is the Community Broadband Kit?
 
-The Community Broadband Kit bundles together an internet speed test and a broadband feasibility survey, allowing communities to apply their own branding, distribute it to their community members, and visualize the results. The speed test component consists of running three different speed tests in sequence: M-Lab's ndt7, Speedtest by Ookla, and our own speed test which can be found at [WiFi.wtf](https://wifi.wtf/). We run three different speed tests to limit the bias of any single speed test implementation in the results. 
+The Community Broadband Kit bundles together an internet speed test and a broadband feasibility survey to gather data around the need for better broadband access in a specific community. This repository contains the source code for an instance of the kit, which can be deployed with a given community's branding at a domain of its choice, and then distributed to its members. The data gathered by this kit instance is given to the community which instantatiated it in the form of external maps, visualizations, and exporting capabilities, allowing them to gather evidence surrounding the state of broabdband access within their territory.
+
+The speed test component consists of running three different speed tests in sequence: [M-Lab's ndt7](https://speed.measurementlab.net/#/), [Speedtest by Ookla](https://www.speedtest.net/), and our own speed test which can be found at [WiFi.wtf](https://wifi.wtf/). We run three different speed tests to limit the bias of any single speed test implementation on the results. The results of each the three speed tests can be viewed by the test-taker, along with an overall score determined by taking the median of the three test results in each category (ie. download, upload, latency, jitter).
+
+The questions in our broadband feasibility survey were designed in accordance with the [Broadband Mapping Coalition](https://broadbandmappingcoalition.org/) in order to give communities the most useful insight into the current state of their community members' access and need for for better broadband. This survey is completely optional, and is offered simultaneously with the execution of the speed test in order to best utilize the time of the end user.
+
+It is up to the discretion of the community whether to require the test-takers to input their address before beginning the speed test. Collecting address-level data is crucial to being able to accurately map the level of broadband access in a specific community, but this data is not released to the public, nor de we enable communities to export data at an address-level precision.
+
+If you are a community-centered organization interested in setting up a kit instance for your community, you can pre-enroll as a "Community Leader" at [broadband.money](https://broadband.money/).
 
 ## Why did we build this?
 
-Communities could steer BEAD to highest and best use, however, few communities are prepared to take on the learning curve, engagement, research and process necessary to do so effectively. 
+Communities could steer BEAD and other broadband grants to highest and best use, but few communities are prepared to take on the learning curve, engagement, research and process necessary to do so effectively. 
 
-Communities should have what they need in order to team up with strong local operators and get their share of BEAD. This includes knowledge of the allocation process, resources for research, and tools to orchestrate their plan as well as to coordinate community action.
-The better we can help communities prepare, the better we can help our nation’s historic public investment flow to the most impactful last mile projects.
+Communities should have what they need in order to team up with strong local operators and get their share of broadbant grants. This includes knowledge of the allocation process, resources for research, and tools to orchestrate their plan as well as to coordinate community action.
+The better we can help communities prepare, the better we can help our nation’s historic public investment flow to the most impactful last-mile projects.
 
 BEAD enables [subsidiarity](https://en.wikipedia.org/wiki/Subsidiarity), but it does not guarantee this ideal as an outcome. 
 
@@ -20,15 +28,7 @@ Effective subsidiarity requires that we systematize:
 1. The **distribution** of concise, accessible understanding required by the community covering key participatory concepts, from strategic & general to tactical & specific
 2. Coordinated **gathering** of local knowledge, data and insights “handed up” to the application model
 
-Both can be facilitated through a carefully planned, well-distributed Community Broadband Kit. 
-
-If we do our part effectively, we could help hundreds of communities rise up to get their share of BEAD funding.
-
-## Table of Contents
-
-- [Getting Started](#getting-started)
-- [How it Works](#how-it-works)
-- [Contributing](#contributing)
+Both can be facilitated through this Community Broadband Kit. 
 
 ## <a name="getting-started"></a>Getting Started
 
@@ -167,12 +167,9 @@ async function main() {
 main();
 ```
 
-## <a name="how-it-works"></a>How it Works
-
-
 ## <a name="contributing"></a>Contributing
 
-Contributing changes for strenghtest:
+Contributing changes for community-broadband-kit:
 
 - Fork community-broadband-kit and clone locally if you have not already done so
 - Create an upstream remote and sync your local copy before you branch
