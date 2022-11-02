@@ -1,0 +1,26 @@
+{
+    "commitSections": {
+      "⚒️ Features": [
+        "feat",
+        "perf"
+      ],
+      "🐞 Bug Fixes": [
+        "fix"
+      ],
+      "🧹 Cleaning": [
+        "refact",
+        "docs",
+        "style"
+      ],
+      "✅ Tests": [
+        "test"
+      ],
+      "⚙️ Meta": [
+        "build",
+        "ci"
+      ]
+    },
+    "includePrTitleDev": false,
+    "includePrBodyDev": false,
+    "writeEmptyChangelogs": false
+  }
