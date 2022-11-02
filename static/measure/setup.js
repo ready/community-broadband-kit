@@ -282,14 +282,21 @@ async function beginTest() {
   testTypeElement.textContent = 'Downloading'
   mlabLoadBar.classList.replace('load-bar-not-started', 'load-bar-started')
 
-  // Run the speedtests
-  const results = await runTests(config)
+  try {
+    // Run the speedtests
+    const results = await runTests(config)
 
-  // Upload and display results
-  handleResults(metadata, checklistResponses, address, results)
+    // Upload and display results
+    handleResults(metadata, checklistResponses, address, results)
 
-  // Remove the offline error page handler
-  window.onoffline = () => {}
+    // Remove the offline error page handler
+    window.onoffline = () => {}
+  } catch (error) {
+    // Remove the offline error page handler
+    window.onoffline = () => {}
+
+    return
+  }
 }
 
 // Event listeners

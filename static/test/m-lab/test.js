@@ -23,7 +23,7 @@ function downloadMeasurement(data) {
     if (data.Source === 'client') {
         const throughput = data.Data.MeanClientMbps.toFixed(2)
 
-        mlabHandlers.downloadProgress?.(throughput)
+        mlabHandlers?.downloadProgress?.(throughput)
     }
 }
 
@@ -34,7 +34,7 @@ function downloadMeasurement(data) {
 function downloadComplete(data) {
     const clientGoodput = data.LastClientMeasurement.MeanClientMbps.toFixed(2)
 
-    mlabHandlers.downloadComplete?.(clientGoodput)
+    mlabHandlers?.downloadComplete?.(clientGoodput)
     mlabResults.download = clientGoodput
 }
 
@@ -49,7 +49,7 @@ function uploadMeasurement(data) {
         sumJitter += data.Data.TCPInfo.RTTVar / 1000
         countJitter++
 
-        mlabHandlers.uploadProgress?.(throughput)
+        mlabHandlers?.uploadProgress?.(throughput)
     }
 }
 
@@ -68,7 +68,7 @@ function uploadComplete(data) {
     const latency = (data.LastServerMeasurement.BBRInfo.MinRTT / 1000).toFixed(2)
     const jitter = (sumJitter / countJitter).toFixed(2)
 
-    mlabHandlers.uploadComplete?.(throughput, latency, jitter)
+    mlabHandlers?.uploadComplete?.(throughput, latency, jitter)
 
     mlabResults.upload = throughput
     mlabResults.latency = latency

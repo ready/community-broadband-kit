@@ -143,9 +143,7 @@ const config = {
     uploadProgress: mlabUploadProgress,
     uploadComplete: mlabUploadComplete
   },
-  ookla: {
-    complete: ooklaComplete,
-  },
+  ooklaComplete,
   rst: {
     pingProgress: rstPingProgress,
     downloadProgress: rstDownloadProgress,
