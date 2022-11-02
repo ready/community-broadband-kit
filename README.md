@@ -233,3 +233,32 @@ Contributing changes for community-broadband-kit:
 - Create a pull request with the packageKey in the title
 - To create a pull request you need to push your branch to the origin remote and then click on the create pull request button on Github
 - Email dev@ready.net with any questions
+
+### Commit Linting
+
+We following the conventional commits guidelines to make all commit messages in the format of:
+
+```
+type(scope?): message
+```
+
+Where `type` is one of these following types:
+
+- **build**: Changes that affect the build system or external dependencies, like NPM packages or frameworks
+- **ci**: Changes to our CI configuration files and/or scripts
+- **chore**: Repo management stuff. Think: housekeeping. Also used for bot commits
+- **docs**: Documentation only changes
+- **feat**: New feature
+- **fix**: Bug fix
+- **perf**: Code change that improves performance
+- **refact**: Code change that neither fixes a bug nor adds a new feature
+- **style**: Changes that do not affect the meaning of the code
+- **test**: Adding tests or correcting existing tests
+- **typo**: A small mistake that shouldn’t be added to the changelog
+
+And scope is an optional field to link the issue number. These are both examples of valid commit messages:
+
+```
+fix(#31): fix bug where something was going wrong
+docs: update `README` with information about commit linting
+```
