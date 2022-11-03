@@ -39,7 +39,7 @@ The questions in our broadband feasibility survey were designed in accordance wi
 
 ### Data collection
 
-In addition to speed test data and survey results, this test also collects the end user's ip address, isp name, city-level location as determined from the ip address, as well as information found in the User-Agent. It is up to the discretion of the community whether to require the test-takers to input their address before beginning the speed test. Collecting address-level data is crucial to being able to accurately map the level of broadband access in a specific community, but this data is not released to the public, nor de we enable communities to export data at an address-level precision.
+In addition to speed test data and survey results, this test also collects the end user's ip address, isp name, city-level location as determined from the ip address, as well as information found in the User-Agent. It is up to the discretion of the community whether to require the test-takers to input their address before beginning the speed test. Collecting address-level data is crucial to being able to accurately map the level of broadband access in a specific community, but this data is not released to the public, nor do we enable communities to export data at an address-level precision.
 
 ## Why did we build this?
 
