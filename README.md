@@ -23,11 +23,15 @@
 
 ---
 
-[Example toolkit instance](https://toolkit.broadband.money/)
+[Launch Your Own Community Broadband Kit](https://toolkit.broadband.money/)
 
 ## What is the Community Broadband Kit?
 
-The Community Broadband Kit bundles together an internet speed test and a broadband feasibility survey to gather data around the need for better broadband access in a specific community. This repository contains the source code for an instance of the kit, which can be deployed with a given community's branding at a domain of its choice, and then distributed to its members. The data gathered by this kit instance is given to the community which instantatiated it in the form of external maps, visualizations, and exporting capabilities, allowing them to gather evidence surrounding the state of broabdband access within their territory.
+The Community Broadband Kit bundles together an internet speed test and a broadband feasibility survey to gather data around the need for better broadband access in a specific community. 
+
+Community Broadband Kit verifies, updates and extends the Broadband Audit within a given broadband grant proposal area. Providers, communities, and government entities can utilize Community Broadband Kit to build their case to challenge Fabric and get ground-truth about the current broadband reality of a proposed grant area.
+
+This repository contains the source code for an instance of the kit, which can be deployed with a given community's branding at a domain of its choice, and then distributed to its members. The data gathered by this kit instance is given to the community which instantatiated it in the form of external maps, visualizations, and exporting capabilities, allowing them to gather evidence surrounding the state of broabdband access within their territory. 
 
 ### Speed test
 
