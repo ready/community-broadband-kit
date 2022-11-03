@@ -62,7 +62,7 @@ Effective subsidiarity requires coordinating agents to systematize:
 Both can be facilitated through this Community Broadband Kit. 
 
 ## Thank You
-Special thank you to the [Broadband Mapping Coalition](https://broadbandmappingcoalition.org) for developing and publishing coherent, thoughtful recommended broadband testing methodology guidelines, and to BMC members for feedback on shaping the test. 
+Special thank you to the [Broadband Mapping Coalition](https://broadbandmappingcoalition.org) and Dustin Loup for developing and publishing coherent, thoughtful recommended broadband testing methodology guidelines, and to BMC members for feedback on shaping the test. 
 
 ## Getting Started
 
