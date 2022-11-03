@@ -43,7 +43,7 @@ The questions in our broadband feasibility survey were designed in accordance wi
 
 ### Data collection
 
-In addition to speed test data and survey results, this test also collects the end user's ip address, isp name, city-level location as determined from the ip address, as well as information found in the User-Agent. It is up to the discretion of the community whether to require the test-takers to input their address before beginning the speed test. Collecting address-level data is crucial to being able to accurately map the level of broadband access in a specific community, but this data is not released to the public, nor de we enable communities to export data at an address-level precision.
+In addition to speed test data and survey results, this test also collects the end user's ip address, isp name, city-level location as determined from the ip address, as well as information found in the User-Agent. It is up to the discretion of the community whether to require the test-takers to input their address before beginning the speed test. Collecting address-level data is crucial to being able to accurately map the level of broadband access in a specific community, but this data is not released to the public, nor do we enable communities to export data at an address-level precision.
 
 ## Why did we build this?
 
@@ -106,48 +106,62 @@ An object containing callback functions used to handle progress updates througho
 ##### `config.mlab.downloadProgress`
 
 Parameters: 
+
 `download` The latest download throughput measurement from the M-Lab speed test in Mbps
 
 ##### `config.mlab.downloadComplete`
 
 Parameters: 
+
 `download` The final download throughput measurement from the M-Lab speed test in Mbps
 
 ##### `config.mlab.uploadProgress`
 
 Parameters: 
+
 `upload` The latest upload throughput measurement from the M-Lab speed test in Mbps
 
 ##### `config.mlab.uploadcomplete`
 
 Parameters: 
+
 `upload` The final upload throughput measurement from the M-Lab speed test in Mbps
+
 `latency` The final latency measurement from the M-Lab speed test in ms
+
 `jitter` The final jitter measurement from the M-Lab speed test in ms
 
 ##### `config.ooklaComplete`
 
 Parameters: 
+
 `download` The final download throughput measurement from the Ookla speed test in Mbps
+
 `upload` The final upload throughput measurement from the Ookla speed test in Mbps
+
 `latency` The final latency measurement from the Ookla speed test in ms
+
 `jitter` The final jitter measurement from the Ookla speed test in ms
 
 ##### `config.rst.pingProgress`
 
 Parameters: 
+
 `latency` The latest latency measurement from the WiFi.wtf speed test in ms
+
 `jitter` The latest jitter measurement from the WiFi.wtf speed test in ms
 
 
 ##### `config.rst.downloadProgress`
 
 Parameters: 
+
 `download` The latest download throughput measurement from the WiFi.wtf speed test in Mbps
 
 ##### `config.rst.uploadProgress`
 
 Parameters: 
+
 `upload` The latest upload throughput measurement from the WiFi.wtf speed test in Mbps
 
 #### Return value
