@@ -27,7 +27,7 @@
 
 ## What is the Community Broadband Kit?
 
-The Community Broadband Kit bundles together an internet speed test and a broadband feasibility survey to gather data around the need for better broadband access in a specific community. This repository contains the source code for an instance of the kit, which can be deployed with a given community's branding at a domain of its choice, and then distributed to its members. The data gathered by this kit instance is given to the community which instantatiated it in the form of external maps, visualizations, and exporting capabilities, allowing them to gather evidence surrounding the state of broabdband access within their territory.
+The Community Broadband Kit bundles together an internet speed test and a broadband feasibility survey to gather data around the need for better broadband access in a specific community. This means that the Community Broadband Kit can verify, update, and extend the [Broadband Audit](https://broadband.money/broadband-grant-terms/broadband-audit) within a given broadband grant proposal area. This repository contains the source code for an instance of the kit, which can be deployed with a given community's branding at a domain of its choice, and then distributed to its members. The data gathered by this kit instance is given to the community which instantatiated it in the form of external maps, visualizations, and exporting capabilities, allowing them to gather evidence surrounding the state of broabdband access within their territory.
 
 ### Speed test
 
