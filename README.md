@@ -23,11 +23,15 @@
 
 ---
 
-[Example toolkit instance](https://toolkit.broadband.money/)
+[Launch Your Own Community Broadband Kit](https://toolkit.broadband.money/)
 
 ## What is the Community Broadband Kit?
 
-The Community Broadband Kit bundles together an internet speed test and a broadband feasibility survey to gather data around the need for better broadband access in a specific community. This means that the Community Broadband Kit can verify, update, and extend the [Broadband Audit](https://broadband.money/broadband-grant-terms/broadband-audit) within a given broadband grant proposal area. This repository contains the source code for an instance of the kit, which can be deployed with a given community's branding at a domain of its choice, and then distributed to its members. The data gathered by this kit instance is given to the community which instantatiated it in the form of external maps, visualizations, and exporting capabilities, allowing them to gather evidence surrounding the state of broabdband access within their territory.
+The Community Broadband Kit bundles together an internet speed test and a broadband feasibility survey to gather data around the need for better broadband access in a specific community. 
+
+Community Broadband Kit verifies, updates and extends the Broadband Audit within a given broadband grant proposal area. Providers, communities, and government entities can utilize Community Broadband Kit to build their case to challenge Fabric and get ground-truth about the current broadband reality of a proposed grant area.
+
+While communities and providers are encouraged to [launch their own ommunity Broadband Kit](https://toolkit.broadband.money/) for free on hosted infrastructure, this repository is open to allow anyone to inspect how Community Broadband Kit works. It contains the source code for an instance of the kit, which can be deployed with a given community's branding at a domain of its choice, and then distributed to its members. The data gathered by this kit instance is given to the community which instantatiated it in the form of external maps, visualizations, and exporting capabilities, allowing them to gather evidence surrounding the state of broabdband access within their territory. 
 
 ### Speed test
 
@@ -50,12 +54,15 @@ The better we can help communities prepare, the better we can help our nation’
 
 BEAD enables [subsidiarity](https://en.wikipedia.org/wiki/Subsidiarity), but it does not guarantee this ideal as an outcome. 
 
-Effective subsidiarity requires that we systematize:
+Effective subsidiarity requires coordinating agents to systematize:
 
 1. The **distribution** of concise, accessible understanding required by the community covering key participatory concepts, from strategic & general to tactical & specific
 2. Coordinated **gathering** of local knowledge, data and insights “handed up” to the application model
 
 Both can be facilitated through this Community Broadband Kit. 
+
+## Thank You
+Special thank you to the [Broadband Mapping Coalition](https://broadbandmappingcoalition.org) and Dustin Loup for developing and publishing coherent, thoughtful recommended broadband testing methodology guidelines, and to BMC members for feedback on shaping the test. 
 
 ## Getting Started
 
