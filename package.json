@@ -1,6 +1,6 @@
 {
   "name": "multitest",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Internet strength multitest",
   "main": "app.js",
   "scripts": {
