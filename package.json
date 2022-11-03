@@ -1,11 +1,12 @@
 {
   "name": "multitest",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Internet strength multitest",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,10 @@
     "node-fetch": "^3.2.10",
     "ua-parser-js": "^1.0.2",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@ready.net/octogration": "^0.17.0",
+    "commitlint": "^17.2.0",
+    "husky": "^8.0.1"
   }
 }

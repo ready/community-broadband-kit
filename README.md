@@ -1,4 +1,27 @@
-# community-broadband-kit
+<p align="center">
+  <img width="200" src="https://user-images.githubusercontent.com/82117023/164050250-34c6c370-2bba-413c-9655-61437820f094.svg" alt="Ready Logo">
+</p>
+<h1 align="center" style="margin-top: 0px;">
+  Community Broadband Kit &nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="version" src="https://img.shields.io/static/v1?label=Version&color=740e86&labelColor=555555&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAggAAAIIBsKhZvgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFsSURBVCiRjZK9S9VxFMY/53df7EVocchBuIMtZtDUEA0N/QlKtIRUY2IOpYvQVIOLQZvU0OAiIlFDYM130oiIhMhRLmZBinC7eu+n5fuzy7036pnO23PO4TwHekA9p75S19TzvWo6Cf3qQ7XuHzTUJ+qZXoRMvanWUvEXdVy9pn5KsV11Si3kpLK6mpI/1Qdqua1pnzqj7qWaFbUU6ilgH1gG7kVE7fGsw8qjaHHiCKbn5uOrOggsAGNAfzE1zoCTEVG7P7lxwxaLwGkDCnB14vq72xGxnIZkAEU6sP1j7cr30odvlYHxzaPD5mH14+LA3kHtctroGF1EgHpjp7K5/XRoa2u38DcFsu4LswE02kK/size/5O4tDTzDGIUeA2sNpvNkWp1/oV6Fqi0TbCkrqsvk3+xQ45ykiiXY10t5clMvZTshfwBkl9U76qf1Ttq15Z5k1vpzVrqW3X0v44TEc+BC8AboN5xqGP8BvQuJ7II6OtVAAAAAElFTkSuQmCC&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=1.0.0" />
+</h1>
+<p align="center">
+  <img alt="staleBranches" src="https://img.shields.io/static/v1?label=Stale%20Branches&color=33ab53&labelColor=555555&logo=Git&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=0" /> &nbsp;
+  <img alt="neglectedPrs" src="https://img.shields.io/static/v1?label=Neglected%20PRs&color=33ab53&labelColor=555555&logo=Git%20Extensions&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=0" /> &nbsp;
+  <img alt="lastProd" src="https://img.shields.io/static/v1?label=Last%20Prod&color=33ab53&labelColor=555555&logo=Android%20Auto&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=11/2/22" />
+</p>
+<p align="center">
+  <img alt="vulnerabilities" src="https://img.shields.io/static/v1?label=Vulnerabilities&color=33ab53&labelColor=555555&logo=Amazon%20Cloudwatch&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=0" /> &nbsp;
+  <img alt="deprecations" src="https://img.shields.io/static/v1?label=Deprecations&color=33ab53&labelColor=555555&logo=Git%20LFS&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=0" />
+</p>
+<p align="center">
+  <img alt="nodeVersion" src="https://img.shields.io/static/v1?label=Node%20Version&color=5c80f7&labelColor=555555&logo=Node.js&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=16.17.1" /> &nbsp;
+  <img alt="npmVersion" src="https://img.shields.io/static/v1?label=NPM%20Version&color=5c80f7&labelColor=555555&logo=npm&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=8.3.1" /> &nbsp;
+</p>
+
+
+
+---
 
 [Example toolkit instance](https://toolkit.broadband.money/)
 
@@ -209,4 +232,33 @@ Contributing changes for community-broadband-kit:
 - Write descriptive commits
 - Create a pull request with the packageKey in the title
 - To create a pull request you need to push your branch to the origin remote and then click on the create pull request button on Github
-- Email dev@ready.net with any questions other questions
+- Email dev@ready.net with any questions
+
+### Commit Linting
+
+We following the conventional commits guidelines to make all commit messages in the format of:
+
+```
+type(scope?): message
+```
+
+Where `type` is one of these following types:
+
+- **build**: Changes that affect the build system or external dependencies, like NPM packages or frameworks
+- **ci**: Changes to our CI configuration files and/or scripts
+- **chore**: Repo management stuff. Think: housekeeping. Also used for bot commits
+- **docs**: Documentation only changes
+- **feat**: New feature
+- **fix**: Bug fix
+- **perf**: Code change that improves performance
+- **refact**: Code change that neither fixes a bug nor adds a new feature
+- **style**: Changes that do not affect the meaning of the code
+- **test**: Adding tests or correcting existing tests
+- **typo**: A small mistake that shouldn’t be added to the changelog
+
+And scope is an optional field to link the issue number. These are both examples of valid commit messages:
+
+```
+fix(#31): fix bug where something was going wrong
+docs: update `README` with information about commit linting
+```
