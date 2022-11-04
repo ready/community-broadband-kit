@@ -25,7 +25,7 @@
 
 ### ⚡️ [Launch Your Own Community Broadband Kit](https://broadband.money/community-broadband-kit)
 ### 👁 [View a live, generic instance of the Kit](https://toolkit.broadband.money)
-
+### 📖 [Learn How To Setup & Distribute Your Kit](https://broadband.money/broadband-grant-guides/community-kit)
 
 ---
 ## What is the Community Broadband Kit?
