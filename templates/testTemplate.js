@@ -90,7 +90,7 @@ function testTemplate(config) {
             <section class="main-container min-fixed-height" id="main-section">
                 <div class="shadow-container" id="checklist">
                     <h1 class="section-blur-title hero-title">Before We Begin...</h1>
-                    <h2 class="section-description">For best results, we recommend taking the following steps. Please select a step if it has been done. Hover over underlined terms for additional information.</h2>
+                    <h2 class="section-description">For best results, please answer the following questions.</h2>
                     <div class="checklist-progress-bar">
                         <div class="progress-step">
                             <div class="checklist-circle checklist-colored-circle" id="step-1" >1</div>
@@ -107,50 +107,88 @@ function testTemplate(config) {
                             <div class="checklist-dash"></div>
                             <div class="checklist-circle" id="step-4">4</div>
                         </div>
-                        <div class="progress-step">
-                            <div class="checklist-dash"></div>
-                            <div class="checklist-circle" id="step-5">5</div>
-                        </div>
                     </div>
+                    
                     <div class="checklist">
                         <div id="item-1">
-                            <input type="checkbox" id="ethernet" name="ethernet">
-                            <label for="ethernet">My device is connected to the internet using an 
-                                <div class="tooltip">Ethernet cable
-                                    <span class="tooltiptext">
-                                         <span id="ethernet-definition"></span>
-                                        <span><br><img style="margin-left: 140px; margin-top=10px;" src="/static/assets/ethernet.png" alt='ethernet image'></span>
-                                        <a href="https://www.wikihow.com/Connect-to-Ethernet-on-PC-or-Mac" target="_blank"><br>See here for more details &#8594;</a>
-                                    </span>
-                                </div> 
-                            (preferred)</label>
+                            <div class="" style="display: flex; flex-direction: column; text-align: center; width: fit-content; margin: 20px auto; color: var(--color-text);">
+                                <p style="font-size: 20px; margin-bottom: 10px;">How are you connected to the Internet?</p>
+                                <p style="font-size: 16px; margin-bottom: 10px; align-self: center;">A wired connection is preferred.</p>
+                            </div>
+                        
+                            <div style="display: flex; flex-direction: row; width: fit-content; margin: 20px auto;">
+                                <div class="my-option" id="using-ethernet" onclick="togglePicked('using-ethernet')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
+                                    <img src="/static/assets/2426241.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
+                                    <div style="font-size: 16px;">Wired</div>
+                                </div>
+
+                                <div class="my-option" id="wifi" onclick="getElementById('router-warning').style.display = 'block', togglePicked('wifi')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
+                                    <img src="/static/assets/159599.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
+                                    <div style="font-size: 16px;">Wifi</div>
+                                </div>
+                            </div>
+                            <div id="router-warning" style="display: none">
+                                <input type="checkbox" id="close-to-router" name="close-to-router">
+                                <label for="close-to-router">I am as close as possible to my 
+                                    <div class="tooltip">Wi-Fi router
+                                        <span class="tooltiptext">
+                                            <span id="router-definition"></span>
+                                            <span><br><img style="margin-left: 140px;" src="/static/assets/router.png" alt='router image'></span>
+                                        </span>
+                                    </div> 
+                                </label>
+                            </div>
                         </div>
+
+
                         <div id="item-2" style="display: none;">
-                            <input type="checkbox" id="close-to-router" name="close-to-router">
-                            <label for="close-to-router">My device is not connected by Ethernet but is as close as possible to my 
-                                <div class="tooltip">Wi-Fi router
-                                    <span class="tooltiptext">
-                                        <span id="router-definition"></span>
-                                        <span><br><img style="margin-left: 140px;" src="/static/assets/router.png" alt='router image'></span>
-                                    </span>
-                                </div> 
-                            </label>
+                            <div style="display: flex; flex-direction: column; width: fit-content; text-align: center; margin: 20px auto; color: var(--color-text);">
+                                <p style="font-size: 20px; margin-bottom: 10px;">Are you connected to a VPN?</p>
+                                <p style="font-size: 16px; margin-bottom: 10px; align-self: center;">If so, please disconnect.</p>
+                            </div>
+                        
+                            <div style="display: flex; flex-direction: row; width: fit-content; margin: 20px auto;">
+                                <div class="my-option" id="vpn-on" onclick="togglePicked('vpn-on')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
+                                    <img src="/static/assets/955268.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
+                                    <div style="font-size: 16px;">Yes</div>
+                                </div>
+
+                                <div class="my-option" id="vpn-off" onclick="togglePicked('vpn-off')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
+                                    <img src="/static/assets/2997911.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
+                                    <div style="font-size: 16px;">No</div>
+                                </div>
+                            </div>
                         </div>
+
                         <div id="item-3" style="display: none;">
-                            <input type="checkbox" id="vpn" name="vpn">
-                            <label for="vpn">I am not currently connected to any 
-                                <div class="tooltip">VPNs
-                                    <span class="tooltiptext">VPN stands for "Virtual Private Network." If you are unaware of what this means then you are ready to take the test.</span>
-                                </div> 
-                            </label>
+                            <div style="display: flex; flex-direction: column; width: fit-content; text-align: center; margin: 20px auto; color: var(--color-text);">
+                                <p style="font-size: 20px; margin-bottom: 10px;">Is anyone on your network currently on a video call, streaming videos, or gaming?</p>
+                            </div>
+                        
+                            <div style="display: flex; flex-direction: row; width: fit-content; margin: 40px auto;">
+                                <div class="my-option" id="interruption" onclick="togglePicked('interruption')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
+                                    <img src="/static/assets/2177994.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
+                                    <div style="font-size: 16px;">Yes</div>
+                                </div>
+
+                                <div class="my-option" id="no-interruption" onclick="togglePicked('no-interruption')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
+                                    <img src="/static/assets/2997911.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
+                                    <div style="font-size: 16px;">No</div>
+                                </div>
+                            </div>
                         </div>
+
                         <div id="item-4" style="display: none;">
-                            <input type="checkbox" id="no-other-devices" name="no-other-devices">
-                            <label for="no-other-devices">No one in my household is currently on a video call, streaming videos, or gaming</label>
-                        </div>
-                        <div id="item-5" style="display: none;">
-                            <input type="checkbox" id="grabbed-bill" name="grabbed-bill">
-                            <label for="grabbed-bill">I know information about my tier of internet service such as monthly cost and speed in order to complete survey questions</label>
+                            <div style="display: flex; flex-direction: column; width: fit-content; text-align: center; margin: 20px auto; color: var(--color-text);">
+                                <p style="font-size: 20px; margin-bottom: 10px;">I know information about my tier of internet service such as monthly cost and speed in order to complete survey questions.</p>
+                            </div>
+                        
+                            <div style="display: flex; flex-direction: row; width: fit-content; margin: 40px auto;">
+                                <div class="my-option" id="know-information" onclick="togglePicked('know-information')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
+                                    <img src="/static/assets/775497.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
+                                    <div style="font-size: 16px;">Yes</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <button class="button begin-test-button top-margin" id="next-btn">Next</button>
@@ -466,6 +504,16 @@ function testTemplate(config) {
             </section>
             <script>
                 const organizationId = ${config.organization.id}
+            </script>
+            <script>
+                function togglePicked(element) {
+                    const picked = document.querySelectorAll('.picked');
+                    picked.forEach(pick => {
+                        pick.classList.remove("picked");
+                    });
+                    let elem = document.getElementById(element);
+                    elem.classList.add("picked"); 
+                }
             </script>
             <script src="/static/test/m-lab/src/ndt7.min.js" type="text/javascript"></script>
             <script type="module" src="/static/measure/setup.js"></script>

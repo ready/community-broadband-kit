@@ -22,13 +22,13 @@ const testTypeElement = document.getElementById('test-type')
 // Declare variables
 let autocomplete
 let metadata = getMetadata()
-let checklistResponses
+let checklistResponses ={}
 let address = {
   text: '',
   lat: null,
   lon: null
 }
-const checklistItemTotal = 5
+const checklistItemTotal = 4
 let checklistCounter = 1
 
 /**
@@ -106,6 +106,9 @@ async function fillAddressFromGeolocation() {
  * and updates the progress bar
  */
 function displayNextChecklistItem() {
+  // Add previously answered checklist item's response to the checklist response object
+  getChecklistItemResponse()  
+
   // Replace progress bar number with svg checkmark
   const step = document.getElementById("step-" + checklistCounter)
   step.textContent = ''
@@ -231,16 +234,66 @@ async function getMetadata() {
 
 /**
  * Gets the user's responses to items in the pre-test checklist
- * @returns An object containing a user's responses from the checklist
+ * and adds them to an object
  */
-function getChecklistResponses() {
-  let response = {
-    usingEthernet: document.getElementById("ethernet").checked,
-    closeToRouter: document.getElementById("close-to-router").checked,
-    vpnOff: document.getElementById("vpn").checked,
-    noInterruptFromOtherDevices: document.getElementById("no-other-devices").checked
+function getChecklistItemResponse() {
+  const picked = document.querySelectorAll('.picked');
+
+  if (checklistCounter === 1) {
+    if (picked.length > 0) {
+      picked.forEach(pick => {
+        if (pick.id === 'using-ethernet') {
+          checklistResponses.usingEthernet = true
+        } else {
+          checklistResponses.usingEthernet = false
+        }
+    
+        if (pick.id === 'wifi') {
+          if (document.getElementById("close-to-router").checked) {
+            checklistResponses.closeToRouter = true
+          } else {
+            checklistResponses.closeToRouter = false
+          }
+        } else {
+          checklistResponses.closeToRouter = false
+        }
+  
+      });
+    } else {
+      checklistResponses.usingEthernet = false
+      checklistResponses.closeToRouter = false
+    }  
   }
-  return response
+  
+  if (checklistCounter === 2) {
+    if (picked.length > 0) {
+      picked.forEach(pick => {
+        if (pick.id === 'vpn-off') {
+          checklistResponses.vpnOff = true
+        } else {
+          checklistResponses.vpnOff = false
+        }
+      });
+    } else {
+      checklistResponses.vpnOff = false
+    }  
+  }
+
+  if (checklistCounter === 3) {
+    if (picked.length > 0) {
+      picked.forEach(pick => {
+        if (pick.id === 'no-interruption') {
+          checklistResponses.noInterruptFromOtherDevices = true
+        } else {
+          checklistResponses.noInterruptFromOtherDevices = false
+        }
+      });
+    } else {
+      checklistResponses.noInterruptFromOtherDevices = false
+    }  
+  }
+
+  console.log(checklistResponses)
 }
 
 /**
@@ -266,8 +319,7 @@ async function beginTest() {
   checklistElement.style.display = 'none'
   addressElement.style.display = 'none'
 
-  // Gets the checklist responses and metadata
-  checklistResponses = getChecklistResponses()
+  // Gets metadata
   metadata = await metadata
 
   // Sets up the survey

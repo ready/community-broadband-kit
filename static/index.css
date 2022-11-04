@@ -996,6 +996,17 @@ input[type="checkbox"] ~ label {
     justify-content: center;
 }
 
+.my-option {
+    border: solid 1px rgba(17 14 76 / 20%);
+    padding: 1px;
+}
+
+.picked {
+    border: solid 2px var(--color-accent);
+    font-weight: bolder;
+    padding: 0;
+}
+
 /* Addres entry*/
 .address {
     font-size: var(--font-size-body1);
