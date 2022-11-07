@@ -118,12 +118,12 @@ function testTemplate(config) {
                         
                             <div style="display: flex; flex-direction: row; width: fit-content; margin: 20px auto;">
                                 <div class="my-option" id="using-ethernet" onclick="togglePicked('using-ethernet')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/2426241.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
+                                    <img src="/static/assets/wired_icon.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
                                     <div style="font-size: 16px;">Wired</div>
                                 </div>
 
                                 <div class="my-option" id="wifi" onclick="getElementById('router-warning').style.display = 'block', togglePicked('wifi')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/159599.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
+                                    <img src="/static/assets/wifi_icon.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
                                     <div style="font-size: 16px;">Wifi</div>
                                 </div>
                             </div>
@@ -149,12 +149,12 @@ function testTemplate(config) {
                         
                             <div style="display: flex; flex-direction: row; width: fit-content; margin: 20px auto;">
                                 <div class="my-option" id="vpn-on" onclick="togglePicked('vpn-on')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/955268.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
+                                    <img src="/static/assets/vpn_icon.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
                                     <div style="font-size: 16px;">Yes</div>
                                 </div>
 
                                 <div class="my-option" id="vpn-off" onclick="togglePicked('vpn-off')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/2997911.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
+                                    <img src="/static/assets/cross_icon.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
                                     <div style="font-size: 16px;">No</div>
                                 </div>
                             </div>
@@ -167,12 +167,12 @@ function testTemplate(config) {
                         
                             <div style="display: flex; flex-direction: row; width: fit-content; margin: 40px auto;">
                                 <div class="my-option" id="interruption" onclick="togglePicked('interruption')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/2177994.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
+                                    <img src="/static/assets/streaming_icon.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
                                     <div style="font-size: 16px;">Yes</div>
                                 </div>
 
                                 <div class="my-option" id="no-interruption" onclick="togglePicked('no-interruption')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/2997911.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
+                                    <img src="/static/assets/cross_icon.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
                                     <div style="font-size: 16px;">No</div>
                                 </div>
                             </div>
@@ -185,7 +185,7 @@ function testTemplate(config) {
                         
                             <div style="display: flex; flex-direction: row; width: fit-content; margin: 40px auto;">
                                 <div class="my-option" id="know-information" onclick="togglePicked('know-information')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/775497.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
+                                    <img src="/static/assets/knowledge_icon.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
                                     <div style="font-size: 16px;">Yes</div>
                                 </div>
                             </div>
