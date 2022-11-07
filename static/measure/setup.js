@@ -237,7 +237,7 @@ async function getMetadata() {
  * and adds them to an object
  */
 function getChecklistItemResponse() {
-  const picked = document.querySelectorAll('.picked');
+  const picked = document.querySelectorAll('.selected-answer');
 
   if (checklistCounter === 1) {
     if (picked.length > 0) {

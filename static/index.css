@@ -942,12 +942,6 @@ input[type="checkbox"] ~ label {
     display: inline-block;
 }
 
-.checklist-item {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
 .checklist-progress-bar {
     width: 30%; 
     margin: 10px auto 30px; 
@@ -996,15 +990,58 @@ input[type="checkbox"] ~ label {
     justify-content: center;
 }
 
-.my-option {
-    border: solid 1px rgba(17 14 76 / 20%);
-    padding: 1px;
+.checklist-question {
+    display: flex; 
+    flex-direction: column; 
+    text-align: center; 
+    width: fit-content; 
+    margin: 20px auto; 
+    color: var(--color-text);
+}
+.checklist-header {
+    font-size: 20px; 
+    margin-bottom: 10px;
+    align-self: center;
+} 
+.checklist-subheader {
+    font-size: 16px; 
+    margin-bottom: 10px;
+    align-self: center;
+} 
+
+.checklist-answer-row {
+    display: flex; 
+    flex-direction: row; 
+    width: fit-content; 
+    margin: 20px auto;
 }
 
-.picked {
+.answer-option {
+    border: solid 1px rgba(17 14 76 / 20%);
+    padding: 1px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    margin-right: 20px; 
+    cursor: pointer;
+}
+
+.selected-answer {
     border: solid 2px var(--color-accent);
     font-weight: bolder;
     padding: 0;
+}
+
+.checklist-icon {
+    margin-bottom: 10px;
+}
+
+.icon-text {
+    font-size: 16px;
 }
 
 /* Addres entry*/

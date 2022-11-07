@@ -111,22 +111,21 @@ function testTemplate(config) {
                     
                     <div class="checklist">
                         <div id="item-1">
-                            <div class="" style="display: flex; flex-direction: column; text-align: center; width: fit-content; margin: 20px auto; color: var(--color-text);">
-                                <p style="font-size: 20px; margin-bottom: 10px;">How are you connected to the Internet?</p>
-                                <p style="font-size: 16px; margin-bottom: 10px; align-self: center;">A wired connection is preferred.</p>
+                            <div class="checklist-question">
+                                <p class="checklist-header">How are you connected to the Internet?</p>
+                                <p class="checklist-subheader">A wired connection is preferred.</p>
                             </div>
-                        
-                            <div style="display: flex; flex-direction: row; width: fit-content; margin: 20px auto;">
-                                <div class="my-option" id="using-ethernet" onclick="togglePicked('using-ethernet')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/wired_icon.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
-                                    <div style="font-size: 16px;">Wired</div>
+                            <div class="checklist-answer-row">
+                                <div class="answer-option" id="using-ethernet" onclick="getElementById('router-warning').style.display = 'none', toggleSelected('using-ethernet')">
+                                    <img class="checklist-icon" src="/static/assets/wired_icon.png" width="32px" height="32px" alt="Wired-icon">
+                                    <div class="icon-text">Wired</div>
                                 </div>
+                                <div class="answer-option" id="wifi" onclick="getElementById('router-warning').style.display = 'block', toggleSelected('wifi')">
+                                    <img class="checklist-icon" src="/static/assets/wifi_icon.png" width="32px" height="32px" alt="Wifi-icon">
+                                    <div class="icon-text">WiFi</div>
+                                </div>
+                            </div>
 
-                                <div class="my-option" id="wifi" onclick="getElementById('router-warning').style.display = 'block', togglePicked('wifi')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/wifi_icon.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
-                                    <div style="font-size: 16px;">Wifi</div>
-                                </div>
-                            </div>
                             <div id="router-warning" style="display: none">
                                 <input type="checkbox" id="close-to-router" name="close-to-router">
                                 <label for="close-to-router">I am as close as possible to my 
@@ -140,53 +139,49 @@ function testTemplate(config) {
                             </div>
                         </div>
 
-
                         <div id="item-2" style="display: none;">
-                            <div style="display: flex; flex-direction: column; width: fit-content; text-align: center; margin: 20px auto; color: var(--color-text);">
-                                <p style="font-size: 20px; margin-bottom: 10px;">Are you connected to a VPN?</p>
-                                <p style="font-size: 16px; margin-bottom: 10px; align-self: center;">If so, please disconnect.</p>
+                            <div class="checklist-question">
+                                <p class="checklist-header">Are you connected to a VPN?</p>
+                                <p class="checklist-subheader">If so, please disconnect.</p></p>
                             </div>
-                        
-                            <div style="display: flex; flex-direction: row; width: fit-content; margin: 20px auto;">
-                                <div class="my-option" id="vpn-on" onclick="togglePicked('vpn-on')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/vpn_icon.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
-                                    <div style="font-size: 16px;">Yes</div>
+                            <div class="checklist-answer-row">
+                                <div class="answer-option" id="vpn-on" onclick="toggleSelected('vpn-on')">
+                                    <img class="checklist-icon" src="/static/assets/vpn_icon.png" width="32px" height="32px" alt="Wired-icon">
+                                    <div class="icon-text">Yes</div>
                                 </div>
-
-                                <div class="my-option" id="vpn-off" onclick="togglePicked('vpn-off')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/cross_icon.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
-                                    <div style="font-size: 16px;">No</div>
+                                <div class="answer-option" id="vpn-off" onclick="toggleSelected('vpn-off')">
+                                    <img class="checklist-icon" src="/static/assets/cross_icon.png" width="32px" height="32px" alt="Wifi-icon">
+                                    <div class="icon-text">No</div>
                                 </div>
                             </div>
                         </div>
 
                         <div id="item-3" style="display: none;">
-                            <div style="display: flex; flex-direction: column; width: fit-content; text-align: center; margin: 20px auto; color: var(--color-text);">
-                                <p style="font-size: 20px; margin-bottom: 10px;">Is anyone on your network currently on a video call, streaming videos, or gaming?</p>
+                            <div class="checklist-question">
+                                <p class="checklist-header">Is anyone on your network currently on a video call, streaming videos, or gaming?</p>
                             </div>
-                        
-                            <div style="display: flex; flex-direction: row; width: fit-content; margin: 40px auto;">
-                                <div class="my-option" id="interruption" onclick="togglePicked('interruption')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/streaming_icon.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
-                                    <div style="font-size: 16px;">Yes</div>
+                            <div class="checklist-answer-row">
+                                <div class="answer-option" id="interruption" onclick="toggleSelected('interruption')">
+                                    <img class="checklist-icon" src="/static/assets/streaming_icon.png" width="32px" height="32px" alt="Wired-icon">
+                                    <div class="icon-text">Yes</div>
                                 </div>
 
-                                <div class="my-option" id="no-interruption" onclick="togglePicked('no-interruption')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/cross_icon.png" width="32" height="32" alt="Wifi-icon" style="margin-bottom: 10px;">
-                                    <div style="font-size: 16px;">No</div>
+                                <div class="answer-option" id="no-interruption" onclick="toggleSelected('no-interruption')">
+                                    <img  class="checklist-icon" src="/static/assets/cross_icon.png" width="32px" height="32px" alt="Wifi-icon">
+                                    <div class="icon-text">No</div>
                                 </div>
                             </div>
                         </div>
 
                         <div id="item-4" style="display: none;">
-                            <div style="display: flex; flex-direction: column; width: fit-content; text-align: center; margin: 20px auto; color: var(--color-text);">
-                                <p style="font-size: 20px; margin-bottom: 10px;">I know information about my tier of internet service such as monthly cost and speed in order to complete survey questions.</p>
+                            <div class="checklist-question">
+                                <p class="checklist-header">I know information about my tier of internet service such as monthly cost and speed in order to complete survey questions.</p>
                             </div>
                         
-                            <div style="display: flex; flex-direction: row; width: fit-content; margin: 40px auto;">
-                                <div class="my-option" id="know-information" onclick="togglePicked('know-information')" style="width: 130px; height: 100px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 20px; cursor: pointer;">
-                                    <img src="/static/assets/knowledge_icon.png" width="32" height="32" alt="Wired-icon" style="margin-bottom: 10px;">
-                                    <div style="font-size: 16px;">Yes</div>
+                            <div class="checklist-answer-row">
+                                <div class="answer-option"id="know-information" onclick="toggleSelected('know-information')">
+                                    <img class="checklist-icon" src="/static/assets/knowledge_icon.png" width="32" height="32" alt="Wired-icon">
+                                    <div class="icon-text">Yes</div>
                                 </div>
                             </div>
                         </div>
@@ -506,13 +501,13 @@ function testTemplate(config) {
                 const organizationId = ${config.organization.id}
             </script>
             <script>
-                function togglePicked(element) {
-                    const picked = document.querySelectorAll('.picked');
-                    picked.forEach(pick => {
-                        pick.classList.remove("picked");
+                function toggleSelected(element) {
+                    const selected = document.querySelectorAll('.selected-answer');
+                    selected.forEach(select => {
+                        select.classList.remove("selected-answer");
                     });
                     let elem = document.getElementById(element);
-                    elem.classList.add("picked"); 
+                    elem.classList.add("selected-answer"); 
                 }
             </script>
             <script src="/static/test/m-lab/src/ndt7.min.js" type="text/javascript"></script>
