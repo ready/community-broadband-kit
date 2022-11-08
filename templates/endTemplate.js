@@ -12,7 +12,7 @@
 
       let newHeight
       if (aspect < 1.5) {
-        newHeight = 100
+        newHeight = 90
       } else {
         newHeight = 50
       }
