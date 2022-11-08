@@ -292,8 +292,6 @@ function getChecklistItemResponse() {
       checklistResponses.noInterruptFromOtherDevices = false
     }  
   }
-
-  console.log(checklistResponses)
 }
 
 /**
