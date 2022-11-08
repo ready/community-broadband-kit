@@ -46,8 +46,8 @@ function testTemplate(config) {
                 top: 0;
                 height: 48px;
                 padding: 12px 24px;
-                background: var(--color-4);
-                border: 2px solid var(--color-4);
+                background: var(--color-background3);
+                border: 2px solid var(--color-background3);
                 border-radius: 4px;
                 color: #FFFFFF;
                 font-style: normal;
@@ -57,8 +57,8 @@ function testTemplate(config) {
                 cursor: pointer;
             }
             .buttonRemindMe:hover{
-                background: var(--color-4);
-                border: 2px solid var(--color-4);
+                background: var(--color-background3);
+                border: 2px solid var(--color-background3);
                 color:#E6F1FF;
             }
             
