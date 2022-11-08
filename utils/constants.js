@@ -1,8 +1,6 @@
 require('dotenv').config()
 
-let LOCAL_TESTING_FLAG = process.env.NODE_ENV !== 'production'
-
-LOCAL_TESTING_FLAG = false
+const LOCAL_TESTING_FLAG = process.env.NODE_ENV !== 'production'
 
 const BGA_URLS = {
     local: 'http://localhost:4000/graphql',
@@ -11,7 +9,6 @@ const BGA_URLS = {
 }
 
 exports.BGA_URL = LOCAL_TESTING_FLAG ? BGA_URLS.local : BGA_URLS.prod
-
 
 const domains = {
     default: 'toolkit.broadband.money',
