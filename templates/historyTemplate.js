@@ -1,6 +1,7 @@
 const headTemplate = require('./headTemplate')
 const headerTemplate = require('./headerTemplate')
 const footerTemplate = require('./footerTemplate')
+const endTemplate = require('./endTemplate')
 
 /**
  * Creates the html template for history page the site
@@ -11,6 +12,7 @@ function historyTemplate(config) {
     const head = headTemplate(config, config.ogImage)
     const header = headerTemplate(config)
     const footer = footerTemplate(config)
+    const end = endTemplate(config)
 
     return `
         <!DOCTYPE html>
@@ -38,9 +40,8 @@ function historyTemplate(config) {
             </div>
             </main>
             ${footer}
+            ${end}
             <script type="module" src="/static/history/history.js"></script>
-            <script type="module" src="/static/utils/showContent.js"></script>
-		    <script src="https://kit.fontawesome.com/fc3d033d28.js" crossorigin="anonymous"></script>
         </body>
         </html>    
     `

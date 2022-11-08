@@ -4,8 +4,6 @@
  * @returns an html template
  */
 function headerTemplate(config) {
-	const logoWidth = config.logoWidth ? config.logoWidth : '80px'
-
   return `
   	<style>
 		  .get-your-own-btn {
@@ -94,7 +92,7 @@ function headerTemplate(config) {
 		<header class='header-container'>
 			<div class='header-logo' >
 					<a class='logo' href="/">
-							<img id="logo-horizontal-blue-img" width="${logoWidth}" src="${config.logo}" alt='your community logo' />
+						<img class="logo-img" height="80px" src="${config.logo}" alt='your community logo' />
 					</a>
 			</div>
 			<ul class="menu">
@@ -135,8 +133,6 @@ function headerTemplate(config) {
         </div>
 			</nav>
 		</header>
-		<script type="module" src="/static/utils/showContent.js"></script>
-
   `
 }
 

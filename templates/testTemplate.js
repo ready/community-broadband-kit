@@ -1,6 +1,7 @@
 const headTemplate = require('./headTemplate')
 const headerTemplate = require('./headerTemplate')
 const landscapeBackgroundTemplate = require('./landscapeBackgroundTemplate')
+const endTemplate = require('./endTemplate')
 
 /**
  * Creates the html template for the test page of the site
@@ -11,6 +12,7 @@ function testTemplate(config) {
     const head = headTemplate(config, config.ogImage)
     const header = headerTemplate(config)
     const landscapeBackground = landscapeBackgroundTemplate('width: 100%')
+    const end = endTemplate(config)
     const addressRequired = config.isAddressRequired ? config.isAddressRequired : true
 
     return `
@@ -464,15 +466,13 @@ function testTemplate(config) {
                 <div id="ookla-test"></div>
                 ${landscapeBackground}
             </section>
+            ${end}
             <script>
                 const organizationId = ${config.organization.id}
             </script>
             <script src="/static/test/m-lab/src/ndt7.min.js" type="text/javascript"></script>
             <script type="module" src="/static/measure/setup.js"></script>
-            <script type="module" src="/static/utils/sendEmails.js"></script>
-            <script type="module" src="/static/utils/showContent.js"></script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFSRcqE5mWaypizwTElZzYQA3x3IiCiaQ&libraries=places"></script>
-            <script src="https://kit.fontawesome.com/fc3d033d28.js" crossorigin="anonymous"></script>
         </body>
         </html>
     `

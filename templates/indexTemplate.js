@@ -4,6 +4,7 @@ const footerTemplate = require('./footerTemplate')
 const landscapeBackgroundTemplate = require('./landscapeBackgroundTemplate')
 const howTemplate = require('./howTemplate')
 const mapTemplate = require('./mapTemplate')
+const endTemplate = require('./endTemplate')
 
 /**
  * Creates the html template for index page the site
@@ -18,6 +19,7 @@ function indexTemplate(config) {
     const landscapeBackground = landscapeBackgroundTemplate('width: calc(100% + 64px)')
     const howBackground= howTemplate()
     const buttonText = config.buttonText ? config.buttonText : 'Take the Test'
+    const end = endTemplate(config)
 
     return `
         <!DOCTYPE html>
@@ -144,9 +146,7 @@ function indexTemplate(config) {
                 </section>
                 ${map}
                 ${footer}
-                <script type="module" src="/static/utils/showContent.js"></script>
-		        <script src="https://kit.fontawesome.com/fc3d033d28.js" crossorigin="anonymous"></script>
-                <script type="module" src="/static/map/map.js"></script>
+                ${end}
             </body>
         </html>
        

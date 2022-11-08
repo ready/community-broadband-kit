@@ -4,8 +4,6 @@
  * @returns an html template
  */
 function footerTemplate(config) {
-		const logoWidth = config.logoWidth ? config.logoWidth : '80px'
-
     return `
 		<style>
 		.gray {
@@ -57,7 +55,7 @@ function footerTemplate(config) {
             <div class='section-bottom'>
                 <div class="bottom-logo">
                     <a class="logo" href="/">
-                        <img id="logo-horizontal-blue-img" width="${logoWidth}" src="${config.logo}" alt='your community logo' />
+											<img class="logo-img" height="80px" src="${config.logo}" alt='your community logo' />
                     </a>
                 </div>
                 <p>
@@ -65,7 +63,6 @@ function footerTemplate(config) {
                 </p>
             </div>
         </footer>
-        <script type="module" src="/static/utils/sendEmails.js"></script>
     `
 }
 
