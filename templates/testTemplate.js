@@ -113,8 +113,16 @@ function testTemplate(config) {
                         <div id="item-1">
                             <div class="checklist-question">
                                 <p class="checklist-header">How are you connected to the Internet?</p>
-                                <p class="checklist-subheader">A wired connection is preferred.</p>
-                            </div>
+                                <label class="checklist-subheader">A
+                                    <div class="tooltip"> wired
+                                        <span class="tooltiptext">
+                                            <span id="ethernet-definition" style="color: var(--color-gray-0)"></span>
+                                            <span><br><img style="margin-left: 140px; margin-top=10px;" src="/static/assets/ethernet.png" alt="ethernet image"></span>
+                                            <a href="https://www.wikihow.com/Connect-to-Ethernet-on-PC-or-Mac" target="_blank" style="color: var(--color-gray-0)"><br>See here for more details →</a>
+                                        </span>
+                                    </div> connection is preferred.
+                                </label>
+                           </div>      
                             <div class="checklist-answer-row">
                                 <div class="answer-option" id="using-ethernet" onclick="getElementById('router-warning').style.display = 'none', toggleSelected('using-ethernet')">
                                     <img class="checklist-icon" src="/static/assets/wired_icon.png" width="32px" height="32px" alt="Wired-icon">
@@ -125,13 +133,12 @@ function testTemplate(config) {
                                     <div class="icon-text">WiFi</div>
                                 </div>
                             </div>
-
                             <div id="router-warning" style="display: none">
                                 <input type="checkbox" id="close-to-router" name="close-to-router">
                                 <label for="close-to-router">I am as close as possible to my 
                                     <div class="tooltip">Wi-Fi router
                                         <span class="tooltiptext">
-                                            <span id="router-definition"></span>
+                                            <span id="router-definition" style="color: var(--color-gray-0)"></span>
                                             <span><br><img style="margin-left: 140px;" src="/static/assets/router.png" alt='router image'></span>
                                         </span>
                                     </div> 
@@ -141,8 +148,12 @@ function testTemplate(config) {
 
                         <div id="item-2" style="display: none;">
                             <div class="checklist-question">
-                                <p class="checklist-header">Are you connected to a VPN?</p>
-                                <p class="checklist-subheader">If so, please disconnect.</p></p>
+                                <label class="checklist-header">Are you connected to a 
+                                    <div class="tooltip">VPN?
+                                        <span class="tooltiptext" style="font-size: 16px">VPN stands for "Virtual Private Network." If you are unaware of what this means then you are ready to take the test.</span>
+                                    </div> 
+                                </label>
+                                <p class="checklist-subheader">If so, please disconnect.</p>
                             </div>
                             <div class="checklist-answer-row">
                                 <div class="answer-option" id="vpn-on" onclick="toggleSelected('vpn-on')">

@@ -1001,12 +1001,11 @@ input[type="checkbox"] ~ label {
 .checklist-header {
     font-size: 20px; 
     margin-bottom: 10px;
-    align-self: center;
 } 
+
 .checklist-subheader {
     font-size: 16px; 
     margin-bottom: 10px;
-    align-self: center;
 } 
 
 .checklist-answer-row {
@@ -1087,20 +1086,21 @@ input[type="checkbox"] ~ label {
     border-radius: 6px;
     position: absolute;
     z-index: 1;
-    top: 100%;
+    bottom: 100%;
     left: 50%;
     margin-left: -250px; /* Use half of the width to center the tooltip */
+    text-align: left;
 }
 
 .tooltip .tooltiptext::after {
     content: " ";
     position: absolute;
-    bottom: 100%;  /* At the top of the tooltip */
+    top: 100%;  /* At the top of the tooltip */
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent var(--color-background3) transparent;
+    border-color: var(--color-background3) transparent transparent  transparent;
 }
   
 .tooltip:hover .tooltiptext {
