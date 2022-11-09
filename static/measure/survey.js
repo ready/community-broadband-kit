@@ -20,10 +20,11 @@ let numQuestions
 let response = {}
 let answeredQuestions = []
 let progressIncrement
+let ipAddressConstant
 
 /**
  * Fetches an array of survey questions to display to the user
- * @param {*} questionIDArray an array of question IDs to exclude from the database
+ * @param {*} excludeQuestions an array of question IDs to exclude from the database
  * @returns an array of question to display
  */
 function getSurveyQuestions(excludeQuestions) {
@@ -36,6 +37,8 @@ function getSurveyQuestions(excludeQuestions) {
 
         if (questionSet.length >= 9) break
     }
+
+    
     
     return questionSet
 }
@@ -46,6 +49,7 @@ function getSurveyQuestions(excludeQuestions) {
  * @param {*} ipAddress as a string 
  */
 async function initSurvey(ipAddress) {
+    ipAddressConstant = ipAddress
     // Get an array of already answered qurstions from local storage
     let excludeQuestionsArray = JSON.parse(localStorage.getItem('answeredQs'))
     let excludeQuestions = []
@@ -57,8 +61,27 @@ async function initSurvey(ipAddress) {
         }
     }
 
-    // Fetch the survey questions from the database
+    // Fetch the survey questions 
     questions = getSurveyQuestions(excludeQuestions)
+    /*
+    console.log(questions)
+    let isHomeArray = JSON.parse(localStorage.getItem('isHome'))
+    if(isHomeArray) {
+        for (let i = 0; i < isHomeArray.length; i++ ) {
+            if (isHomeArray[i].ipAddress === ipAddress && isHomeArray[i].answered === false ) {
+                for (let i = 0; i < questions.length; i++) {
+                    if (questions[i].id === 5) {
+                        questions.splice(i, 1)
+                    }
+                    if (questions[i].id === 6) {
+                        questions.splice(i, 1)
+                    }
+                }
+                
+            }
+        }
+    }
+    console.log(questions) */
 
     // Set variables for survey progress bar
     numQuestions = questions.length
@@ -257,6 +280,56 @@ async function nextQuestion() {
         for (let radioButton of radioButtons) {
             if (radioButton.checked) {
                 answeredFlag = true
+
+                if (radioButton.value === 'School' || radioButton.value === 'Business') {
+
+                    let isHomeArray = JSON.parse(localStorage.getItem('isHome'))
+                    let isHomeExistsFlag
+
+                    // If isHome array doesn't exist in Local Storage (first time taking the survey), create new ip address object
+                    if (isHomeArray === null) {
+                        localStorage.setItem('isHome', JSON.stringify([{ipAddress: ipAddressConstant, answered: false}]))
+                    } 
+                    // Otherwise loop thru isHome array and update the proper object depending on ip address
+                    else {
+                        for (let i = 0; i < isHomeArray.length; i++) {
+                            if (isHomeArray[i].ipAddress === ipAddressConstant) {
+                                isHomeArray[i].answered = false
+                                isHomeExistsFlag = true
+                            }
+                        }
+                        // If ip address doesn't yet exist in the isHome array, create new obj for it
+                        if (!isHomeExistsFlag) {
+                            isHomeArray.push({ipAddress: ipAddressConstant, answered: false})
+                        }
+                        // Update existing isHome array in local storage
+                        localStorage.setItem('isHome', JSON.stringify(isHomeArray))
+                    }
+                    console.log('here')
+                } else if (radioButton.value === 'Home') {
+                    let isHomeArray = JSON.parse(localStorage.getItem('isHome'))
+                    let isHomeExistsFlag
+
+                    // If isHome array doesn't exist in Local Storage (first time taking the survey), create new ip address object
+                    if (isHomeArray === null) {
+                        localStorage.setItem('isHome', JSON.stringify([{ipAddress: ipAddressConstant, answered: true}]))
+                    } 
+                    // Otherwise loop thru isHome array and update the proper object depending on ip address
+                    else {
+                        for (let i = 0; i < isHomeArray.length; i++) {
+                            if (isHomeArray[i].ipAddress === ipAddressConstant) {
+                                isHomeArray[i].answered = true
+                                isHomeExistsFlag = true
+                            }
+                        }
+                        // If ip address doesn't yet exist in the isHome array, create new obj for it
+                        if (!isHomeExistsFlag) {
+                            isHomeArray.push({ipAddress: ipAddressConstant, answered: true})
+                        }
+                        // Update existing isHome array in local storage
+                        localStorage.setItem('isHome', JSON.stringify(isHomeArray))
+                    }
+                }
 
                 response[question.attribute] = {
                     value: radioButton.value,
