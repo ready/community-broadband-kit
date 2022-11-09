@@ -63,25 +63,29 @@ async function initSurvey(ipAddress) {
 
     // Fetch the survey questions 
     questions = getSurveyQuestions(excludeQuestions)
-    /*
+    
     console.log(questions)
     let isHomeArray = JSON.parse(localStorage.getItem('isHome'))
     if(isHomeArray) {
         for (let i = 0; i < isHomeArray.length; i++ ) {
             if (isHomeArray[i].ipAddress === ipAddress && isHomeArray[i].answered === false ) {
                 for (let i = 0; i < questions.length; i++) {
-                    if (questions[i].id === 5) {
+                    if (questions[i].id == 5) {
                         questions.splice(i, 1)
+                        addToAnsweredQs([5], ipAddress)
                     }
-                    if (questions[i].id === 6) {
+                }
+                for (let i = 0; i < questions.length; i++) {
+                    if (questions[i].id == 6) {
                         questions.splice(i, 1)
+                        addToAnsweredQs([6], ipAddress)
                     }
                 }
                 
             }
         }
     }
-    console.log(questions) */
+    console.log(questions)
 
     // Set variables for survey progress bar
     numQuestions = questions.length
@@ -305,7 +309,25 @@ async function nextQuestion() {
                         // Update existing isHome array in local storage
                         localStorage.setItem('isHome', JSON.stringify(isHomeArray))
                     }
-                    console.log('here')
+                    console.log('here2')
+                    for (let i = 0; i < questions.length; i++) {
+                        if (questions[i].id == 5) {
+                            questions.splice(i, 1)
+                            console.log(i)
+                            addToAnsweredQs([5], ipAddressConstant)
+                        }
+                    }
+                    for (let i = 0; i < questions.length; i++) {
+                        if (questions[i].id == 6) {
+                            questions.splice(i, 1)
+                            console.log(i)
+                            addToAnsweredQs([6], ipAddressConstant)
+                        }
+                    }
+                    numQuestions = questions.length
+                    progressIncrement = 100 / numQuestions
+                    questionTotalElement.textContent = numQuestions
+
                 } else if (radioButton.value === 'Home') {
                     let isHomeArray = JSON.parse(localStorage.getItem('isHome'))
                     let isHomeExistsFlag
