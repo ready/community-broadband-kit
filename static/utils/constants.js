@@ -190,7 +190,7 @@ export const survey = [
     },
     {
         id: 8,
-        question: "Does anyone in your household use the internet to complete school assignments or job training course work?",
+        question: "Does anyone at your location use the internet to complete school assignments or job training course work?",
         type: "radio",
         answers: ["Yes", "No"],
         attribute: "usesInternetForSchool",

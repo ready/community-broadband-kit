@@ -309,18 +309,15 @@ async function nextQuestion() {
                         // Update existing isHome array in local storage
                         localStorage.setItem('isHome', JSON.stringify(isHomeArray))
                     }
-                    console.log('here2')
                     for (let i = 0; i < questions.length; i++) {
                         if (questions[i].id == 5) {
                             questions.splice(i, 1)
-                            console.log(i)
                             addToAnsweredQs([5], ipAddressConstant)
                         }
                     }
                     for (let i = 0; i < questions.length; i++) {
                         if (questions[i].id == 6) {
                             questions.splice(i, 1)
-                            console.log(i)
                             addToAnsweredQs([6], ipAddressConstant)
                         }
                     }
