@@ -7,7 +7,6 @@ import { uploadSurveyData } from '/static/measure/survey.js'
 
 // Document selectors
 const testElement = document.getElementById('test')
-const instructions = document.getElementById('instructions')
 const resultsElement = document.getElementById('results')
 const endLinks = document.getElementById('end-links')
 
@@ -129,7 +128,6 @@ async function handleResults(metadata, checklistResponses, address, results) {
   const id = await uploadData(data)
   data.resultId = id
 
-  instructions.style.display = 'none'
   testElement.style.display = 'none'
   resultsElement.style.display = 'flex'
   endLinks.style.display = 'flex'

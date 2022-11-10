@@ -1,7 +1,9 @@
 import { initSurvey } from '/static/measure/survey.js'
+
 import runTests from '/static/test/runTests.js'
 import handleResults from "/static/measure/handleResults.js"
 import config from '/static/measure/config.js'
+import { LOCAL_TESTING_FLAG } from '/static/utils/constants.js'
 
 // Document selectors
 const addressRequired = document.getElementById('address').getAttribute('address-required')
@@ -13,7 +15,6 @@ const addressWarningElement = document.getElementById('address-warning')
 const nextBtn = document.getElementById('next-btn')
 const beginTestBtn = document.getElementById('begin-test')
 const ispNameElement = document.getElementById('isp-name')
-const instructions = document.getElementById('instructions')
 const testElement = document.getElementById('test')
 const mlabLoadBar = document.getElementById('mlab-load-bar')
 const testSourceElement = document.getElementById('test-source')
@@ -22,13 +23,13 @@ const testTypeElement = document.getElementById('test-type')
 // Declare variables
 let autocomplete
 let metadata = getMetadata()
-let checklistResponses
+let checklistResponses ={}
 let address = {
   text: '',
   lat: null,
   lon: null
 }
-const checklistItemTotal = 5
+const checklistItemTotal = 4
 let checklistCounter = 1
 
 /**
@@ -106,6 +107,9 @@ async function fillAddressFromGeolocation() {
  * and updates the progress bar
  */
 function displayNextChecklistItem() {
+  // Add previously answered checklist item's response to the checklist response object
+  getChecklistItemResponse()  
+
   // Replace progress bar number with svg checkmark
   const step = document.getElementById("step-" + checklistCounter)
   step.textContent = ''
@@ -132,20 +136,20 @@ function displayNextChecklistItem() {
 function skipOrDisplayAddress() {
   // If more checklist items exist, display next item
   if (checklistCounter < checklistItemTotal) {
-  displayNextChecklistItem()
+    displayNextChecklistItem()
   }
   // Otherwise dislpay or skip address 
   else {
-  // If address coords for user already exist in session storage, 
-  // skip address prompt, save coords to upload to multitest data/survey, and begin test
-  address.lat = sessionStorage.getItem('addressLat')
-  address.lon = sessionStorage.getItem('addressLon')
-  address.text = sessionStorage.getItem('addressText')
-  if (address.lat && address.lon && address.text) {
-    beginTest()
-  } else {
-    displayAddressPrompt()
-  }
+    // If address coords for user already exist in session storage, 
+    // skip address prompt, save coords to upload to multitest data/survey, and begin test
+    address.lat = sessionStorage.getItem('addressLat')
+    address.lon = sessionStorage.getItem('addressLon')
+    address.text = sessionStorage.getItem('addressText')
+    if (address.lat && address.lon && address.text) {
+      beginTest()
+    } else {
+      displayAddressPrompt()
+    }
   }
 }
 
@@ -194,7 +198,7 @@ function onPlaceChanged() {
  * Validates the address entered. Either displays a warning or begins the test
  */
 function validateAddress() {
-  if ((document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired) {
+  if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired) {
     addressWarningElement.style.display = 'block'
   } else {
     beginTest()
@@ -231,16 +235,64 @@ async function getMetadata() {
 
 /**
  * Gets the user's responses to items in the pre-test checklist
- * @returns An object containing a user's responses from the checklist
+ * and adds them to an object
  */
-function getChecklistResponses() {
-  let response = {
-    usingEthernet: document.getElementById("ethernet").checked,
-    closeToRouter: document.getElementById("close-to-router").checked,
-    vpnOff: document.getElementById("vpn").checked,
-    noInterruptFromOtherDevices: document.getElementById("no-other-devices").checked
+function getChecklistItemResponse() {
+  const picked = document.querySelectorAll('.selected-answer');
+
+  if (checklistCounter === 1) {
+    if (picked.length > 0) {
+      picked.forEach(pick => {
+        if (pick.id === 'using-ethernet') {
+          checklistResponses.usingEthernet = true
+        } else {
+          checklistResponses.usingEthernet = false
+        }
+    
+        if (pick.id === 'wifi') {
+          if (document.getElementById("close-to-router").checked) {
+            checklistResponses.closeToRouter = true
+          } else {
+            checklistResponses.closeToRouter = false
+          }
+        } else {
+          checklistResponses.closeToRouter = false
+        }
+  
+      });
+    } else {
+      checklistResponses.usingEthernet = false
+      checklistResponses.closeToRouter = false
+    }  
   }
-  return response
+  
+  if (checklistCounter === 2) {
+    if (picked.length > 0) {
+      picked.forEach(pick => {
+        if (pick.id === 'vpn-off') {
+          checklistResponses.vpnOff = true
+        } else {
+          checklistResponses.vpnOff = false
+        }
+      });
+    } else {
+      checklistResponses.vpnOff = false
+    }  
+  }
+
+  if (checklistCounter === 3) {
+    if (picked.length > 0) {
+      picked.forEach(pick => {
+        if (pick.id === 'no-interruption') {
+          checklistResponses.noInterruptFromOtherDevices = true
+        } else {
+          checklistResponses.noInterruptFromOtherDevices = false
+        }
+      });
+    } else {
+      checklistResponses.noInterruptFromOtherDevices = false
+    }  
+  }
 }
 
 /**
@@ -266,17 +318,15 @@ async function beginTest() {
   checklistElement.style.display = 'none'
   addressElement.style.display = 'none'
 
-  // Gets the checklist responses and metadata
-  checklistResponses = getChecklistResponses()
+  // Gets metadata
   metadata = await metadata
 
   // Sets up the survey
-  initSurvey(metadata.ip)
+ initSurvey(metadata.ip)
 
   // Set up test display
   ispNameElement.textContent = metadata.isp
   testElement.style.display = 'flex'
-  instructions.style.display = 'flex'
   testTypeElement.style.visibility = 'visible'
   testSourceElement.textContent = 'Running M-Lab Speed Test...'
   testTypeElement.textContent = 'Downloading'
