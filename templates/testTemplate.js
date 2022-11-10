@@ -300,13 +300,6 @@ function testTemplate(config) {
             </div>
           </div>
 
-
-
-
-
-
-
-        
           <div class="background-container" id="checklist">
             <h1 class="main-heading">Before We Begin...</h1>
             <h2 class="section-description">For best results, we recommend taking the following steps. Please select a step if it has been done. Hover over underlined terms for additional information.</h2>
@@ -332,52 +325,88 @@ function testTemplate(config) {
               </div>
             </div>
             <div class="checklist">
-              <div id="item-1">
-                <input type="checkbox" id="ethernet" name="ethernet">
-                <!--
-                <label for="ethernet">My device is connected to the internet using an 
-                  <div class="tooltip">Ethernet cable
-                    <span class="tooltiptext">
-                      <span id="ethernet-definition"></span>
-                      <span><br><img style="margin-left: 140px; margin-top=10px;" src="/static/assets/ethernet.png" alt='ethernet image'></span>
-                      <a href="https://www.wikihow.com/Connect-to-Ethernet-on-PC-or-Mac" target="_blank"><br>See here for more details &#8594;</a>
-                    </span>
-                  </div> 
-                  (preferred)
-                </label>
-                -->
-              </div>
-              <div id="item-2" style="display: none;">
-                <input type="checkbox" id="close-to-router" name="close-to-router">
-                <!--
-                <label for="close-to-router">My device is not connected by Ethernet but is as close as possible to my 
-                  <div class="tooltip">Wi-Fi router
-                    <span class="tooltiptext">
-                      <span id="router-definition"></span>
-                      <span><br><img style="margin-left: 140px;" src="/static/assets/router.png" alt='router image'></span>
-                    </span>
-                  </div> 
-                </label>
-                -->
-              </div>
-              <div id="item-3" style="display: none;">
-                <input type="checkbox" id="vpn" name="vpn">
-                <!--
-                <label for="vpn">I am not currently connected to any 
-                  <div class="tooltip">VPNs
-                    <span class="tooltiptext">VPN stands for "Virtual Private Network." If you are unaware of what this means then you are ready to take the test.</span>
-                  </div> 
-                </label>
-                -->
-              </div>
-              <div id="item-4" style="display: none;">
-                <input type="checkbox" id="no-other-devices" name="no-other-devices">
-                <label for="no-other-devices">No one in my household is currently on a video call, streaming videos, or gaming</label>
-              </div>
-              <div id="item-5" style="display: none;">
-                <input type="checkbox" id="grabbed-bill" name="grabbed-bill">
-                <label for="grabbed-bill">I know information about my tier of internet service such as monthly cost and speed in order to complete survey questions</label>
-              </div>
+                <div id="item-1">
+                    <div class="checklist-question">
+                        <p class="checklist-header">How are you connected to the Internet?</p>
+                        <label class="checklist-subheader">A
+                            <div class="tooltip"> wired
+                                <span class="tooltiptext">
+                                    <span id="ethernet-definition" style="color: var(--color-gray-0)"></span>
+                                    <span><br><img style="margin-left: 140px; margin-top=10px;" src="/static/assets/ethernet.png" alt="ethernet image"></span>
+                                    <a href="https://www.wikihow.com/Connect-to-Ethernet-on-PC-or-Mac" target="_blank" style="color: var(--color-gray-0)"><br>See here for more details →</a>
+                                </span>
+                            </div> connection is preferred.
+                        </label>
+                    </div>      
+                    <div class="checklist-answer-row">
+                        <div class="answer-option" id="using-ethernet" onclick="getElementById('router-warning').style.display = 'none', toggleSelected('using-ethernet')">
+                            <img class="checklist-icon" src="/static/assets/wired_icon.png" width="32px" height="32px" alt="Wired-icon">
+                            <div class="icon-text">Wired</div>
+                        </div>
+                        <div class="answer-option" id="wifi" onclick="getElementById('router-warning').style.display = 'block', toggleSelected('wifi')">
+                            <img class="checklist-icon" src="/static/assets/wifi_icon.png" width="32px" height="32px" alt="Wifi-icon">
+                            <div class="icon-text">WiFi</div>
+                        </div>
+                    </div>
+                    <div id="router-warning" style="display: none">
+                        <input type="checkbox" id="close-to-router" name="close-to-router">
+                        <label for="close-to-router">I am as close as possible to my 
+                            <div class="tooltip">Wi-Fi router
+                                <span class="tooltiptext">
+                                    <span id="router-definition" style="color: var(--color-gray-0)"></span>
+                                    <span><br><img style="margin-left: 140px;" src="/static/assets/router.png" alt='router image'></span>
+                                </span>
+                            </div> 
+                        </label>
+                    </div>
+                </div>
+                <div id="item-2" style="display: none;">
+                    <div class="checklist-question">
+                        <label class="checklist-header">Are you connected to a 
+                            <div class="tooltip">VPN?
+                                <span class="tooltiptext" style="font-size: 16px">VPN stands for "Virtual Private Network." If you are unaware of what this means then you are ready to take the test.</span>
+                            </div> 
+                        </label>
+                        <p class="checklist-subheader">If so, please disconnect.</p>
+                    </div>
+                    <div class="checklist-answer-row">
+                        <div class="answer-option" id="vpn-on" onclick="toggleSelected('vpn-on')">
+                            <img class="checklist-icon" src="/static/assets/vpn_icon.png" width="32px" height="32px" alt="Wired-icon">
+                            <div class="icon-text">Yes</div>
+                        </div>
+                        <div class="answer-option" id="vpn-off" onclick="toggleSelected('vpn-off')">
+                            <img class="checklist-icon" src="/static/assets/cross_icon.png" width="32px" height="32px" alt="Wifi-icon">
+                            <div class="icon-text">No</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="item-3" style="display: none;">
+                    <div class="checklist-question">
+                        <p class="checklist-header">Is anyone on your network currently on a video call, streaming videos, or gaming?</p>
+                    </div>
+                    <div class="checklist-answer-row">
+                        <div class="answer-option" id="interruption" onclick="toggleSelected('interruption')">
+                            <img class="checklist-icon" src="/static/assets/streaming_icon.png" width="32px" height="32px" alt="Wired-icon">
+                            <div class="icon-text">Yes</div>
+                        </div>
+                        <div class="answer-option" id="no-interruption" onclick="toggleSelected('no-interruption')">
+                            <img  class="checklist-icon" src="/static/assets/cross_icon.png" width="32px" height="32px" alt="Wifi-icon">
+                            <div class="icon-text">No</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="item-4" style="display: none;">
+                    <div class="checklist-question">
+                        <p class="checklist-header">I know information about my tier of internet service such as monthly cost and speed in order to complete survey questions.</p>
+                    </div>
+                
+                    <div class="checklist-answer-row">
+                        <div class="answer-option"id="know-information" onclick="toggleSelected('know-information')">
+                            <img class="checklist-icon" src="/static/assets/knowledge_icon.png" width="32" height="32" alt="Wired-icon">
+                            <div class="icon-text">Yes</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <button class="button" id="next-btn">Next</button>
           </div>
@@ -401,6 +430,16 @@ function testTemplate(config) {
       <script>
         const organizationId = ${config.organization.id}
       </script>
+      <script>
+        function toggleSelected(element) {
+            const selected = document.querySelectorAll('.selected-answer');
+            selected.forEach(select => {
+                select.classList.remove("selected-answer");
+            });
+            let elem = document.getElementById(element);
+            elem.classList.add("selected-answer"); 
+        }
+    </script>
       <script src="/static/test/m-lab/src/ndt7.min.js" type="text/javascript"></script>
       <script type="module" src="/static/measure/setup.js"></script>
       <script type="module" src="/static/utils/sendEmails.js"></script>

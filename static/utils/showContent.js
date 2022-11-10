@@ -107,8 +107,8 @@ function toggleMenu() {
 }
 
 if (routerDefinitionElement && ethernetDefinitionElement) {
-  //fetchStrapiDefinition('wifi-router', routerDefinitionElement)
-  //fetchStrapiDefinition('ethernet-cable', ethernetDefinitionElement)
+  fetchStrapiDefinition('wifi-router', routerDefinitionElement)
+  fetchStrapiDefinition('ethernet-cable', ethernetDefinitionElement)
 }
 
 if (facebookBtn && twitterBtn && linkedInBtn && emailBtn) {
