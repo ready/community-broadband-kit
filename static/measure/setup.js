@@ -2,6 +2,7 @@ import { initSurvey } from '/static/measure/survey.js'
 import runTests from '/static/test/runTests.js'
 import handleResults from "/static/measure/handleResults.js"
 import config from '/static/measure/config.js'
+import { LOCAL_TESTING_FLAG } from '/static/utils/constants.js'
 
 // Document selectors
 const addressRequired = document.getElementById('address').getAttribute('address-required')
@@ -194,7 +195,7 @@ function onPlaceChanged() {
  * Validates the address entered. Either displays a warning or begins the test
  */
 function validateAddress() {
-  if ((document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired) {
+  if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired) {
     addressWarningElement.style.display = 'block'
   } else {
     beginTest()
@@ -271,7 +272,7 @@ async function beginTest() {
   metadata = await metadata
 
   // Sets up the survey
-  initSurvey(metadata.ip)
+ initSurvey(metadata.ip)
 
   // Set up test display
   ispNameElement.textContent = metadata.isp
