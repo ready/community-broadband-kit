@@ -7,8 +7,6 @@ import { survey } from '/static/utils/constants.js'
 const navBtn = document.getElementById('nav-btn')
 const surveyElement = document.getElementById("survey-container")
 const questionElement = document.getElementById('survey-question')
-const surveyInstructions = document.getElementById('survey-instructions')
-const instructionsElement = document.getElementById('instructions')
 const questionTotalElement = document.getElementById('question-total')
 const questionProgressElement = document.getElementById('questions-answered')
 const surveyProgressBarElement = document.getElementById('survey-progress-bar')
@@ -110,7 +108,6 @@ async function initSurvey(ipAddress) {
 
         addQuestionElement(0)
         surveyElement.style.display = 'flex'
-        surveyInstructions.style.display = 'block'
     }
 }
 
@@ -390,10 +387,7 @@ async function nextQuestion() {
 
     // Hide survey element if no more questions to be answered
     if (questionIndex === numQuestions) {
-        instructionsElement.style.height = 'calc(100vh - 416px)'
         surveyElement.style.display = 'none'
-        surveyInstructions.style.display = 'none'
-        document.querySelector('.hero-section').style.justifyContent = 'center'
     }
     // Otherwise display the new question
     else {
