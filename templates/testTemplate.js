@@ -319,10 +319,7 @@ function testTemplate(config) {
                 <div class="checklist-dash"></div>
                 <div class="checklist-circle" id="step-4">4</div>
               </div>
-              <div class="progress-step">
-                <div class="checklist-dash"></div>
-                <div class="checklist-circle" id="step-5">5</div>
-              </div>
+              
             </div>
             <div class="checklist">
                 <div id="item-1">
@@ -348,7 +345,7 @@ function testTemplate(config) {
                             <div class="icon-text">WiFi</div>
                         </div>
                     </div>
-                    <div id="router-warning" style="display: none">
+                    <div id="router-warning" style="display: none; margin-top: 40px; margin-left: 70px;">
                         <input type="checkbox" id="close-to-router" name="close-to-router">
                         <label for="close-to-router">I am as close as possible to my 
                             <div class="tooltip">Wi-Fi router
