@@ -7,8 +7,6 @@ import { survey } from '/static/utils/constants.js'
 const navBtn = document.getElementById('nav-btn')
 const surveyElement = document.getElementById("survey-container")
 const questionElement = document.getElementById('survey-question')
-const surveyInstructions = document.getElementById('survey-instructions')
-const instructionsElement = document.getElementById('instructions')
 const questionTotalElement = document.getElementById('question-total')
 const questionProgressElement = document.getElementById('questions-answered')
 const surveyProgressBarElement = document.getElementById('survey-progress-bar')
@@ -20,10 +18,11 @@ let numQuestions
 let response = {}
 let answeredQuestions = []
 let progressIncrement
+let ipAddressConstant
 
 /**
  * Fetches an array of survey questions to display to the user
- * @param {*} questionIDArray an array of question IDs to exclude from the database
+ * @param {*} excludeQuestions an array of question IDs to exclude from the database
  * @returns an array of question to display
  */
 function getSurveyQuestions(excludeQuestions) {
@@ -36,8 +35,29 @@ function getSurveyQuestions(excludeQuestions) {
 
         if (questionSet.length >= 9) break
     }
+
+    
     
     return questionSet
+}
+
+/**
+ * Removes questions related to "Home" from the questions array
+ * and marks them as answered in local storage for an ip
+ */
+async function removeFromQuestionsArray(ipAddress) {
+    for (let i = 0; i < questions.length; i++) {
+        if (questions[i].id == 5) {
+            questions.splice(i, 1)
+            addToAnsweredQs([5], ipAddress)
+        }
+    }
+    for (let i = 0; i < questions.length; i++) {
+        if (questions[i].id == 6) {
+            questions.splice(i, 1)
+            addToAnsweredQs([6], ipAddress)
+        }
+    }
 }
 
 /**
@@ -46,6 +66,7 @@ function getSurveyQuestions(excludeQuestions) {
  * @param {*} ipAddress as a string 
  */
 async function initSurvey(ipAddress) {
+    ipAddressConstant = ipAddress
     // Get an array of already answered qurstions from local storage
     let excludeQuestionsArray = JSON.parse(localStorage.getItem('answeredQs'))
     let excludeQuestions = []
@@ -57,8 +78,19 @@ async function initSurvey(ipAddress) {
         }
     }
 
-    // Fetch the survey questions from the database
+    // Fetch the survey questions 
     questions = getSurveyQuestions(excludeQuestions)
+    
+    // Check isHome varibale in local storage and if already exists, 
+    // remove home related questions if school/business
+    let isHomeArray = JSON.parse(localStorage.getItem('isHome'))
+    if(isHomeArray) {
+        for (let i = 0; i < isHomeArray.length; i++ ) {
+            if (isHomeArray[i].ipAddress === ipAddress && isHomeArray[i].answered === false ) {
+                removeFromQuestionsArray(ipAddress)
+            }
+        }
+    }
 
     // Set variables for survey progress bar
     numQuestions = questions.length
@@ -76,7 +108,6 @@ async function initSurvey(ipAddress) {
 
         addQuestionElement(0)
         surveyElement.style.display = 'flex'
-        surveyInstructions.style.display = 'block'
     }
 }
 
@@ -222,6 +253,36 @@ async function addQuestionElement(qNum) {
 }
 
 /**
+ * Updates the isHome varable in local storage with the state
+ * @param {*} state A boolean
+ */
+async function updateIsHomeLocalStorage(state) {
+    let isHomeArray = JSON.parse(localStorage.getItem('isHome'))
+    let isHomeExistsFlag
+
+    // If isHome array doesn't exist in Local Storage (haven't answered the location type question),
+    // create new ip address object
+    if (isHomeArray === null) {
+        localStorage.setItem('isHome', JSON.stringify([{ipAddress: ipAddressConstant, answered: state}]))
+    } 
+    // Otherwise loop thru isHome array and update the proper object depending on ip address
+    else {
+        for (let i = 0; i < isHomeArray.length; i++) {
+            if (isHomeArray[i].ipAddress === ipAddressConstant) {
+                isHomeArray[i].answered = state
+                isHomeExistsFlag = true
+            }
+        }
+        // If ip address doesn't yet exist in the isHome array, create new obj for it
+        if (!isHomeExistsFlag) {
+            isHomeArray.push({ipAddress: ipAddressConstant, answered: state})
+        }
+        // Update existing isHome array in local storage
+        localStorage.setItem('isHome', JSON.stringify(isHomeArray))
+    }
+}
+
+/**
  * Saves the previously answered survey question to an array of answers 
  * and displays the next survey question if there are any left
  */
@@ -257,6 +318,22 @@ async function nextQuestion() {
         for (let radioButton of radioButtons) {
             if (radioButton.checked) {
                 answeredFlag = true
+
+                if (radioButton.value === 'School' || radioButton.value === 'Business') {
+                    // Set isHome local storage variable to 'false'
+                    updateIsHomeLocalStorage(false)
+
+                    // Remove home related questions from the survey
+                    removeFromQuestionsArray(ipAddressConstant)
+
+                    // Update the progress bar to acccount for questions removed
+                    numQuestions = questions.length
+                    progressIncrement = 100 / numQuestions
+                    questionTotalElement.textContent = numQuestions
+
+                } else if (radioButton.value === 'Home') {
+                    updateIsHomeLocalStorage(true)
+                }
 
                 response[question.attribute] = {
                     value: radioButton.value,
@@ -310,10 +387,7 @@ async function nextQuestion() {
 
     // Hide survey element if no more questions to be answered
     if (questionIndex === numQuestions) {
-        instructionsElement.style.height = 'calc(100vh - 416px)'
         surveyElement.style.display = 'none'
-        surveyInstructions.style.display = 'none'
-        document.querySelector('.hero-section').style.justifyContent = 'center'
     }
     // Otherwise display the new question
     else {
