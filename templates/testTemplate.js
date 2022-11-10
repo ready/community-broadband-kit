@@ -300,7 +300,7 @@ function testTemplate(config) {
             </div>
           </div>
 
-          <div class="background-container" id="checklist">
+          <div class="background-container" id="checklist" style="gap: 1em;">
             <h1 class="main-heading">Before We Begin...</h1>
             <h2 class="section-description">For best results, we recommend taking the following steps. Please select a step if it has been done. Hover over underlined terms for additional information.</h2>
             <div class="checklist-progress-bar">
