@@ -1912,4 +1912,9 @@ progress[value]::-webkit-progress-value {
   .small-heading {
     font-size: var(--font-size-heading4);
   }
+
+  .answer-option {
+    width: 90px;
+    height: 90px;
+  }
 }
