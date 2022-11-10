@@ -23,7 +23,7 @@ function getIpAddress(req) {
  */
 async function getLocation(address, reader) {
   try {
-    const response = reader.isp(address);
+    const response = reader.city(address);
 
     return {
       lat: response.location.latitude,

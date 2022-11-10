@@ -45,7 +45,14 @@ app.listen(port, async () => {
   const ispDestination = path.join(__dirname, '/data/city/GeoIP2-ISP.mmdb')
 
   try {
-    const storage = new Storage()
+    const config = {
+      credentials: {
+        client_email: process.env.GCLOUD_STORAGE_CLIENT_EMAIL,
+        private_key: process.env.GCLOUD_STORAGE_PRIVATE_KEY
+      }
+    }
+    
+    const storage = new Storage(config)
 
     // Downloads the file
     await storage.bucket(bucketName).file(cityFile).download({ destination: cityDestination })
