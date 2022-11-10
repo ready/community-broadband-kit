@@ -12,6 +12,7 @@ const instructions = document.getElementById('instructions')
 const ooklaLoadBar = document.getElementById('ookla-load-bar')
 const rstLoadBar = document.getElementById('rst-load-bar')
 const errorElement = document.getElementById('error')
+const resultsElement = document.getElementById('results')
 
 /**
  * Displays the Speedtest.net test element 
@@ -132,6 +133,7 @@ const error = (error) => {
   console.log(error)
   instructions.style.display = 'none'
   testElement.style.display = 'none'
+  resultsElement.style.display = 'none'
   errorElement.style.display = 'flex'
 }
 
@@ -143,9 +145,7 @@ const config = {
     uploadProgress: mlabUploadProgress,
     uploadComplete: mlabUploadComplete
   },
-  ookla: {
-    complete: ooklaComplete,
-  },
+  ooklaComplete,
   rst: {
     pingProgress: rstPingProgress,
     downloadProgress: rstDownloadProgress,

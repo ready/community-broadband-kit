@@ -1,0 +1,72 @@
+name: versionPatch
+
+# This workflow runs whenever a branch gets merged into main
+# It updates the version number, the dynamic badges, and release changelog
+
+on:
+  pull_request:
+    types:
+      - closed
+
+concurrency:
+  group: octogration
+
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          token: ${{ secrets.OCTO_PAT }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Ensure correct npm version
+        run: npm i --location=global npm@8.3.1 --registry=https://registry.npmjs.org
+
+      - name: Configure github
+        run: |
+          git fetch
+          git config user.email "octogration@ready.net"
+          git config user.name "Octogration"
+          git checkout main
+
+      - name: Upgrade version of project
+        run: npm version patch -m "v%s"
+
+      - name: Send version upgrade commit to github
+        run: |
+          git push "https://octogration:${{ secrets.OCTO_PAT }}@github.com/$GITHUB_REPOSITORY.git" --follow-tags
+          git push "https://octogration:${{ secrets.OCTO_PAT }}@github.com/$GITHUB_REPOSITORY.git" --tags
+
+      - name: Ensure data directory exists for writing
+        run: mkdir -p ./.github/data
+
+      - name: Load our packages (use npm install here instead of npm ci to get deprecation data)
+        run: |
+          npm i 2>./.github/data/install_log.txt
+          cat ./.github/data/install_log.txt
+
+      - name: Remove unneeded package lock data 
+        run: git reset --hard
+
+      - name: Update dynamic badges
+        run: npx octogration badges
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create changelog
+        run: npx octogration changelog ${{ github.event.pull_request.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Send dynamic badges commit to github
+        run: |
+          git pull
+          git add .
+          git commit -nm "chore: update dynamic badges"
+          git push "https://octogration:${{ secrets.OCTO_PAT }}@github.com/$GITHUB_REPOSITORY.git"

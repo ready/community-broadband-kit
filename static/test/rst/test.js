@@ -8,13 +8,13 @@ let rstHandlers
  */
 function handleProgress(progress) {
     if (progress.test === 'ping') {
-        rstHandlers.pingProgress?.(progress.avgLatency, progress.avgJitter)
+        rstHandlers?.pingProgress?.(progress.avgLatency, progress.avgJitter)
 
     } else if (progress.test === 'upload') {
-        rstHandlers.uploadProgress?.(progress.throughput)
+        rstHandlers?.uploadProgress?.(progress.throughput)
         
     } else if (progress.test === 'download') {
-        rstHandlers.downloadProgress?.(progress.throughput)
+        rstHandlers?.downloadProgress?.(progress.throughput)
 
     } else {
         return;

@@ -77,7 +77,7 @@ export const survey = [
     },
     {
         id: 3,
-        question: "Are you subscribed to the highest tier of service available from your provider?",
+        question: "Are you paying for the highest tier of service available from your provider?",
         type: "radio",
         answers: ["Yes", "No", "I don't know"],
         attribute: "usesHighestTier",
@@ -85,7 +85,7 @@ export const survey = [
     },
     {
         id: 4,
-        question: "On average how many devices at your location access the internet at the same time?",
+        question: "On average how many devices at your location use the internet at the same time?",
         type: "select",
         attribute: "countDevices",
         attributeType: "string",
@@ -190,7 +190,7 @@ export const survey = [
     },
     {
         id: 8,
-        question: "Does anyone in your household use the internet to complete school assignments or job training course work?",
+        question: "Does anyone at your location use the internet to complete school assignments or job training course work?",
         type: "radio",
         answers: ["Yes", "No"],
         attribute: "usesInternetForSchool",
@@ -270,7 +270,7 @@ export const survey = [
     },
     {
         id: 18,
-        question: "How much (per month) would you be willing to pay for high-quality broadband internet service that meets your needs/requirements?",
+        question: "How much (per month) would you be willing to pay for high-quality internet service that meets your needs/requirements?",
         type: "radio",
         answers: ["$30 to $49", "$50 to $69", "$70 to $99", "$100 to $149", "$150 to $199", "Over $200"],
         attribute: "idealCost",

@@ -23,7 +23,7 @@ function downloadMeasurement(data) {
     if (data.Source === 'client') {
         const throughput = data.Data.MeanClientMbps.toFixed(2)
 
-        mlabHandlers.downloadProgress?.(throughput)
+        mlabHandlers?.downloadProgress?.(throughput)
     }
 }
 
@@ -34,7 +34,7 @@ function downloadMeasurement(data) {
 function downloadComplete(data) {
     const clientGoodput = data.LastClientMeasurement.MeanClientMbps.toFixed(2)
 
-    mlabHandlers.downloadComplete?.(clientGoodput)
+    mlabHandlers?.downloadComplete?.(clientGoodput)
     mlabResults.download = clientGoodput
 }
 
@@ -49,7 +49,7 @@ function uploadMeasurement(data) {
         sumJitter += data.Data.TCPInfo.RTTVar / 1000
         countJitter++
 
-        mlabHandlers.uploadProgress?.(throughput)
+        mlabHandlers?.uploadProgress?.(throughput)
     }
 }
 
@@ -58,17 +58,17 @@ function uploadMeasurement(data) {
  * @param {*} data Data from the final result of the M-lab upload test
  */
 function uploadComplete(data) {
-    sumJitter += (data.LastServerMeasurement.TCPInfo.RTTVar / 1000)
+    sumJitter += (data.LastServerMeasurement?.TCPInfo.RTTVar / 1000)
     countJitter++
 
-    const bytesReceived = data.LastServerMeasurement.TCPInfo.BytesReceived
-    const elapsed = data.LastServerMeasurement.TCPInfo.ElapsedTime
+    const bytesReceived = data.LastServerMeasurement?.TCPInfo.BytesReceived
+    const elapsed = data.LastServerMeasurement?.TCPInfo.ElapsedTime
 
     const throughput = (bytesReceived * 8 / elapsed).toFixed(2)
-    const latency = (data.LastServerMeasurement.BBRInfo.MinRTT / 1000).toFixed(2)
+    const latency = (data.LastServerMeasurement?.BBRInfo.MinRTT / 1000).toFixed(2)
     const jitter = (sumJitter / countJitter).toFixed(2)
 
-    mlabHandlers.uploadComplete?.(throughput, latency, jitter)
+    mlabHandlers?.uploadComplete?.(throughput, latency, jitter)
 
     mlabResults.upload = throughput
     mlabResults.latency = latency
@@ -103,7 +103,8 @@ async function runMlabTest(handlerConfig) {
         },
     )
 
-    if (exitcode !== 0) {
+    if (exitcode != 0 || isNaN(mlabResults.upload) 
+        || isNaN(mlabResults.latency) || isNaN(mlabResults.jitter)) {
         throw 'Error while running M-Lab speed test'
     }
 
