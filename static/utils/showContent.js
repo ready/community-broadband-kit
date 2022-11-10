@@ -14,9 +14,9 @@ const twitterBtn = document.querySelectorAll(".twitter-btn-header")
 const linkedInBtn = document.querySelectorAll(".linkedin-btn-header")
 const emailBtn = document.querySelectorAll(".email-btn-header")
 const menu = document.querySelector(".menu");
-const menuItems = document.querySelectorAll(".menuItem");
+const menuItems = document.querySelectorAll(".menu-item");
 const hamburger= document.querySelector(".hamburger");
-const closeIcon= document.querySelector(".closeIcon");
+const closeIcon= document.querySelector(".close-icon");
 const menuIcon = document.querySelector(".menuIcon");
 
 /**
@@ -31,7 +31,7 @@ function displayMethodology() {
  * Displays test results breakdown by specific speed test
  */
 function seeMore() {
-  moreResults.style.display = 'block'
+  moreResults.style.display = 'flex'
   seeMoreResults.style.display = 'none'
 }
 
@@ -95,20 +95,20 @@ function setShareButtons() {
  * Toggles the menu on smaller screens
  */
 function toggleMenu() {
-  if (menu.classList.contains("showMenu")) {
-    menu.classList.remove("showMenu");
+  if (menu.classList.contains("show-menu")) {
+    menu.classList.remove("show-menu");
     closeIcon.style.display = "none";
     menuIcon.style.display = "block";
   } else {
-    menu.classList.add("showMenu");
+    menu.classList.add("show-menu");
     closeIcon.style.display = "block";
     menuIcon.style.display = "none";
   }
 }
 
 if (routerDefinitionElement && ethernetDefinitionElement) {
-  fetchStrapiDefinition('wifi-router', routerDefinitionElement)
-  fetchStrapiDefinition('ethernet-cable', ethernetDefinitionElement)
+  //fetchStrapiDefinition('wifi-router', routerDefinitionElement)
+  //fetchStrapiDefinition('ethernet-cable', ethernetDefinitionElement)
 }
 
 if (facebookBtn && twitterBtn && linkedInBtn && emailBtn) {

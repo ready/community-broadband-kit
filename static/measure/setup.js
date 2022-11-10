@@ -1,7 +1,9 @@
 import { initSurvey } from '/static/measure/survey.js'
+
 import runTests from '/static/test/runTests.js'
 import handleResults from "/static/measure/handleResults.js"
 import config from '/static/measure/config.js'
+import { LOCAL_TESTING_FLAG} from '/static/utils/constants.js'
 
 // Document selectors
 const addressRequired = document.getElementById('address').getAttribute('address-required')
@@ -13,7 +15,6 @@ const addressWarningElement = document.getElementById('address-warning')
 const nextBtn = document.getElementById('next-btn')
 const beginTestBtn = document.getElementById('begin-test')
 const ispNameElement = document.getElementById('isp-name')
-const instructions = document.getElementById('instructions')
 const testElement = document.getElementById('test')
 const mlabLoadBar = document.getElementById('mlab-load-bar')
 const testSourceElement = document.getElementById('test-source')
@@ -132,20 +133,20 @@ function displayNextChecklistItem() {
 function skipOrDisplayAddress() {
   // If more checklist items exist, display next item
   if (checklistCounter < checklistItemTotal) {
-  displayNextChecklistItem()
+    displayNextChecklistItem()
   }
   // Otherwise dislpay or skip address 
   else {
-  // If address coords for user already exist in session storage, 
-  // skip address prompt, save coords to upload to multitest data/survey, and begin test
-  address.lat = sessionStorage.getItem('addressLat')
-  address.lon = sessionStorage.getItem('addressLon')
-  address.text = sessionStorage.getItem('addressText')
-  if (address.lat && address.lon && address.text) {
-    beginTest()
-  } else {
-    displayAddressPrompt()
-  }
+    // If address coords for user already exist in session storage, 
+    // skip address prompt, save coords to upload to multitest data/survey, and begin test
+    address.lat = sessionStorage.getItem('addressLat')
+    address.lon = sessionStorage.getItem('addressLon')
+    address.text = sessionStorage.getItem('addressText')
+    if (address.lat && address.lon && address.text) {
+      beginTest()
+    } else {
+      displayAddressPrompt()
+    }
   }
 }
 
@@ -194,7 +195,7 @@ function onPlaceChanged() {
  * Validates the address entered. Either displays a warning or begins the test
  */
 function validateAddress() {
-  if ((document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired) {
+  if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired) {
     addressWarningElement.style.display = 'block'
   } else {
     beginTest()
@@ -276,7 +277,6 @@ async function beginTest() {
   // Set up test display
   ispNameElement.textContent = metadata.isp
   testElement.style.display = 'flex'
-  instructions.style.display = 'flex'
   testTypeElement.style.visibility = 'visible'
   testSourceElement.textContent = 'Running M-Lab Speed Test...'
   testTypeElement.textContent = 'Downloading'

@@ -1,11 +1,10 @@
 /**
  * Creates an html template for the landscape background of the site
- * @param {*} width the width in px for the background
  * @returns an html template
  */
-function landscapeBackgroundTemplate(width) {
+function landscapeBackgroundTemplate() {
     return `
-        <div class="landscape" style="${width}">
+        <div class="landscape">
             <svg viewBox="0 0 1296 285" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle opacity="0.08" cx="896" cy="189" r="180" fill="#4B5768"/>
             <path d="M933.902 122.8V143.284H947.002V153H933.902H920.802H907.701H888.451H881.5H862.25H852.406H838.019H800.303H783.349H755.833H735.862H731.864H719.905H712.969H694.242H675.348H665.897H656.453H647.002V117.919H656.453V109.265H675.348V92.6008H694.242V96.5669H712.969V85.3985H719.905V76.4622H731.864V85.3985V96.5669H735.862H743.736V77.0492H750.228V70.3489H755.833V64H766.825V70.3489H772.43V77.0492H778.922V96.5669H783.349H785.988V70.4686L828.059 79.5478V96.5669H838.019V82.8419H845.318V73.0831H848.866H854.951V82.8419H862.25V92.6008H888.451V112.717H895.975V104.642H907.701V112.717V122.8H933.902Z" fill="#A0ABBB"/>
