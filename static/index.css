@@ -849,33 +849,42 @@ input[type="checkbox"] ~ label {
   
   /* Tooltip text */
 .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 450px;
-    background-color: var(--color-background3);
-    color: var(--color-gray-0);
-    padding: 20px;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -250px; /* Use half of the width to center the tooltip */
-    text-align: left;
+  visibility: hidden;
+  width: 450px;
+  background-color: var(--color-background3);
+  color: var(--color-gray-0);
+  padding: 20px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -225px; /* Use half of the width to center the tooltip */
+  text-align: left;
 }
 
 .tooltip .tooltiptext::after {
-    content: " ";
-    position: absolute;
-    top: 100%;  /* At the top of the tooltip */
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--color-background3) transparent transparent  transparent;
+  content: " ";
+  position: absolute;
+  top: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--color-background3) transparent transparent  transparent;
 }
   
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.ethernet-image {
+  margin-left: 140px;
+  margin-top: 10px;
+}
+
+.router-image {
+  margin-left: 140px;
 }
 
 /******************* Survey *******************/
@@ -1785,6 +1794,30 @@ progress[value]::-webkit-progress-value {
 
   .background-container .main-heading, .background-container .section-description {
     text-align: center;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: var(--color-background3);
+    color: var(--color-gray-0);
+    padding: 20px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -125px; /* Use half of the width to center the tooltip */
+    text-align: left;
+  }
+
+  .ethernet-image {
+    margin-left: 25px;
+    margin-top: 10px;
+  } 
+  
+  .router-image {
+    margin-left: 30px;
   }
 }
 

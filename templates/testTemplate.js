@@ -332,7 +332,7 @@ function testTemplate(config) {
                             <div class="tooltip"> wired
                                 <span class="tooltiptext">
                                     <span id="ethernet-definition" style="color: var(--color-gray-0)"></span>
-                                    <span><br><img style="margin-left: 140px; margin-top=10px;" src="/static/assets/ethernet.png" alt="ethernet image"></span>
+                                    <span><br><img class="ethernet-image" src="/static/assets/ethernet.png" alt="ethernet image"></span>
                                     <a href="https://www.wikihow.com/Connect-to-Ethernet-on-PC-or-Mac" target="_blank" style="color: var(--color-gray-0)"><br>See here for more details →</a>
                                 </span>
                             </div> connection is preferred.
@@ -354,7 +354,7 @@ function testTemplate(config) {
                             <div class="tooltip">Wi-Fi router
                                 <span class="tooltiptext">
                                     <span id="router-definition" style="color: var(--color-gray-0)"></span>
-                                    <span><br><img style="margin-left: 140px;" src="/static/assets/router.png" alt='router image'></span>
+                                    <span><br><img class="router-image" src="/static/assets/router.png" alt='router image'></span>
                                 </span>
                             </div> 
                         </label>
