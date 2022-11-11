@@ -345,7 +345,7 @@ function testTemplate(config) {
                             <div class="icon-text">WiFi</div>
                         </div>
                     </div>
-                    <div id="router-warning" style="display: none; margin-top: 40px; margin-left: 70px;">
+                    <div id="router-warning" style="margin: 0 auto; max-width: fit-content;">
                         <input type="checkbox" id="close-to-router" name="close-to-router">
                         <label for="close-to-router">I am as close as possible to my 
                             <div class="tooltip">Wi-Fi router
