@@ -224,7 +224,7 @@ body {
 
 /******************* General *******************/
 
-#history, #results, #ookla-test, #survey-instructions, 
+#history, #results, #ookla-test, #survey-instructions, #router-warning,
 #survey-container, #end-links, #history-empty, #test, #methodology, #error, #address, #ookla-loading {
   display: none;
 }
