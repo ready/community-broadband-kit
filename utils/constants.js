@@ -1,4 +1,8 @@
+const path = require('path')
 require('dotenv').config()
+
+exports.CITY_PATH = path.join(__dirname, '../data/city/GeoIP2-City.mmdb')
+exports.ISP_PATH = path.join(__dirname, '../data/city/GeoIP2-ISP.mmdb')
 
 const LOCAL_TESTING_FLAG = process.env.NODE_ENV !== 'production'
 

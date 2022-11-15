@@ -1,7 +1,6 @@
 const express = require('express')
 const path = require('path')
 const { Storage } = require('@google-cloud/storage');
-const Reader = require('@maxmind/geoip2-node').Reader;
 const bodyParser = require('body-parser')
 const historyRouter = require('./routes/historyRouter')
 const indexRouter = require('./routes/indexRouter')
@@ -11,12 +10,10 @@ const addEmailRouter = require('./routes/addEmail')
 const emailReminderRouter = require('./routes/emailReminder')
 const getResultsFieldsRouter = require('./routes/getResultsFields')
 const metadataRouter = require('./routes/metadata')
-const { LOCAL_TESTING_FLAG } = require('./utils/constants')
+const { LOCAL_TESTING_FLAG, CITY_PATH, ISP_PATH } = require('./utils/constants')
 
 const cityFile = 'GeoIP2-City.mmdb'
 const ispFile = 'GeoIP2-ISP.mmdb'
-const cityDestination = path.join(__dirname, '/data/city/GeoIP2-City.mmdb')
-const ispDestination = path.join(__dirname, '/data/city/GeoIP2-ISP.mmdb')
 const bucketName = 'strengthtest-353601.appspot.com'
 
 const app = express()
@@ -63,20 +60,18 @@ app.listen(port, async () => {
       storage = new Storage()
     }
 
-    // Downloads the file
-    await storage.bucket(bucketName).file(cityFile).download({ destination: cityDestination })
-    const cityReader = await Reader.open(cityDestination)
-    app.set('cityReader', cityReader)
+    console.log(CITY_PATH)
+    console.log(ISP_PATH)
 
-    await storage.bucket(bucketName).file(ispFile).download({ destination: ispDestination })
-    const ispReader = await Reader.open(ispDestination)
-    app.set('ispReader', ispReader)
+    // Downloads the file
+    await storage.bucket(bucketName).file(cityFile).download({ destination: CITY_PATH })
+    await storage.bucket(bucketName).file(ispFile).download({ destination: ISP_PATH })
 
   } catch (error) {
     if (!LOCAL_TESTING_FLAG) {
       console.log(error)
     }
   }
-
+  
   console.log(`Community Broadband Toolkit listening on port ${port}`)
 })
