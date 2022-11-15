@@ -60,17 +60,12 @@ app.listen(port, async () => {
       storage = new Storage()
     }
 
-    console.log(CITY_PATH)
-    console.log(ISP_PATH)
-
     // Downloads the file
     await storage.bucket(bucketName).file(cityFile).download({ destination: CITY_PATH })
     await storage.bucket(bucketName).file(ispFile).download({ destination: ISP_PATH })
 
   } catch (error) {
-    if (!LOCAL_TESTING_FLAG) {
-      console.log(error)
-    }
+    console.log(error)
   }
   
   console.log(`Community Broadband Toolkit listening on port ${port}`)

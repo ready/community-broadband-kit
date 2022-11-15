@@ -26,7 +26,6 @@ function getIpAddress(req) {
 async function getLocation(address) {
   try {
     const cityReader = await Reader.open(CITY_PATH)
-    console.log('city reader: ' + cityReader)
     const response = cityReader.city(address);
 
     return {
@@ -48,7 +47,6 @@ async function getLocation(address) {
 async function getIspName(address) {
   try {
     const ispReader = await Reader.open(ISP_PATH)
-    console.log('isp reader: ' + ispReader)
     const response = ispReader.isp(address);
 
     return {
