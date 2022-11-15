@@ -73,9 +73,9 @@ async function setReaders() {
     app.set('ispReader', ispReader)
 
   } catch (error) {
-    //if (!LOCAL_TESTING_FLAG) {
+    if (!LOCAL_TESTING_FLAG) {
       console.log(error)
-    //}
+    }
   }
 }
 
