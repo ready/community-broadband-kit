@@ -1,6 +1,8 @@
 'use strict'
 
 const parser = require('ua-parser-js');
+const Reader = require('@maxmind/geoip2-node').Reader;
+const { CITY_PATH, ISP_PATH } = require('../constants')
 
 /**
  * Gets the client's ip address from the request object
@@ -21,9 +23,11 @@ function getIpAddress(req) {
  * @param reader A reader for the city data file
  * @returns The city coordinates associated with the client's ip address
  */
-async function getLocation(address, reader) {
+async function getLocation(address) {
   try {
-    const response = reader.city(address);
+    const cityReader = await Reader.open(CITY_PATH)
+    console.log('city reader: ' + cityReader)
+    const response = cityReader.city(address);
 
     return {
       lat: response.location.latitude,
@@ -41,9 +45,11 @@ async function getLocation(address, reader) {
  * @param reader A reader for the isp data file
  * @returns The name of the client's isp or an empty object if not possible
  */
-async function getIspName(address, reader) {
+async function getIspName(address) {
   try {
-    const response = reader.isp(address);
+    const ispReader = await Reader.open(ISP_PATH)
+    console.log('isp reader: ' + ispReader)
+    const response = ispReader.isp(address);
 
     return {
       isp: response.isp,
