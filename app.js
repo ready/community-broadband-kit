@@ -44,6 +44,7 @@ app.use('/', metadataRouter)
 app.get('/reset', function(req, res) {
   res.sendFile(path.join(__dirname, 'static/utils/clearStorage.html'))
 })
+
 app.listen(port, async () => {
   try {
     let storage
@@ -64,11 +65,11 @@ app.listen(port, async () => {
 
     // Downloads the file
     await storage.bucket(bucketName).file(cityFile).download({ destination: cityDestination })
-    const cityReader = await Reader.open('./data/city/GeoIP2-City.mmdb')
+    const cityReader = await Reader.open(cityDestination)
     app.set('cityReader', cityReader)
 
     await storage.bucket(bucketName).file(ispFile).download({ destination: ispDestination })
-    const ispReader = await Reader.open('./data/isp/GeoIP2-ISP.mmdb')
+    const ispReader = await Reader.open(ispDestination)
     app.set('ispReader', ispReader)
 
   } catch (error) {
