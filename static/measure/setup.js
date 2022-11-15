@@ -1,9 +1,8 @@
+import { LOCAL_TESTING_FLAG } from '/static/utils/constants.js'
 import { initSurvey } from '/static/measure/survey.js'
-
 import runTests from '/static/test/runTests.js'
 import handleResults from "/static/measure/handleResults.js"
 import config from '/static/measure/config.js'
-import { LOCAL_TESTING_FLAG } from '/static/utils/constants.js'
 
 // Document selectors
 const addressRequired = document.getElementById('address').getAttribute('address-required')

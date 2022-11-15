@@ -1,6 +1,7 @@
 const headTemplate = require('./headTemplate')
 const headerTemplate = require('./headerTemplate')
 const landscapeBackgroundTemplate = require('./landscapeBackgroundTemplate')
+const endTemplate = require('./endTemplate')
 
 /**
  * Creates the html template for the test page of the site
@@ -8,10 +9,11 @@ const landscapeBackgroundTemplate = require('./landscapeBackgroundTemplate')
  * @returns an html template
  */
 function testTemplate(config) {
-  const head = headTemplate(config, config.ogImage)
-  const header = headerTemplate(config)
-  const landscapeBackground = landscapeBackgroundTemplate('')
-  const addressRequired = config.isAddressRequired ? config.isAddressRequired : true
+    const head = headTemplate(config, config.ogImage)
+    const header = headerTemplate(config)
+    const landscapeBackground = landscapeBackgroundTemplate()
+    const end = endTemplate(config)
+    const addressRequired = config.isAddressRequired ? config.isAddressRequired : true
 
   return `
     <!DOCTYPE html>
@@ -319,10 +321,7 @@ function testTemplate(config) {
                 <div class="checklist-dash"></div>
                 <div class="checklist-circle" id="step-4">4</div>
               </div>
-              <div class="progress-step">
-                <div class="checklist-dash"></div>
-                <div class="checklist-circle" id="step-5">5</div>
-              </div>
+              
             </div>
             <div class="checklist">
                 <div id="item-1">
@@ -348,7 +347,7 @@ function testTemplate(config) {
                             <div class="icon-text">WiFi</div>
                         </div>
                     </div>
-                    <div id="router-warning" style="display: none">
+                    <div id="router-warning" style="margin: 0 auto; max-width: fit-content;">
                         <input type="checkbox" id="close-to-router" name="close-to-router">
                         <label for="close-to-router">I am as close as possible to my 
                             <div class="tooltip">Wi-Fi router
@@ -420,32 +419,28 @@ function testTemplate(config) {
             </div>
             <button class="button" id="geolocation" style="align-self: flex-start">Current location <i style="margin-left: 4px" class="fas fa-map-marker-alt"></i></button>
             <button class="button" id="begin-test">Start test</button>
-          </div>
-
-          
+          </div>     
           <div id="ookla-test"></div>
           ${landscapeBackground}
         </div>
       </section>
+      ${end}
       <script>
         const organizationId = ${config.organization.id}
       </script>
       <script>
-        function toggleSelected(element) {
+          function toggleSelected(element) {
             const selected = document.querySelectorAll('.selected-answer');
             selected.forEach(select => {
-                select.classList.remove("selected-answer");
+              select.classList.remove("selected-answer");
             });
             let elem = document.getElementById(element);
             elem.classList.add("selected-answer"); 
-        }
-    </script>
+          }
+      </script>
       <script src="/static/test/m-lab/src/ndt7.min.js" type="text/javascript"></script>
       <script type="module" src="/static/measure/setup.js"></script>
-      <script type="module" src="/static/utils/sendEmails.js"></script>
-      <script type="module" src="/static/utils/showContent.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFSRcqE5mWaypizwTElZzYQA3x3IiCiaQ&libraries=places"></script>
-      <script src="https://kit.fontawesome.com/fc3d033d28.js" crossorigin="anonymous"></script>
     </body>
     </html>
   `

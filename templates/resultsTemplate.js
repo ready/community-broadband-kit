@@ -6,6 +6,7 @@ const headTemplate = require('./headTemplate')
 const headerTemplate = require('./headerTemplate')
 const landscapeBackgroundTemplate = require('./landscapeBackgroundTemplate')
 const footerTemplate = require('./footerTemplate')
+const endTemplate = require('./endTemplate')
 
 /**
  * Creates the htnl template for the results page on the site
@@ -18,6 +19,7 @@ async function resultsTemplate(id, config) {
   const header = headerTemplate(config)
   const landscapeBackground = landscapeBackgroundTemplate()
   const footer = footerTemplate(config)
+  const end = endTemplate(config)
   const results = await getResults(id)
   const resultsFields = getResultsFields(results)
 
@@ -245,10 +247,8 @@ async function resultsTemplate(id, config) {
         </div>
       </section>
       ${footer}
-      <script type="module" src="/static/utils/emailReminder.js"></script>
+      ${end}
       <script type="module" src="/static/results/results.js"></script>
-      <script type="module" src="/static/utils/showContent.js"></script>
-		  <script src="https://kit.fontawesome.com/fc3d033d28.js" crossorigin="anonymous"></script>
     </body>
     </html>
   `
