@@ -4,6 +4,7 @@ entrypoint: npm start
 instance_class: F2
 env_variables:
   GCLOUD_STORAGE_BUCKET: "strengthtest-353601.appspot.com"
+  GCLOUD_STORAGE_CLIENT_EMAIL: "strengthtest-353601@appspot.gserviceaccount.com"
 handlers:
 - url: /.*
   script: auto
