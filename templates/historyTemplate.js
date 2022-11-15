@@ -1,6 +1,7 @@
 const headTemplate = require('./headTemplate')
 const headerTemplate = require('./headerTemplate')
 const footerTemplate = require('./footerTemplate')
+const endTemplate = require('./endTemplate')
 const landscapeBackgroundTemplate = require('./landscapeBackgroundTemplate')
 
 /**
@@ -12,6 +13,7 @@ function historyTemplate(config) {
   const head = headTemplate(config, config.ogImage)
   const header = headerTemplate(config)
   const footer = footerTemplate(config)
+  const end = endTemplate(config)
   const landscapeBackground = landscapeBackgroundTemplate()
 
   return `
@@ -24,7 +26,7 @@ function historyTemplate(config) {
         <div class="hero-section-container">
           <div class="column-container center-content" id="history" style="gap: 2em;">
             <h1 class="small-heading">Your Results</h1>
-            <div class="wide-background-container" style="max-width: 100%">
+            <div class="wide-background-container" style="max-width: 100%; gap: 1em;">
               <table class="table table-alternating" id="history-table">
                 <tr>
                   <th>Upload <span class="units">Mbps</span></th>
@@ -45,9 +47,8 @@ function historyTemplate(config) {
         </div>
       </section>
       ${footer}
+      ${end}
       <script type="module" src="/static/history/history.js"></script>
-      <script type="module" src="/static/utils/showContent.js"></script>
-		  <script src="https://kit.fontawesome.com/fc3d033d28.js" crossorigin="anonymous"></script>
     </body>
     </html>  
   `

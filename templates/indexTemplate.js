@@ -4,6 +4,7 @@ const footerTemplate = require('./footerTemplate')
 const landscapeBackgroundTemplate = require('./landscapeBackgroundTemplate')
 const howTemplate = require('./howTemplate')
 const mapTemplate = require('./mapTemplate')
+const endTemplate = require('./endTemplate')
 
 /**
  * Creates the html template for index page the site
@@ -18,6 +19,7 @@ function indexTemplate(config) {
   const landscapeBackground = landscapeBackgroundTemplate()
   const howBackground= howTemplate()
   const buttonText = config.buttonText ? config.buttonText : 'Take the Test'
+  const end = endTemplate(config)
 
   return `
   <!DOCTYPE html>
@@ -60,7 +62,8 @@ function indexTemplate(config) {
               <img class="why-icon" src='/static/assets/icons/checked.svg' width="42" height="42" alt='report icon' />
               <h3 class="verb">It's built for privacy</h3>
             </div>
-            <p class="blurb">Apart from survey questions voluntarily taken by you, this test does not gather or disclose information about your community.</p>
+            <p class="blurb">Ap
+            art from survey questions voluntarily taken by you, this test does not gather or disclose information about your community.</p>
           </div>
           <div class="why">
             <div class="why-icon-verb">
@@ -143,9 +146,7 @@ function indexTemplate(config) {
     </section>
     ${map}
     ${footer}
-    <script type="module" src="/static/utils/headerShareButtons.js"></script>
-    <script type="module" src="/static/utils/showContent.js"></script>
-    <script src="https://kit.fontawesome.com/fc3d033d28.js" crossorigin="anonymous"></script>
+    ${end}
     <script type="module" src="/static/map/map.js"></script>
   </body>
   </html>
