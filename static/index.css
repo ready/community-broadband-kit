@@ -225,7 +225,7 @@ body {
 /******************* General *******************/
 
 #history, #results, #ookla-test, #survey-instructions, #router-warning,
-#survey-container, #end-links, #history-empty, #test, #methodology, #error, #address, #ookla-loading {
+#survey-container, #end-links, #history-empty, #test, #methodology, #error, #address, #ookla-loading, #checklist, #same-setup {
   display: none;
 }
 

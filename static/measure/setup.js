@@ -4,6 +4,8 @@ import runTests from '/static/test/runTests.js'
 import handleResults from "/static/measure/handleResults.js"
 import config from '/static/measure/config.js'
 import { LOCAL_TESTING_FLAG } from '/static/utils/constants.js'
+import { getUuid } from '/static/utils/cookies.js'
+import { BGA_URL } from '/static/utils/constants.js'
 
 // Document selectors
 const addressRequired = document.getElementById('address').getAttribute('address-required')
@@ -31,6 +33,9 @@ let address = {
 }
 const checklistItemTotal = 4
 let checklistCounter = 1
+let previousResults
+let sameSetupFlag = false
+const userId = getUuid()
 
 /**
  * Gets the user's geolocation in the browser
@@ -295,6 +300,59 @@ function getChecklistItemResponse() {
   }
 }
 
+async function getPreviousResult(ipAddress) {
+  const body = JSON.stringify({
+      query: `query {
+          getMultitestResults (userId:"${userId}",ipAddress:"${ipAddress}") {
+            results {
+                  id
+                  usingEthernet
+                  noInterruptFromOtherDevices
+                  vpnOff
+                  closeToRouter
+                  address
+                  addressLat
+                  addressLon
+                  createdAt
+            }
+          }
+      }`
+  });
+
+  return fetch(BGA_URL, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body
+  })
+  .then(res => res.json())
+  .then (result => {
+      return result.data.getMultitestResults.results;
+  })
+  .catch(err => console.log(err))
+}
+
+async function displaySameSetupOrChecklist() {
+  metadata = await metadata
+  previousResults = await getPreviousResult(metadata.ip)
+  if (previousResults.length > 0) {
+    document.getElementById("same-setup").style.display = "flex"
+  } else {
+    checklistElement.style.display = "flex"
+  }
+}
+
+async function differentSetup() {
+  document.getElementById("same-setup").style.display = "none"
+  checklistElement.style.display = "flex"
+}
+
+async function sameSetup() {
+  sameSetupFlag = true
+  beginTest()
+}
+
 /**
  * Sets up and runs the speed tests
  */
@@ -317,12 +375,13 @@ async function beginTest() {
   headerShareBtns.style.display = 'none'
   checklistElement.style.display = 'none'
   addressElement.style.display = 'none'
+  document.getElementById("same-setup").style.display = "none"
 
   // Gets metadata
   metadata = await metadata
 
   // Sets up the survey
- initSurvey(metadata.ip)
+  initSurvey(metadata.ip)
 
   // Set up test display
   ispNameElement.textContent = metadata.isp
@@ -331,6 +390,17 @@ async function beginTest() {
   testSourceElement.textContent = 'Running M-Lab Speed Test...'
   testTypeElement.textContent = 'Downloading'
   mlabLoadBar.classList.replace('load-bar-not-started', 'load-bar-started')
+
+  // If setup was the same as previous test, set checklist responses
+  if (sameSetupFlag) {
+    checklistResponses.usingEthernet = previousResults[0].usingEthernet
+    checklistResponses.closeToRouter = previousResults[0].closeToRouter
+    checklistResponses.vpnOff =  previousResults[0].vpnOff
+    checklistResponses.noInterruptFromOtherDevices =  previousResults[0].noInterruptFromOtherDevices
+    address.lat = previousResults[0].addressLat
+    address.lon = previousResults[0].addressLon
+    address.text = previousResults[0].address
+  }
 
   try {
     // Run the speedtests
@@ -353,3 +423,6 @@ async function beginTest() {
 geolocationElement.addEventListener("click", fillAddressFromGeolocation)
 nextBtn.addEventListener("click", skipOrDisplayAddress)
 beginTestBtn.addEventListener('click', validateAddress)
+window.displaySameSetupOrChecklist = displaySameSetupOrChecklist
+window.sameSetup = sameSetup
+window.differentSetup = differentSetup

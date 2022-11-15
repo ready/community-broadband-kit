@@ -17,7 +17,7 @@ function testTemplate(config) {
     <!DOCTYPE html>
     <html lang="en">
     ${head}
-    <body>
+    <body onload="displaySameSetupOrChecklist()">
       <section id="test-section" class="section-container" style="padding-top:0;">
         ${header}
         <div class="hero-section-container center-content">
@@ -300,6 +300,21 @@ function testTemplate(config) {
             </div>
           </div>
 
+          <div class="background-container" id="same-setup" style="display:none;">
+            <h1 class="main-heading">Is your setup the same as last time?</h1>
+            <h2 class="section-description"> If your set up has changed from the previous time, for example you are now using WiFi instead of a wired connection, select "No". </h2>
+            <div class="checklist-answer-row">
+              <div class="answer-option" id="same" onMouseOver="toggleSelected('same')" onClick="sameSetup()">
+                  <img class="checklist-icon" src="/static/assets/checkmark_icon.png" width="32px" height="32px" alt="checkmark-icon">
+                  <div class="icon-text">Yes</div>
+              </div>
+              <div class="answer-option" id="different" onMouseOver="toggleSelected('different')" onClick="differentSetup()">
+                  <img class="checklist-icon" src="/static/assets/cross_icon.png" width="32px" height="32px" alt="cross-icon">
+                  <div class="icon-text">No</div>
+              </div>
+            </div>
+          </div>
+
           <div class="background-container" id="checklist" style="gap: 1em;">
             <h1 class="main-heading">Before We Begin...</h1>
             <h2 class="section-description">For best results, we recommend taking the following steps. Please select a step if it has been done. Hover over underlined terms for additional information.</h2>
@@ -319,7 +334,6 @@ function testTemplate(config) {
                 <div class="checklist-dash"></div>
                 <div class="checklist-circle" id="step-4">4</div>
               </div>
-              
             </div>
             <div class="checklist">
                 <div id="item-1">
@@ -345,7 +359,7 @@ function testTemplate(config) {
                             <div class="icon-text">WiFi</div>
                         </div>
                     </div>
-                    <div id="router-warning" style="margin: 0 auto; max-width: fit-content;">
+                    <div id="router-warning" style="display: none; margin-top: 40px; margin-left: 70px;">
                         <input type="checkbox" id="close-to-router" name="close-to-router">
                         <label for="close-to-router">I am as close as possible to my 
                             <div class="tooltip">Wi-Fi router
@@ -436,7 +450,7 @@ function testTemplate(config) {
             let elem = document.getElementById(element);
             elem.classList.add("selected-answer"); 
         }
-    </script>
+      </script>
       <script src="/static/test/m-lab/src/ndt7.min.js" type="text/javascript"></script>
       <script type="module" src="/static/measure/setup.js"></script>
       <script type="module" src="/static/utils/sendEmails.js"></script>
