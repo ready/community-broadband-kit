@@ -44,8 +44,7 @@ app.use('/', metadataRouter)
 app.get('/reset', function(req, res) {
   res.sendFile(path.join(__dirname, 'static/utils/clearStorage.html'))
 })
-
-async function setReaders() {
+app.listen(port, async () => {
   try {
     let storage
 
@@ -77,10 +76,6 @@ async function setReaders() {
       console.log(error)
     }
   }
-}
-
-app.listen(port, async () => {
-  await setReaders()
 
   console.log(`Community Broadband Toolkit listening on port ${port}`)
 })
