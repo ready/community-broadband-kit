@@ -48,7 +48,7 @@ app.listen(port, async () => {
     const config = {
       credentials: {
         client_email: process.env.GCLOUD_STORAGE_CLIENT_EMAIL,
-        private_key: process.env.GCLOUD_STORAGE_PRIVATE_KEY
+        private_key: process.env.GCLOUD_STORAGE_PRIVATE_KEY?.replace(/\\n/gm, '\n')
       }
     }
     
