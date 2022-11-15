@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const { Storage } = require('@google-cloud/storage');
 const Reader = require('@maxmind/geoip2-node').Reader;
 const bodyParser = require('body-parser')
@@ -10,10 +11,16 @@ const addEmailRouter = require('./routes/addEmail')
 const emailReminderRouter = require('./routes/emailReminder')
 const getResultsFieldsRouter = require('./routes/getResultsFields')
 const metadataRouter = require('./routes/metadata')
-const app = express()
-const path = require('path')
-const port = 8080
+const { LOCAL_TESTING_FLAG } = require('./utils/constants')
+
+const cityFile = 'GeoIP2-City.mmdb'
+const ispFile = 'GeoIP2-ISP.mmdb'
+const cityDestination = path.join(__dirname, '/data/city/GeoIP2-City.mmdb')
+const ispDestination = path.join(__dirname, '/data/city/GeoIP2-ISP.mmdb')
 const bucketName = 'strengthtest-353601.appspot.com'
+
+const app = express()
+const port = 8080
 
 require('dotenv').config()
 
@@ -38,21 +45,23 @@ app.get('/reset', function(req, res) {
   res.sendFile(path.join(__dirname, 'static/utils/clearStorage.html'))
 })
 
-app.listen(port, async () => {
-  const cityFile = 'GeoIP2-City.mmdb'
-  const cityDestination = path.join(__dirname, '/data/city/GeoIP2-City.mmdb')
-  const ispFile = 'GeoIP2-ISP.mmdb'
-  const ispDestination = path.join(__dirname, '/data/city/GeoIP2-ISP.mmdb')
-
+async function setReaders() {
   try {
-    const config = {
-      credentials: {
-        client_email: process.env.GCLOUD_STORAGE_CLIENT_EMAIL,
-        private_key: process.env.GCLOUD_STORAGE_PRIVATE_KEY?.replace(/\\n/gm, '\n')
+    let storage
+
+    if (LOCAL_TESTING_FLAG) {
+      const config = {
+        credentials: {
+          client_email: process.env.GCLOUD_STORAGE_CLIENT_EMAIL,
+          private_key: process.env.GCLOUD_STORAGE_PRIVATE_KEY
+        }
       }
+      
+      storage = new Storage(config)
+
+    } else {
+      storage = new Storage()
     }
-    
-    const storage = new Storage(config)
 
     // Downloads the file
     await storage.bucket(bucketName).file(cityFile).download({ destination: cityDestination })
@@ -64,8 +73,14 @@ app.listen(port, async () => {
     app.set('ispReader', ispReader)
 
   } catch (error) {
-    console.log(error)
+    if (!LOCAL_TESTING_FLAG) {
+      console.log(error)
+    }
   }
+}
+
+app.listen(port, async () => {
+  await setReaders()
 
   console.log(`Community Broadband Toolkit listening on port ${port}`)
 })
