@@ -1,6 +1,5 @@
 const express = require('express')
 const path = require('path')
-const { Storage } = require('@google-cloud/storage');
 const bodyParser = require('body-parser')
 const historyRouter = require('./routes/historyRouter')
 const indexRouter = require('./routes/indexRouter')
@@ -10,11 +9,6 @@ const addEmailRouter = require('./routes/addEmail')
 const emailReminderRouter = require('./routes/emailReminder')
 const getResultsFieldsRouter = require('./routes/getResultsFields')
 const metadataRouter = require('./routes/metadata')
-const { LOCAL_TESTING_FLAG, CITY_PATH, ISP_PATH } = require('./utils/constants')
-
-const cityFile = 'GeoIP2-City.mmdb'
-const ispFile = 'GeoIP2-ISP.mmdb'
-const bucketName = 'strengthtest-353601.appspot.com'
 
 const app = express()
 const port = 8080
@@ -43,30 +37,5 @@ app.get('/reset', function(req, res) {
 })
 
 app.listen(port, async () => {
-  try {
-    let storage
-
-    if (LOCAL_TESTING_FLAG) {
-      const config = {
-        credentials: {
-          client_email: process.env.GCLOUD_STORAGE_CLIENT_EMAIL,
-          private_key: process.env.GCLOUD_STORAGE_PRIVATE_KEY
-        }
-      }
-      
-      storage = new Storage(config)
-
-    } else {
-      storage = new Storage()
-    }
-
-    // Downloads the file
-    await storage.bucket(bucketName).file(cityFile).download({ destination: CITY_PATH })
-    await storage.bucket(bucketName).file(ispFile).download({ destination: ISP_PATH })
-
-  } catch (error) {
-    console.log(error)
-  }
-  
   console.log(`Community Broadband Toolkit listening on port ${port}`)
 })
