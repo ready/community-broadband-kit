@@ -357,6 +357,7 @@ i {
 .section-description {
   font-size: var(--font-size-body1);
   color: var(--color-subheading);
+  font-weight: normal;
 }
 
 ul li {
