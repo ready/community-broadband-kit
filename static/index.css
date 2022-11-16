@@ -1459,6 +1459,7 @@ progress[value]::-webkit-progress-value {
   color: var(--color-gray-7);
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-weight: normal;
 }
 
 .speed-result {
