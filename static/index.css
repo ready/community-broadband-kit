@@ -84,9 +84,9 @@
   border: 0;
   outline: 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: normal;
+  /*font-weight: normal;*/
   background: transparent;
-  color: var(--color-text);
+  /*color: var(--color-text);*/
   box-sizing: border-box;
 }
 
@@ -1183,6 +1183,7 @@ progress[value]::-webkit-progress-value {
   position: absolute;
   left: 15px;
   font-size: var(--font-size-body2);
+  color: white
 }
 
 #load-bar {
