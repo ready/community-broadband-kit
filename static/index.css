@@ -867,6 +867,7 @@ display:none !important;
   background-color: var(--color-gray-0);
   border: 1px solid var(--color-text);
   border-radius: 4px;
+  color: var(--color-text)
 }
 
 #address-warning {
@@ -1317,6 +1318,10 @@ progress[value]::-webkit-progress-value {
   color: var(--color-gray-0);
 }
 
+.dark-blue {
+  color: var(--color-text);
+}
+
 /******************* Test *******************/
 
 .remind-me-container {
@@ -1386,6 +1391,7 @@ progress[value]::-webkit-progress-value {
 
 .test-title h3 {
   font-weight: 600;
+  color: var(--color-text);
 }
 
 .large-result-tag {
@@ -1500,13 +1506,14 @@ progress[value]::-webkit-progress-value {
   justify-content: space-evenly;
   cursor: pointer;
   align-items: center;
+  color: var(--color-text);
 }
   
 .share-buttons a {
   font-size: 20px;
   margin-right: 10px;
   margin-left: 10px;
-  color: var(--color-3);
+  color: var(--color-text);
 }
 
 /******************* History *******************/

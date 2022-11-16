@@ -100,7 +100,7 @@ function testTemplate(config) {
               </div>
               <div class="wide-background-container">
                 <h3 class="small-heading">You are <span class='large-result-tag' id="service-status">test</span></h3>
-                <p>Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.</p>
+                <p class="dark-blue">Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.</p>
                 <div class="results-cards-container">
                   <div class="results-card">
                     <div class="results-card-title">
