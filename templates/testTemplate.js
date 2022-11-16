@@ -61,7 +61,7 @@ function testTemplate(config) {
                 <div id ="answers" class="list"></div>
                 <button id="nav-btn" class="button" alt="next button">Next</button>
                 <div class="progress-row">
-                  <div class="s-text"><span id="questions-answered"></span> / <span id="question-total"></span></div>
+                  <div class="s-text dark-blue"><span id="questions-answered"></span> / <span id="question-total"></span></div>
                   <progress id="survey-progress-bar" max="100" value="0"></progress>
                 </div>
               </div>
