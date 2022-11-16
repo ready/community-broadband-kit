@@ -1560,6 +1560,7 @@ progress[value]::-webkit-progress-value {
 
 .table td {
   font-size: var(--s-font);
+  color: var(--color-text);
 }
 
 .table-results {
