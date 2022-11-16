@@ -86,7 +86,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
   background: transparent;
-  color: var(--color-text); 
+  color: var(--color-text);
   box-sizing: border-box;
 }
 
@@ -434,6 +434,12 @@ ul li {
 .nav-container {
   display: flex;
   align-items: center;
+}
+
+.language-container {
+  display: flex;
+  align-items: center;
+  margin-right: -50px;
 }
   
 .menu a,
@@ -823,6 +829,32 @@ input[type="checkbox"] ~ label {
   background-image: none !important;
   height: 0px;
 }
+
+ /* Hide google translate link | logo */
+.goog-logo-link{
+  display:none!important;
+}
+
+.goog-te-gadget{
+  color:transparent!important;
+}
+
+#google_translate_element select{
+  background: var(--color-gray-1);
+  color:var(--color-nav-text);
+  border: 2px solid var(--color-nav-text);
+  border-radius:3px;
+  padding:6px 8px;
+  width: 140px;
+  }
+
+/* google translate banner-frame 
+.goog-te-banner-frame{
+display:none !important;
+} */
+
+#goog-gt-tt, .goog-te-balloon-frame{display: none !important;}
+.goog-text-highlight { background: none !important; box-shadow: none !important;}
 
 .address input[type=text], .address textarea {
   width: 94%;
@@ -1765,6 +1797,10 @@ progress[value]::-webkit-progress-value {
 
 @media only screen and (max-width: 852px) {
   .nav-container {
+    display: none;
+  }
+
+  .language-container {
     display: none;
   }
 
