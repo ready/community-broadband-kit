@@ -10,6 +10,7 @@ import { BGA_URL } from '/static/utils/constants.js'
 // Document selectors
 const addressRequired = document.getElementById('address').getAttribute('address-required')
 const checklistElement = document.getElementById('checklist')
+const sameSetupElement = document.getElementById("same-setup")
 const addressElement = document.getElementById('address')
 const headerShareBtns = document.getElementById('header-share-buttons')
 const geolocationElement = document.getElementById('geolocation')
@@ -300,6 +301,11 @@ function getChecklistItemResponse() {
   }
 }
 
+/**
+ * Gets previous test result data
+ * @param {*} ipAddress 
+ * @returns 
+ */
 async function getPreviousResult(ipAddress) {
   const body = JSON.stringify({
       query: `query {
@@ -333,21 +339,31 @@ async function getPreviousResult(ipAddress) {
   .catch(err => console.log(err))
 }
 
+/**
+ * Checks if the user has taken a test before and if so, asks if they are using 
+ * same setup as last time
+ */
 async function displaySameSetupOrChecklist() {
   metadata = await metadata
   previousResults = await getPreviousResult(metadata.ip)
   if (previousResults.length > 0) {
-    document.getElementById("same-setup").style.display = "flex"
+    sameSetupElement.style.display = "flex"
   } else {
     checklistElement.style.display = "flex"
   }
 }
 
+/**
+ * Displays checklist if user is using a different setup
+ */
 async function differentSetup() {
-  document.getElementById("same-setup").style.display = "none"
+  sameSetupElement.style.display = "none"
   checklistElement.style.display = "flex"
 }
 
+/**
+ * Begins test if user is using the same setup
+ */
 async function sameSetup() {
   sameSetupFlag = true
   beginTest()
@@ -375,7 +391,7 @@ async function beginTest() {
   headerShareBtns.style.display = 'none'
   checklistElement.style.display = 'none'
   addressElement.style.display = 'none'
-  document.getElementById("same-setup").style.display = "none"
+  sameSetupElement.style.display = "none"
 
   // Gets metadata
   metadata = await metadata
@@ -391,7 +407,7 @@ async function beginTest() {
   testTypeElement.textContent = 'Downloading'
   mlabLoadBar.classList.replace('load-bar-not-started', 'load-bar-started')
 
-  // If setup was the same as previous test, set checklist responses
+  // If setup was the same as previous test, save previous checklist and address responses
   if (sameSetupFlag) {
     checklistResponses.usingEthernet = previousResults[0].usingEthernet
     checklistResponses.closeToRouter = previousResults[0].closeToRouter

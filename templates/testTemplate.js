@@ -300,7 +300,7 @@ function testTemplate(config) {
             </div>
           </div>
 
-          <div class="background-container" id="same-setup" style="display:none;">
+          <div class="background-container" id="same-setup">
             <h1 class="main-heading">Is your setup the same as last time?</h1>
             <h2 class="section-description"> If your set up has changed from the previous time, for example you are now using WiFi instead of a wired connection, select "No". </h2>
             <div class="checklist-answer-row">
@@ -359,7 +359,7 @@ function testTemplate(config) {
                             <div class="icon-text">WiFi</div>
                         </div>
                     </div>
-                    <div id="router-warning" style="display: none; margin-top: 40px; margin-left: 70px;">
+                    <div id="router-warning" style="margin: 0 auto; max-width: fit-content;">
                         <input type="checkbox" id="close-to-router" name="close-to-router">
                         <label for="close-to-router">I am as close as possible to my 
                             <div class="tooltip">Wi-Fi router
