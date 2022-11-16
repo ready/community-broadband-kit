@@ -785,6 +785,8 @@ input[type="checkbox"] ~ label {
     flex-direction: row; 
     width: fit-content; 
     margin: 20px auto;
+    color: var(--color-text);
+    font-weight: normal;
 }
 
 .answer-option {
