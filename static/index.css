@@ -1186,7 +1186,6 @@ progress[value]::-webkit-progress-value {
   position: absolute;
   left: 15px;
   font-size: var(--font-size-body2);
-  color: white
 }
 
 #load-bar {
@@ -1287,10 +1286,12 @@ progress[value]::-webkit-progress-value {
 
 .load-bar-started:after {
   border-left: 20px solid var(--color-accent);
+  color: var(--color-text);
 }
 
 .load-bar-not-started {
   background-color: var(--color-gray-4);
+  color: var(--color-text);
 }
 
 .load-bar-not-started:before {
@@ -1304,6 +1305,10 @@ progress[value]::-webkit-progress-value {
 
 .load-bar-started > .load-label {
   color: var(--color-gray-0);
+}
+
+.load-bar-not-started > .load-label {
+  color: var(--color-text);
 }
 
 /******************* Colors *******************/
