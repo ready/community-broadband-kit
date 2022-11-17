@@ -299,6 +299,7 @@ function testTemplate(config) {
                   </div>
                 </div>
               </div>
+              <a class="button" style="align-self: flex-end;" href="/test/">Test Again</a>
             </div>
           </div>
 
