@@ -39,9 +39,9 @@ function historyTemplate(config) {
               <button class="underline-button" id="load-more-btn" onclick="loadMore()">Load more</button>
             </div>
           </div>
-          <div class="background-container" id="history-empty">
-            <h2>No results yet</h2>
-            <h3>You may view your results after you take the internet strength test</h3>
+          <div class="background-container" id="history-empty" style="align-self: center">
+            <h2 class="main-heading">No results yet</h2>
+            <h3 class="section-description">You may view your results after you take the internet strength test</h3>
           </div>
           ${landscapeBackground}
         </div>

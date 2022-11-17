@@ -42,10 +42,10 @@ function fillTable(results) {
         const rollup = rollupResults(result)
 
         // Set the text content for the row element
-        rowData[0].textContent = rollup.upload
-        rowData[1].textContent = rollup.download
-        rowData[2].textContent = rollup.latency
-        rowData[3].textContent = rollup.jitter
+        rowData[0].textContent = result.medianUpload
+        rowData[1].textContent = result.medianDownload
+        rowData[2].textContent = result.medianLatency
+        rowData[3].textContent = result.medianJitter
         rowData[4].textContent = new Date(result.createdAt).toLocaleDateString()
 
         // Append the row to the table
@@ -96,6 +96,10 @@ async function getNextPage() {
                     ooklaJitter
                     ooklaUpload
                     ooklaDownload
+                    medianLatency
+                    medianJitter
+                    medianUpload
+                    medianDownload
                     ipAddress
                     ispName
                     createdAt
