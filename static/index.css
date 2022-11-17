@@ -1757,13 +1757,13 @@ progress[value]::-webkit-progress-value {
   }
 }
 
-@media only screen and (min-width: 852px) {
+@media only screen and (min-width: 900px) {
   .hamburger {
     display: none;
   }
 }
 
-@media only screen and (max-width: 852px) {
+@media only screen and (max-width: 900px) {
   .nav-container {
     display: none;
   }

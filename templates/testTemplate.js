@@ -356,12 +356,12 @@ function testTemplate(config) {
                             <img class="checklist-icon" src="/static/assets/wired_icon.png" width="32px" height="32px" alt="Wired-icon">
                             <div class="icon-text">Wired</div>
                         </div>
-                        <div class="answer-option" id="wifi" onclick="getElementById('router-warning').style.display = 'block', toggleSelected('wifi')">
+                        <div class="answer-option" id="wifi" onclick="getElementById('router-warning').style.display = 'flex', toggleSelected('wifi')">
                             <img class="checklist-icon" src="/static/assets/wifi_icon.png" width="32px" height="32px" alt="Wifi-icon">
                             <div class="icon-text">WiFi</div>
                         </div>
                     </div>
-                    <div id="router-warning" style="margin: 0 auto; max-width: fit-content;">
+                    <div id="router-warning" style="margin: 0 auto; max-width: fit-content; align-items: center">
                         <input type="checkbox" id="close-to-router" name="close-to-router">
                         <label for="close-to-router">I am as close as possible to my 
                             <div class="tooltip">Wi-Fi router
