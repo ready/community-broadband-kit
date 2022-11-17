@@ -93,11 +93,7 @@ const ooklaComplete = (download, upload, latency, jitter) => {
  * @param {*} jitter RST ping progress update
  */
 const rstPingProgress = (latency, jitter) => {
-  if (testTypeElement.textContent !== 'Pinging') {
-    testProgressElement.style.visibility = 'visible'
-    testTypeElement.textContent = 'Pinging'
-  }
-
+  testProgressElement.style.visibility = 'visible'
   testProgressElement.textContent = latency + ' ms'
 }
 
@@ -106,10 +102,6 @@ const rstPingProgress = (latency, jitter) => {
  * @param {*} download RST download progress update
  */
 const rstDownloadProgress = (download) => {
-  if (testTypeElement.textContent !== 'Downloading') {
-    testTypeElement.textContent = 'Downloading'
-  }
-
   testProgressElement.textContent = download + ' Mbps'
 }
 
@@ -118,10 +110,6 @@ const rstDownloadProgress = (download) => {
  * @param {*} download RST upload progress update
  */
 const rstUploadProgress = (upload) => {
-  if (testTypeElement.textContent !== 'Uploading') {
-    testTypeElement.textContent = 'Uploading'
-  }
-
   testProgressElement.textContent = upload + ' Mbps'
 }
 
