@@ -3,10 +3,13 @@ import { initSurvey } from '/static/measure/survey.js'
 import runTests from '/static/test/runTests.js'
 import handleResults from "/static/measure/handleResults.js"
 import config from '/static/measure/config.js'
+import { getUuid } from '/static/utils/cookies.js'
+import { BGA_URL } from '/static/utils/constants.js'
 
 // Document selectors
 const addressRequired = document.getElementById('address').getAttribute('address-required')
 const checklistElement = document.getElementById('checklist')
+const sameSetupElement = document.getElementById("same-setup")
 const addressElement = document.getElementById('address')
 const headerShareBtns = document.getElementById('header-share-buttons')
 const geolocationElement = document.getElementById('geolocation')
@@ -30,6 +33,9 @@ let address = {
 }
 const checklistItemTotal = 4
 let checklistCounter = 1
+let previousResults
+let sameSetupFlag = false
+const userId = getUuid()
 
 /**
  * Gets the user's geolocation in the browser
@@ -295,6 +301,74 @@ function getChecklistItemResponse() {
 }
 
 /**
+ * Gets previous test result data
+ * @param {*} ipAddress 
+ * @returns 
+ */
+async function getPreviousResult(ipAddress) {
+  const body = JSON.stringify({
+      query: `query {
+          getMultitestResults (userId:"${userId}",ipAddress:"${ipAddress}") {
+            results {
+                  id
+                  usingEthernet
+                  noInterruptFromOtherDevices
+                  vpnOff
+                  closeToRouter
+                  address
+                  addressLat
+                  addressLon
+                  createdAt
+            }
+          }
+      }`
+  });
+
+  return fetch(BGA_URL, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body
+  })
+  .then(res => res.json())
+  .then (result => {
+      return result.data.getMultitestResults.results;
+  })
+  .catch(err => console.log(err))
+}
+
+/**
+ * Checks if the user has taken a test before and if so, asks if they are using 
+ * same setup as last time
+ */
+async function displaySameSetupOrChecklist() {
+  metadata = await metadata
+  previousResults = await getPreviousResult(metadata.ip)
+  if (previousResults.length > 0) {
+    sameSetupElement.style.display = "flex"
+  } else {
+    checklistElement.style.display = "flex"
+  }
+}
+
+/**
+ * Displays checklist if user is using a different setup
+ */
+async function differentSetup() {
+  sameSetupElement.style.display = "none"
+  checklistElement.style.display = "flex"
+}
+
+/**
+ * Begins test if user is using the same setup
+ */
+async function sameSetup() {
+  sameSetupFlag = true
+  beginTest()
+}
+
+/**
  * Sets up and runs the speed tests
  */
 async function beginTest() {
@@ -316,12 +390,13 @@ async function beginTest() {
   headerShareBtns.style.display = 'none'
   checklistElement.style.display = 'none'
   addressElement.style.display = 'none'
+  sameSetupElement.style.display = "none"
 
   // Gets metadata
   metadata = await metadata
 
   // Sets up the survey
- initSurvey(metadata.ip)
+  initSurvey(metadata.ip)
 
   // Set up test display
   ispNameElement.textContent = metadata.isp
@@ -330,6 +405,17 @@ async function beginTest() {
   testSourceElement.textContent = 'Running M-Lab Speed Test...'
   testTypeElement.textContent = 'Downloading'
   mlabLoadBar.classList.replace('load-bar-not-started', 'load-bar-started')
+
+  // If setup was the same as previous test, save previous checklist and address responses
+  if (sameSetupFlag) {
+    checklistResponses.usingEthernet = previousResults[0].usingEthernet
+    checklistResponses.closeToRouter = previousResults[0].closeToRouter
+    checklistResponses.vpnOff =  previousResults[0].vpnOff
+    checklistResponses.noInterruptFromOtherDevices =  previousResults[0].noInterruptFromOtherDevices
+    address.lat = previousResults[0].addressLat
+    address.lon = previousResults[0].addressLon
+    address.text = previousResults[0].address
+  }
 
   try {
     // Run the speedtests
@@ -352,3 +438,6 @@ async function beginTest() {
 geolocationElement.addEventListener("click", fillAddressFromGeolocation)
 nextBtn.addEventListener("click", skipOrDisplayAddress)
 beginTestBtn.addEventListener('click', validateAddress)
+window.displaySameSetupOrChecklist = displaySameSetupOrChecklist
+window.sameSetup = sameSetup
+window.differentSetup = differentSetup
