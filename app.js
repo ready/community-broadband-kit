@@ -12,7 +12,7 @@ const getResultsFieldsRouter = require('./routes/getResultsFields')
 const metadataRouter = require('./routes/metadata')
 const app = express()
 const path = require('path')
-const port = 8081
+const port = 8080
 const bucketName = 'strengthtest-353601.appspot.com'
 
 require('dotenv').config()
