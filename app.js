@@ -1,6 +1,5 @@
 const express = require('express')
-const { Storage } = require('@google-cloud/storage');
-const Reader = require('@maxmind/geoip2-node').Reader;
+const path = require('path')
 const bodyParser = require('body-parser')
 const historyRouter = require('./routes/historyRouter')
 const indexRouter = require('./routes/indexRouter')
@@ -10,10 +9,9 @@ const addEmailRouter = require('./routes/addEmail')
 const emailReminderRouter = require('./routes/emailReminder')
 const getResultsFieldsRouter = require('./routes/getResultsFields')
 const metadataRouter = require('./routes/metadata')
+
 const app = express()
-const path = require('path')
 const port = 8080
-const bucketName = 'strengthtest-353601.appspot.com'
 
 require('dotenv').config()
 
@@ -39,33 +37,5 @@ app.get('/reset', function(req, res) {
 })
 
 app.listen(port, async () => {
-  const cityFile = 'GeoIP2-City.mmdb'
-  const cityDestination = path.join(__dirname, '/data/city/GeoIP2-City.mmdb')
-  const ispFile = 'GeoIP2-ISP.mmdb'
-  const ispDestination = path.join(__dirname, '/data/city/GeoIP2-ISP.mmdb')
-
-  try {
-    const config = {
-      credentials: {
-        client_email: process.env.GCLOUD_STORAGE_CLIENT_EMAIL,
-        private_key: process.env.GCLOUD_STORAGE_PRIVATE_KEY
-      }
-    }
-    
-    const storage = new Storage(config)
-
-    // Downloads the file
-    await storage.bucket(bucketName).file(cityFile).download({ destination: cityDestination })
-    const cityReader = await Reader.open('./data/city/GeoIP2-City.mmdb')
-    app.set('cityReader', cityReader)
-
-    await storage.bucket(bucketName).file(ispFile).download({ destination: ispDestination })
-    const ispReader = await Reader.open('./data/isp/GeoIP2-ISP.mmdb')
-    app.set('ispReader', ispReader)
-
-  } catch (error) {
-    console.log(error)
-  }
-
   console.log(`Community Broadband Toolkit listening on port ${port}`)
 })
