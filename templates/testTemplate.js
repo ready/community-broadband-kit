@@ -63,7 +63,7 @@ function testTemplate(config) {
                 <div id ="answers" class="list"></div>
                 <button id="nav-btn" class="button" alt="next button">Next</button>
                 <div class="progress-row">
-                  <div class="s-text dark-blue"><span id="questions-answered"></span> / <span id="question-total"></span></div>
+                  <div class="s-text default-color"><span id="questions-answered"></span> / <span id="question-total"></span></div>
                   <progress id="survey-progress-bar" max="100" value="0"></progress>
                 </div>
               </div>
@@ -102,7 +102,7 @@ function testTemplate(config) {
               </div>
               <div class="wide-background-container">
                 <h3 class="small-heading">You are <span class='large-result-tag' id="service-status">test</span></h3>
-                <p class="dark-blue">Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.</p>
+                <p class="default-color">Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.</p>
                 <div class="results-cards-container">
                   <div class="results-card">
                     <div class="results-card-title">
@@ -363,7 +363,7 @@ function testTemplate(config) {
                     </div>
                     <div id="router-warning" style="margin: 0 auto; max-width: fit-content; align-items: center">
                         <input type="checkbox" id="close-to-router" name="close-to-router">
-                        <label for="close-to-router" style="color: var(--color-text)">I am as close as possible to my 
+                        <label for="close-to-router" class="default-color">I am as close as possible to my 
                             <div class="tooltip">Wi-Fi router
                                 <span class="tooltiptext">
                                     <span id="router-definition" style="color: var(--color-gray-0)"></span>

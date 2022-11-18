@@ -84,9 +84,7 @@
   border: 0;
   outline: 0;
   font-family: Arial, Helvetica, sans-serif;
-  /*font-weight: normal;*/
   background: transparent;
-  /*color: var(--color-text);*/
   box-sizing: border-box;
 }
 
@@ -1318,7 +1316,7 @@ progress[value]::-webkit-progress-value {
   color: var(--color-gray-0);
 }
 
-.dark-blue {
+.default-color {
   color: var(--color-text);
 }
 
