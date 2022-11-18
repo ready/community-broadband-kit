@@ -26,6 +26,7 @@ function headerTemplate(config) {
 				<i class="menuIcon material-icons">menu</i>
 				<i class="close-icon material-icons">close</i>
 			</button>
+			
 			<nav class='nav-container'>
 				<a href="/#info">What's This</a>
 				<a href="/history">History</a>
@@ -46,7 +47,21 @@ function headerTemplate(config) {
 					<a href="#" target="_blank" class="email-btn-header">
 						<i class="fas fa-envelope icon-gray"></i>
 					</a>
-        </div>
+				</div>
+				<div class="language-container" style="justify-content: flex-end;">
+					<div id="google_translate_element"></div>
+					<script type="text/javascript">
+						function googleTranslateElementInit() {
+							new google.translate.TranslateElement(
+								{pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL},
+								'google_translate_element'
+							);
+						}
+					</script>
+					<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
+							cb=googleTranslateElementInit">
+					</script>
+				</div>
 			</nav>
 		</header>
   `

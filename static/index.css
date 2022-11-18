@@ -84,9 +84,7 @@
   border: 0;
   outline: 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: normal;
   background: transparent;
-  color: var(--color-text); 
   box-sizing: border-box;
 }
 
@@ -357,6 +355,7 @@ i {
 .section-description {
   font-size: var(--font-size-body1);
   color: var(--color-subheading);
+  font-weight: normal;
 }
 
 ul li {
@@ -434,6 +433,12 @@ ul li {
 .nav-container {
   display: flex;
   align-items: center;
+}
+
+.language-container {
+  display: flex;
+  align-items: center;
+  margin-right: -50px;
 }
   
 .menu a,
@@ -778,6 +783,8 @@ input[type="checkbox"] ~ label {
     flex-direction: row; 
     width: fit-content; 
     margin: 20px auto;
+    color: var(--color-text);
+    font-weight: normal;
 }
 
 .answer-option {
@@ -824,6 +831,32 @@ input[type="checkbox"] ~ label {
   height: 0px;
 }
 
+ /* Hide google translate link | logo */
+.goog-logo-link{
+  display:none!important;
+}
+
+.goog-te-gadget{
+  color:transparent!important;
+}
+
+#google_translate_element select{
+  background: var(--color-gray-1);
+  color:var(--color-nav-text);
+  border: 2px solid var(--color-nav-text);
+  border-radius:3px;
+  padding:6px 8px;
+  width: 140px;
+  }
+
+/* google translate banner-frame 
+.goog-te-banner-frame{
+display:none !important;
+} */
+
+#goog-gt-tt, .goog-te-balloon-frame{display: none !important;}
+.goog-text-highlight { background: none !important; box-shadow: none !important;}
+
 .address input[type=text], .address textarea {
   width: 94%;
   height: 56px;
@@ -832,6 +865,7 @@ input[type="checkbox"] ~ label {
   background-color: var(--color-gray-0);
   border: 1px solid var(--color-text);
   border-radius: 4px;
+  color: var(--color-text)
 }
 
 #address-warning {
@@ -1251,10 +1285,12 @@ progress[value]::-webkit-progress-value {
 
 .load-bar-started:after {
   border-left: 20px solid var(--color-accent);
+  color: var(--color-text);
 }
 
 .load-bar-not-started {
   background-color: var(--color-gray-4);
+  color: var(--color-text);
 }
 
 .load-bar-not-started:before {
@@ -1270,10 +1306,18 @@ progress[value]::-webkit-progress-value {
   color: var(--color-gray-0);
 }
 
+.load-bar-not-started > .load-label {
+  color: var(--color-text);
+}
+
 /******************* Colors *******************/
 
 .white, .white * {
   color: var(--color-gray-0);
+}
+
+.default-color {
+  color: var(--color-text);
 }
 
 /******************* Test *******************/
@@ -1345,6 +1389,7 @@ progress[value]::-webkit-progress-value {
 
 .test-title h3 {
   font-weight: 600;
+  color: var(--color-text);
 }
 
 .large-result-tag {
@@ -1412,6 +1457,7 @@ progress[value]::-webkit-progress-value {
   color: var(--color-gray-7);
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-weight: normal;
 }
 
 .speed-result {
@@ -1459,13 +1505,14 @@ progress[value]::-webkit-progress-value {
   justify-content: space-evenly;
   cursor: pointer;
   align-items: center;
+  color: var(--color-text);
 }
   
 .share-buttons a {
   font-size: 20px;
   margin-right: 10px;
   margin-left: 10px;
-  color: var(--color-3);
+  color: var(--color-text);
 }
 
 /******************* History *******************/
@@ -1512,6 +1559,7 @@ progress[value]::-webkit-progress-value {
 
 .table td {
   font-size: var(--s-font);
+  color: var(--color-text);
 }
 
 .table-results {
@@ -1765,6 +1813,10 @@ progress[value]::-webkit-progress-value {
 
 @media only screen and (max-width: 900px) {
   .nav-container {
+    display: none;
+  }
+
+  .language-container {
     display: none;
   }
 

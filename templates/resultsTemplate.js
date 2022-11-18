@@ -45,7 +45,7 @@ async function resultsTemplate(id, config) {
         <div class="hero-section-container center-content">
           <div class="wide-background-container">
             <h3 class="small-heading">You are <span class='large-result-tag ${resultsFields.serviceStatusClass}' id="service-status">${resultsFields.serviceStatusText}</span></h3>
-            <p>Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.</p>
+            <p class="default-color">Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.</p>
             <div class="results-cards-container">
               <div class="results-card">
                 <div class="results-card-title">
