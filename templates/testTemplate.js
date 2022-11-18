@@ -299,6 +299,7 @@ function testTemplate(config) {
                   </div>
                 </div>
               </div>
+              <a class="button" style="align-self: flex-end;" href="/test/">Test Again</a>
             </div>
           </div>
 
@@ -410,14 +411,7 @@ function testTemplate(config) {
                 </div>
                 <div id="item-4" style="display: none;">
                     <div class="checklist-question">
-                        <p class="checklist-header">I know information about my tier of internet service such as monthly cost and speed in order to complete survey questions.</p>
-                    </div>
-                
-                    <div class="checklist-answer-row">
-                        <div class="answer-option"id="know-information" onclick="toggleSelected('know-information')">
-                            <img class="checklist-icon" src="/static/assets/knowledge_icon.png" width="32" height="32" alt="Wired-icon">
-                            <div class="icon-text">Yes</div>
-                        </div>
+                        <p class="checklist-header">Please have information about your tier of internet service in order to complete survey questions...</p>
                     </div>
                 </div>
             </div>
