@@ -225,7 +225,7 @@ body {
 /******************* General *******************/
 
 #history, #results, #ookla-test, #survey-instructions, #router-warning,
-#survey-container, #end-links, #history-empty, #test, #methodology, #error, #address, #ookla-loading {
+#survey-container, #end-links, #history-empty, #test, #methodology, #error, #address, #ookla-loading, #checklist, #same-setup {
   display: none;
 }
 
@@ -1807,13 +1807,13 @@ progress[value]::-webkit-progress-value {
   }
 }
 
-@media only screen and (min-width: 852px) {
+@media only screen and (min-width: 900px) {
   .hamburger {
     display: none;
   }
 }
 
-@media only screen and (max-width: 852px) {
+@media only screen and (max-width: 900px) {
   .nav-container {
     display: none;
   }

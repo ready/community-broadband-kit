@@ -1,6 +1,12 @@
+const path = require('path')
 require('dotenv').config()
 
+exports.CITY_PATH = path.join(__dirname, '../GeoIP2-City.mmdb')
+exports.ISP_PATH = path.join(__dirname, '../GeoIP2-ISP.mmdb')
+
 const LOCAL_TESTING_FLAG = process.env.NODE_ENV !== 'production'
+
+exports.LOCAL_TESTING_FLAG = LOCAL_TESTING_FLAG
 
 const BGA_URLS = {
     local: 'http://localhost:4000/graphql',

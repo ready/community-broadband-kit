@@ -1,4 +1,6 @@
 node_modules
 .DS_Store
 .env
+GeoIP2-City.mmdb
+GeoIP2-ISP.mmdb
 data

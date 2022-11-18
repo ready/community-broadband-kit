@@ -8,13 +8,11 @@ const metadataUtil = require('../utils/metadata/metadata')
  */
 router.get('/metadata', async function (req, res, next) {
     const address = metadataUtil.getIpAddress(req)
-    const ispReader = req.app.get('ispReader')
-    const cityReader = req.app.get('cityReader')
     
     outgoing = {
         ip: address,
-        isp: await metadataUtil.getIspName(address, ispReader),
-        loc: await metadataUtil.getLocation(address, cityReader),
+        isp: await metadataUtil.getIspName(address),
+        loc: await metadataUtil.getLocation(address),
         ua: metadataUtil.getUaInfo(req)
     };
 

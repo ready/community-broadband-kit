@@ -4,13 +4,13 @@
  * @returns an html template
  */
 function headerTemplate(config) {
-	const logoWidth = config.logoWidth ? config.logoWidth : '80px'
-
   return `
 		<header class='header-container'>
-			<a class='logo' href="/">
-				<img id="logo-horizontal-blue-img" height="80px" src="${config.logo}" alt='your community logo' />
-			</a>
+			<div class='header-logo' >
+				<a class='logo' href="/">
+					<img class="logo-img" height="80px" src="${config.logo}" alt='your community logo' />
+				</a>
+			</div>
 			<ul class="menu">
 				<li><a href="/#info">What's This</a></li>
 				<li><a href="/history">History</a></li>
@@ -66,8 +66,6 @@ function headerTemplate(config) {
 				</div>
 			</div>
 		</header>
-		<script type="module" src="/static/utils/showContent.js"></script>
-
   `
 }
 
