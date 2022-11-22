@@ -20,6 +20,7 @@ function headerTemplate(config) {
 						Get Your Own
 					</a>
 				</li>
+				<li class="language-container"></li>
 			</ul>
 			<button class="hamburger">
 				<!-- material icons https://material.io/resources/icons/ -->
@@ -48,20 +49,7 @@ function headerTemplate(config) {
 						<i class="fas fa-envelope icon-gray"></i>
 					</a>
 				</div>
-				<div class="language-container" style="justify-content: flex-end;">
-					<div id="google_translate_element"></div>
-					<script type="text/javascript">
-						function googleTranslateElementInit() {
-							new google.translate.TranslateElement(
-								{pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL},
-								'google_translate_element'
-							);
-						}
-					</script>
-					<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?
-							cb=googleTranslateElementInit">
-					</script>
-				</div>
+				<div class="language-container"></div>
 			</nav>
 		</header>
   `
