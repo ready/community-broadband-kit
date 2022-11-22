@@ -8,7 +8,7 @@ function headerTemplate(config) {
 		<header class='header-container'>
 			<div class='header-logo' >
 				<a class='logo' href="/">
-					<img class="logo-img" height="80px" src="${config.logo}" alt='your community logo' />
+					<img class="logo-img" src="${config.logo}" alt='your community logo' />
 				</a>
 			</div>
 			<ul class="menu">
