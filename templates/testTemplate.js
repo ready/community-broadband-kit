@@ -299,6 +299,7 @@ function testTemplate(config) {
                   </div>
                 </div>
               </div>
+              <a class="default-color" style="align-self: flex-end" href="https://broadband.money/broadband-audits" target="_blank">See your state broadband audit →</a>
               <a class="button" style="align-self: flex-end;" href="/test/">Test Again</a>
             </div>
           </div>
