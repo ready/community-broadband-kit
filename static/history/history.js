@@ -21,31 +21,33 @@ let next = null
  */
 function fillTable(results) {
     results.forEach((result) => {
-        // Create a table row element
-        const row = document.createElement('tr')
+        if (!result.noService){
+            // Create a table row element
+            const row = document.createElement('tr')
 
-        // Set the url of the row to the result route
-        const url = `/results/${result.id}`;
-        row.onclick = () => {window.location = url}
+            // Set the url of the row to the result route
+            const url = `/results/${result.id}`;
+            row.onclick = () => {window.location = url}
 
-        const rowData = []
+            const rowData = []
 
-        // Create the column elements for the row and append it to the array
-        for (let i = 0; i < NUM_COLUMNS; i++) {
-            const td = document.createElement('td')
-            row.appendChild(td)
-            rowData.push(td);
-        }
+            // Create the column elements for the row and append it to the array
+            for (let i = 0; i < NUM_COLUMNS; i++) {
+                const td = document.createElement('td')
+                row.appendChild(td)
+                rowData.push(td);
+            }
 
-        // Set the text content for the row element
-        rowData[0].textContent = result.medianUpload
-        rowData[1].textContent = result.medianDownload
-        rowData[2].textContent = result.medianLatency
-        rowData[3].textContent = result.medianJitter
-        rowData[4].textContent = new Date(result.createdAt).toLocaleDateString()
+            // Set the text content for the row element
+            rowData[0].textContent = result.medianUpload
+            rowData[1].textContent = result.medianDownload
+            rowData[2].textContent = result.medianLatency
+            rowData[3].textContent = result.medianJitter
+            rowData[4].textContent = new Date(result.createdAt).toLocaleDateString()
 
-        // Append the row to the table
-        table.appendChild(row)
+            // Append the row to the table
+            table.appendChild(row)
+       }
     })
 }
 
@@ -98,6 +100,7 @@ async function getNextPage() {
                     medianDownload
                     ipAddress
                     ispName
+                    noService
                     createdAt
               },
               pageInfo {
