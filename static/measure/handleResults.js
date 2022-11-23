@@ -2,7 +2,7 @@
 
 import { getUuid } from '/static/utils/cookies.js'
 import { BGA_URL } from '/static/utils/constants.js'
-import { displayResults } from '/static/utils/resultsUtils.js'
+import { rollupResults, displayResults } from '/static/utils/resultsUtils.js'
 import { uploadSurveyData } from '/static/measure/survey.js'
 
 // Document selectors
@@ -50,6 +50,10 @@ async function uploadData(results) {
       ooklaJitter: ${results.ooklaJitter},
       ooklaUpload: ${results.ooklaUpload},
       ooklaDownload: ${results.ooklaDownload},
+      medianLatency: ${results.medianLatency},
+      medianJitter: ${results.medianJitter},
+      medianUpload: ${results.medianUpload},
+      medianDownload: ${results.medianDownload},
       usingEthernet: ${results.usingEthernet},
       closeToRouter: ${results.closeToRouter},
       vpnOff: ${results.vpnOff},
@@ -85,6 +89,8 @@ async function uploadData(results) {
 async function handleResults(metadata, checklistResponses, address, results) {
   let uuid = getUuid()
 
+  const rollup = rollupResults(results)
+
   const data = {
     uuid: uuid,
     addressLat: address.lat,
@@ -117,6 +123,10 @@ async function handleResults(metadata, checklistResponses, address, results) {
     ooklaJitter: results.ooklaJitter,
     ooklaUpload: results.ooklaUpload,
     ooklaDownload: results.ooklaDownload,
+    medianLatency: rollup.latency,
+    medianJitter: rollup.jitter,
+    medianUpload: rollup.upload,
+    medianDownload: rollup.download,
     usingEthernet: checklistResponses.usingEthernet,
     closeToRouter: checklistResponses.closeToRouter,
     vpnOff: checklistResponses.vpnOff,

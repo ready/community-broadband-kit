@@ -1,7 +1,6 @@
 'use strict'
 
 import { BGA_URL } from '/static/utils/constants.js'
-import { rollupResults } from "/static/utils/resultsUtils.js"
 import { getUuid } from '/static/utils/cookies.js'
 
 // Document selectors
@@ -37,9 +36,6 @@ function fillTable(results) {
             row.appendChild(td)
             rowData.push(td);
         }
-
-        // Retrieve the results
-        const rollup = rollupResults(result)
 
         // Set the text content for the row element
         rowData[0].textContent = result.medianUpload
