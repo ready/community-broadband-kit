@@ -223,7 +223,7 @@ body {
 /******************* General *******************/
 
 #history, #results, #ookla-test, #survey-instructions, #router-warning,
-#survey-container, #end-links, #history-empty, #test, #methodology, #error, #address, #ookla-loading, #checklist, #same-setup {
+#survey-container, #end-links, #history-empty, #test, #methodology, #error, #address, #ookla-loading, #checklist, #same-setup, #no-service {
   display: none;
 }
 
@@ -711,6 +711,8 @@ input[type="checkbox"] {
 input[type="checkbox"] ~ label { 
   padding-left: 2em;
   display: inline-block;
+  color: var(--color-text);
+  font-size: 18px;
 }
 
 .checklist-progress-bar {

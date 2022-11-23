@@ -53,7 +53,44 @@ async function uploadData(results) {
       usingEthernet: ${results.usingEthernet},
       closeToRouter: ${results.closeToRouter},
       vpnOff: ${results.vpnOff},
-      noInterruptFromOtherDevices: ${results.noInterruptFromOtherDevices}
+      noInterruptFromOtherDevices: ${results.noInterruptFromOtherDevices},
+      noService: ${results.noService}
+    }) {
+      id
+    }}`
+  });
+
+  return fetch(BGA_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: body
+  })
+  .then(res => res.json())
+  .then (result => {
+    // Return the id associated with the result record in the database
+    return result.data.addMultitestData.id
+  })
+  .catch(err => console.error(err))
+}
+
+/**
+ * Uploads multitest no service data results to the database
+ * @param {*} results An object containing results
+ * @returns An ID associated with the result record in the database
+ */
+async function uploadNoServiceData(results) {
+  const body = JSON.stringify({
+    query: `mutation { addMultitestData(data: {
+      userId: "${results.uuid}",
+      organizationId: ${organizationId},
+      lat: ${results.lat},
+      lon: ${results.lon},
+      addressLat: ${results.addressLat},
+      addressLon: ${results.addressLon},
+      address: "${results.address}",
+      noService: ${results.noService}
     }) {
       id
     }}`
@@ -120,7 +157,8 @@ async function handleResults(metadata, checklistResponses, address, results) {
     usingEthernet: checklistResponses.usingEthernet,
     closeToRouter: checklistResponses.closeToRouter,
     vpnOff: checklistResponses.vpnOff,
-    noInterruptFromOtherDevices: checklistResponses.noInterruptFromOtherDevices
+    noInterruptFromOtherDevices: checklistResponses.noInterruptFromOtherDevices,
+    noService: checklistResponses.noService
   }
 
   await uploadSurveyData(uuid, data.addressLat, data.addressLon, address.text, data.ispName, data.ipAddress)
@@ -135,4 +173,4 @@ async function handleResults(metadata, checklistResponses, address, results) {
   await displayResults(data)
 }
 
-export default handleResults
+export {handleResults, uploadNoServiceData}

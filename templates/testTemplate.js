@@ -426,8 +426,16 @@ function testTemplate(config) {
               <section id="address-warning">* This field is required to continue </section>
             </div>
             <button class="button" id="geolocation" style="align-self: flex-start">Current location <i style="margin-left: 4px" class="fas fa-map-marker-alt"></i></button>
+            <div>
+              <input type="checkbox" id="servicable-location" name="servicable-location">
+              <label for="servicable-location">I do not have internet service at this location </label>
+            </div>
             <button class="button" id="begin-test">Start test</button>
-          </div>     
+          </div>
+          <div class="section-left background-container" id="no-service">
+            <h1 class="main-heading">Thank you for reporting your status at this location. </h1>
+            <h2 class="section-description">We have successfully recorded your response.</h2>
+          </div>   
           <div id="ookla-test"></div>
           ${landscapeBackground}
         </div>

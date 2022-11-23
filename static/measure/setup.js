@@ -1,7 +1,7 @@
 import { LOCAL_TESTING_FLAG } from '/static/utils/constants.js'
 import { initSurvey } from '/static/measure/survey.js'
 import runTests from '/static/test/runTests.js'
-import handleResults from "/static/measure/handleResults.js"
+import {handleResults, uploadNoServiceData} from "/static/measure/handleResults.js"
 import config from '/static/measure/config.js'
 import { getUuid } from '/static/utils/cookies.js'
 import { BGA_URL } from '/static/utils/constants.js'
@@ -14,6 +14,7 @@ const addressElement = document.getElementById('address')
 const headerShareBtns = document.getElementById('header-share-buttons')
 const geolocationElement = document.getElementById('geolocation')
 const addressWarningElement = document.getElementById('address-warning')
+const noServiceElement = document.getElementById('servicable-location')
 const nextBtn = document.getElementById('next-btn')
 const beginTestBtn = document.getElementById('begin-test')
 const ispNameElement = document.getElementById('isp-name')
@@ -31,6 +32,7 @@ let address = {
   lat: null,
   lon: null
 }
+let noService
 const checklistItemTotal = 4
 let checklistCounter = 1
 let previousResults
@@ -203,7 +205,8 @@ function onPlaceChanged() {
  * Validates the address entered. Either displays a warning or begins the test
  */
 function validateAddress() {
-  if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired) {
+  noService = noServiceElement.checked
+  if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired && !noService) {
     addressWarningElement.style.display = 'block'
   } else {
     beginTest()
@@ -368,6 +371,7 @@ async function sameSetup() {
   beginTest()
 }
 
+
 /**
  * Sets up and runs the speed tests
  */
@@ -381,6 +385,38 @@ async function beginTest() {
     config.error?.('Error: client is offline');
   }
 
+  // Gets metadata
+  metadata = await metadata
+
+  // Save servicable location to checklist responses
+  checklistResponses.noService = noService
+
+  // If no service at the location record reponse and display message rather than starting test
+  if (noService) {
+    let uuid = getUuid()
+    let results = {
+      uuid: uuid,
+      organizationId: organizationId,
+      addressLat: address.lat,
+      addressLon: address.lon,
+      address: address.text,
+      lat: metadata.lat || 37.5630,
+      lon: metadata.lon || 122.3255,
+      noService: noService
+    }
+
+    // Upload no service results
+    await uploadNoServiceData(results)
+
+    // Hide address display
+    addressElement.style.display = 'none'
+
+    // Display recorded response message
+    document.getElementById('no-service').style.display = 'flex'
+
+    return
+  }
+
   // Stores the address data in session storage
   sessionStorage.setItem('addressLat', address.lat)
   sessionStorage.setItem('addressLon', address.lon)
@@ -390,10 +426,7 @@ async function beginTest() {
   headerShareBtns.style.display = 'none'
   checklistElement.style.display = 'none'
   addressElement.style.display = 'none'
-  sameSetupElement.style.display = "none"
-
-  // Gets metadata
-  metadata = await metadata
+  sameSetupElement.style.display = 'none'
 
   // Sets up the survey
   initSurvey(metadata.ip)
