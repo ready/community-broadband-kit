@@ -19,7 +19,7 @@ function testTemplate(config) {
     <!DOCTYPE html>
     <html lang="en">
     ${head}
-    <body onload="displaySameSetupOrChecklist()">
+    <body onload="displaySameSetupOrAddress()">
       <section id="test-section" class="section-container" style="padding-top:0;">
         ${header}
         <div class="hero-section-container center-content">
@@ -319,8 +319,8 @@ function testTemplate(config) {
           </div>
 
           <div class="background-container" id="checklist" style="gap: 1em;">
-            <h1 class="main-heading">Before We Begin...</h1>
-            <h2 class="section-description">For best results, we recommend taking the following steps. Please select a step if it has been done. Hover over underlined terms for additional information.</h2>
+            <h1 class="main-heading" id="checklist-heading">Before we begin...</h1>
+            <h2 class="section-description">For best results, we recommend answering the following questions. Hover over underlined terms for additional information.</h2>
             <div class="checklist-progress-bar">
               <div class="progress-step">
                 <div class="checklist-circle checklist-colored-circle" id="step-1" >1</div>
@@ -419,7 +419,7 @@ function testTemplate(config) {
           </div>
 
           <div class="background-container" id="address" address-required=${addressRequired}>
-            <h1 class="main-heading">One Last Step</h1>
+            <h1 class="main-heading">Before we begin...</h1>
             <h2 class="section-description" id="address-entry-message">Your location is required to help your community get better internet. Please enter your address below. It will not be shared with the public. </h2>
             <div class="address">
               <input type="text" name="address" id="autocomplete" class="pac-target-input" placeholder="Enter a location" aria-label="Enter location">
@@ -430,7 +430,7 @@ function testTemplate(config) {
               <input type="checkbox" id="servicable-location" name="servicable-location">
               <label for="servicable-location">I do not have internet service at this location </label>
             </div>
-            <button class="button" id="begin-test">Start test</button>
+            <button class="button" id="submit-address">Next</button>
           </div>
           <div class="section-left background-container" id="no-service">
             <h1 class="main-heading">Thank you for reporting your status at this location. </h1>
