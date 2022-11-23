@@ -165,22 +165,6 @@ exports.getResultsFields = (results) => {
         ooklaDownloadServiceStatusText,
         ooklaDownloadServiceStatusClass,
         ooklaUploadServiceStatusText,
-        ooklaUploadServiceStatusClass,
-        downloadRollup: results.medianDownload,
-        uploadRollup: results.medianUpload,
-        latencyRollup: results.medianLatency,
-        jitterRollup: results.medianJitter,
-        mlabDownload: results.mlabDownload,
-        mlabUpload: results.mlabUpload,
-        mlabLatency: results.mlabLatency,
-        mlabJitter: results.mlabJitter,
-        rstDownload: results.rstDownload,
-        rstUpload: results.rstUpload,
-        rstLatency: results.rstLatency,
-        rstJitter: results.rstJitter,
-        ooklaDownload: results.ooklaDownload,
-        ooklaUpload: results.ooklaUpload,
-        ooklaLatency: results.ooklaLatency,
-        ooklaJitter: results.ooklaJitter
+        ooklaUploadServiceStatusClass
     }
 }
