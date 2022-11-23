@@ -53,7 +53,7 @@ async function resultsTemplate(id, config) {
                   <h4>Download</h4>
                 </div>
                 <div class="speed-result">
-                  <p class="result" id="download-rollup">${resultsFields.downloadRollup}</p>
+                  <p class="result" id="download-rollup">${results.medianDownload}</p>
                   <span class="units"> Mbps</span>
                 </div>
                 <p class="result-tag ${resultsFields.downloadServiceStatusClass}" id="download-service">${resultsFields.downloadServiceStatusText}</p>
@@ -64,7 +64,7 @@ async function resultsTemplate(id, config) {
                   <h4>Upload</h4>
                 </div>
                 <div class="speed-result">
-                  <p class="result" id="upload-rollup">${resultsFields.uploadRollup}</p>
+                  <p class="result" id="upload-rollup">${results.medianUpload}</p>
                   <span class="units"> Mbps</span>
                 </div>
                 <p class="result-tag ${resultsFields.uploadServiceStatusClass}" id="upload-service">${resultsFields.uploadServiceStatusText}</p>
@@ -75,7 +75,7 @@ async function resultsTemplate(id, config) {
                   <h4>Latency</h4>
                 </div>
                 <div class="speed-result">
-                  <p class="result" id="latency-rollup">${resultsFields.latencyRollup}</p>
+                  <p class="result" id="latency-rollup">${results.medianLatency}</p>
                   <span class="units"> ms</span>
                 </div>
                 <p class="service-status" id="latency-service"></p>
@@ -86,7 +86,7 @@ async function resultsTemplate(id, config) {
                   <h4>Jitter</h4>
                 </div>
                 <div class="speed-result">
-                  <p class="result" id="jitter-rollup">${resultsFields.jitterRollup}</p>
+                  <p class="result" id="jitter-rollup">${results.medianJitter}</p>
                   <span class="units"> ms</span>
                 </div>
               </div>
@@ -105,7 +105,7 @@ async function resultsTemplate(id, config) {
                     <h4>Download</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="mlab-download">${resultsFields.mlabDownload}</p>
+                    <p class="result" id="mlab-download">${results.mlabDownload}</p>
                     <span class="units"> Mbps</span>
                   </div>
                   <p class="result-tag ${resultsFields.mlabDownloadServiceStatusClass}" id="mlab-download-service">${resultsFields.mlabDownloadServiceStatusText}</p>
@@ -116,7 +116,7 @@ async function resultsTemplate(id, config) {
                     <h4>Upload</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="mlab-upload">${resultsFields.mlabUpload}</p>
+                    <p class="result" id="mlab-upload">${results.mlabUpload}</p>
                     <span class="units"> Mbps</span>
                   </div>
                   <p class="result-tag ${resultsFields.mlabUploadServiceStatusClass}" id="mlab-upload-service">${resultsFields.mlabUploadServiceStatusText}</p>
@@ -127,7 +127,7 @@ async function resultsTemplate(id, config) {
                     <h4>Latency</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="mlab-latency">${resultsFields.mlabLatency}</p>
+                    <p class="result" id="mlab-latency">${results.mlabLatency}</p>
                     <span class="units"> ms</span>
                   </div>
                   <p class="service-status" id="mlab-latency-service"></p>
@@ -138,7 +138,7 @@ async function resultsTemplate(id, config) {
                     <h4>Jitter</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="mlab-jitter">${resultsFields.mlabJitter}</p>
+                    <p class="result" id="mlab-jitter">${results.mlabJitter}</p>
                     <span class="units"> ms</span>
                   </div>
                 </div>
@@ -154,7 +154,7 @@ async function resultsTemplate(id, config) {
                     <h4>Download</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="ookla-download">${resultsFields.ooklaDownload}</p>
+                    <p class="result" id="ookla-download">${results.ooklaDownload}</p>
                     <span class="units"> Mbps</span>
                   </div>
                   <p class="result-tag ${resultsFields.ooklaDownloadServiceStatusClass}" id="ookla-download-service">${resultsFields.ooklaDownloadServiceStatusText}</p>
@@ -165,7 +165,7 @@ async function resultsTemplate(id, config) {
                     <h4>Upload</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="ookla-upload">${resultsFields.ooklaUpload}</p>
+                    <p class="result" id="ookla-upload">${results.ooklaUpload}</p>
                     <span class="units"> Mbps</span>
                   </div>
                   <p class="result-tag ${resultsFields.ooklaDownloadServiceStatusClass}" id="ookla-upload-service">${resultsFields.ooklaUploadServiceStatusText}</p>
@@ -176,7 +176,7 @@ async function resultsTemplate(id, config) {
                     <h4>Latency</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="ookla-latency">${resultsFields.ooklaLatency}</p>
+                    <p class="result" id="ookla-latency">${results.ooklaLatency}</p>
                     <span class="units"> ms</span>
                   </div>
                   <p class="service-status" id="ookla-latency-service"></p>
@@ -187,7 +187,7 @@ async function resultsTemplate(id, config) {
                     <h4>Jitter</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="ookla-jitter">${resultsFields.ooklaJitter}</p>
+                    <p class="result" id="ookla-jitter">${results.ooklaJitter}</p>
                     <span class="units"> ms</span>
                   </div>
                 </div>
@@ -203,7 +203,7 @@ async function resultsTemplate(id, config) {
                     <h4>Download</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="rst-download">${resultsFields.rstDownload}</p>
+                    <p class="result" id="rst-download">${results.rstDownload}</p>
                     <span class="units"> Mbps</span>
                   </div>
                   <p class="result-tag ${resultsFields.rstDownloadServiceStatusClass}" id="rst-download-service">${resultsFields.rstDownloadServiceStatusText}</p>
@@ -214,7 +214,7 @@ async function resultsTemplate(id, config) {
                     <h4>Upload</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="rst-upload">${resultsFields.rstUpload}</p>
+                    <p class="result" id="rst-upload">${results.rstUpload}</p>
                     <span class="units"> Mbps</span>
                   </div>
                   <p class="result-tag ${resultsFields.rstUploadServiceStatusClass}" id="rst-upload-service">${resultsFields.rstUploadServiceStatusText}</p>
@@ -225,7 +225,7 @@ async function resultsTemplate(id, config) {
                     <h4>Latency</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="rst-latency">${resultsFields.rstLatency}</p>
+                    <p class="result" id="rst-latency">${results.rstLatency}</p>
                     <span class="units"> ms</span>
                   </div>
                   <p class="service-status" id="rst-latency-service"></p>
@@ -236,7 +236,7 @@ async function resultsTemplate(id, config) {
                     <h4>Jitter</h4>
                   </div>
                   <div class="speed-result">
-                    <p class="result" id="rst-jitter">${resultsFields.rstJitter}</p>
+                    <p class="result" id="rst-jitter">${results.rstJitter}</p>
                     <span class="units"> ms</span>
                   </div>
                 </div>

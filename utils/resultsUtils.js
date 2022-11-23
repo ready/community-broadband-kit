@@ -65,47 +65,6 @@ function getServiceClassName(status) {
 }
 
 /**
- * Gets the median from an array of values
- * @param {*} array 
- * @returns The median value
- */
-function getMedian(array) {
-    let concat = array;
-    concat = concat.sort(
-        function (a, b) { return a - b })
-
-    let length = concat.length
-
-    if (length % 2 == 1) {
-        return concat[(length / 2) - .5]
-    }
-    else {
-        return (concat[length / 2] + concat[(length / 2) - 1]) / 2
-    }
-}
-
-/**
- * Gets the rollup results by getting the median values across
- * all three speed tests
- * @param {*} results An object containing test results
- * @returns An object containing rollup results
- */
-function rollupResults(results) {
-
-    const downloadMedian = getMedian([results.mlabDownload, results.rstDownload, results.ooklaDownload])
-    const uploadMedian = getMedian([results.mlabUpload, results.rstUpload, results.ooklaUpload])
-    const latencyMedian = getMedian([results.mlabLatency, results.rstLatency, results.ooklaLatency])
-    const jitterMedian = getMedian([results.mlabJitter, results.rstJitter, results.ooklaJitter])
-
-    return {
-        download: downloadMedian,
-        upload: uploadMedian,
-        latency: latencyMedian,
-        jitter: jitterMedian
-    }
-}
-
-/**
  * Fetches the results from a result id
  * @param {*} id The id of the results to fetch
  * @returns An object containing the fetched results
@@ -126,6 +85,10 @@ exports.getResults = async (id) => {
                 ooklaJitter
                 ooklaUpload
                 ooklaDownload
+                medianLatency
+                medianJitter
+                medianUpload
+                medianDownload
             }
         }`
     });
@@ -150,13 +113,11 @@ exports.getResults = async (id) => {
  * @returns An object containing information to display on the results page
  */
 exports.getResultsFields = (results) => {
-    const rollup = rollupResults(results)
-
-    const serviceStatusText = getOverallServiceStatus(rollup.download, rollup.upload)
+    const serviceStatusText = getOverallServiceStatus(results.medianDownload, results.medianUpload)
     const serviceStatusClass = getServiceClassName(serviceStatusText)
-    const downloadServiceStatusText = getDownloadServiceStatus(rollup.download)
+    const downloadServiceStatusText = getDownloadServiceStatus(results.medianDownload)
     const downloadServiceStatusClass = getServiceClassName(downloadServiceStatusText)
-    const uploadServiceStatusText = getUploadServiceStatus(rollup.upload)
+    const uploadServiceStatusText = getUploadServiceStatus(results.medianUpload)
     const uploadServiceStatusClass = getServiceClassName(uploadServiceStatusText)
     
     const mlabServiceStatusText = getOverallServiceStatus(results.mlabDownload, results.mlabUpload)
@@ -204,22 +165,6 @@ exports.getResultsFields = (results) => {
         ooklaDownloadServiceStatusText,
         ooklaDownloadServiceStatusClass,
         ooklaUploadServiceStatusText,
-        ooklaUploadServiceStatusClass,
-        downloadRollup: rollup.download,
-        uploadRollup: rollup.upload,
-        latencyRollup: rollup.latency,
-        jitterRollup: rollup.jitter,
-        mlabDownload: results.mlabDownload,
-        mlabUpload: results.mlabUpload,
-        mlabLatency: results.mlabLatency,
-        mlabJitter: results.mlabJitter,
-        rstDownload: results.rstDownload,
-        rstUpload: results.rstUpload,
-        rstLatency: results.rstLatency,
-        rstJitter: results.rstJitter,
-        ooklaDownload: results.ooklaDownload,
-        ooklaUpload: results.ooklaUpload,
-        ooklaLatency: results.ooklaLatency,
-        ooklaJitter: results.ooklaJitter
+        ooklaUploadServiceStatusClass
     }
 }

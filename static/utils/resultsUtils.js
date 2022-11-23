@@ -7,7 +7,6 @@ const mlabLatencyElement = document.getElementById('mlab-latency')
 const mlabJitterElement = document.getElementById('mlab-jitter')
 const mlabUploadServiceStatus = document.getElementById('mlab-upload-service')
 const mlabDownloadServiceStatus = document.getElementById('mlab-download-service')
-const mlabLatencyServiceStatus = document.getElementById('mlab-latency-service')
 const mlabServiceStatus = document.getElementById('mlab-service-status')
 
 const rstDownloadElement = document.getElementById('rst-download')
@@ -16,7 +15,6 @@ const rstLatencyElement = document.getElementById('rst-latency')
 const rstJitterElement = document.getElementById('rst-jitter')
 const rstUploadServiceStatus = document.getElementById('rst-upload-service')
 const rstDownloadServiceStatus = document.getElementById('rst-download-service')
-const rstLatencyServiceStatus = document.getElementById('rst-latency-service')
 const rstServiceStatus = document.getElementById('rst-service-status')
 
 const ooklaDownloadElement = document.getElementById('ookla-download')
@@ -25,7 +23,6 @@ const ooklaLatencyElement = document.getElementById('ookla-latency')
 const ooklaJitterElement = document.getElementById('ookla-jitter')
 const ooklaUploadServiceStatus = document.getElementById('ookla-upload-service')
 const ooklaDownloadServiceStatus = document.getElementById('ookla-download-service')
-const ooklaLatencyServiceStatus = document.getElementById('ookla-latency-service')
 const ooklaServiceStatus = document.getElementById('ookla-service-status')
 
 const downloadRollupElement = document.getElementById('download-rollup')
@@ -33,7 +30,6 @@ const downloadServiceStatus = document.getElementById('download-service')
 const uploadRollupElement = document.getElementById('upload-rollup')
 const uploadServiceStatus = document.getElementById('upload-service')
 const latencyRollupElement = document.getElementById('latency-rollup')
-const latencyServiceStatus = document.getElementById('latency-service')
 const jitterRollupElement = document.getElementById('jitter-rollup')
 const serviceStatusElement = document.getElementById('service-status')
 
@@ -106,19 +102,19 @@ async function displayResults(results) {
 
     serviceStatusElement.textContent = resultsFields.serviceStatusText
     serviceStatusElement.className += resultsFields.serviceStatusClass
-    downloadRollupElement.textContent = resultsFields.downloadRollup
-    uploadRollupElement.textContent = resultsFields.uploadRollup
-    latencyRollupElement.textContent = resultsFields.latencyRollup
-    jitterRollupElement.textContent = resultsFields.jitterRollup
+    downloadRollupElement.textContent = results.medianDownload
+    uploadRollupElement.textContent = results.medianUpload
+    latencyRollupElement.textContent = results.medianLatency
+    jitterRollupElement.textContent = results.medianJitter
     downloadServiceStatus.textContent = resultsFields.downloadServiceStatusText
     downloadServiceStatus.className += resultsFields.downloadServiceStatusClass
     uploadServiceStatus.textContent = resultsFields.uploadServiceStatusText
     uploadServiceStatus.className += resultsFields.uploadServiceStatusClass
     
-    mlabDownloadElement.textContent = resultsFields.mlabDownload
-    mlabUploadElement.textContent = resultsFields.mlabUpload
-    mlabLatencyElement.textContent = resultsFields.mlabLatency
-    mlabJitterElement.textContent = resultsFields.mlabJitter
+    mlabDownloadElement.textContent = results.mlabDownload
+    mlabUploadElement.textContent = results.mlabUpload
+    mlabLatencyElement.textContent = results.mlabLatency
+    mlabJitterElement.textContent = results.mlabJitter
     mlabDownloadServiceStatus.textContent = resultsFields.mlabDownloadServiceStatusText
     mlabDownloadServiceStatus.className += resultsFields.mlabDownloadServiceStatusClass
     mlabUploadServiceStatus.textContent = resultsFields.mlabUploadServiceStatusText
@@ -126,10 +122,10 @@ async function displayResults(results) {
     mlabServiceStatus.textContent = resultsFields.mlabServiceStatusText
     mlabServiceStatus.className += resultsFields.mlabServiceStatusClass
 
-    rstDownloadElement.textContent = resultsFields.rstDownload
-    rstUploadElement.textContent = resultsFields.rstUpload
-    rstLatencyElement.textContent = resultsFields.rstLatency
-    rstJitterElement.textContent = resultsFields.rstJitter
+    rstDownloadElement.textContent = results.rstDownload
+    rstUploadElement.textContent = results.rstUpload
+    rstLatencyElement.textContent = results.rstLatency
+    rstJitterElement.textContent = results.rstJitter
     rstDownloadServiceStatus.textContent = resultsFields.rstDownloadServiceStatusText
     rstDownloadServiceStatus.className += resultsFields.rstDownloadServiceStatusClass
     rstUploadServiceStatus.textContent = resultsFields.rstUploadServiceStatusText
@@ -137,10 +133,10 @@ async function displayResults(results) {
     rstServiceStatus.textContent = resultsFields.rstServiceStatusText
     rstServiceStatus.className += resultsFields.rstServiceStatusClass
 
-    ooklaDownloadElement.textContent = resultsFields.ooklaDownload
-    ooklaUploadElement.textContent = resultsFields.ooklaUpload
-    ooklaLatencyElement.textContent = resultsFields.ooklaLatency
-    ooklaJitterElement.textContent = resultsFields.ooklaJitter
+    ooklaDownloadElement.textContent = results.ooklaDownload
+    ooklaUploadElement.textContent = results.ooklaUpload
+    ooklaLatencyElement.textContent = results.ooklaLatency
+    ooklaJitterElement.textContent = results.ooklaJitter
     ooklaDownloadServiceStatus.textContent = resultsFields.ooklaDownloadServiceStatusText
     ooklaDownloadServiceStatus.className += resultsFields.ooklaDownloadServiceStatusClass
     ooklaUploadServiceStatus.textContent = resultsFields.ooklaUploadServiceStatusText
