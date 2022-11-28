@@ -411,7 +411,7 @@ function testTemplate(config) {
                 </div>
                 <div id="item-4" style="display: none;">
                     <div class="checklist-question">
-                        <p class="checklist-header">Please have information about your tier of internet service in order to complete survey questions...</p>
+                        <p class="checklist-header">Please have information about your tier of internet service in order to complete survey questions.</p>
                     </div>
                 </div>
             </div>

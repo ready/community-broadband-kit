@@ -233,8 +233,8 @@ async function validateAddress() {
         addressLat: address.lat,
         addressLon: address.lon,
         address: address.text,
-        lat: metadata.lat || 37.5630,
-        lon: metadata.lon || 122.3255,
+        lat: metadata.lat,
+        lon: metadata.lon,
         noService: noService
       }
 
