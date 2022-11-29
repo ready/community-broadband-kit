@@ -8,7 +8,7 @@ function headerTemplate(config) {
 		<header class='header-container'>
 			<div class='header-logo' >
 				<a class='logo' href="/">
-					<img class="logo-img" height="80px" src="${config.logo}" alt='your community logo' />
+					<img class="logo-img" src="${config.logo}" alt='your community logo' />
 				</a>
 			</div>
 			<ul class="menu">
@@ -20,12 +20,14 @@ function headerTemplate(config) {
 						Get Your Own
 					</a>
 				</li>
+				<li class="language-container"></li>
 			</ul>
 			<button class="hamburger">
 				<!-- material icons https://material.io/resources/icons/ -->
 				<i class="menuIcon material-icons">menu</i>
 				<i class="close-icon material-icons">close</i>
 			</button>
+			
 			<nav class='nav-container'>
 				<a href="/#info">What's This</a>
 				<a href="/history">History</a>
@@ -46,7 +48,8 @@ function headerTemplate(config) {
 					<a href="#" target="_blank" class="email-btn-header">
 						<i class="fas fa-envelope icon-gray"></i>
 					</a>
-        </div>
+				</div>
+				<div class="language-container"></div>
 			</nav>
 		</header>
   `

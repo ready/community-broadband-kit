@@ -24,7 +24,8 @@ const domains = {
     worth: 'worthspeed.broadband.money',
     holt: 'holtspeed.broadband.money',
     andrew: 'andrewspeed.broadband.money',
-    test: 'testspeed.broadband.money'
+    test: 'testspeed.broadband.money',
+    newark: 'newark.broadband.money'
 }
 
 exports.DEFAULT_DOMAIN = LOCAL_TESTING_FLAG ? domains.test : domains.default

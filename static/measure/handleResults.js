@@ -2,7 +2,7 @@
 
 import { getUuid } from '/static/utils/cookies.js'
 import { BGA_URL } from '/static/utils/constants.js'
-import { displayResults } from '/static/utils/resultsUtils.js'
+import { rollupResults, displayResults } from '/static/utils/resultsUtils.js'
 import { uploadSurveyData } from '/static/measure/survey.js'
 
 // Document selectors
@@ -50,10 +50,51 @@ async function uploadData(results) {
       ooklaJitter: ${results.ooklaJitter},
       ooklaUpload: ${results.ooklaUpload},
       ooklaDownload: ${results.ooklaDownload},
+      medianLatency: ${results.medianLatency},
+      medianJitter: ${results.medianJitter},
+      medianUpload: ${results.medianUpload},
+      medianDownload: ${results.medianDownload},
       usingEthernet: ${results.usingEthernet},
       closeToRouter: ${results.closeToRouter},
       vpnOff: ${results.vpnOff},
-      noInterruptFromOtherDevices: ${results.noInterruptFromOtherDevices}
+      noInterruptFromOtherDevices: ${results.noInterruptFromOtherDevices},
+      noService: ${results.noService}
+    }) {
+      id
+    }}`
+  });
+
+  return fetch(BGA_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: body
+  })
+  .then(res => res.json())
+  .then (result => {
+    // Return the id associated with the result record in the database
+    return result.data.addMultitestData.id
+  })
+  .catch(err => console.error(err))
+}
+
+/**
+ * Uploads multitest no service data results to the database
+ * @param {*} results An object containing results
+ * @returns An ID associated with the result record in the database
+ */
+async function uploadNoServiceData(results) {
+  const body = JSON.stringify({
+    query: `mutation { addMultitestData(data: {
+      userId: "${results.uuid}",
+      organizationId: ${organizationId},
+      lat: ${results.lat},
+      lon: ${results.lon},
+      addressLat: ${results.addressLat},
+      addressLon: ${results.addressLon},
+      address: "${results.address}",
+      noService: ${results.noService}
     }) {
       id
     }}`
@@ -85,6 +126,8 @@ async function uploadData(results) {
 async function handleResults(metadata, checklistResponses, address, results) {
   let uuid = getUuid()
 
+  const rollup = rollupResults(results)
+
   const data = {
     uuid: uuid,
     addressLat: address.lat,
@@ -93,8 +136,8 @@ async function handleResults(metadata, checklistResponses, address, results) {
     ipAddress: metadata.ip,
     ispName: metadata.isp,
     asn: metadata.asn,
-    lat: metadata.lat || 37.5630,
-    lon: metadata.lon || 122.3255,
+    lat: metadata.lat,
+    lon: metadata.lon,
     browserName: metadata.browserName ? `"${metadata.browserName}"` : null,
     browserVersion: metadata.browserVersion ? `"${metadata.browserVersion}"` : null,
     deviceType: metadata.deviceType ? `"${metadata.deviceType}"` : null,
@@ -117,10 +160,15 @@ async function handleResults(metadata, checklistResponses, address, results) {
     ooklaJitter: results.ooklaJitter,
     ooklaUpload: results.ooklaUpload,
     ooklaDownload: results.ooklaDownload,
+    medianLatency: rollup.latency,
+    medianJitter: rollup.jitter,
+    medianUpload: rollup.upload,
+    medianDownload: rollup.download,
     usingEthernet: checklistResponses.usingEthernet,
     closeToRouter: checklistResponses.closeToRouter,
     vpnOff: checklistResponses.vpnOff,
-    noInterruptFromOtherDevices: checklistResponses.noInterruptFromOtherDevices
+    noInterruptFromOtherDevices: checklistResponses.noInterruptFromOtherDevices,
+    noService: checklistResponses.noService
   }
 
   await uploadSurveyData(uuid, data.addressLat, data.addressLon, address.text, data.ispName, data.ipAddress)
@@ -135,4 +183,4 @@ async function handleResults(metadata, checklistResponses, address, results) {
   await displayResults(data)
 }
 
-export default handleResults
+export {handleResults, uploadNoServiceData}

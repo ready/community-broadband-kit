@@ -45,10 +45,10 @@ function footerTemplate(config) {
 						</div>
 					</div>
 				</div>
-				<div class='section-bottom'>
+				<div class='section-bottom white'>
 					<div class="bottom-logo">
 						<a class="logo" href="/">
-							<img class="logo-img" height="80px" src="${config.logo}" alt='your community logo' />
+							<img class="logo-img" src="${config.logo}" alt='your community logo' />
 						</a>
 					</div>
 					<p>

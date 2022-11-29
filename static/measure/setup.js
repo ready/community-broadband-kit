@@ -1,18 +1,22 @@
 import { LOCAL_TESTING_FLAG } from '/static/utils/constants.js'
 import { initSurvey } from '/static/measure/survey.js'
 import runTests from '/static/test/runTests.js'
-import handleResults from "/static/measure/handleResults.js"
+import {handleResults, uploadNoServiceData} from "/static/measure/handleResults.js"
 import config from '/static/measure/config.js'
+import { getUuid } from '/static/utils/cookies.js'
+import { BGA_URL } from '/static/utils/constants.js'
 
 // Document selectors
 const addressRequired = document.getElementById('address').getAttribute('address-required')
 const checklistElement = document.getElementById('checklist')
+const sameSetupElement = document.getElementById("same-setup")
 const addressElement = document.getElementById('address')
 const headerShareBtns = document.getElementById('header-share-buttons')
 const geolocationElement = document.getElementById('geolocation')
 const addressWarningElement = document.getElementById('address-warning')
+const noServiceElement = document.getElementById('servicable-location')
 const nextBtn = document.getElementById('next-btn')
-const beginTestBtn = document.getElementById('begin-test')
+const submitAddressBtn = document.getElementById('submit-address')
 const ispNameElement = document.getElementById('isp-name')
 const testElement = document.getElementById('test')
 const mlabLoadBar = document.getElementById('mlab-load-bar')
@@ -28,8 +32,12 @@ let address = {
   lat: null,
   lon: null
 }
+let noService
 const checklistItemTotal = 4
 let checklistCounter = 1
+let previousResults
+let sameSetupFlag = false
+const userId = getUuid()
 
 /**
  * Gets the user's geolocation in the browser
@@ -102,7 +110,7 @@ async function fillAddressFromGeolocation() {
 }
 
 /**
- * Displayes the next checklist item until all steps have been taken
+ * Displays the next checklist item until all steps have been taken
  * and updates the progress bar
  */
 function displayNextChecklistItem() {
@@ -132,23 +140,34 @@ function displayNextChecklistItem() {
   nextStep.classList.add("checklist-colored-circle")
 }
 
-function skipOrDisplayAddress() {
-  // If more checklist items exist, display next item
+/**
+ * Displays next question or begins test if reached end of the checklist
+ */
+function nextQuestionOrBeginTest() {
+  if (checklistCounter === 3) {
+    document.getElementById('checklist-heading').textContent = "One Last Step"
+    nextBtn.textContent = "Start test"
+  }
   if (checklistCounter < checklistItemTotal) {
     displayNextChecklistItem()
+  } else {
+    beginTest()
   }
-  // Otherwise dislpay or skip address 
-  else {
-    // If address coords for user already exist in session storage, 
-    // skip address prompt, save coords to upload to multitest data/survey, and begin test
-    address.lat = sessionStorage.getItem('addressLat')
-    address.lon = sessionStorage.getItem('addressLon')
-    address.text = sessionStorage.getItem('addressText')
-    if (address.lat && address.lon && address.text) {
-      beginTest()
-    } else {
-      displayAddressPrompt()
-    }
+}
+
+/**
+ * Prompts for address if address not saved in local storage
+ */
+function skipOrDisplayAddress() {
+  // If address coords for user already exist in session storage, 
+  // skip address prompt, save coords to upload to multitest data/survey, and displays checklist
+  address.lat = sessionStorage.getItem('addressLat')
+  address.lon = sessionStorage.getItem('addressLon')
+  address.text = sessionStorage.getItem('addressText')
+  if (address.lat && address.lon && address.text) {
+    checklistElement.style.display = "flex"
+  } else {
+    displayAddressPrompt()
   }
 }
 
@@ -194,13 +213,45 @@ function onPlaceChanged() {
 }
 
 /**
- * Validates the address entered. Either displays a warning or begins the test
+ * Validates the address entered. Either displays a warning or displays checklist.
+ * If no service at the location, displays no service message instead of checklist
  */
-function validateAddress() {
-  if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired) {
+async function validateAddress() {
+  noService = noServiceElement.checked
+
+  if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired && !noService) {
     addressWarningElement.style.display = 'block'
   } else {
-    beginTest()
+    addressElement.style.display = "none"
+
+    // If no service at the location, record response and display message rather than starting test
+    if (noService) {
+      let uuid = getUuid()
+      let results = {
+        uuid: uuid,
+        organizationId: organizationId,
+        addressLat: address.lat,
+        addressLon: address.lon,
+        address: address.text,
+        lat: metadata.lat,
+        lon: metadata.lon,
+        noService: noService
+      }
+
+      // Upload no service results
+      await uploadNoServiceData(results)
+
+      // Hide address display
+      addressElement.style.display = 'none'
+      checklistElement.style.display = 'none'
+
+      // Display recorded response message
+      document.getElementById('no-service').style.display = 'flex'
+    }
+    else {
+      // Display checklist
+      checklistElement.style.display = "flex"
+    }
   }
 }
 
@@ -295,6 +346,75 @@ function getChecklistItemResponse() {
 }
 
 /**
+ * Gets previous test result data
+ * @param {*} ipAddress 
+ * @returns 
+ */
+async function getPreviousResult(ipAddress) {
+  const body = JSON.stringify({
+      query: `query {
+          getMultitestResults (userId:"${userId}",ipAddress:"${ipAddress}") {
+            results {
+                  id
+                  usingEthernet
+                  noInterruptFromOtherDevices
+                  vpnOff
+                  closeToRouter
+                  address
+                  addressLat
+                  addressLon
+                  createdAt
+            }
+          }
+      }`
+  });
+
+  return fetch(BGA_URL, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body
+  })
+  .then(res => res.json())
+  .then (result => {
+      return result.data.getMultitestResults.results;
+  })
+  .catch(err => console.log(err))
+}
+
+/**
+ * Checks if the user has taken a test before and if so, asks if they are using 
+ * same setup as last time
+ */
+async function displaySameSetupOrAddress() {
+  metadata = await metadata
+  previousResults = await getPreviousResult(metadata.ip)
+  if (previousResults.length > 0) {
+    sameSetupElement.style.display = "flex"
+  } else {
+    skipOrDisplayAddress()
+  }
+}
+
+/**
+ * Displays checklist if user is using a different setup
+ */
+async function differentSetup() {
+  sameSetupElement.style.display = "none"
+  skipOrDisplayAddress()
+}
+
+/**
+ * Begins test if user is using the same setup
+ */
+async function sameSetup() {
+  sameSetupFlag = true
+  beginTest()
+}
+
+
+/**
  * Sets up and runs the speed tests
  */
 async function beginTest() {
@@ -307,6 +427,12 @@ async function beginTest() {
     config.error?.('Error: client is offline');
   }
 
+  // Gets metadata
+  metadata = await metadata
+
+  // Save servicable location to checklist responses
+  checklistResponses.noService = noService
+
   // Stores the address data in session storage
   sessionStorage.setItem('addressLat', address.lat)
   sessionStorage.setItem('addressLon', address.lon)
@@ -316,12 +442,10 @@ async function beginTest() {
   headerShareBtns.style.display = 'none'
   checklistElement.style.display = 'none'
   addressElement.style.display = 'none'
-
-  // Gets metadata
-  metadata = await metadata
+  sameSetupElement.style.display = 'none'
 
   // Sets up the survey
- initSurvey(metadata.ip)
+  initSurvey(metadata.ip)
 
   // Set up test display
   ispNameElement.textContent = metadata.isp
@@ -330,6 +454,17 @@ async function beginTest() {
   testSourceElement.textContent = 'Running M-Lab Speed Test...'
   testTypeElement.textContent = 'Downloading'
   mlabLoadBar.classList.replace('load-bar-not-started', 'load-bar-started')
+
+  // If setup was the same as previous test, save previous checklist and address responses
+  if (sameSetupFlag) {
+    checklistResponses.usingEthernet = previousResults[0].usingEthernet
+    checklistResponses.closeToRouter = previousResults[0].closeToRouter
+    checklistResponses.vpnOff =  previousResults[0].vpnOff
+    checklistResponses.noInterruptFromOtherDevices =  previousResults[0].noInterruptFromOtherDevices
+    address.lat = previousResults[0].addressLat
+    address.lon = previousResults[0].addressLon
+    address.text = previousResults[0].address
+  }
 
   try {
     // Run the speedtests
@@ -350,5 +485,8 @@ async function beginTest() {
 
 // Event listeners
 geolocationElement.addEventListener("click", fillAddressFromGeolocation)
-nextBtn.addEventListener("click", skipOrDisplayAddress)
-beginTestBtn.addEventListener('click', validateAddress)
+nextBtn.addEventListener("click", nextQuestionOrBeginTest)
+submitAddressBtn.addEventListener('click', validateAddress)
+window.displaySameSetupOrAddress = displaySameSetupOrAddress
+window.sameSetup = sameSetup
+window.differentSetup = differentSetup

@@ -19,7 +19,7 @@ function testTemplate(config) {
     <!DOCTYPE html>
     <html lang="en">
     ${head}
-    <body>
+    <body onload="displaySameSetupOrAddress()">
       <section id="test-section" class="section-container" style="padding-top:0;">
         ${header}
         <div class="hero-section-container center-content">
@@ -63,7 +63,7 @@ function testTemplate(config) {
                 <div id ="answers" class="list"></div>
                 <button id="nav-btn" class="button" alt="next button">Next</button>
                 <div class="progress-row">
-                  <div class="s-text"><span id="questions-answered"></span> / <span id="question-total"></span></div>
+                  <div class="s-text default-color"><span id="questions-answered"></span> / <span id="question-total"></span></div>
                   <progress id="survey-progress-bar" max="100" value="0"></progress>
                 </div>
               </div>
@@ -83,6 +83,7 @@ function testTemplate(config) {
                 />
                 <button class='remind-me-button' onclick="window.sendEmailReminder()">Remind Me</button>
               </div>
+              <a class="default-color" href="https://broadband.money/broadband-audits" target="_blank">See your state broadband audit →</a>
             </div>
             <div class="section-right" id="historic-results">
               <div class="share-buttons" id="end-links" style="align-self: flex-end">
@@ -102,7 +103,7 @@ function testTemplate(config) {
               </div>
               <div class="wide-background-container">
                 <h3 class="small-heading">You are <span class='large-result-tag' id="service-status">test</span></h3>
-                <p>Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.</p>
+                <p class="default-color">Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.</p>
                 <div class="results-cards-container">
                   <div class="results-card">
                     <div class="results-card-title">
@@ -299,12 +300,28 @@ function testTemplate(config) {
                   </div>
                 </div>
               </div>
+              <a class="button" style="align-self: flex-end;" href="/test/">Test Again</a>
+            </div>
+          </div>
+
+          <div class="background-container" id="same-setup">
+            <h1 class="main-heading">Is your setup the same as last time?</h1>
+            <h2 class="section-description"> If your set up has changed from the previous time, for example you are now using WiFi instead of a wired connection, select "No". </h2>
+            <div class="checklist-answer-row">
+              <div class="answer-option" id="same" onMouseOver="toggleSelected('same')" onClick="sameSetup()">
+                  <img class="checklist-icon" src="/static/assets/checkmark_icon.png" width="32px" height="32px" alt="checkmark-icon">
+                  <div class="icon-text">Yes</div>
+              </div>
+              <div class="answer-option" id="different" onMouseOver="toggleSelected('different')" onClick="differentSetup()">
+                  <img class="checklist-icon" src="/static/assets/cross_icon.png" width="32px" height="32px" alt="cross-icon">
+                  <div class="icon-text">No</div>
+              </div>
             </div>
           </div>
 
           <div class="background-container" id="checklist" style="gap: 1em;">
-            <h1 class="main-heading">Before We Begin...</h1>
-            <h2 class="section-description">For best results, we recommend taking the following steps. Please select a step if it has been done. Hover over underlined terms for additional information.</h2>
+            <h1 class="main-heading" id="checklist-heading">Before we begin...</h1>
+            <h2 class="section-description">For best results, we recommend answering the following questions. Hover over underlined terms for additional information.</h2>
             <div class="checklist-progress-bar">
               <div class="progress-step">
                 <div class="checklist-circle checklist-colored-circle" id="step-1" >1</div>
@@ -321,7 +338,6 @@ function testTemplate(config) {
                 <div class="checklist-dash"></div>
                 <div class="checklist-circle" id="step-4">4</div>
               </div>
-              
             </div>
             <div class="checklist">
                 <div id="item-1">
@@ -342,14 +358,14 @@ function testTemplate(config) {
                             <img class="checklist-icon" src="/static/assets/wired_icon.png" width="32px" height="32px" alt="Wired-icon">
                             <div class="icon-text">Wired</div>
                         </div>
-                        <div class="answer-option" id="wifi" onclick="getElementById('router-warning').style.display = 'block', toggleSelected('wifi')">
+                        <div class="answer-option" id="wifi" onclick="getElementById('router-warning').style.display = 'flex', toggleSelected('wifi')">
                             <img class="checklist-icon" src="/static/assets/wifi_icon.png" width="32px" height="32px" alt="Wifi-icon">
                             <div class="icon-text">WiFi</div>
                         </div>
                     </div>
-                    <div id="router-warning" style="margin: 0 auto; max-width: fit-content;">
+                    <div id="router-warning" style="margin: 0 auto; max-width: fit-content; align-items: center">
                         <input type="checkbox" id="close-to-router" name="close-to-router">
-                        <label for="close-to-router">I am as close as possible to my 
+                        <label for="close-to-router" class="default-color">I am as close as possible to my 
                             <div class="tooltip">Wi-Fi router
                                 <span class="tooltiptext">
                                     <span id="router-definition" style="color: var(--color-gray-0)"></span>
@@ -396,14 +412,7 @@ function testTemplate(config) {
                 </div>
                 <div id="item-4" style="display: none;">
                     <div class="checklist-question">
-                        <p class="checklist-header">I know information about my tier of internet service such as monthly cost and speed in order to complete survey questions.</p>
-                    </div>
-                
-                    <div class="checklist-answer-row">
-                        <div class="answer-option"id="know-information" onclick="toggleSelected('know-information')">
-                            <img class="checklist-icon" src="/static/assets/knowledge_icon.png" width="32" height="32" alt="Wired-icon">
-                            <div class="icon-text">Yes</div>
-                        </div>
+                        <p class="checklist-header">Please have information about your tier of internet service in order to complete survey questions.</p>
                     </div>
                 </div>
             </div>
@@ -411,15 +420,23 @@ function testTemplate(config) {
           </div>
 
           <div class="background-container" id="address" address-required=${addressRequired}>
-            <h1 class="main-heading">One Last Step</h1>
+            <h1 class="main-heading">Before we begin...</h1>
             <h2 class="section-description" id="address-entry-message">Your location is required to help your community get better internet. Please enter your address below. It will not be shared with the public. </h2>
             <div class="address">
               <input type="text" name="address" id="autocomplete" class="pac-target-input" placeholder="Enter a location" aria-label="Enter location">
               <section id="address-warning">* This field is required to continue </section>
             </div>
             <button class="button" id="geolocation" style="align-self: flex-start">Current location <i style="margin-left: 4px" class="fas fa-map-marker-alt"></i></button>
-            <button class="button" id="begin-test">Start test</button>
-          </div>     
+            <div>
+              <input type="checkbox" id="servicable-location" name="servicable-location">
+              <label for="servicable-location">I do not have internet service at this location </label>
+            </div>
+            <button class="button" id="submit-address">Next</button>
+          </div>
+          <div class="section-left background-container" id="no-service">
+            <h1 class="main-heading">Thank you for reporting your status at this location. </h1>
+            <h2 class="section-description">We have successfully recorded your response.</h2>
+          </div>   
           <div id="ookla-test"></div>
           ${landscapeBackground}
         </div>
@@ -436,7 +453,7 @@ function testTemplate(config) {
             });
             let elem = document.getElementById(element);
             elem.classList.add("selected-answer"); 
-          }
+        }
       </script>
       <script src="/static/test/m-lab/src/ndt7.min.js" type="text/javascript"></script>
       <script type="module" src="/static/measure/setup.js"></script>
