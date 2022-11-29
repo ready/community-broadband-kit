@@ -1381,7 +1381,6 @@ progress[value]::-webkit-progress-value {
 /******************* Results *******************/
 
 #results {
-  margin-top: 4em;
   align-items: flex-start;
 }
 
