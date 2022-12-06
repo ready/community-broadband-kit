@@ -333,7 +333,7 @@ function getChecklistItemResponse() {
       picked.forEach(pick => {
         if (pick.id === 'no-interruption') {
           checklistResponses.noInterruptFromOtherDevices = true
-        } else if (pick.id === 'no-interruption') {
+        } else if (pick.id === 'interruption') {
           checklistResponses.noInterruptFromOtherDevices = false
         } else {
           checklistResponses.noInterruptFromOtherDevices = null
