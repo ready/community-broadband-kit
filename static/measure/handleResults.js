@@ -54,8 +54,7 @@ async function uploadData(results) {
       medianJitter: ${results.medianJitter},
       medianUpload: ${results.medianUpload},
       medianDownload: ${results.medianDownload},
-      usingEthernet: ${results.usingEthernet},
-      closeToRouter: ${results.closeToRouter},
+      connectionType: "${results.connectionType}",
       vpnOff: ${results.vpnOff},
       noInterruptFromOtherDevices: ${results.noInterruptFromOtherDevices},
       noService: ${results.noService}
@@ -130,14 +129,14 @@ async function handleResults(metadata, checklistResponses, address, results) {
 
   const data = {
     uuid: uuid,
-    addressLat: address.lat,
-    addressLon: address.lon,
     address: address.text,
     ipAddress: metadata.ip,
     ispName: metadata.isp,
     asn: metadata.asn,
-    lat: metadata.lat,
-    lon: metadata.lon,
+    addressLat: address.lat || 37.5630,
+    addressLon: address.lon || 122.3255,
+    lat: metadata.lat || 37.5630,
+    lon: metadata.lon || 122.3255,
     browserName: metadata.browserName ? `"${metadata.browserName}"` : null,
     browserVersion: metadata.browserVersion ? `"${metadata.browserVersion}"` : null,
     deviceType: metadata.deviceType ? `"${metadata.deviceType}"` : null,
@@ -164,8 +163,7 @@ async function handleResults(metadata, checklistResponses, address, results) {
     medianJitter: rollup.jitter,
     medianUpload: rollup.upload,
     medianDownload: rollup.download,
-    usingEthernet: checklistResponses.usingEthernet,
-    closeToRouter: checklistResponses.closeToRouter,
+    connectionType: checklistResponses.connectionType,
     vpnOff: checklistResponses.vpnOff,
     noInterruptFromOtherDevices: checklistResponses.noInterruptFromOtherDevices,
     noService: checklistResponses.noService

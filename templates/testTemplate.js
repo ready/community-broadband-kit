@@ -32,7 +32,7 @@ function testTemplate(config) {
           <div class="row-container" id="test">
             <div class="section-left" id="instructions">
               <div class="column-container center-content">
-                <h2 id="test-source" class="test-heading"></h2>
+                <h2 id="test-source" class="test-heading"></h2> 
                 <div id="ookla-loading">
                   <div class="wifi-symbol">
                     <div class="wifi-circle first"></div>
@@ -358,10 +358,14 @@ function testTemplate(config) {
                             <img class="checklist-icon" src="/static/assets/wired_icon.png" width="32px" height="32px" alt="Wired-icon">
                             <div class="icon-text">Wired</div>
                         </div>
-                        <div class="answer-option" id="wifi" onclick="getElementById('router-warning').style.display = 'flex', toggleSelected('wifi')">
+                        <div class="answer-option" id="using-wifi" onclick="getElementById('router-warning').style.display = 'flex', toggleSelected('using-wifi')">
                             <img class="checklist-icon" src="/static/assets/wifi_icon.png" width="32px" height="32px" alt="Wifi-icon">
                             <div class="icon-text">WiFi</div>
                         </div>
+                        <div class="answer-option" id="using-cellular" onclick="getElementById('router-warning').style.display = 'none', toggleSelected('using-cellular')">
+                          <img class="checklist-icon" src="/static/assets/cellular_icon.png" width="32px" height="32px" alt="Cellular-icon">
+                          <div class="icon-text">Cellular</div>
+                      </div>
                     </div>
                     <div id="router-warning" style="margin: 0 auto; max-width: fit-content; align-items: center">
                         <input type="checkbox" id="close-to-router" name="close-to-router">
@@ -386,11 +390,11 @@ function testTemplate(config) {
                     </div>
                     <div class="checklist-answer-row">
                         <div class="answer-option" id="vpn-on" onclick="toggleSelected('vpn-on')">
-                            <img class="checklist-icon" src="/static/assets/vpn_icon.png" width="32px" height="32px" alt="Wired-icon">
+                            <img class="checklist-icon" src="/static/assets/vpn_icon.png" width="32px" height="32px" alt="vpn-icon">
                             <div class="icon-text">Yes</div>
                         </div>
                         <div class="answer-option" id="vpn-off" onclick="toggleSelected('vpn-off')">
-                            <img class="checklist-icon" src="/static/assets/cross_icon.png" width="32px" height="32px" alt="Wifi-icon">
+                            <img class="checklist-icon" src="/static/assets/cross_icon.png" width="32px" height="32px" alt="cross-icon">
                             <div class="icon-text">No</div>
                         </div>
                     </div>
@@ -401,11 +405,11 @@ function testTemplate(config) {
                     </div>
                     <div class="checklist-answer-row">
                         <div class="answer-option" id="interruption" onclick="toggleSelected('interruption')">
-                            <img class="checklist-icon" src="/static/assets/streaming_icon.png" width="32px" height="32px" alt="Wired-icon">
+                            <img class="checklist-icon" src="/static/assets/streaming_icon.png" width="32px" height="32px" alt="streaming-icon">
                             <div class="icon-text">Yes</div>
                         </div>
                         <div class="answer-option" id="no-interruption" onclick="toggleSelected('no-interruption')">
-                            <img  class="checklist-icon" src="/static/assets/cross_icon.png" width="32px" height="32px" alt="Wifi-icon">
+                            <img  class="checklist-icon" src="/static/assets/cross_icon.png" width="32px" height="32px" alt="cross-icon">
                             <div class="icon-text">No</div>
                         </div>
                     </div>
