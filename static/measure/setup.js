@@ -219,7 +219,6 @@ function onPlaceChanged() {
  */
 async function validateAddress() {
   noService = noServiceElement.checked
-  console.log(noService)
 
   if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired && !noService) {
     addressWarningElement.style.display = 'block'
