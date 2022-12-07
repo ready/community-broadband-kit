@@ -12,19 +12,35 @@ const notion = new Client({
 router.post('/emailReminder',sendEmailReminder)
 
 async function sendEmailReminder (req, res) {
-    const host = req.get('host')
-    let config = await getAssets(host)
+	const host = req.get('host')
+	let config = await getAssets(host)
 	if (!config) {
-        config = await getAssets()
-    }
-	console.log("config",config.logo)
+    config = await getAssets()
+  }
+	// console.log("config",config.logo)
 	if (req.method !== 'POST') {
-			return res
-				.status(405)
-				.json({ message: `${req.method} requests are not allowed` })
+		return res
+			.status(405)
+			.json({ message: `${req.method} requests are not allowed` })
 	}
   try {
     const email = req.body.email
+		let fromEmail 
+		if(config.domainName==='broadbandms.com'){
+			fromEmail  = 'noreply@broadbandms.com'
+		}else{
+			fromEmail = 'noreply@broadband.money'
+		}
+		let fromName
+		if(config.domainName==='broadbandms.com'){
+			fromName = `MS BEAM Office`
+		}else{
+			if(config.communityName){
+				fromName = `${config.communityName} Broadband Toolkit`
+			}else{
+				fromName =  'Broadband.money Broadband Toolkit'
+			}
+		}
 		await notion.pages.create({
 			parent: {
 				database_id: 'ac617c53d57f4ef2a4ece0ba6c88a036'
@@ -39,7 +55,6 @@ async function sendEmailReminder (req, res) {
 						}
 					]
 				},
-
 				domainName: {
 					rich_text: [
 					  {
@@ -50,7 +65,24 @@ async function sendEmailReminder (req, res) {
 					  }
 					]
 				  },
-
+				fromEmail: {
+					rich_text: [
+						{
+						text: {
+							content: fromEmail
+						}
+						}
+					]
+				},
+				fromName: {
+					rich_text: [
+						{
+						text: {
+							content: fromName
+						}
+						}
+					]
+				},
 			}
 
 		})
