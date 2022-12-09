@@ -26,7 +26,7 @@ async function sendEmailReminder (req, res) {
 				.json({ message: `${req.method} requests are not allowed` })
 	}
   try {
-    const email = req.body.email
+	const { email,url } = JSON.parse(req.body)
     // Slack notification
     const webHookURL = 'https://hooks.slack.com/services/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'
 		const data1 = {
@@ -66,6 +66,16 @@ async function sendEmailReminder (req, res) {
 					  }
 					]
 				  },
+				  url: {
+					rich_text: [
+					  {
+						text: {
+						  content: url
+
+						}
+					  }
+					]
+				},
 
 			}
 
