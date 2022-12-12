@@ -17,14 +17,14 @@ async function sendEmailReminder (req, res) {
 	if (!config) {
     config = await getAssets()
   }
-	// console.log("config",config.logo)
 	if (req.method !== 'POST') {
 		return res
 			.status(405)
 			.json({ message: `${req.method} requests are not allowed` })
 	}
   try {
-    const email = req.body.email
+
+	const { email,url } = JSON.parse(req.body)
 		let fromEmail 
 		if(config.domainName==='broadbandms.com'){
 			fromEmail  = 'noreply@broadbandms.com'
@@ -65,6 +65,16 @@ async function sendEmailReminder (req, res) {
 					  }
 					]
 				  },
+				  url: {
+					rich_text: [
+					  {
+						text: {
+						  content: url
+
+						}
+					  }
+					]
+				},
 				fromEmail: {
 					rich_text: [
 						{
