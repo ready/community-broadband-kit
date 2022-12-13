@@ -83,7 +83,6 @@ function testTemplate(config) {
                 />
                 <button class='remind-me-button' onclick="window.sendEmailReminder()">Remind Me</button>
               </div>
-              <a class="default-color" href="https://broadband.money/broadband-audits" target="_blank">See your state broadband audit →</a>
             </div>
             <div class="section-right" id="historic-results">
               <div class="share-buttons" id="end-links" style="align-self: flex-end">
