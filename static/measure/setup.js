@@ -158,6 +158,7 @@ function nextQuestionOrBeginTest() {
 /**
  * Prompts for address if address not saved in local storage
  */
+/*
 function skipOrDisplayAddress() {
   // If address coords for user already exist in session storage, 
   // skip address prompt, save coords to upload to multitest data/survey, and displays checklist
@@ -169,7 +170,7 @@ function skipOrDisplayAddress() {
   } else {
     displayAddressPrompt()
   }
-}
+}*/
 
 /**
  * Displays the correct address prompt depending on if address 
@@ -230,11 +231,10 @@ async function validateAddress() {
       let results = {
         uuid: uuid,
         organizationId: organizationId,
-        addressLat: address.lat,
-        addressLon: address.lon,
-        address: address.text,
-        lat: metadata.lat,
-        lon: metadata.lon,
+        addressLat: address.lat || 37.5630,
+        addressLon: address.lon || 122.3255,
+        lat: metadata.lat || 37.5630,
+        lon: metadata.lon || 122.3255,
         noService: noService
       }
 
@@ -363,6 +363,7 @@ async function getPreviousResult(ipAddress) {
                   address
                   addressLat
                   addressLon
+                  noService
                   createdAt
             }
           }
@@ -393,7 +394,7 @@ async function displaySameSetupOrAddress() {
   if (previousResults.length > 0) {
     sameSetupElement.style.display = "flex"
   } else {
-    skipOrDisplayAddress()
+    displayAddressPrompt()
   }
 }
 
@@ -402,7 +403,7 @@ async function displaySameSetupOrAddress() {
  */
 async function differentSetup() {
   sameSetupElement.style.display = "none"
-  skipOrDisplayAddress()
+  displayAddressPrompt()
 }
 
 /**
@@ -434,9 +435,11 @@ async function beginTest() {
   checklistResponses.noService = noService
 
   // Stores the address data in session storage
+  /*
   sessionStorage.setItem('addressLat', address.lat)
   sessionStorage.setItem('addressLon', address.lon)
   sessionStorage.setItem('addressText', address.text)
+  */
 
   // Hides pre-test elements
   headerShareBtns.style.display = 'none'
@@ -461,6 +464,7 @@ async function beginTest() {
     checklistResponses.closeToRouter = previousResults[0].closeToRouter
     checklistResponses.vpnOff =  previousResults[0].vpnOff
     checklistResponses.noInterruptFromOtherDevices =  previousResults[0].noInterruptFromOtherDevices
+    checklistResponses.noService = previousResults[0].noService
     address.lat = previousResults[0].addressLat
     address.lon = previousResults[0].addressLon
     address.text = previousResults[0].address
