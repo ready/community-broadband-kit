@@ -10,7 +10,7 @@ const sendEmailSubscription = async () => {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
-    body: JSON.stringify({email:email})
+    body: JSON.stringify({email:email,url:window?.location?.href})
   })
   const { error, msg } = await results.json()
   if (error) {
@@ -33,7 +33,7 @@ const sendEmailReminder = async () => {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     },
-    body: JSON.stringify({email:email})
+    body: JSON.stringify({email:email,url:window?.location?.href})
   })
   const { error, msg } = await results.json()
   if (error) {
