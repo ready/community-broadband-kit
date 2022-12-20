@@ -26,17 +26,17 @@ async function sendEmailReminder (req, res) {
 
 	const { email,url } = JSON.parse(req.body)
 		let fromEmail 
-		if(config.domainName==='broadbandms.com'){
+		if(config?.domainName==='broadbandms.com'){
 			fromEmail  = 'noreply@broadbandms.com'
 		}else{
 			fromEmail = 'noreply@broadband.money'
 		}
 		let fromName
-		if(config.domainName==='broadbandms.com'){
+		if(config?.domainName==='broadbandms.com'){
 			fromName = `MS BEAM Office`
 		}else{
-			if(config.communityName){
-				fromName = `${config.communityName} Broadband Toolkit`
+			if(config?.communityName){
+				fromName = `${config?.communityName} Broadband Toolkit`
 			}else{
 				fromName =  'Broadband.money Broadband Toolkit'
 			}
@@ -59,7 +59,7 @@ async function sendEmailReminder (req, res) {
 					rich_text: [
 					  {
 						text: {
-						  content: config.domainName
+						  content: config?.domainName
 		  
 						}
 					  }
