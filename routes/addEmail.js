@@ -19,13 +19,14 @@ async function sendEmail (req, res) {
 				.json({ message: `${req.method} requests are not allowed` })
 	}
   try {
-    const email = req.body.email
+    const { email,url } = JSON.parse(req.body)
     // Slack notification 
     const webHookURL = 'https://hooks.slack.com/services/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'
 		const data1 = {
 			text: `you have a new email subscription.
-							email: "${email}",
-							`
+			email: "${email}",
+			url: "${url}",
+			`
 		}
 		const env = 'local'
 		let is_test = true
@@ -53,7 +54,17 @@ async function sendEmail (req, res) {
 					select: {
 						name: is_test
 					}
-				}
+				},
+				url: {
+					rich_text: [
+					  {
+						text: {
+						  content: url
+
+						}
+					  }
+					]
+				},
 
 			}
 

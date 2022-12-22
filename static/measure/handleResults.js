@@ -129,14 +129,14 @@ async function handleResults(metadata, checklistResponses, address, results) {
 
   const data = {
     uuid: uuid,
-    address: address.text,
-    ipAddress: metadata.ip,
-    ispName: metadata.isp,
-    asn: metadata.asn,
     addressLat: address.lat || 37.5630,
     addressLon: address.lon || 122.3255,
     lat: metadata.lat || 37.5630,
     lon: metadata.lon || 122.3255,
+    address: address.text,
+    ipAddress: metadata.ip,
+    ispName: metadata.isp,
+    asn: metadata.asn,
     browserName: metadata.browserName ? `"${metadata.browserName}"` : null,
     browserVersion: metadata.browserVersion ? `"${metadata.browserVersion}"` : null,
     deviceType: metadata.deviceType ? `"${metadata.deviceType}"` : null,

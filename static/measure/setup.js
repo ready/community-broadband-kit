@@ -360,6 +360,7 @@ async function getPreviousResult(ipAddress) {
                   address
                   addressLat
                   addressLon
+                  noService
                   createdAt
                   noService
             }
@@ -391,7 +392,7 @@ async function displaySameSetupOrAddress() {
   if (previousResults.length > 0) {
     sameSetupElement.style.display = "flex"
   } else {
-    displayAddressPrompt() 
+    displayAddressPrompt()
   }
 }
 
@@ -400,7 +401,7 @@ async function displaySameSetupOrAddress() {
  */
 async function differentSetup() {
   sameSetupElement.style.display = "none"
-  displayAddressPrompt() 
+  displayAddressPrompt()
 }
 
 /**
@@ -460,6 +461,7 @@ async function beginTest() {
     checklistResponses.connectionType = previousResults[0].connectionType
     checklistResponses.vpnOff =  previousResults[0].vpnOff
     checklistResponses.noInterruptFromOtherDevices =  previousResults[0].noInterruptFromOtherDevices
+    checklistResponses.noService = previousResults[0].noService
     address.lat = previousResults[0].addressLat
     address.lon = previousResults[0].addressLon
     address.text = previousResults[0].address
