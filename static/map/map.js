@@ -19,7 +19,7 @@ import {
 // Document selectors
 const communityName = document.getElementById('statistics-container-title').getAttribute('community-name')
 const testsTaken = document.getElementById('tests-taken')
-const uniqueDevices = document.getElementById('unique-devices')
+const totalAddresses = document.getElementById('total-addresses')
 const counties = document.getElementById('counties')
 // const orgId = '282'
 const orgId = document.getElementById('map').getAttribute('org-id')
@@ -160,7 +160,7 @@ function renderSpeedLayer(map, data) {
         statisticsContainerTitle.textContent = e.features[0].properties.nameCounty
         const currentCountyData = validCountyData?.countyData[geoid]
         testsTaken.textContent = currentCountyData?.totalTests
-        uniqueDevices.textContent = currentCountyData?.uniqueDevices
+        totalAddresses.textContent = currentCountyData?.totalAddresses
         countyStatistic.style.display = 'none'
         statisticsSectionContainer.style.gridTemplateColumns = 'auto auto'
         // Update pie chart
@@ -226,7 +226,7 @@ function getMultiTestData() {
         const data = {
             mapData: resultObj?.perCounty,
             totalTests: resultObj?.totalTests,
-            uniqueDevices: resultObj?.uniqueDevices,
+            totalAddresses: resultObj?.totalAddresses,
             multitestPerformanceRank: resultObj?.multitestPerformanceRank
         }
         return data
@@ -241,7 +241,7 @@ function getMultiTestData() {
  */
 function populateStatistics(data) {
     testsTaken.textContent = data?.totalTests
-    uniqueDevices.textContent = data?.uniqueDevices
+    totalAddresses.textContent = data?.totalAddresses
     counties.textContent = data?.mapData?.length
     generatePieChart({ data: data })
 }

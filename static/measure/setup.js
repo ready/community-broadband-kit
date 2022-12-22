@@ -235,6 +235,7 @@ async function validateAddress() {
         addressLon: address.lon || 122.3255,
         lat: metadata.lat || 37.5630,
         lon: metadata.lon || 122.3255,
+        address: address.text,
         noService: noService
       }
 
@@ -294,26 +295,22 @@ function getChecklistItemResponse() {
     if (picked.length > 0) {
       picked.forEach(pick => {
         if (pick.id === 'using-ethernet') {
-          checklistResponses.usingEthernet = true
-        } else {
-          checklistResponses.usingEthernet = false
+          checklistResponses.connectionType = "Ethernet"
         }
-    
-        if (pick.id === 'wifi') {
+        else if (pick.id === 'using-cellular') {
+          checklistResponses.connectionType = "Cellular"
+        }
+        else if (pick.id === 'using-wifi') {
           if (document.getElementById("close-to-router").checked) {
-            checklistResponses.closeToRouter = true
+            checklistResponses.connectionType = "WiFi (close to router)"
           } else {
-            checklistResponses.closeToRouter = false
+            checklistResponses.connectionType = "WiFi"
           }
         } else {
-          checklistResponses.closeToRouter = false
+          checklistResponses.connectionType = " "
         }
-  
       });
-    } else {
-      checklistResponses.usingEthernet = false
-      checklistResponses.closeToRouter = false
-    }  
+    }
   }
   
   if (checklistCounter === 2) {
@@ -321,13 +318,14 @@ function getChecklistItemResponse() {
       picked.forEach(pick => {
         if (pick.id === 'vpn-off') {
           checklistResponses.vpnOff = true
-        } else {
+        } else if (pick.id === 'vpn-on') {
           checklistResponses.vpnOff = false
         }
+        else {
+          checklistResponses.vpnOff = null
+        }
       });
-    } else {
-      checklistResponses.vpnOff = false
-    }  
+    }
   }
 
   if (checklistCounter === 3) {
@@ -335,13 +333,13 @@ function getChecklistItemResponse() {
       picked.forEach(pick => {
         if (pick.id === 'no-interruption') {
           checklistResponses.noInterruptFromOtherDevices = true
-        } else {
+        } else if (pick.id === 'interruption') {
           checklistResponses.noInterruptFromOtherDevices = false
+        } else {
+          checklistResponses.noInterruptFromOtherDevices = null
         }
       });
-    } else {
-      checklistResponses.noInterruptFromOtherDevices = false
-    }  
+    }
   }
 }
 
@@ -356,15 +354,15 @@ async function getPreviousResult(ipAddress) {
           getMultitestResults (userId:"${userId}",ipAddress:"${ipAddress}") {
             results {
                   id
-                  usingEthernet
                   noInterruptFromOtherDevices
                   vpnOff
-                  closeToRouter
+                  connectionType
                   address
                   addressLat
                   addressLon
                   noService
                   createdAt
+                  noService
             }
           }
       }`
@@ -460,14 +458,14 @@ async function beginTest() {
 
   // If setup was the same as previous test, save previous checklist and address responses
   if (sameSetupFlag) {
-    checklistResponses.usingEthernet = previousResults[0].usingEthernet
-    checklistResponses.closeToRouter = previousResults[0].closeToRouter
+    checklistResponses.connectionType = previousResults[0].connectionType
     checklistResponses.vpnOff =  previousResults[0].vpnOff
     checklistResponses.noInterruptFromOtherDevices =  previousResults[0].noInterruptFromOtherDevices
     checklistResponses.noService = previousResults[0].noService
     address.lat = previousResults[0].addressLat
     address.lon = previousResults[0].addressLon
     address.text = previousResults[0].address
+    checklistResponses.noService = previousResults[0].noService
   }
 
   try {
