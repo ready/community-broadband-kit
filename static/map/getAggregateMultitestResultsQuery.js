@@ -10,7 +10,7 @@ function getAggregateMultitestResultsQuery ({
         query: `query {
             getAggregateMultitestResults${filterByOrgAndCounty} {
                 totalTests
-                uniqueDevices
+                totalAddresses
                 multitestPerformanceRank {
                     served
                     unserved
@@ -34,7 +34,7 @@ function getAggregateMultitestResultsQuery ({
                 perCounty {
                     countyGeoid
                     totalTests
-                    uniqueDevices
+                    totalAddresses
                     upload
                     download
                     latency

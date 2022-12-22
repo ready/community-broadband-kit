@@ -18,8 +18,8 @@ function statisticsTemplate(config) {
                     <h2 class="statistics-value" id="tests-taken"></h2>
                 </div>
                 <div>
-                <div class="statistics-text">Devices</div>
-                    <h2 class="statistics-value" id="unique-devices"></h2>
+                <div class="statistics-text">Addresses</div>
+                    <h2 class="statistics-value" id="total-addresses"></h2>
                 </div>
                 <div id="county-statistic">
                     <div class="statistics-text">Counties</div>
