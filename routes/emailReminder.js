@@ -26,21 +26,25 @@ async function sendEmailReminder (req, res) {
 
 	const { email,url } = JSON.parse(req.body)
 		let fromEmail 
-		if(config?.domainName==='broadbandms.com'){
+		if (config?.domainName==='broadbandms.com') {
 			fromEmail  = 'noreply@broadbandms.com'
-		}else{
+		} else if (config?.domainName==='checknewarkinternetspeeds.org') {
+			fromEmail  = 'noreply@checknewarkinternetspeeds.org'
+		} else{
 			fromEmail = 'noreply@broadband.money'
 		}
+
 		let fromName
-		if(config?.domainName==='broadbandms.com'){
+		if (config?.domainName==='broadbandms.com') {
 			fromName = `MS BEAM Office`
-		}else{
-			if(config?.communityName){
+		} else {
+			if (config?.communityName) {
 				fromName = `${config?.communityName} Broadband Toolkit`
-			}else{
-				fromName =  'Broadband.money Broadband Toolkit'
+			} else{
+				fromName = 'Broadband.money Broadband Toolkit'
 			}
 		}
+
 		await notion.pages.create({
 			parent: {
 				database_id: 'ac617c53d57f4ef2a4ece0ba6c88a036'
