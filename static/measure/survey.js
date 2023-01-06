@@ -2,14 +2,24 @@
 
 import { BGA_URL } from '/static/utils/constants.js'
 import { survey } from '/static/utils/constants.js'
+import { getUuid } from '/static/utils/cookies.js'
 
 // Document selectors
-const navBtn = document.getElementById('nav-btn')
-const surveyElement = document.getElementById("survey-container")
-const questionElement = document.getElementById('survey-question')
-const questionTotalElement = document.getElementById('question-total')
-const questionProgressElement = document.getElementById('questions-answered')
-const surveyProgressBarElement = document.getElementById('survey-progress-bar')
+let navBtn 
+const withTestNavBtn = document.getElementById('nav-btn')
+if (withTestNavBtn) {
+    navBtn= withTestNavBtn
+}
+const standAloneNavBtn = document.getElementById('stand-alone-survey-nav-btn')
+if (standAloneNavBtn) {
+    navBtn = standAloneNavBtn
+}
+let surveyElement
+let questionElement
+let questionTotalElement 
+let questionProgressElement 
+let surveyProgressBarElement
+let standAloneSurvey = false
 
 // Global variables
 let questions
@@ -19,13 +29,17 @@ let response = {}
 let answeredQuestions = []
 let progressIncrement
 let ipAddressConstant
+let phoneNumberConstant
+let addressLatConstant
+let addressLonConstant
+let addressTextConstant
 
 /**
  * Fetches an array of survey questions to display to the user
  * @param {*} excludeQuestions an array of question IDs to exclude from the database
  * @returns an array of question to display
  */
-function getSurveyQuestions(excludeQuestions) {
+function getSurveyQuestions(excludeQuestions, getAll) {
     const questionSet = []
 
     for (let i = 0; i < survey.length; i++) {
@@ -33,7 +47,10 @@ function getSurveyQuestions(excludeQuestions) {
             questionSet.push(survey[i])
         }
 
-        if (questionSet.length >= 9) break
+        if (!getAll) {
+            if (questionSet.length >= 9) break
+        }
+        
     }
 
     
@@ -65,33 +82,57 @@ async function removeFromQuestionsArray(ipAddress) {
  * if there are any
  * @param {*} ipAddress as a string 
  */
-async function initSurvey(ipAddress) {
+async function initSurvey(ipAddress, addressLat, addressLon, addressText, phoneNumber, surveyType) {
     ipAddressConstant = ipAddress
-    // Get an array of already answered qurstions from local storage
-    let excludeQuestionsArray = JSON.parse(localStorage.getItem('answeredQs'))
-    let excludeQuestions = []
-    if (excludeQuestionsArray !== null) {
-        for (let i = 0; i < excludeQuestionsArray.length; i++)  {
-            if (excludeQuestionsArray[i].ipAddress === ipAddress) {
-                excludeQuestions = excludeQuestionsArray[i].answered
-            }
-        }
-    }
+    phoneNumberConstant = phoneNumber
+    addressLatConstant = addressLat
+    addressLonConstant = addressLon
+    addressTextConstant = addressText
+    if (surveyType === "stand-alone") {
+        standAloneSurvey = true
+        surveyElement = document.getElementById('individual-survey-container')
+        questionElement = document.getElementById('individual-survey-question')
+        questionTotalElement = document.getElementById('individual-question-total')
+        questionProgressElement = document.getElementById('individual-questions-answered')
+        surveyProgressBarElement = document.getElementById('stand-alone-survey-progress-bar')
+        // Get all survey questions
+        questions = getSurveyQuestions([], true)
 
-    // Fetch the survey questions 
-    questions = getSurveyQuestions(excludeQuestions)
+    } else if (surveyType === "with-test"){
+        console.log("with test")
+        surveyElement = document.getElementById('survey-container')
+        questionElement = document.getElementById('survey-question')
+        questionTotalElement = document.getElementById('question-total')
+        questionProgressElement = document.getElementById('questions-answered')
+        surveyProgressBarElement = document.getElementById('survey-progress-bar')
     
-    // Check isHome varibale in local storage and if already exists, 
-    // remove home related questions if school/business
-    let isHomeArray = JSON.parse(localStorage.getItem('isHome'))
-    if(isHomeArray) {
-        for (let i = 0; i < isHomeArray.length; i++ ) {
-            if (isHomeArray[i].ipAddress === ipAddress && isHomeArray[i].answered === false ) {
-                removeFromQuestionsArray(ipAddress)
+        // Get an array of already answered questions from local storage
+        let excludeQuestionsArray = JSON.parse(localStorage.getItem('answeredQs'))
+        let excludeQuestions = []
+        if (excludeQuestionsArray !== null) {
+            for (let i = 0; i < excludeQuestionsArray.length; i++)  {
+                if (excludeQuestionsArray[i].ipAddress === ipAddress) {
+                    excludeQuestions = excludeQuestionsArray[i].answered
+                }
+            }
+        }
+
+        // Fetch the "9" survey questions 
+        questions = getSurveyQuestions(excludeQuestions, false)
+        
+        // Check isHome varibale in local storage and if already exists, 
+        // remove home related questions if school/business
+        let isHomeArray = JSON.parse(localStorage.getItem('isHome'))
+        if(isHomeArray) {
+            for (let i = 0; i < isHomeArray.length; i++ ) {
+                if (isHomeArray[i].ipAddress === ipAddress && isHomeArray[i].answered === false ) {
+                    removeFromQuestionsArray(ipAddress)
+                }
             }
         }
     }
 
+    
     // Set variables for survey progress bar
     numQuestions = questions.length
     progressIncrement = 100 / numQuestions
@@ -215,8 +256,15 @@ async function addQuestionElement(qNum) {
     const question = questions[qNum].question
     const type = questions[qNum].type
 
+
     questionElement.textContent = question
-    const container = document.getElementById('answers');
+    let container
+    if (standAloneSurvey) {
+        container = document.getElementById('stand-alone-survey-answers');
+    } else {
+        container = document.getElementById('answers');
+    }
+     
 
     // Creates appropriate survey question depending on question type
     if (type === 'nested') {
@@ -296,10 +344,17 @@ async function nextQuestion() {
     const qType = question.type
 
     if (qType === 'nested') {
-        let answers = document.querySelectorAll('#answers input')
-
-        if (answers.length === 0) {
-            answers = document.querySelectorAll('#answers select')
+        let answers
+        if (standAloneSurvey) {
+            answers = document.querySelectorAll('#stand-alone-survey-answers input')
+            if (answers.length === 0) {
+                answers = document.querySelectorAll('#stand-alone-survey-answers select')
+            }
+        } else {
+            answers = document.querySelectorAll('#answers input')
+            if (answers.length === 0) {
+                answers = document.querySelectorAll('#answers select')
+            }
         }
         
         answers.forEach((answer, index) => {
@@ -354,7 +409,13 @@ async function nextQuestion() {
             }
         }
     } else if (qType === 'select') {
-        let answer = document.querySelector('#answers select').value
+        let answer
+        if (standAloneSurvey) {
+            answer = document.querySelector('#stand-alone-survey-answers select').value
+        } else {
+            answer = document.querySelector('#answers select').value
+        }
+
         if (answer && answer !== 'Choose') {
             answeredFlag = true
 
@@ -372,7 +433,13 @@ async function nextQuestion() {
     }
 
     // Remove current question's answers from the tree
-    const node = document.getElementById('answers');
+    let node
+    if (standAloneSurvey) {
+        node = document.getElementById('stand-alone-survey-answers');
+    } else {
+        node = document.getElementById('answers');
+    }
+    
     while (node.firstChild) {
         node.removeChild(node.lastChild);
     }
@@ -388,6 +455,12 @@ async function nextQuestion() {
     // Hide survey element if no more questions to be answered
     if (questionIndex === numQuestions) {
         surveyElement.style.display = 'none'
+        // Upload stand alone survey results and display thank you message
+        if (standAloneSurvey) {
+            const uuid = getUuid()
+            await uploadSurveyData(null, addressLatConstant, addressLonConstant, addressTextConstant, null, null, phoneNumberConstant, true)
+            document.getElementById('end-of-survey-message').style.display = 'flex'
+        }
     }
     // Otherwise display the new question
     else {
@@ -408,14 +481,23 @@ async function nextQuestion() {
  * @param {String} ipAddress 
  * @returns An object containing whether or not it was successful
  */
-async function uploadSurveyData(uuid, addressLat, addressLon, addressText, ispName, ipAddress) {
+ async function uploadSurveyData(uuid, addressLat, addressLon, addressText, ispName, ipAddress, phoneNumber, standAloneSurvey) {
     let query = `mutation {
         updateMultitestSurveyResponse(
           data: {
-            userId: "${uuid}"
-            organizationId: ${organizationId}
-            ipAddress: "${ipAddress}"\n`
+           
+            organizationId: ${organizationId}\n`
     
+    if (uuid && ipAddress) {
+        query += `userId: "${uuid}"
+            ipAddress: "${ipAddress}"\n`
+    } 
+
+    if(phoneNumber) {
+        console.log("here,", phoneNumber)
+        query += `phoneNumber: "${phoneNumber}"\n`
+    }
+            
     if (addressLat && addressLon) {
         query += `addressLat: ${addressLat}
                 addressLon: ${addressLon}\n`
@@ -460,12 +542,15 @@ async function uploadSurveyData(uuid, addressLat, addressLon, addressText, ispNa
     })
     .then(res => res.json())
     .then (result => {
-        addToAnsweredQs(answeredQuestions, ipAddress)
+        if (!standAloneSurvey) {
+            addToAnsweredQs(answeredQuestions, ipAddress)
+        }
+        
     })
     .catch(err => console.error(err))
 }
 
-// Event listeners for survey navigation
+// Event listeners
 navBtn.onclick = nextQuestion
 
 export { initSurvey, uploadSurveyData }

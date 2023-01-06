@@ -223,7 +223,7 @@ body {
 /******************* General *******************/
 
 #history, #results, #ookla-test, #survey-instructions, #router-warning,
-#survey-container, #end-links, #history-empty, #test, #methodology, #error, #address, #ookla-loading, #checklist, #same-setup, #no-service {
+#survey-container, #end-links, #history-empty, #test, #methodology, #error, #address, #ookla-loading, #checklist, #same-setup, #no-service, #individual-survey-container, #end-of-survey-message, #phone-warning {
   display: none;
 }
 
@@ -372,6 +372,26 @@ ul li {
   text-decoration: none;
   color: var(--color-gray-0);
   font-weight: bold;
+}
+
+.survey-button {
+  min-width: 100px;
+  width: max-content;
+  padding: 15px 20px;
+  background: transparent; 
+  border: 2px solid var(--color-button);
+  color: var(--color-button);
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.survey-button:hover {
+  background: var(--color-button-hover);
+  color: var(--color-gray-0);
+  border: 2px solid  var(--color-button-hover);
 }
 
 .button:hover {
@@ -843,6 +863,28 @@ input[type="checkbox"] ~ label {
 .pac-container:after {
   background-image: none !important;
   height: 0px;
+}
+
+/* Phone number entry*/
+.phone-number-container {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: flex-start; 
+}
+
+#phone-warning {
+  display: none;
+  color: var(--color-red-3);
+}
+
+input[type="tel"] {
+  padding: 0 12px;
+  border: 1px solid var(--color-text);
+  border-radius: 4px;
+  width: 500px;
+  height: 56px;
+  font-size: var(--font-size-body1);
+  color: var(--color-text);
 }
 
  /* Hide google translate link | logo */
