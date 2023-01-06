@@ -17,6 +17,10 @@ async function getAssets(host = DEFAULT_DOMAIN) {
 
         args = `subdomainName: "${subdomain}"`
     } else {
+        if (host.startsWith('www.')) {
+            host = host.replace('www.', '')
+        }
+
         args = `domainName: "${host}"`
     }
 
