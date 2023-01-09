@@ -16,21 +16,6 @@ function getAggregateMultitestResultsQuery ({
                     unserved
                     underserved
                 }
-                mlabPerformanceRank {
-                    served
-                    unserved
-                    underserved
-                }
-                ooklaPerformanceRank {
-                    served
-                    unserved
-                    underserved
-                }
-                rstPerformanceRank {
-                    served
-                    unserved
-                    underserved
-                }
                 perCounty {
                     countyGeoid
                     totalTests
@@ -40,21 +25,6 @@ function getAggregateMultitestResultsQuery ({
                     latency
                     jitter
                     multitestPerformanceRank {
-                        served
-                        unserved
-                        underserved
-                    }
-                    mlabPerformanceRank {
-                        served
-                        unserved
-                        underserved
-                    }
-                    ooklaPerformanceRank {
-                        served
-                        unserved
-                        underserved
-                    }
-                    rstPerformanceRank {
                         served
                         unserved
                         underserved

@@ -54,7 +54,7 @@ async function uploadData(results) {
       medianJitter: ${results.medianJitter},
       medianUpload: ${results.medianUpload},
       medianDownload: ${results.medianDownload},
-      connectionType: "${results.connectionType}",
+      connectionType: ${results.connectionType},
       vpnOff: ${results.vpnOff},
       noInterruptFromOtherDevices: ${results.noInterruptFromOtherDevices},
       noService: ${results.noService}
@@ -163,7 +163,7 @@ async function handleResults(metadata, checklistResponses, address, results) {
     medianJitter: rollup.jitter,
     medianUpload: rollup.upload,
     medianDownload: rollup.download,
-    connectionType: checklistResponses.connectionType,
+    connectionType: checklistResponses.connectionType ? `"${checklistResponses.connectionType}"` : null,
     vpnOff: checklistResponses.vpnOff,
     noInterruptFromOtherDevices: checklistResponses.noInterruptFromOtherDevices,
     noService: checklistResponses.noService
