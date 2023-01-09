@@ -459,7 +459,7 @@ function testTemplate(config) {
         }
       </script>
       <script src="/static/test/m-lab/src/ndt7.min.js" type="text/javascript"></script>
-      <script type="module" src="/static/measure/setup.js"></script>
+      <script type="module" src="/static/measure/setup.js"></script> 
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFSRcqE5mWaypizwTElZzYQA3x3IiCiaQ&libraries=places"></script>
     </body>
     </html>

@@ -411,7 +411,6 @@ async function sameSetup() {
   beginTest()
 }
 
-
 /**
  * Sets up and runs the speed tests
  */
@@ -445,7 +444,7 @@ async function beginTest() {
   sameSetupElement.style.display = 'none'
 
   // Sets up the survey
-  initSurvey(metadata.ip)
+  initSurvey(metadata.ip, null, null, null, null, "with-test")
 
   // Set up test display
   ispNameElement.textContent = metadata.isp

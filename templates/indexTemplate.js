@@ -32,7 +32,10 @@ function indexTemplate(config) {
         <div id="landing" class="section-left">
           <h1 id="heading" class="main-heading">${config.heading}</h1>
           <p class="section-description">${config.description}</p>
-          <a class="button" href="/test/">${buttonText}</a>
+          <div style="display:flex">
+            <a class="button" style="margin-right: 20px;" href="/test/">${buttonText}</a>
+            <a class="survey-button" id="start-survey-btn" href="/survey/">Take the Survey</a>
+          </div>
           <a class="underline-button" href="#info" id="learn-more-btn">Learn More &#8594;</a>
         </div>
         <div class="section-right"></div>
