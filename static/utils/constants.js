@@ -316,27 +316,6 @@ export const survey = [
         attribute: "cellSatisfaction",
         attributeType: "string"
     },
-    {
-        id: 24,
-        question: "Please describe any internet use and/or internet-based business services that you would provide if you had access to improved internet.",
-        type: "long-text",
-        attribute: "additionalInternetUse",
-        attributeType: "string"
-    },
-    {
-        id: 25,
-        question: "What role do you think the local government in the area should have with respect to broadband access?",
-        type: "long-text",
-        attribute: "governmentRole",
-        attributeType: "string"
-    },
-    {
-        id: 26,
-        question: "What changes or improvements to your community’s broadband technology would best meet your needs? Please share any other comments about your internet service.",
-        type: "long-text",
-        attribute: "otherComments",
-        attributeType: "string"
-    },
 ]
 
 // Map constants
