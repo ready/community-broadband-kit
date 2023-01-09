@@ -290,6 +290,7 @@ async function getMetadata() {
  */
 function getChecklistItemResponse() {
   const picked = document.querySelectorAll('.selected-answer');
+  console.log(checklistCounter)
 
   if (checklistCounter === 1) {
     if (picked.length > 0) {
@@ -306,10 +307,8 @@ function getChecklistItemResponse() {
           } else {
             checklistResponses.connectionType = "WiFi"
           }
-        } else {
-          checklistResponses.connectionType = " "
         }
-      });
+      })
     }
   }
   
