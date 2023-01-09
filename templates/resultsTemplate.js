@@ -15,7 +15,6 @@ const endTemplate = require('./endTemplate')
  * @returns an html template
  */
 async function resultsTemplate(id, config) {
-  let ogImage;
   const header = headerTemplate(config)
   const landscapeBackground = landscapeBackgroundTemplate()
   const footer = footerTemplate(config)
@@ -23,6 +22,7 @@ async function resultsTemplate(id, config) {
   const results = await getResults(id)
   const resultsFields = getResultsFields(results)
 
+  /*
   if (resultsFields.serviceStatusText === 'Served') {
     ogImage = '/static/assets/served.png'
   } else if (resultsFields.serviceStatusText === 'Underserved') {
@@ -32,8 +32,9 @@ async function resultsTemplate(id, config) {
   } else {
     ogImage = config.ogImage
   }
+  */
 
-  const head = headTemplate(config, ogImage)
+  const head = headTemplate(config, config.ogImage)
 
   return `
     <!DOCTYPE html>
