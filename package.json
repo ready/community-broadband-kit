@@ -30,7 +30,7 @@
     "node-fetch": "^3.3.0",
     "ua-parser-js": "^1.0.32",
     "uuid": "^9.0.0",
-    "husky": "^8.0.2"
+    "husky": "^8.0.3"
   },
   "devDependencies": {
     "@ready.net/octogration": "^0.17.0",
