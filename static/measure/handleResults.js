@@ -169,7 +169,7 @@ async function handleResults(metadata, checklistResponses, address, results) {
     noService: checklistResponses.noService
   }
 
-  await uploadSurveyData(uuid, data.addressLat, data.addressLon, address.text, data.ispName, data.ipAddress)
+  await uploadSurveyData(uuid, data.addressLat, data.addressLon, address.text, data.ispName, data.ipAddress, null, false)
 
   const id = await uploadData(data)
   data.resultId = id
