@@ -4,7 +4,7 @@
  * @returns an html template
  */
 function footerTemplate(config) {
-	if (config.domainName === 'www.checknewarkinternetspeeds.org') {
+	if (config.domainName === 'checknewarkinternetspeeds.org') {
 		return `
 			<footer class="section-container center-content" style="background-color: var(--color-footer)">
 					<div class='section-top'>

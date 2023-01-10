@@ -4,7 +4,7 @@
  * @returns an html template
  */
 function headerTemplate(config) {
-	if (config.domainName === 'www.checknewarkinternetspeeds.org') {
+	if (config.domainName === 'checknewarkinternetspeeds.org') {
 		return `
 			<header class='header-container'>
 				<div class='header-logo' >

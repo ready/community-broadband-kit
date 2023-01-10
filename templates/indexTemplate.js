@@ -21,6 +21,10 @@ function indexTemplate(config) {
   const buttonText = config.buttonText ? config.buttonText : 'Take the Test'
   const end = endTemplate(config)
 
+  const surveyButtonFragment = (config.domainName !== 'checknewarkinternetspeeds.org') ?
+    '<a class="survey-button" id="start-survey-btn" href="/survey/">Take the Survey</a>'
+    : ''
+
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -34,7 +38,7 @@ function indexTemplate(config) {
           <p class="section-description">${config.description}</p>
           <div style="display:flex">
             <a class="button" style="margin-right: 20px;" href="/test/">${buttonText}</a>
-            <a class="survey-button" id="start-survey-btn" href="/survey/">Take the Survey</a>
+            ${surveyButtonFragment}
           </div>
           <a class="underline-button" href="#info" id="learn-more-btn">Learn More &#8594;</a>
         </div>
