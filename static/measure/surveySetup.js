@@ -4,7 +4,7 @@ import { uploadNoServiceData} from "/static/measure/handleResults.js"
 import { getUuid } from '/static/utils/cookies.js'
 
 // Document selectors
-const addressRequired = document.getElementById('address').getAttribute('address-required')
+const addressRequired = (document.getElementById('address').getAttribute('address-required') === 'true')
 const addressElement = document.getElementById('address')
 const geolocationElement = document.getElementById('geolocation')
 const addressWarningElement = document.getElementById('address-warning')

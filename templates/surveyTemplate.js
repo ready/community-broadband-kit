@@ -12,7 +12,7 @@ const landscapeBackgroundTemplate = require('./landscapeBackgroundTemplate')
     const head = headTemplate(config, config.ogImage)
     const header = headerTemplate(config)
     const end = endTemplate(config)
-    const addressRequired =  config.isAddressRequired ? config.isAddressRequired : true
+    const addressRequired =  (config.isAddressRequired !== null) ? config.isAddressRequired : true
     const communityName = config.communityName
     const landscapeBackground = landscapeBackgroundTemplate()
   

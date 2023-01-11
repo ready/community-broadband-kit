@@ -7,7 +7,7 @@ import { getUuid } from '/static/utils/cookies.js'
 import { BGA_URL } from '/static/utils/constants.js'
 
 // Document selectors
-const addressRequired = document.getElementById('address').getAttribute('address-required')
+const addressRequired = (document.getElementById('address').getAttribute('address-required') === 'true')
 const checklistElement = document.getElementById('checklist')
 const sameSetupElement = document.getElementById("same-setup")
 const addressElement = document.getElementById('address')
@@ -219,7 +219,6 @@ function onPlaceChanged() {
  */
 async function validateAddress() {
   noService = noServiceElement.checked
-
   if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired && !noService) {
     addressWarningElement.style.display = 'block'
   } else {
