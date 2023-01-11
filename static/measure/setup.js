@@ -178,7 +178,7 @@ function skipOrDisplayAddress() {
  */
 function displayAddressPrompt() {
   // If address entry is optional state address is not required
-  if (!addressRequired) {
+  if (addressRequired === "false") {
     document.getElementById("address-entry-message").textContent = "Your location is used to help your community get better internet. Entering your location is optional. It will not be shared with the public."
   }
 
@@ -220,7 +220,7 @@ function onPlaceChanged() {
 async function validateAddress() {
   noService = noServiceElement.checked
 
-  if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired && !noService) {
+  if (!LOCAL_TESTING_FLAG && (document.getElementById('autocomplete').value === '' || !address.lat || !address.lon) && addressRequired === "true" && !noService) {
     addressWarningElement.style.display = 'block'
   } else {
     addressElement.style.display = "none"
