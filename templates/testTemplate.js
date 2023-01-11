@@ -13,7 +13,7 @@ function testTemplate(config) {
     const header = headerTemplate(config)
     const landscapeBackground = landscapeBackgroundTemplate()
     const end = endTemplate(config)
-    const addressRequired = config.isAddressRequired ? config.isAddressRequired : true
+    const addressRequired = (config.isAddressRequired !== null) ? config.isAddressRequired : true
 
   return `
     <!DOCTYPE html>
