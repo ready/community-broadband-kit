@@ -1,11 +1,14 @@
 {
-  "name": "multitest",
+  "name": "community-broadband-kit",
   "version": "1.19.0",
   "description": "Internet strength multitest",
   "main": "app.js",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
     "prepare": "husky install"
   },
   "repository": {
@@ -30,7 +33,11 @@
     "node-fetch": "^3.3.0",
     "ua-parser-js": "^1.0.32",
     "uuid": "^9.0.0",
-    "husky": "^8.0.2"
+    "husky": "^8.0.2",
+    "@next/font": "13.1.1",
+    "next": "13.1.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@ready.net/octogration": "^0.17.0",
