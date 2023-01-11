@@ -7,7 +7,7 @@ import { getUuid } from '/static/utils/cookies.js'
 import { BGA_URL } from '/static/utils/constants.js'
 
 // Document selectors
-const addressRequired = (document.getElementById('address').getAttribute('address-required') === true)
+const addressRequired = (document.getElementById('address').getAttribute('address-required') === 'true')
 const checklistElement = document.getElementById('checklist')
 const sameSetupElement = document.getElementById("same-setup")
 const addressElement = document.getElementById('address')
