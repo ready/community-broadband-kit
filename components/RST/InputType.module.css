@@ -1,0 +1,30 @@
+.radio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.radio [class*='ant-radio-wrapper'] {
+  width: 100% !important;
+  align-items: center !important;
+  margin-bottom: 16px;
+}
+
+.radio [class*='ant-radio'] {
+  width: 22px;
+  height: 22px;
+  top: 0px;
+}
+
+.radio [class*='ant-radio-checked'] [class*='ant-radio-inner'],
+.radio [class*='ant-radio']:hover [class*='ant-radio-inner'] {
+  border-color: var(--ms-yellow) !important;
+}
+
+.radio [class*='ant-radio-inner']::after {
+  background-color: var(--ms-yellow) !important;
+}
+
+.radio [class*='ant-radio'] + * {
+  font-size: var(--font-size-heading4);
+}

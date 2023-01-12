@@ -1,0 +1,9 @@
+.title h1 {
+    font-size: var(--font-size-heading1);
+    margin: 0;
+}
+@media screen and (max-width: 1020px) {
+    .title {
+        text-align: center;
+    }
+}

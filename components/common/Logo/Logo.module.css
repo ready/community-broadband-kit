@@ -1,0 +1,25 @@
+.logo {
+  position: relative;
+  width: 181.88px;
+  height: 81.12px;
+  cursor: pointer;
+}
+
+.logo img {
+  max-height: 81.12px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 550px) {
+  .logo {
+    width: 125.55px;
+    height: 56px;
+  }
+  
+  .logo img {
+    max-height: 56px;
+  }
+}

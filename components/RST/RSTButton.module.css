@@ -1,0 +1,19 @@
+.takeTest {
+  max-width: 200px;
+  position: relative;
+  background-color: var(--ms-red);
+  border: none;
+}
+
+.big {
+  height: auto;
+  padding: 15px 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.takeTest:hover,
+.takeTest:focus {
+  background-color: #DC384A !important;
+  border: none;
+}

@@ -1,0 +1,16 @@
+.description p{
+    font-size: var(--font-size-body1);
+    margin-bottom: 64px;
+    color: var(--color-blue-8);
+}
+@media screen and (max-width: 1020px) {
+    .description p{
+        text-align: center;
+        margin-bottom: 32px;
+    }
+}
+@media screen and (max-width: 662px) {
+	.description p{
+        margin-bottom: 24px;
+    }
+}
