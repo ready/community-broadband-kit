@@ -1,0 +1,51 @@
+.header {
+  width: 100%;
+  z-index: 10;
+}
+
+.commonHeader {
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  /* justify-self: flex-start; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.mapHeader {
+  position: absolute;
+  background-color: var(--mapBackgroundTransparent);
+  padding: 12px 24px;
+  backdrop-filter: saturate(180%) blur(5px);
+}
+
+.mapHeaderInnerContain {
+  max-width: 80vw; /*var(--section-max-width);*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.RECReportTitle {
+  font-weight: 700;
+  font-size: var(--font-size-heading2);
+  color: var(--color-green-1);
+}
+
+@media screen and (max-height: 670px) {
+  .header.heroHeader {
+    margin-top: 0;
+  }
+
+  .RECReportTitle {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 662px) {
+  .header {
+    position: relative;
+  }
+}

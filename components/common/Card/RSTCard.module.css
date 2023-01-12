@@ -1,0 +1,44 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--ms-light-blue);
+  border-radius: var(--border-radius);
+  padding: var(--section-padding);
+  gap: 2em;
+}
+
+.title {
+  font-size: var(--font-size-heading1);
+  color: var(--ms-blue);
+  font-weight: bold;
+  line-height: 1.05;
+  margin-bottom: 0;
+}
+
+.description {
+  font-weight: normal;
+  font-size: var(--font-size-body1);
+  color: var(--color-blue-10);
+  margin-bottom: 0;
+}
+
+@media all and (max-width: 725px) {
+  .title,
+  .description {
+    text-align: center;
+  }
+}
+
+@media all and (max-width: 550px) {
+  .title {
+    font-size: var(--font-size-heading2);
+  }
+}
+
+@media all and (max-width: 355px) {
+  .description {
+    font-size: var(--font-size-body2);
+  }
+}

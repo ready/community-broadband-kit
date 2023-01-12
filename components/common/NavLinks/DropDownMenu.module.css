@@ -1,0 +1,30 @@
+.dropDownMenu {
+  width: 300px;
+  height: fit-content;
+  position: absolute;
+  top: 56px;
+  right: -calc(5% + 300px);
+  padding: 24px;
+  background-color: var(--color-gray-0);
+  z-index: 2;
+  border-radius: 8px;
+  transition: all .3s ease-out;
+  opacity: 0;
+}
+
+.openMenu {
+  right: 2%;
+  transition: all .3s ease-out;
+  opacity: 1;
+}
+
+.dropDownMenu [class*='menuContainer'] [class*='ant-menu-item'] a,
+.dropDownMenu [class*='menuContainer'] [class*='ant-menu-item'] a:hover {
+  color: var(--ms-blue);
+}
+
+@media only screen and (min-width: 662px) {
+  .dropDownMenu {
+    display: none;
+  }
+}

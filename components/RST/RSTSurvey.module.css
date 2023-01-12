@@ -1,0 +1,27 @@
+.survey {
+  position: relative;
+}
+
+.survey [class*='card'] {
+  margin: 0 auto;
+}
+
+.surveyButton {
+  position: absolute;
+  right: 0;
+  margin-top: 24px;
+}
+
+@media screen and (max-width: 1020px) {
+  .surveyButton {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 24px;
+  }
+
+  .surveyButton [class*='takeTest'] {
+    position: absolute;
+    right: 0;
+  }
+}

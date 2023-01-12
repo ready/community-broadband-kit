@@ -1,0 +1,23 @@
+.sameSetupWrap {
+  width: 100%;
+  max-width: var(--section-max-width);
+  padding: 120px 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.answerOptions {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+  gap: 24px;
+}
+
+.answerOptions [class*='checklistAnswerOption'][class*='ant-radio-button-wrapper']:last-child::before {
+  display: none !important;
+}

@@ -1,0 +1,34 @@
+.survey [class*='ant-form-item-row'] {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.survey .nested [class*='ant-form-item-row'] {
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px !important;
+}
+
+.survey .nested [class*='ant-form-item-row'] [class*='ant-col'] [class*='ant-form-item-control-input'],
+.survey .nested [class*='ant-form-item-row'] [class*='ant-col'][class*='ant-form-item-control'] {
+  width: 240px;
+  max-width: 240px;
+}
+
+.survey [class*='ant-form-item-label'] > label,
+.nested {
+  color: var(--ms-dark) !important;
+  font-weight: 600;
+  font-size: var(--font-size-heading4);
+  color: var(--color-subheading);
+}
+
+.survey .nested [class*='ant-form-item-label'] > label {
+  font-weight: normal;
+}
+
+.survey .nested [class*='ant-select-single.ant-select-lg:not(.ant-select-customize-input)'] [class*='ant-select-selector'] [class*='ant-select-selection-placeholder'] {
+  font-weight: normal;
+}

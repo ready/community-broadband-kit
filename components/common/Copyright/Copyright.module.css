@@ -1,0 +1,29 @@
+.copyright {
+  text-align: right;
+  color: var(--color-gray-1);
+  font-size: var(--font-size-body3);
+}
+.copyright span {
+  padding-left: 12px;
+}
+
+.address {
+  color: var(--color-gray-1);
+  font-size: var(--font-size-body3);
+}
+
+@media screen and (max-width: 1020px) {
+  .copyright p {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .copyright span {
+    margin-top: 8px;
+  }
+
+  .address p {
+    display: flex;
+    flex-direction: column;
+  }
+}

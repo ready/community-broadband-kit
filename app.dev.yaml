@@ -1,0 +1,9 @@
+
+runtime: nodejs14
+instance_class: F4_1G
+entrypoint: npm start
+handlers:
+- url: /.*
+  script: auto
+  secure: always
+  redirect_http_response_code: 301

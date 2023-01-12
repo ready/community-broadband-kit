@@ -1,0 +1,16 @@
+steps:
+- name: "gcr.io/cloud-builders/gsutil"
+  args: ["cp", "gs://ready-gov-audit.appspot.com/.env", ".env"]
+- name: "gcr.io/cloud-builders/gsutil"
+  args: ["cp", "gs://ready-gov-audit.appspot.com/GeoIP2-City.mmdb", ".next/server/pages/GeoIP2-City.mmdb"]
+- name: "gcr.io/cloud-builders/gsutil"
+  args: ["cp", "gs://ready-gov-audit.appspot.com/GeoIP2-ISP.mmdb", ".next/server/pages/GeoIP2-ISP.mmdb"]
+- name: node:14
+  entrypoint: npm
+  args: ['install', '--production']
+- name: node:14
+  entrypoint: npm
+  args: ['run', 'build']
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy", "app.prod.yaml"]
+timeout: "10800s"

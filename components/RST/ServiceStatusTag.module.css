@@ -1,0 +1,37 @@
+.serviceStatusTag {
+  color: var(--color-gray-0);
+  padding: 0 7px;
+  border-radius: 4px;
+}
+
+.small {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.big {
+  font-size: var(--font-size-heading1);
+  line-height: 1.05;
+  display: inline-block;
+}
+
+.Unserved {
+  background-color: var(--unserved);
+  /* border-color: #FFA39E;
+  color: #CF1322; */
+  width: fit-content;
+}
+
+.Underserved{
+  background-color: var(--underserved);
+  /* border-color: #FFD591;
+  color: #D46B08; */
+  width: fit-content;
+}
+
+.Served {
+  background-color: var(--served);
+  /* border-color: #B7EB8F;
+  color: #389E0D; */
+  width: fit-content;
+}

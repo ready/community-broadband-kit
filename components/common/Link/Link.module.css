@@ -1,0 +1,19 @@
+.link {
+  padding: 12px 16px;
+  margin-bottom: 12px;
+}
+
+.link a {
+  color: var(--color-gray-1);
+  font-size: var(--font-size-body2);
+  text-transform: capitalize;
+}
+
+.footerSegment {
+  padding: 14px 16px;
+  margin-bottom: 1px;
+}
+
+.footerSegment a {
+  text-transform: capitalize;
+}

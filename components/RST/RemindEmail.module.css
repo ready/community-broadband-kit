@@ -1,0 +1,118 @@
+.buttonContainer,
+.headerButtonContainer {
+  width: 288px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  right: 0;
+  background: var(--color-gray-0);
+  border-radius: 4px 0 0 4px;
+  padding: 15px;
+  transition: 0.5s;
+}
+
+.headerButtonContainer {
+  width: 100px;
+  padding-right: 85px;
+  transition: 0.5s;
+  position: relative;
+}
+
+.button,
+.HeaderButton {
+  width: 100px;
+  height: 48px;
+  position: absolute;
+  right: -100px;
+  background: var(--ms-red);
+  border-radius: 0 4px 4px 0;
+  border: 2px solid var(--ms-red);
+  font-weight: bold ;
+  font-size: var(	--font-size-body3);
+  color: var(--color-gray-0);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.button:hover,
+.HeaderButton:hover {
+  background: #DC384A;
+  border: 2px solid #DC384A;
+  color: var(--color-gray-0);
+}
+
+.buttonContainer .button:focus,
+.headerButtonContainer .HeaderButton:focus {
+  outline: none;
+}
+
+.input, 
+.headerInput {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 40px;
+  transition: 0.5s;
+}
+
+.headerInput {
+  width: 0;
+  margin-left: 0;
+}
+
+.input:focus, 
+.headerInput:focus {
+  border: none;
+  outline: none;
+}
+
+.input:active, 
+.headerInput:active {
+  border: none;
+  outline: none;
+}
+
+.buttonContainer div {
+  position: absolute;
+  left: 45px;
+  top: 5px;
+}
+
+.textLink {
+  height: 32px;
+  font-size: var(	--font-size-body2);
+  color: var(--color-gray-0);
+  cursor: pointer;
+  padding: 12px 0 12px 4px;
+  transition: 0.5s;
+}
+
+.textLink:hover {
+  color: var(--color-blue-6);
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover, 
+.input:-webkit-autofill:focus, 
+.input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px var(--color-gray-0) inset !important;
+}
+
+@media screen and (max-width: 1020px) {
+  .newsLetterContainer {
+    position: relative;
+    left: 0;
+  }
+
+  .textLink {
+    padding: 12px 0;
+  }
+}
+
+@media screen and (max-width: 662px) {
+  .buttonContainer,
+  .headerButtonContainer {
+    width: 200px;
+  }
+}
