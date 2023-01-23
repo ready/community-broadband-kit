@@ -10,6 +10,7 @@ import RSTButton from '/components/RST/RSTButton'
 import LearnMore from '../../common/LearnMore/LearnMore'
 import LandscapeBackground from '../../common/LandscapeBackground/LandscapeBackground'
 import { useCommunityContext } from '../../context/CommunityContext'
+import { useRouter } from 'next/router'
 
 import styles from './Hero.module.css'
 
@@ -17,15 +18,19 @@ const Hero = () => {
   const title = 'Help Our Community Win Broadband Grants'
   const description = 'This anonymous test will help you and your community gauge your internet strength. For best results, take the test once per day for the next 7 days.'
   
-  const { startTest, setStartTest, takeSurvey, setTakeSurvey, previousResults, setSameSetup } = useCommunityContext()
+  // const { startTest, setStartTest, takeSurvey, setTakeSurvey, previousResults, setSameSetup } = useCommunityContext()
+
+  const router = useRouter()
 
   const handleStartTest = (e) => {
-    setStartTest(!startTest)
-    if (previousResults?.connectionType !== 'undefined') setSameSetup(true)
+    //setStartTest(!startTest)
+    //if (previousResults?.connectionType !== 'undefined') setSameSetup(true)
+    router.push('/test')
   }
 
   const handleTakeSurvey = (e) => {
-    setTakeSurvey(!takeSurvey)
+    //setTakeSurvey(!takeSurvey)
+    router.push('/survey')
   }
 
   return (

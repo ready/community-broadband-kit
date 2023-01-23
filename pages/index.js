@@ -23,12 +23,7 @@ export default function TermPage({
       keywords={`Broadband, Internet Speed Test`}
       ogImage='https://storage.googleapis.com/boss-public-assets-prod/measure-broadband.png'
     >
-      {/* <Hero /> */}
-      {startTest
-        ? <RSTTest />
-        : takeSurvey
-          ? <RSTTakeTheSurvey />
-          : <Hero />}
+      {<Hero />}
       <InfoSection section={'welcome'}/>
       <InfoSection section={'how-does-it-work'}/>
       <InfoSection section={'tips'}/>

@@ -13,12 +13,18 @@ const RSTTest = () => {
     sameSetup,
     sameSetupAns,
     startTest,
+    setStartTest,
+    previousResults, 
+    setSameSetup,
     runTest,
     setRunTest,
     showResult,
     setShowResult,
     takeSurvey
   } = useCommunityContext()
+
+  setStartTest(true)
+  // if (previousResults?.connectionType !== 'undefined') setSameSetup(true)
 
   const handleShowResult = () => {
     setShowResult(!showResult)
