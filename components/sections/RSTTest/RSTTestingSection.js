@@ -12,10 +12,11 @@ import config from '/utils/testConfig'
 import runTests from '/utils/test/runTests'
 import { gql, useMutation } from '@apollo/client'
 import rollupResults from '/utils/rollupResults'
+import { useRouter } from 'next/router'
 
 import styles from './RSTTestingSection.module.css'
 
-const RSTTestingSection = ({ handleShowResult }) => {
+const RSTTestingSection = () => {
   const {
     testSource,
     setTestSource,
@@ -26,10 +27,12 @@ const RSTTestingSection = ({ handleShowResult }) => {
     ispName,
     toolkitData,
     setToolkitData,
-    surveyComplete
+    surveyComplete,
   } = useCommunityContext()
 
   const [addMultitestData] = useMutation(ADD_MULTITEST_DATA)
+
+  const router = useRouter()
 
   useEffect(async () => {
     const state = {
@@ -49,11 +52,11 @@ const RSTTestingSection = ({ handleShowResult }) => {
     }
 
     const data = {...toolkitData, ...results}
-    console.log(data)
-    await addMultitestData({ variables: {testData: data} })
+    let res = await addMultitestData({ variables: {testData: data} })
+    // console.log(res.data?.addMultitestData.id)
     setToolkitData(data)
 
-    handleShowResult()
+    router.push(`/result/${res.data?.addMultitestData.id}`)
   }, [])
 
   return (

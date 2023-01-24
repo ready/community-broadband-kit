@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 
 import Header from '../../common/Header/Header'
-import RSTResultSection from './RSTResultSection'
 import RSTTestingSection from './RSTTestingSection'
 import RSTBeforeTestSection from './RSTBeforeTestSection'
 import RSTSameSetup from './RSTSameSetup'
@@ -18,17 +17,11 @@ const RSTTest = () => {
     setSameSetup,
     runTest,
     setRunTest,
-    showResult,
-    setShowResult,
-    takeSurvey
+    takeSurvey,
   } = useCommunityContext()
 
   setStartTest(true)
   // if (previousResults?.connectionType !== 'undefined') setSameSetup(true)
-
-  const handleShowResult = () => {
-    setShowResult(!showResult)
-  }
 
   useEffect(() => {
     if (sameSetupAns) setRunTest(true)
@@ -37,9 +30,8 @@ const RSTTest = () => {
 
   const renderSection = () => {
     if (sameSetup && startTest && !takeSurvey) return <RSTSameSetup />
-    else if (showResult && !sameSetup && !takeSurvey) return <RSTResultSection />
-    else if (runTest && !sameSetup) return <RSTTestingSection handleShowResult={handleShowResult} />
-    else if (startTest && !sameSetupAns && !showResult && !takeSurvey) return <RSTBeforeTestSection setRunTest={setRunTest} />
+    else if (runTest && !sameSetup) return <RSTTestingSection />
+    else if (startTest && !sameSetupAns && !takeSurvey) return <RSTBeforeTestSection setRunTest={setRunTest} />
   }
 
   return (

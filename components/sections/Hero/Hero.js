@@ -56,7 +56,6 @@ const Hero = () => {
           <LearnMore />
         </SectionLeftContent>
         <SectionRightContent className={styles.sectionRight}>
-          
         </SectionRightContent>
         <LandscapeBackground />
       </SectionContent>
