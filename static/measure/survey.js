@@ -99,7 +99,6 @@ async function initSurvey(ipAddress, addressLat, addressLon, addressText, phoneN
         questions = getSurveyQuestions([], true)
 
     } else if (surveyType === "with-test"){
-        console.log("with test")
         surveyElement = document.getElementById('survey-container')
         questionElement = document.getElementById('survey-question')
         questionTotalElement = document.getElementById('question-total')
