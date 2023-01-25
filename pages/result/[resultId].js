@@ -19,22 +19,10 @@ const RSTResult = () => {
   const [resultsFields, setResultsFields] = useState()
 
   useEffect(async () => {
-    const resultId = await getResultId()
-    console.log(resultId)
-    
-    const resultsData = await getResults(resultId)
-    console.log(resultsData)
+    const resultsData = await getResults(router.query.resultId)
     setToolkitData(resultsData)
-    console.log(toolkitData)
-    
-    await displayResults(resultsData)
-    
-  }, [])
-
-  // Get result ID from route
-  async function getResultId() {
-    return router.query.resultId
-  }
+    await getResultsFields(resultsData)
+  }, [router])
 
   /**
    * Fetches the database record assocatiated with a test result id
@@ -79,7 +67,7 @@ const RSTResult = () => {
     .catch(err => console.log(err));
   }
 
-  async function displayResults(resultsData){
+  async function getResultsFields(resultsData){
     fetch('/api/getResultsFields', {
       method: 'POST',
       headers: {
