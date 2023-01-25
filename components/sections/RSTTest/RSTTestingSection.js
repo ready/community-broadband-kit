@@ -16,7 +16,7 @@ import { useRouter } from 'next/router'
 
 import styles from './RSTTestingSection.module.css'
 
-const RSTTestingSection = () => {
+const RSTTestingSection = ({ handleShowResult }) => {
   const {
     testSource,
     setTestSource,
@@ -56,7 +56,10 @@ const RSTTestingSection = () => {
     // console.log(res.data?.addMultitestData.id)
     setToolkitData(data)
 
-    router.push(`/result/${res.data?.addMultitestData.id}`)
+    handleShowResult()
+
+    // Update route without navigating to it
+    router.push(`/test`,`/result/${res.data?.addMultitestData.id}`, { shallow: true })
   }, [])
 
   return (

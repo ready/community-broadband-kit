@@ -2,12 +2,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
 import SectionContent from '../../components/common/SectionContent/SectionContent'
-import SectionLeftContent from '../../components/common/SectionContent/SectionLeftContent'
-import SectionRightContent from '../../components/common/SectionContent/SectionRightContent'
-import SectionBlurb from '../../components/common/SectionBlurb/SectionBlurb'
 import RSTCard from '../../components/common/Card/RSTCard'
-import RSTButton from '../../components/RST/RSTButton'
-import EmailReminder from '../../components/RST/EmailReminder'
 import ServiceStatusTag from '../../components/RST/ServiceStatusTag'
 import { useCommunityContext } from '../../components/context/CommunityContext'
 import Result from '../../components/RST/Result'
@@ -15,22 +10,76 @@ import styles from '../../components/sections/RSTTest/RSTResultSection.module.cs
 import stylesTest from '../../components/sections/RSTTest/RSTTest.module.css'
 import Layout from '../../components/common/Layout/Layout'
 import Header from '../../components/common/Header/Header'
+import { GRAPHQL_API_URL } from '../../utils/constants'
 
 const RSTResult = () => {
   const router = useRouter()
   
-  const resultId = router.query.resultId
-
-  const { startTest, setStartTest, toolkitData, setRunTest, setShowResult } = useCommunityContext()
+  const { toolkitData, setToolkitData } = useCommunityContext()
   const [resultsFields, setResultsFields] = useState()
 
-  const handleStartTest = () => {
-    setStartTest(!startTest)
-    setRunTest(false)
-    setShowResult(false)
+  useEffect(async () => {
+    const resultId = await getResultId()
+    console.log(resultId)
+    
+    const resultsData = await getResults(resultId)
+    console.log(resultsData)
+    setToolkitData(resultsData)
+    console.log(toolkitData)
+    
+    await displayResults(resultsData)
+    
+  }, [])
+
+  // Get result ID from route
+  async function getResultId() {
+    return router.query.resultId
   }
 
-  useEffect(() => {
+  /**
+   * Fetches the database record assocatiated with a test result id
+   * @param {*} id The id of the result in the database
+   * @returns The record associated with the result id
+   */
+  async function getResults(id) {
+    const body = JSON.stringify({
+        query: `query {
+            getMultitestResult (id:"${id}") {
+                mlabUpload
+                mlabDownload
+                mlabLatency
+                mlabJitter
+                rstLatency
+                rstJitter
+                rstUpload
+                rstDownload
+                ooklaLatency
+                ooklaJitter
+                ooklaUpload
+                ooklaDownload
+                medianUpload
+                medianDownload
+                medianJitter
+                medianLatency
+            }
+        }`
+    });
+
+    return fetch(GRAPHQL_API_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body
+    })
+    .then(res => res.json())
+    .then (result => {
+        return result.data.getMultitestResult;
+    })
+    .catch(err => console.log(err));
+  }
+
+  async function displayResults(resultsData){
     fetch('/api/getResultsFields', {
       method: 'POST',
       headers: {
@@ -38,7 +87,7 @@ const RSTResult = () => {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        results: toolkitData
+        results: resultsData
       })
     })
     .then(res => res.json())
@@ -46,7 +95,7 @@ const RSTResult = () => {
     .catch((error) => {
        console.log(error)
     })
-  }, [])
+  }
 
   return (
     <Layout
@@ -60,19 +109,6 @@ const RSTResult = () => {
       <Header logoColor='white' hero page='broadband-audits' />
       <div className={styles.resultSection}>
       <SectionContent>
-        <SectionLeftContent>
-          <SectionBlurb
-            title='Thank you!'
-            section='hero'
-          >
-            <p>Here are your results. If you weren&apos;t able to complete the survey, please take the test again.</p>
-            <p>For best results, take the test once per day for the next 7 days.
-              <br />
-            Enter your email below to receive a reminder:</p>
-            <EmailReminder/>
-          </SectionBlurb>
-        </SectionLeftContent>
-        <SectionRightContent>
           <RSTCard
             title={<>You are <ServiceStatusTag size='big' serviceStatus={resultsFields?.serviceStatusText} /></>}
             description='Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.'
@@ -82,11 +118,6 @@ const RSTResult = () => {
               resultsFields={resultsFields}
             />
           </RSTCard>
-          <RSTButton
-            buttonTitle='Test again'
-            onClick={handleStartTest}
-          />
-        </SectionRightContent>
       </SectionContent>
     </div>
     </section>
