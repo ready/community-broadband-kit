@@ -1,0 +1,71 @@
+.checklistAnswerOption[class*='ant-radio-button-wrapper'] {
+  border: 1px solid rgba(17 14 76 / 20%);
+  color: var(--color-blue-10);
+  padding: 1px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  background-color: transparent;
+}
+
+.checklistAnswerOption[class*='ant-radio-button-wrapper']:hover,
+.checklistAnswerOption[class*='ant-radio-button-wrapper']:has([class*='ant-radio-button-checked']) {
+  border: 1px solid var(--ms-yellow) !important;
+}
+
+.checklistAnswerOption [class*='ant-radio-button'] {
+  border-radius: 50% !important;
+}
+
+.checklistAnswerOption [class*='ant-radio-button'][class*='ant-radio-button-checked'] {
+  border: 2px solid var(--ms-yellow) !important;
+}
+
+.checklistAnswerOption[class*='ant-radio-button-wrapper']:has([class*='ant-radio-button-checked']):hover,
+.checklistAnswerOption [class*='ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)']:first-child {
+  border: none;
+}
+
+.checklistAnswerOption[class*='ant-radio-button-wrapper']:not(:first-child)::before {
+  display: none !important;
+}
+
+.checklistAnswerOption [class*='ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within'] {
+  box-shadow: none !important;
+}
+
+.checklistIcon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 10px;
+}
+
+.iconText {
+  font-size: 16px;
+  margin-bottom: 0;
+  color: var(--color-blue-10) !important;
+  text-align: center;
+}
+
+@media screen and (max-width: 662px) {
+  .checklistAnswerOption[class*='ant-radio-button-wrapper'] {
+    width: 100px;
+    height: 100px;
+  }
+
+  .checklistIcon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .checklistAnswerOption[class*='ant-radio-button-wrapper'] {
+    width: 90px;
+    height: 90px;
+  }
+}

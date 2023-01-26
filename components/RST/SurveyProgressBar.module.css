@@ -1,0 +1,25 @@
+.surveyProgressBar {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: flex-start; */
+  align-items: center;
+}
+
+.progressNum {
+  margin-bottom: 0;
+  margin-right: 16px;
+  white-space: nowrap;
+}
+
+.lineProgress {
+  height: 16px;
+}
+
+.lineProgress [class*='ant-progress-inner'] {
+  background-color: var(--color-gray-4);
+}
+
+.lineProgress [class*='ant-progress-bg'] {
+  background-color: var(--ms-red);
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}

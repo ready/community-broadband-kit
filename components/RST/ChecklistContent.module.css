@@ -1,0 +1,141 @@
+.checklistQuestion
+.tooltipText,
+.tooltipText {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.checklistQuestion {
+  text-align: center;
+}
+
+.checklistHeader {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.checklistSubheader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.checklistSubheader > div > span,
+.closeToRouter > div > span,
+.vpnChecklist > div > span {
+  border-bottom: 1px dotted var(--color-gray-9);
+}
+
+.checklistSubheader > div > span:hover {
+  cursor: pointer;
+}
+
+.tooltipText > a {
+  text-decoration: underline;
+  color: var(--color-gray-0);
+}
+
+.ethernetImage {
+  width: 150px;
+  height: 96px;
+  margin: 0 auto;
+}
+
+.answerOptions {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+  gap: 24px;
+}
+
+.answerOptions [class*='checklistAnswerOption'][class*='ant-radio-button-wrapper']:last-child::before {
+  display: none !important;
+}
+
+.routerWarning {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.routerWarning [class*='ant-checkbox-wrapper'] {
+  align-items: center;
+}
+
+.routerWarning [class*='ant-checkbox-inner'] {
+  width: 22px;
+  height: 22px;
+}
+
+.routerWarning [class*='ant-checkbox'] {
+  top: -0.5px;
+}
+
+.routerWarning [class*='ant-checkbox-wrapper']:hover [class*='ant-checkbox-inner'],
+.routerWarning [class*='ant-checkbox']:hover [class*='ant-checkbox-inner'],
+.routerWarning [class*='ant-checkbox-input']:focus + [class*='ant-checkbox-inner'] {
+  border-color: var(--ms-yellow);
+}
+
+.routerWarning [class*='ant-checkbox-checked']::after {
+  border: 1px solid var(--ms-yellow) !important;
+}
+
+.routerWarning [class*='ant-checkbox-checked'] [class*='ant-checkbox-inner'] {
+  background-color: var(--ms-yellow);
+  border-color: var(--ms-yellow);
+}
+
+.closeToRouter {
+  color: var(--color-text);
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.vpnChecklist {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 662px) {
+  .answerOptions {
+    gap: 16px;
+  }
+  
+  .closeToRouter {
+    display: inline;
+  }
+
+  .closeToRouter > div {
+    width: fit-content;
+  }
+
+  .closeToRouter > div > span {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .answerOptions {
+    gap: 8px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .closeToRouter > div {
+    display: inline-block;
+  }
+  
+  .closeToRouter > div > span {
+    display: inline;
+  }
+}

@@ -1,0 +1,46 @@
+.resultSection [class*='section'] {
+  align-items: flex-start;
+}
+
+.resultSection [class*='sectionLeft'] {
+  width: 38%;
+}
+
+.resultSection [class*='sectionRight'] {
+  width: 58%;
+}
+
+.resultSection [class*='card'] {
+  max-width: 100%;
+  margin-bottom: 2em;
+}
+
+
+.resultSection [class*='takeTest'] {
+  position: absolute;
+  right: 0;
+}
+
+@media screen and (max-width: 1100px) {
+  .resultSection [class*='section'] {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .resultSection [class*='sectionLeft'] {
+    max-width: 600px;
+    width: auto;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    flex-direction: column !important;
+  }
+
+  .resultSection [class*='sectionLeft'] [class*='description'] > p {
+    text-align: left !important;
+  }
+
+  .resultSection [class*='sectionRight'] {
+    max-width: 900px;
+    width: 100%;
+  }
+}

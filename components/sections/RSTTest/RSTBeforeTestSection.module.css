@@ -1,0 +1,78 @@
+.beforeTestWrap {
+  width: 100%;
+  max-width: var(--section-max-width);
+  padding: 120px 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.beforeTestSteps {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.beforeTestButtonWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.beforeTestDescription {
+  font-size: var(--font-size-body1);
+  color: var(--color-blue-10);
+  font-weight: normal;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.checkInternet {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkInternet [class*='ant-checkbox-wrapper'] {
+  align-items: center;
+}
+
+.checkInternet [class*='ant-checkbox-inner'] {
+  width: 22px;
+  height: 22px;
+}
+
+.checkInternet [class*='ant-checkbox'] {
+  top: -0.5px;
+}
+
+.checkInternet [class*='ant-checkbox-wrapper']:hover [class*='ant-checkbox-inner'],
+.checkInternet [class*='ant-checkbox']:hover [class*='ant-checkbox-inner'],
+.checkInternet [class*='ant-checkbox-input']:focus + [class*='ant-checkbox-inner'] {
+  border-color: var(--ms-yellow);
+}
+
+.checkInternet [class*='ant-checkbox-checked']::after {
+  border: 1px solid var(--ms-yellow) !important;
+}
+
+.checkInternet [class*='ant-checkbox-checked'] [class*='ant-checkbox-inner'] {
+  background-color: var(--ms-yellow);
+  border-color: var(--ms-yellow);
+}
+
+.checkInternet > span {
+  color: var(--color-text);
+  font-size: 18px;
+}
+
+@media screen and (max-width: 662px) {
+  .beforeTestSteps {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .beforeTestSteps {
+    width: 80%;
+  }
+}

@@ -1,0 +1,159 @@
+.loadBar {
+  width: 390px;
+  height: 30px;
+  position: relative;
+}
+
+@media screen and (max-width: 1020px) {
+  .loadBar {
+    display: none;
+  }
+}
+
+@keyframes mlab-animation {
+  0%   {left: 0px;}
+  25%  {left: 0px;}
+  50%  {left: 0px;}
+  100% {left: 5px;}
+}
+
+@keyframes ookla-animation {
+  0%   {left: 125px;}
+  25%  {left: 125px;}
+  50%  {left: 130px;}
+  100% {left: 130px;}
+}
+
+@keyframes rst-animation {
+  0%   {left: 245px;}
+  25%  {left: 255px;}
+  50%  {left: 255px;}
+  100% {left: 255px;}
+}
+
+/* m-lab */
+.loadBarShape:nth-child(1) {
+  width: 120px;
+  border-left: none;
+  animation-name: mlab-animation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+.loadBarShape:nth-child(1):after {
+  top: 0;
+  left: 120px;
+}
+
+.loadBarShape:nth-child(1) > .loadLabel {
+  left: 40px;
+}
+
+/* ookla */
+.loadBarShape:nth-child(2) {
+  margin-left: 20px;
+  animation-name: ookla-animation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+.loadBarShape:nth-child(2):after {
+  top: 0;
+  left: 100px;
+}
+
+.loadBarShape:nth-child(2):before {
+  top: 0;
+  left: -20px;
+}
+
+/* rst */
+.loadBarShape:nth-child(3) {
+  margin-left: 20px;
+  animation-name: rst-animation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+.loadBarShape:nth-child(3):before {
+  top: 0;
+  left: -20px;
+}
+
+.loadBarShape:nth-child(3):after {
+  top: 0;
+  left: 100px;
+}
+
+
+.loadBarShape  {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  box-sizing: content-box;
+}
+
+.loadBarShape:before {
+  position: absolute;
+	content: "";
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+}
+
+.loadBarShape:after {
+  position: absolute;
+	content: "";
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.loadStarted {
+  background-color: var(--ms-red); /* var(--color-accent); */
+}
+
+.loadStarted:before {
+  border-top: 15px solid var(--ms-red); /* var(--color-accent); */
+	border-bottom: 15px solid var(--ms-red); /* var(--color-accent); */
+}
+
+.loadStarted:after {
+  border-left: 20px solid var(--ms-red); /* var(--color-accent); */
+  color: var(--color-text);
+}
+
+.notStarted {
+  background-color: var(--color-gray-4);
+  color: var(--color-text);
+}
+
+.notStarted:before {
+  border-top: 15px solid var(--color-gray-4);
+	border-bottom: 15px solid var(--color-gray-4);
+}
+
+.notStarted:after {
+  border-left: 20px solid var(--color-gray-4);
+}
+
+.loadLabel {
+  position: absolute;
+  left: 15px;
+  font-size: var(--font-size-body2);
+}
+
+.loadStarted > .loadLabel {
+  color: var(--color-gray-0);
+}
+
+.notStarted > .loadLabel {
+  color: var(--color-text);
+}
+
+.loadBarShape a {
+  text-decoration: none;
+}

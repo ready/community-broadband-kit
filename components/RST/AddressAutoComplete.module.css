@@ -1,0 +1,4 @@
+.address [class*='ant-input']:hover,
+.address [class*='ant-input']:focus {
+  border-color: var(--ms-yellow);
+}

@@ -1,0 +1,79 @@
+.sectionBlurb {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.title h1 {
+    font-size: var(--font-size-heading2);
+    margin: 0;
+    margin-bottom: 16px;
+    font-weight: bold;
+    line-height: 1.05;
+}
+.hero h1 {
+    font-size: var(--font-size-heading0);
+    color: var(--color-gray-0);
+}
+.description p {
+    font-size: var(--font-size-body1);
+    margin-bottom: 24px;
+    margin-top: 16px;
+    color: var(--color-gray-0);
+}
+.discover h1 {
+    color: var(--color-blue-6);
+}
+.discover p {
+    color: var(--color-blue-10);
+}
+.apply h1 {
+    color: var(--color-blue-5);
+}
+.apply p {
+    color: var(--color-gray-0);
+}
+.match h1 {
+    color: var(--color-blue-6);
+}
+.match p {
+    color: var(--color-blue-10);
+}
+.win h1 {
+    color: var(--color-gray-0);
+}
+.win p{
+    color: var(--color-blue-3);
+}
+.discuss h1 {
+    color: var(--color-blue-9);
+}
+.discuss p {
+    color: var(--color-gray-9);
+}
+@media screen and (max-width: 1020px) {
+    .title {
+        text-align: center;
+    }
+    .description p{
+        text-align: center;
+        margin-bottom: 32px;
+    }
+}
+@media screen and (max-width: 662px) {
+	.description p{
+        margin-bottom: 24px;
+    }
+}
+
+
+@media screen and (max-height: 670px) {
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 0;
+  }
+
+  .description p {
+    margin-bottom: 16px;
+    margin-top: 12px;
+  }
+}

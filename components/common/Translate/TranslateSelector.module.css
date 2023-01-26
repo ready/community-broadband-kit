@@ -1,0 +1,35 @@
+.translateSelector {
+  margin-right: 8px;
+  margin-bottom: 16px;
+  width: auto;
+  width: 250px;
+  transition: min-width 500ms;
+}
+
+.translateSelector:hover, .translateSelectorOpen {
+  width: 250px;
+}
+
+@media screen and (max-width: 1200px) {
+  .translateSelector {
+    margin-right: 32px;
+  }
+}
+
+@media screen and (max-width: 1032px) {
+  .translateSelector {
+    margin-right: 16px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .translateSelector {
+    margin-right: 0;
+  }
+  
+  .translateSelector,
+  .translateSelector:hover,
+  .translateSelectorOpen {
+    width: 150px;
+  }
+}
