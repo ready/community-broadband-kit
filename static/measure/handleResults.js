@@ -164,8 +164,8 @@ async function handleResults(metadata, checklistResponses, address, results) {
     medianUpload: rollup.upload,
     medianDownload: rollup.download,
     connectionType: checklistResponses.connectionType ? `"${checklistResponses.connectionType}"` : null,
-    vpnOff: checklistResponses.vpnOff,
-    noInterruptFromOtherDevices: checklistResponses.noInterruptFromOtherDevices,
+    vpnOff: checklistResponses.vpnOff === undefined ? null :  checklistResponses.vpnOff,
+    noInterruptFromOtherDevices: checklistResponses.noInterruptFromOtherDevices  === undefined ? null : checklistResponses.noInterruptFromOtherDevices,
     noService: checklistResponses.noService
   }
 
