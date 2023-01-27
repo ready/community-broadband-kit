@@ -31,7 +31,7 @@
 .RECReportTitle {
   font-weight: 700;
   font-size: var(--font-size-heading2);
-  color: var(--color-green-1);
+  color: var(--color-gray-0);
 }
 
 @media screen and (max-height: 670px) {
