@@ -24,7 +24,6 @@ export default function TermPage({
       ogImage='https://storage.googleapis.com/boss-public-assets-prod/measure-broadband.png'
     >
       {<Hero />}
-      <InfoSection section={'welcome'}/>
       <InfoSection section={'how-does-it-work'}/>
       <InfoSection section={'survey-tips'}/> 
       <InfoSection section={'tips'}/>
