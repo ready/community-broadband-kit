@@ -1,6 +1,7 @@
 .translateSelector {
-  margin-right: 8px;
-  margin-bottom: 16px;
+  margin: auto;
+  margin-left: 16px;
+
   width: auto;
   width: 250px;
   transition: min-width 500ms;

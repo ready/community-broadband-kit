@@ -24,7 +24,7 @@ const InfoSection = ({section}) => {
 			}
 			case 'how-does-it-work':
 				return {
-					img: <img className={`${styles.whyIcon}`} src={''} alt={'how does it work image '} style={{ height:'auto', maxWidth:'568px'}}/>,
+					img: <img className={`${styles.whyIcon}`} src={'/images/section-win.svg'} alt={'how does it work image '} style={{ height:'auto', maxWidth:'568px'}}/>,
 					h2Title:'How does it work?',
 					h2Subtitle:'ISP Monopolies don\'t want us to have freedom of choice.',
 					descriptionRight:

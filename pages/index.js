@@ -6,7 +6,7 @@ import Hero from '/components/sections/Hero/Hero'
 import RSTTest from '/components/sections/RSTTest/RSTTest'
 import InfoSection from '/components/sections/RSTTest/InfoSection'
 import RSTTakeTheSurvey from '/components/sections/RSTTest/RSTTakeTheSurvey'
-
+import WhyTakeTest from '/components/sections/WhyTakeTest/WhyTakeTest'
 import { useCommunityContext } from '/components/context/CommunityContext'
 
 export default function TermPage({
@@ -26,8 +26,9 @@ export default function TermPage({
       {<Hero />}
       <InfoSection section={'welcome'}/>
       <InfoSection section={'how-does-it-work'}/>
-      <InfoSection section={'tips'}/>
       <InfoSection section={'survey-tips'}/> 
+      <InfoSection section={'tips'}/>
+      <WhyTakeTest page={'survey'}/> 
     </Layout>
   )
 }

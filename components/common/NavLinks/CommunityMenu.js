@@ -61,6 +61,34 @@ const CommunityMenu = ({ mode, logoColor }) => {
           </Link>
         </Menu.Item>
       </Menu>
+      <div className={styles.iconLinkTwitter}>
+            <a
+              href='https://twitter.com/broadbandmoney'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img
+                src='/icons/twitter-solid.svg'
+                height={22}
+                width={22}
+                alt='broadband.money twitter link'
+              />
+            </a>
+          </div>
+          <div className={styles.iconLinkLinkedIn}>
+            <a
+              href='https://www.linkedin.com/company/broadbandmoney'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img
+                src='/icons/linkedin-3.svg'
+                height={17}
+                width={17}
+                alt='broadband.money linkedin link'
+              />
+            </a>
+          </div>
     </nav>
   )
 }
