@@ -49,7 +49,7 @@ const CommunityMenu = ({ mode, logoColor }) => {
         <Menu.Item
           key='setting:2'
         >
-          <Link href='/'>
+          <Link href='/history'>
             <a><b>History</b></a>
           </Link>
         </Menu.Item>

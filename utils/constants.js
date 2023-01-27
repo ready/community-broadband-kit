@@ -8,8 +8,8 @@ import React from 'react'
 export const APP_NAME = 'graphql-frontend-template'
 
 const BASE_API_URL = localDevStageProd({
-  // local: 'http://localhost:4000',
-  local: 'https://boss-api-dev.wl.r.appspot.com',
+  local: 'http://localhost:4000',
+  //local: 'https://boss-api-dev.wl.r.appspot.com',
   dev: 'https://boss-api-dev.wl.r.appspot.com',
   stage: 'https://boss-api-stage.uc.r.appspot.com',
   prod: 'https://boss-api-289815.uc.r.appspot.com'
