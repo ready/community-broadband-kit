@@ -26,7 +26,7 @@ async function sendEmailReminder (req, res) {
 
 	const { email,url } = JSON.parse(req.body)
 		let fromEmail 
-		if (config?.domainName==='broadbandms.com') {
+		if (config?.domainName==='broadbandms.com'||config?.domainName==='www.broadbandms.com') {
 			fromEmail  = 'noreply@broadbandms.com'
 		} else if (config?.domainName==='checknewarkinternetspeeds.org') {
 			fromEmail  = 'noreply@checknewarkinternetspeeds.org'
@@ -35,7 +35,7 @@ async function sendEmailReminder (req, res) {
 		}
 
 		let fromName
-		if (config?.domainName==='broadbandms.com') {
+		if (config?.domainName==='broadbandms.com'||config?.domainName==='www.broadbandms.com') {
 			fromName = `MS BEAM Office`
 		} else {
 			if (config?.communityName) {
