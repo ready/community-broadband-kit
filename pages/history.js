@@ -68,7 +68,7 @@ import SectionBlurb from '../components/common/SectionBlurb/SectionBlurb'
       
       const columns = [
         {
-            title: 'Upload Mbps',
+            title: <p>Upload <span>Mbps</span></p>,
             dataIndex: 'medianUpload',
             key: 'medianUpload',
             render: (upload, record) => {
@@ -84,7 +84,7 @@ import SectionBlurb from '../components/common/SectionBlurb/SectionBlurb'
               }
           },
           {
-            title: 'Download Mbps',
+            title: <p>Download <span>Mbps</span></p>,
             dataIndex: 'medianDownload',
             key: 'medianDownload',
             render: (download, record) => {
@@ -100,7 +100,7 @@ import SectionBlurb from '../components/common/SectionBlurb/SectionBlurb'
             }
           },
           {
-            title: 'Latency ms',
+            title: <p>Latency <span>ms</span></p>,
             dataIndex: 'medianLatency',
             key: 'medianLatency',
             render: (latency, record) => {
@@ -116,7 +116,7 @@ import SectionBlurb from '../components/common/SectionBlurb/SectionBlurb'
             }
           },
           {
-            title: 'Jitter ms',
+            title: <p>Jitter <span>ms</span></p>,
             dataIndex: 'medianJitter',
             key: 'medianJitter',
             render: (jitter, record) => {
@@ -132,7 +132,7 @@ import SectionBlurb from '../components/common/SectionBlurb/SectionBlurb'
               }
           },
           {
-            title: 'Date',
+            title: <p>Date</p>,
             dataIndex: 'createdAt',
             key: 'createdAt',
             render: (date, record) => {
@@ -161,7 +161,15 @@ import SectionBlurb from '../components/common/SectionBlurb/SectionBlurb'
             <Header logoColor='white' hero page='broadband-audits' />
             <div className={styles.resultSection}>
                 <SectionContent>
-                    <Table dataSource={dataSource} columns={columns} />
+                    <Table
+                      dataSource={dataSource}
+                      columns={columns}
+                      className={styles.historyTable}
+        rowKey='id'
+        bordered
+        // pagination={true}
+        showSorterTooltip={false}
+                    />
                 </SectionContent>
             </div>
         </section>
