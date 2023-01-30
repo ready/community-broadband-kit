@@ -66,19 +66,19 @@ const CommunityMenu = ({ mode, logoColor }) => {
           </Link>
         </Menu.Item>
       </Menu>
-      <div className={styles.iconLinkTwitter}>
-            <a
-              href={`https://twitter.com/share?url=${testUrl}&text=${postTitle}`}
-              target='_blank'
-              rel='noreferrer'
-            >
-              <img
-                src='/icons/twitter-solid.svg'
-                height={22}
-                width={22}
-                alt='community toolkit twitter link'
-              />
-            </a>
+          <div className={styles.iconLinkTwitter}>
+              <a
+                href={`https://twitter.com/share?url=${testUrl}&text=${postTitle}`}
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img
+                  src='/icons/twitter-solid.svg'
+                  height={22}
+                  width={22}
+                  alt='community toolkit twitter link'
+                />
+              </a>
           </div>
           <div className={styles.iconLinkLinkedIn}>
             <a
@@ -93,6 +93,20 @@ const CommunityMenu = ({ mode, logoColor }) => {
                 alt='community toolkit linkedin link'
               />
             </a>
+          </div>
+          <div className={styles.iconLinkFacebook}>
+              <a
+                href={`https://www.facebook.com/sharer.php?u=${testUrl}`}
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img
+                  src='/icons/facebook.svg'
+                  height={22}
+                  width={22}
+                  alt='community toolkit facebook link'
+                />
+              </a>
           </div>
     </nav>
   )
