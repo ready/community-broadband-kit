@@ -1,0 +1,116 @@
+.newsLetterContainer{
+    /* display:flex; */
+    }
+    .buttonContainer,
+    .headerButtonContainer {
+     display:flex;
+     align-items: center;
+     position: relative;
+     right:0px;
+     width: 288px;
+     height: 48px;
+     background: var(--color-gray-0);
+     border: 2px solid var(--color-blue-7);
+     border-radius: 24px;
+     padding: 15px;
+     padding-right: 115px;
+     transition: 0.5s;
+    
+    }
+    
+    .headerButtonContainer {
+      width: 100px;
+      padding-right: 85px;
+      transition: 0.5s;
+      position: relative;
+    
+    }
+    
+    .button,
+    .HeaderButton {
+        width: 100px;
+        height:44px;
+        position: absolute;
+        right:0px;
+        background: #E6F1FF;
+        border-radius: 24px ; 
+        border: 2px solid #E6F1FF; 
+        font-weight:bold ;
+        font-size: var(	--font-size-body3);
+        color:var(--color-blue-9);
+        cursor: pointer;
+        transition: 0.5s;
+    }
+    
+    .button:hover,
+    .HeaderButton:hover {
+      background: var(--color-blue-9);
+      border: 2px solid var(--color-blue-9);
+      color:#E6F1FF;
+    }
+    
+    .buttonContainer .button:focus,
+    .headerButtonContainer .HeaderButton:focus {
+      outline: none;
+    }
+    
+    .input, 
+    .headerInput {
+        border: none;
+        border-radius: 24px;
+        width: 173px;
+        height: 40px;
+        padding-left: 15px;
+        padding-right: 10;
+        margin-left: -15px;
+        transition: 0.5s;
+    }
+    
+    .headerInput {
+      width: 0;
+      margin-left: 0;
+    }
+    
+    .input:focus, 
+    .headerInput:focus {
+        border:none;
+        outline: none;
+    
+        
+    }
+    .input:active, 
+    .headerInput:active {
+        border:none;
+        outline: none;
+        
+    }
+    .buttonContainer div{
+        position: absolute;
+        left:45px;
+        top:5px;
+    }
+    
+    
+    .textLink {
+      height: 32px;
+      font-size: var(	--font-size-body2);
+      color: var(--color-gray-0);
+      cursor: pointer;
+      padding: 12px 0 12px 4px;
+      transition: 0.5s;
+    }
+    
+    .textLink:hover {
+      color: var(--color-blue-6);
+    }
+    
+    @media screen and (max-width: 1020px) {
+      .newsLetterContainer {
+        position: relative;
+        left: 0;
+      }
+    
+      .textLink {
+        padding: 12px 0;
+      }
+    }
