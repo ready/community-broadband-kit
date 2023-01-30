@@ -10,6 +10,8 @@ const CommunityMenu = ({ mode, logoColor }) => {
   const [scroll, setScroll] = useEnableScroll()
   const [isMobileScreen, setIsMobileScreen] = useState(false)
   const [isMediumSmallScreen, setIsMediumSmallScreen] = useState(false)
+  const [testUrl, setTestUrl] = useState('')
+
   const handleResize = () => {
     if (window.innerWidth < 828) {
       setIsMobileScreen(true)
@@ -26,12 +28,15 @@ const CommunityMenu = ({ mode, logoColor }) => {
   useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
+    setTestUrl(`${window.location.origin}`)
   }, [])
 
   const handleClick = (e) => {
     e.preventDefault()
     setScroll(true)
   }
+
+  const postTitle = 'Help our community in winning broadband grants by taking this internet speed test'
 
   return (
     <nav className={`${styles.nav} ${styles[`${logoColor}Links`]}`}>
@@ -63,7 +68,7 @@ const CommunityMenu = ({ mode, logoColor }) => {
       </Menu>
       <div className={styles.iconLinkTwitter}>
             <a
-              href='https://twitter.com/broadbandmoney'
+              href={`https://twitter.com/share?url=${testUrl}&text=${postTitle}`}
               target='_blank'
               rel='noreferrer'
             >
@@ -71,13 +76,13 @@ const CommunityMenu = ({ mode, logoColor }) => {
                 src='/icons/twitter-solid.svg'
                 height={22}
                 width={22}
-                alt='broadband.money twitter link'
+                alt='community toolkit twitter link'
               />
             </a>
           </div>
           <div className={styles.iconLinkLinkedIn}>
             <a
-              href='https://www.linkedin.com/company/broadbandmoney'
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${testUrl}`}
               target='_blank'
               rel='noreferrer'
             >
@@ -85,7 +90,7 @@ const CommunityMenu = ({ mode, logoColor }) => {
                 src='/icons/linkedin-3.svg'
                 height={17}
                 width={17}
-                alt='broadband.money linkedin link'
+                alt='community toolkit linkedin link'
               />
             </a>
           </div>
