@@ -165,10 +165,10 @@ import SectionBlurb from '../components/common/SectionBlurb/SectionBlurb'
                       dataSource={dataSource}
                       columns={columns}
                       className={styles.historyTable}
-        rowKey='id'
-        bordered
-        // pagination={true}
-        showSorterTooltip={false}
+                      rowKey='id'
+                      bordered
+                      // pagination={true}
+                      showSorterTooltip={false}
                     />
                 </SectionContent>
             </div>

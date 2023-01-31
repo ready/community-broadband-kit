@@ -51,6 +51,14 @@
   overflow-x: hidden;
 }
 
+.historyTable [class*='ant-table'] [class*='ant-table-container']::after {
+  display: none;
+}
+
+.historyTable [class*='ant-table-content'] > table {
+  padding: 32px;
+}
+
 .historyTable div,
 .historyTable td,
 .historyTable th {
@@ -88,10 +96,17 @@
   color: var(--color-text);
 }
 
+.historyTable [class*='ant-table-tbody'] > tr {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
 .historyTable [class*='ant-table-tbody'] > tr:nth-child(2n-1) {
   background-color: var(--color-blue-2); /* var(--color-light-accent); */
 }
 
 .historyTable [class*='ant-table-tbody'] > tr > td {
   height: 44px;
+  color: var(--color-text);
+  font-size: var(--s-font);
 }
