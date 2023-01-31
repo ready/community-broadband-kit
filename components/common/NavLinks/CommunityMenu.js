@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu } from 'antd'
+import { FaExternalLinkAlt } from "react-icons/fa"
 
 import { useEnableScroll } from '../../context/ScrollContext'
 
@@ -62,7 +63,7 @@ const CommunityMenu = ({ mode, logoColor }) => {
           key=''
         >
           <Link href='https://broadband.money/community-broadband-kit'>
-            <a><b>Get Your Own</b></a>
+            <a><FaExternalLinkAlt></FaExternalLinkAlt><b> Get Your Own</b></a>
           </Link>
         </Menu.Item>
       </Menu>
