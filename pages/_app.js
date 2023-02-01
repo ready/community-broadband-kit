@@ -23,6 +23,8 @@ function MyApp ({ Component, pageProps: { session, ...pageProps } }) {
                     content='width=device-width, initial-scale=1'
                     name='viewport'
                   />
+                  <link href='/favicon.ico' rel='shortcut icon' type='image/x-icon' />
+                  <link href='/favicon.ico' rel='apple-touch-icon' />
                 </Head>
                 {/* Google Analytics */}
                 <Script
