@@ -8,6 +8,7 @@ import Description from '../../common/Description/Description'
 import FooterLinks from '../../common/FooterLinks/FooterLinks'
 import FooterSegmentLinks from '../../common/FooterLinks/FooterSegmentLinks'
 import FooterBottom from '../../common/FooterBottom/FooterBottom'
+import NewsLetter from '../../common//NewsLetter/NewsLetter'
 import styles from './Footer.module.css'
 
 const Footer = () => {
@@ -16,13 +17,12 @@ const Footer = () => {
     <section className={styles.footer}>
       <SectionContent>
         <SectionLeftContent>
-          <div className={styles.logo} onClick={()=>router.push('/')}>
-            <img src={'/logos/community_logo.svg'} alt='community logo' />
+          <Title className={styles.title}>Stay tuned for updates about our broadband grant journey.</Title>
+          <Description className={styles.description}>Want to stay informed about our progress? Enter your email here. We won't share it with third parties.</Description>
+          <div className={styles.newsLetter}>
+            <NewsLetter header />
           </div>
-          <Title className={styles.title}></Title>
-          <Description className={styles.description}></Description>
 
-          {/* <ApplicationForm section='footer-section' /> */}
         </SectionLeftContent>
         <SectionRightContent className={styles.sectionRight}>
           <FooterSegmentLinks />

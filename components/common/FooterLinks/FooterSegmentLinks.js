@@ -30,12 +30,7 @@ const FooterSegmentLinks = () => {
     {
       text: 'What are Broadband Audits?',
       href: 'https://broadband.money/broadband-grant-terms/broadband-audit' 
-    },
-    {
-      text: 'Built with 🤍 by Broadband Money',
-      href: 'https://broadband.money/',
-      target: '_blank'
-    },
+    }
   ]
   return (
     <div className={`${styles.footerLinks} ${styles.segmentLinks}`}>

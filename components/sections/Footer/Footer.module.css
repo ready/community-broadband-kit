@@ -12,11 +12,16 @@ max-height: 75px;
 }
   
 .title h1{
-    color: white
+    color: white;
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 36px;
 }
+
 .description p{
     color: white;
 }
+
 .sectionRight {
     width: calc(50% - 24px);
     display: flex;

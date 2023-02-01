@@ -24,13 +24,14 @@ const InfoSection = ({section}) => {
 			}
 			case 'how-does-it-work':
 				return {
-					img: <img className={`${styles.whyIcon}`} src={''} alt={'how does it work image '} style={{ height:'auto', maxWidth:'568px'}}/>,
+					img: <img className={`${styles.whyIcon}`} src={'/images/section-win.svg'} alt={'how does it work image '} style={{ height:'auto', maxWidth:'568px'}}/>,
 					h2Title:'How does it work?',
 					h2Subtitle:'ISP Monopolies don\'t want us to have freedom of choice.',
 					descriptionRight:
 					[
 						'Congress set aside $65 billion to help improve broadband in communities like ours. Our community is applying, but large ISPs will fight us.',
 						'By taking the broadband test, you help our community build the empirical proof needed in order to prove eligibility for broadband grants, and to defend against incumbents who will challenge.',
+						'This test is a tool used to help your community win broadband grants. The goal is to collect as much data as possible for your community to build a defensible case that can be explained and inspected by regulators. It includes a series of internet speed tests such as M-Lab, Speedtest.net, and WiFi.wtf in order to create the strongest argument possible and help displace any bias that might occur from a single test source. While the speed tests are running, you are given the option to fill out a survey which helps your community gain a better understanding of the specifics of your circumstance beyond what is observable through the speed measurements alone.'
 					],
 					descriptionLeft:[],
 					imgDes:(

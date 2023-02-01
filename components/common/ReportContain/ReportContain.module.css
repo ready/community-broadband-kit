@@ -1,0 +1,79 @@
+.reportContain {
+  width: 440px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.verb {
+  width: calc(100% - 42px - 8px);
+}
+
+.iconVerb {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+}
+
+.verb h2 {
+  font-size: 24px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left: 8px;
+  margin-bottom: 0;
+  color: var(--color-gray-0);
+}
+
+.blurb {
+  width: 400px;
+  font-weight: 300;
+  font-size: var(--font-size-body1);
+  line-height: 21px;
+  color: var(--color-gray-0);
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 662px) {
+  .icon,
+  .icon img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .reportContain,
+  .blurb {
+    width: 360px;
+  }
+
+  .verb h2 {
+    height: 32px;
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+
+@media screen and (max-width: 366px) {
+  .reportContain,
+  .blurb {
+    width: 300px;
+  }
+
+  .verb h2 {
+    font-size: 16px;
+  }
+
+  .blurb {
+    font-size: 14px;
+  }
+}

@@ -32,8 +32,8 @@ const NavLinks = ({ logoColor }) => {
         <DropDownMenu openMenu={openMenu} setOpenMenu={setOpenMenu} /> */}
       </div>
       <div className={styles.navMenu}>
-        <TranslateSelector />
         <CommunityMenu mode='horizontal' logoColor={logoColor} />
+        <TranslateSelector />
       </div>
     </div>
   )

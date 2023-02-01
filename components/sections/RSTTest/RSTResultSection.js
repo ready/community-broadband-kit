@@ -10,6 +10,7 @@ import RSTButton from '../../RST/RSTButton'
 import EmailReminder from '../../RST/EmailReminder'
 import ServiceStatusTag from '../../RST/ServiceStatusTag'
 import { useCommunityContext } from '../../context/CommunityContext'
+import RSTShareButtons from './RSTShareButtons'
 
 import styles from './RSTResultSection.module.css'
 
@@ -57,6 +58,7 @@ const RSTResultSection = () => {
           </SectionBlurb>
         </SectionLeftContent>
         <SectionRightContent>
+          <RSTShareButtons></RSTShareButtons>
           <RSTCard
             title={<>You are <ServiceStatusTag size='big' serviceStatus={resultsFields?.serviceStatusText} /></>}
             description='Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.'

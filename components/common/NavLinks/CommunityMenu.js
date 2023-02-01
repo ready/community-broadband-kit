@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu } from 'antd'
+import { FaExternalLinkAlt } from "react-icons/fa"
 
 import { useEnableScroll } from '../../context/ScrollContext'
 
@@ -10,6 +11,8 @@ const CommunityMenu = ({ mode, logoColor }) => {
   const [scroll, setScroll] = useEnableScroll()
   const [isMobileScreen, setIsMobileScreen] = useState(false)
   const [isMediumSmallScreen, setIsMediumSmallScreen] = useState(false)
+  const [testUrl, setTestUrl] = useState('')
+
   const handleResize = () => {
     if (window.innerWidth < 828) {
       setIsMobileScreen(true)
@@ -26,12 +29,15 @@ const CommunityMenu = ({ mode, logoColor }) => {
   useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
+    setTestUrl(`${window.location.origin}`)
   }, [])
 
   const handleClick = (e) => {
     e.preventDefault()
     setScroll(true)
   }
+
+  const postTitle = 'Help our community in winning broadband grants by taking this internet speed test'
 
   return (
     <nav className={`${styles.nav} ${styles[`${logoColor}Links`]}`}>
@@ -57,10 +63,52 @@ const CommunityMenu = ({ mode, logoColor }) => {
           key=''
         >
           <Link href='https://broadband.money/community-broadband-kit'>
-            <a><b>Get Your Own</b></a>
+            <a><FaExternalLinkAlt></FaExternalLinkAlt><b> Get Your Own</b></a>
           </Link>
         </Menu.Item>
       </Menu>
+          <div className={styles.iconLinkTwitter}>
+              <a
+                href={`https://twitter.com/share?url=${testUrl}&text=${postTitle}`}
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img
+                  src='/icons/twitter-solid.svg'
+                  height={22}
+                  width={22}
+                  alt='community toolkit twitter link'
+                />
+              </a>
+          </div>
+          <div className={styles.iconLinkLinkedIn}>
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${testUrl}`}
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img
+                src='/icons/linkedin-3.svg'
+                height={17}
+                width={17}
+                alt='community toolkit linkedin link'
+              />
+            </a>
+          </div>
+          <div className={styles.iconLinkFacebook}>
+              <a
+                href={`https://www.facebook.com/sharer.php?u=${testUrl}`}
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img
+                  src='/icons/facebook.svg'
+                  height={22}
+                  width={22}
+                  alt='community toolkit facebook link'
+                />
+              </a>
+          </div>
     </nav>
   )
 }
