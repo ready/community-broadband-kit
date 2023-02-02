@@ -7,6 +7,8 @@ import React from 'react'
 // App name
 export const APP_NAME = 'graphql-frontend-template'
 
+export const DEFAULT_HOST = 'toolkit.broadband.money'
+
 const BASE_API_URL = localDevStageProd({
   local: 'http://localhost:4000',
   //local: 'https://boss-api-dev.wl.r.appspot.com',

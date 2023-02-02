@@ -1,6 +1,4 @@
 import React from 'react'
-import { useRouter } from 'next/router'
-import fetch from 'node-fetch'
 import Layout from '/components/common/Layout/Layout'
 import Hero from '/components/sections/Hero/Hero'
 import RSTTest from '/components/sections/RSTTest/RSTTest'
@@ -10,10 +8,11 @@ import WhyTakeTest from '/components/sections/WhyTakeTest/WhyTakeTest'
 import { useCommunityContext } from '/components/context/CommunityContext'
 
 export default function TermPage({
-
+  config
 }) {
-  const router = useRouter()
   const { startTest, takeSurvey } = useCommunityContext()
+
+  console.log(config)
 
   return (
     <Layout
@@ -23,7 +22,7 @@ export default function TermPage({
       keywords={`Broadband, Internet Speed Test`}
       ogImage='https://storage.googleapis.com/boss-public-assets-prod/measure-broadband.png'
     >
-      {<Hero />}
+      {<Hero config={config}/>}
       <WhyTakeTest page={'test'}/> 
       <InfoSection section={'tips'}/>
       <InfoSection section={'survey-tips'}/> 

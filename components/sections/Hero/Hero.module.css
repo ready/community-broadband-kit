@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-color: var(--ms-blue);
+  background-color: var(--color-gray-1);
   padding: 32px var(--section-padding);
   min-height: 100vh;
 }
@@ -24,8 +24,8 @@
 .takeSurvey {
   height: auto;
   background: transparent;
-  border-color: var(--color-gray-0);
-  color: var(--color-gray-0);
+  border-color: var(--color-button);
+  color: var(--color-button);
   padding: 15px 20px;
   font-size: 24px;
   font-weight: 700;
@@ -35,8 +35,8 @@
 .takeSurvey:hover,
 .takeSurvey:focus {
   background: transparent;
-  border-color: var(--ms-yellow);
-  color: var(--ms-yellow);
+  border-color: var(--color-button-hover);
+  color: var(--color-button-hover);
 }
 
 @media screen and (max-width: 1020px) {

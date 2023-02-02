@@ -16,20 +16,20 @@
 
 .testHeading {
   font-size: var(--font-size-heading2);
-  color: var(--color-gray-0);
+  color: var(--color-heading);
   text-align: center;
 }
 
 .testType {
   font-size: var(--font-size-heading3);
-  color: var(--color-gray-0);
+  color: var(--color-subheading);
   text-align: center;
   margin-bottom: 24px;
 }
 
 .testSpeed {
   font-size: var(--font-size-heading1);
-  color: var(--color-gray-0);
+  color: var(--color-text);
   font-weight: bold;
   line-height: 1.05;
   text-align: center;

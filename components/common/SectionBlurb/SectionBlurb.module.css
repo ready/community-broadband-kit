@@ -12,13 +12,13 @@
 }
 .hero h1 {
     font-size: var(--font-size-heading0);
-    color: var(--color-gray-0);
+    color: var(--color-heading);
 }
 .description p {
     font-size: var(--font-size-body1);
     margin-bottom: 24px;
     margin-top: 16px;
-    color: var(--color-gray-0);
+    color: var(--color-subheading);
 }
 .discover h1 {
     color: var(--color-blue-6);

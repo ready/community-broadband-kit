@@ -1,7 +1,7 @@
 .takeTest {
   max-width: 200px;
   position: relative;
-  background-color: var(--ms-red);
+  background-color: var(--color-button);
   border: none;
 }
 
@@ -14,6 +14,6 @@
 
 .takeTest:hover,
 .takeTest:focus {
-  background-color: #DC384A !important;
+  background-color: var(--color-button-hover) !important;
   border: none;
 }

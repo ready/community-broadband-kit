@@ -14,9 +14,9 @@ import { useRouter } from 'next/router'
 
 import styles from './Hero.module.css'
 
-const Hero = () => {
-  const title = 'Help Our Community Win Broadband Grants'
-  const description = 'This anonymous test will help you and your community gauge your internet strength. For best results, take the test once per day for the next 7 days.'
+const Hero = ({ config }) => {
+  const title = config?.heading
+  const description = config?.description
   
   // const { startTest, setStartTest, takeSurvey, setTakeSurvey, previousResults, setSameSetup } = useCommunityContext()
 

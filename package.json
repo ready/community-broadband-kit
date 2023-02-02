@@ -55,7 +55,6 @@
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.34",
     "next": "11.1.2",
-    "next-auth": "^4.3.4",
     "next-plugin-antd-less": "^1.4.3",
     "open": "^8.4.0",
     "puppeteer": "^13.5.1",
