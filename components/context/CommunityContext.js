@@ -13,7 +13,7 @@ const useCommunityContext = () => {
   return context
 }
 
-const CommunityContextProvider = ({ children }) => {
+const CommunityContextProvider = ({ children, config }) => {
   const router = useRouter()
   const [startTest, setStartTest] = useState(false)
   const [takeSurvey, setTakeSurvey] = useState(false)
@@ -37,7 +37,7 @@ const CommunityContextProvider = ({ children }) => {
 
     setSurveyData({
       ...surveyData,
-      organizationId,
+      organizationId: config.organizationId,
       userId: metadata.userId,
       ipAddress: metadata.ipAddress,
       ispName: metadata.ispName,
@@ -45,7 +45,7 @@ const CommunityContextProvider = ({ children }) => {
 
     setToolkitData({
       ...toolkitData,
-      organizationId,
+      organizationId: config.organizationId,
       userId: metadata.userId,
       ipAddress: metadata.ipAddress,
       ispName: metadata.ispName,

@@ -19,7 +19,7 @@ function MyApp ({ Component, pageProps }) {
     <TranslateProvider>
       <ApolloProvider client={client}>
         <ScrollContextProvider>
-          <CommunityContextProvider>
+          <CommunityContextProvider config={config}>
             <>
               <Head>
                 <meta

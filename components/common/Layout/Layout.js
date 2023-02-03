@@ -9,7 +9,8 @@ export default function Layout ({
   ogDescription,
   ogImage,
   page,
-  children
+  children,
+  config
 }) {
   return (
     <div style={{ width: '100%' }}>
@@ -75,7 +76,7 @@ export default function Layout ({
       </Head>
       {children}
       <div id="ookla-test" style={{ display: 'none' }}></div>
-      {page === 'how it works' ? null : <Footer />}
+      {page === 'how it works' ? null : <Footer config={config}/>}
       <script src="/test/m-lab/ndt7.min.js" type="text/javascript"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-MVmG3cn8NGpB5cvq5HciuFQ36LXpF1s&libraries=places"></script>
     </div>

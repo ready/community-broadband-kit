@@ -5,12 +5,12 @@ import Copyright from '../Copyright/Copyright'
 import styles from './FooterBottom.module.css'
 import { useRouter } from 'next/router'
 
-const FooterBottom = () => {
+const FooterBottom = ({ config }) => {
   const router = useRouter()
   return (
     <div className={styles.footerBottom}>
       <div className={styles.logo} onClick={()=>router.push('/')}>
-        <img src={'/logos/community_logo.svg'} alt='community logo' />
+        <img src={config.logo} alt='community logo' />
       </div>
       <Copyright />
     </div>

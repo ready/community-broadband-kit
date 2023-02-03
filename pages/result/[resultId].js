@@ -12,7 +12,7 @@ import Layout from '../../components/common/Layout/Layout'
 import Header from '../../components/common/Header/Header'
 import { GRAPHQL_API_URL } from '../../utils/constants'
 
-const RSTResult = () => {
+const RSTResult = ({ config }) => {
   const router = useRouter()
   
   const { toolkitData, setToolkitData } = useCommunityContext()
@@ -92,9 +92,10 @@ const RSTResult = () => {
       ogDescription={`This quick and easy test helps you and your neighbors in Broadband.Money win grants to deliver you better broadband service."`}
       keywords={`Broadband, Internet Speed Test`}
       ogImage='https://storage.googleapis.com/boss-public-assets-prod/measure-broadband.png'
+      config={config}
     >
     <section className={stylesTest.test}>
-      <Header logoColor='white' hero page='broadband-audits' />
+      <Header logo={config.logo} logoColor='white' hero page='broadband-audits' />
       <div className={styles.resultSection}>
       <SectionContent>
           <RSTCard

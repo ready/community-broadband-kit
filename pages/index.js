@@ -21,6 +21,7 @@ export default function TermPage({
       ogDescription={`This quick and easy test helps you and your neighbors in Broadband.Money win grants to deliver you better broadband service."`}
       keywords={`Broadband, Internet Speed Test`}
       ogImage='https://storage.googleapis.com/boss-public-assets-prod/measure-broadband.png'
+      config={config}
     >
       {<Hero config={config}/>}
       <WhyTakeTest page={'test'}/> 

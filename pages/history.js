@@ -156,6 +156,7 @@ import SectionBlurb from '../components/common/SectionBlurb/SectionBlurb'
             ogDescription={`This quick and easy test helps you and your neighbors in Broadband.Money win grants to deliver you better broadband service."`}
             keywords={`Broadband, Internet Speed Test`}
             ogImage='https://storage.googleapis.com/boss-public-assets-prod/measure-broadband.png'
+            config={config}
         >
         <section className={stylesTest.test}>
             <Header config={config} logoColor='white' hero page='broadband-audits' />

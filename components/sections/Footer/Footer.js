@@ -11,7 +11,7 @@ import FooterBottom from '../../common/FooterBottom/FooterBottom'
 import NewsLetter from '../../common//NewsLetter/NewsLetter'
 import styles from './Footer.module.css'
 
-const Footer = () => {
+const Footer = ({ config }) => {
   const router = useRouter()
   return (
     <section className={styles.footer}>
@@ -29,7 +29,7 @@ const Footer = () => {
           <FooterLinks />
         </SectionRightContent>
       </SectionContent>
-      <FooterBottom />
+      <FooterBottom config={config} />
     </section>
   )
 }
