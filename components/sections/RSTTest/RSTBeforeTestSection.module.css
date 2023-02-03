@@ -20,7 +20,7 @@
 
 .beforeTestDescription {
   font-size: var(--font-size-body1);
-  color: var(--color-blue-10);
+  color: var(--color-subheading);
   font-weight: normal;
   line-height: 1.5;
   margin-bottom: 0;
@@ -48,16 +48,16 @@
 .checkInternet [class*='ant-checkbox-wrapper']:hover [class*='ant-checkbox-inner'],
 .checkInternet [class*='ant-checkbox']:hover [class*='ant-checkbox-inner'],
 .checkInternet [class*='ant-checkbox-input']:focus + [class*='ant-checkbox-inner'] {
-  border-color: var(--ms-yellow);
+  border-color: var(--color-accent);
 }
 
 .checkInternet [class*='ant-checkbox-checked']::after {
-  border: 1px solid var(--ms-yellow) !important;
+  border: 1px solid var(--color-accent) !important;
 }
 
 .checkInternet [class*='ant-checkbox-checked'] [class*='ant-checkbox-inner'] {
-  background-color: var(--ms-yellow);
-  border-color: var(--ms-yellow);
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .checkInternet > span {

@@ -37,7 +37,7 @@ const InfoSection = ({section}) => {
 					imgDes:(
 						<></>
 					),
-					backgroundColor: 'var(--ms-blue)'
+					backgroundColor: 'var(--color-background1)'
 				}
 			case 'tips':
 				return {
@@ -58,7 +58,7 @@ const InfoSection = ({section}) => {
 					imgDes:(
 						<></>
 					),
-					backgroundColor: 'var(--ms-light-blue)'
+					backgroundColor: 'var(--color-background1)'
 			}
 			case 'survey-tips':
 				return {
@@ -79,7 +79,7 @@ const InfoSection = ({section}) => {
 					imgDes:(
 						<></>
 					),
-					backgroundColor: 'var(--ms-dark)'
+					backgroundColor: 'var(--color-background2)'
 				}
 		  default:
 		}

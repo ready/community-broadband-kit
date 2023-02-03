@@ -8,7 +8,7 @@
   margin: 0 auto;
   /* justify-self: flex-start; */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 28px;
 }

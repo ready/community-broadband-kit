@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 import Title from '../components/common/Title/Title'
 import SectionBlurb from '../components/common/SectionBlurb/SectionBlurb'
 
-  const History = () => {
+  const History = ({ config }) => {
     const {
         toolkitData
       } = useCommunityContext()
@@ -158,7 +158,7 @@ import SectionBlurb from '../components/common/SectionBlurb/SectionBlurb'
             ogImage='https://storage.googleapis.com/boss-public-assets-prod/measure-broadband.png'
         >
         <section className={stylesTest.test}>
-            <Header logoColor='white' hero page='broadband-audits' />
+            <Header config={config} logoColor='white' hero page='broadband-audits' />
             <div className={styles.resultSection}>
                 <SectionContent>
                     <Table dataSource={dataSource} columns={columns} />

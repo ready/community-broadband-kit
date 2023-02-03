@@ -113,16 +113,16 @@
 }
 
 .loadStarted {
-  background-color: var(--ms-red); /* var(--color-accent); */
+  background-color: var(--color-accent);
 }
 
 .loadStarted:before {
-  border-top: 15px solid var(--ms-red); /* var(--color-accent); */
-	border-bottom: 15px solid var(--ms-red); /* var(--color-accent); */
+  border-top: 15px solid var(--color-accent);
+	border-bottom: 15px solid var(--color-accent);
 }
 
 .loadStarted:after {
-  border-left: 20px solid var(--ms-red); /* var(--color-accent); */
+  border-left: 20px solid var(--color-accent);
   color: var(--color-text);
 }
 

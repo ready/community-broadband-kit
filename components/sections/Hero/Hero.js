@@ -35,7 +35,7 @@ const Hero = ({ config }) => {
 
   return (
     <section className={styles.hero}>
-      <Header logoColor='white' hero page='broadband-audits' />
+      <Header config={config} logoColor='white' hero page='broadband-audits' />
       <SectionContent hero>
         <SectionLeftContent hero>
           <SectionBlurb title={title} description={description} section='hero' />

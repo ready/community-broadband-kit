@@ -196,6 +196,10 @@ a {
 	font-size: 24px;
 }
 
+.ant-btn {
+	border-radius: 8px !important;
+}
+
 .ant-btn-primary:focus {
   background-color: #3E89ED !important;
 }
@@ -310,16 +314,16 @@ button.ant-btn-link {
 
 .ant-select:not(.ant-select-disabled):hover .ant-select-selector,
 .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  border-color: var(--ms-yellow) !important;
+  border-color: var(--color-nav-text) !important;
 }
 
 .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
-  background: var(--ms-yellow) !important;
+  background: var(--color-accent) !important;
 }
 
 .ant-steps-item-process .ant-steps-item-icon,
 .ant-steps-item-finish .ant-steps-item-icon {
-  border-color: var(--ms-yellow) !important;
+  border-color: var(--color-accent) !important;
 }
 
 .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after,
@@ -328,7 +332,7 @@ button.ant-btn-link {
 }
 
 .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
-  background-color: var(--ms-yellow) !important;
+  background-color: var(--color-accent) !important;
 }
 
 .ant-steps-item-wait .ant-steps-item-icon {
@@ -341,7 +345,7 @@ button.ant-btn-link {
 }
 
 .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
-  color: var(--ms-yellow) !important;
+  color: var(--color-nav-text) !important;
 }
 
 

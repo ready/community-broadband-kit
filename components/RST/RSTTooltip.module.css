@@ -1,11 +1,11 @@
 .tooltip [class*='ant-tooltip-inner'] {
   width: 450px;
-  background-color: var(--ms-dark) !important;
+  background-color: var(--color-background3) !important;
   padding: 24px;
 }
 
 .tooltip [class*='ant-tooltip-arrow-content'] {
-  --antd-arrow-background-color: var(--ms-dark) !important;
+  --antd-arrow-background-color: var(--color-background3) !important;
 }
 
 @media screen and (max-width: 662px) {

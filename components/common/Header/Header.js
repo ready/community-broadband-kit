@@ -4,7 +4,7 @@ import NavLinks from '../NavLinks/NavLinks'
 
 import styles from './Header.module.css'
 
-const Header = ({ logoColor, hero, page, title, mapHeader = false }) => {
+const Header = ({ config, logoColor, hero, page, title, mapHeader = false }) => {
   const getTitleColor = (page) => {
     switch (page) {
       case 'rec':
@@ -24,7 +24,7 @@ const Header = ({ logoColor, hero, page, title, mapHeader = false }) => {
       {mapHeader
         ? (
           <div className={styles.mapHeaderInnerContain}>
-            <Logo color='white' />
+            <Logo config={config} />
             {hero && <NavLinks page={page} mapHeader={mapHeader} />}
           </div>)
         : (
@@ -34,7 +34,7 @@ const Header = ({ logoColor, hero, page, title, mapHeader = false }) => {
                 <h2 className={styles.RECReportTitle} style={{ color: getTitleColor(page) }}>
                   {title}
                 </h2>)
-              : <Logo color={mapHeader ? 'white' : logoColor} />}
+              : <Logo config={config} />}
             {hero && <NavLinks page={page} mapHeader={mapHeader} logoColor={logoColor} />}
           </>)}
     </div>

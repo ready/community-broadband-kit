@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   max-width: 600px;
-  background-color: var(--ms-light-blue);
+  background-color: var(--color-gray-0);
   border-radius: var(--border-radius);
   padding: var(--section-padding);
   gap: 2em;
@@ -11,7 +11,7 @@
 
 .title {
   font-size: var(--font-size-heading1);
-  color: var(--ms-blue);
+  color: var(--color-heading);
   font-weight: bold;
   line-height: 1.05;
   margin-bottom: 0;
@@ -20,7 +20,7 @@
 .description {
   font-weight: normal;
   font-size: var(--font-size-body1);
-  color: var(--color-blue-10);
+  color: var(--color-subheading);
   margin-bottom: 0;
 }
 

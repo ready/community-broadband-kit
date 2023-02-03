@@ -31,19 +31,19 @@
 
 .menuContainer [class*='ant-menu-item'] a,
 .menuContainer [class*='ant-menu-item'] a:hover {
-  color: var(--color-gray-0);
+  color: var(--color-nav-text);
   vertical-align: middle;
   font-size: var(--font-size-body0) !important;
 }
 
 .blueLinks [class*='ant-menu-item'] a,
 .blueLinks [class*='ant-menu-item'] a:hover {
-  color: var(--ms-dark);
+  color: var(--color-nav-text);
 }
 
 .menuContainer [class*='ant-menu-submenu'],
 .menuContainer [class*='ant-menu-submenu']:hover {
-  color: var(--color-blue-10);
+  color: var(--color-nav-text);
   font-size: var(--font-size-body1);
 }
 
@@ -62,7 +62,7 @@
 
 .menuContainer[class*='ant-menu-horizontal']:not(.noBorderBottom):not(.ant-menu-dark) > [class*='ant-menu-item-selected']::after,
 .menuContainer[class*='ant-menu-horizontal']:not(.noBorderBottom):not(.ant-menu-dark) > [class*='ant-menu-item']:hover::after {
-  border-bottom: 2px solid var(--ms-red);
+  border-bottom: 2px solid var(--color-button-hover);
 }
 
 .noBorderBottom::after,

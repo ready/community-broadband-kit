@@ -14,7 +14,7 @@
 
 .checklistAnswerOption[class*='ant-radio-button-wrapper']:hover,
 .checklistAnswerOption[class*='ant-radio-button-wrapper']:has([class*='ant-radio-button-checked']) {
-  border: 1px solid var(--ms-yellow) !important;
+  border: 1px solid var(--color-accent) !important;
 }
 
 .checklistAnswerOption [class*='ant-radio-button'] {
@@ -22,7 +22,7 @@
 }
 
 .checklistAnswerOption [class*='ant-radio-button'][class*='ant-radio-button-checked'] {
-  border: 2px solid var(--ms-yellow) !important;
+  border: 2px solid var(--color-accent) !important;
 }
 
 .checklistAnswerOption[class*='ant-radio-button-wrapper']:has([class*='ant-radio-button-checked']):hover,

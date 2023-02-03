@@ -15,7 +15,7 @@ import PhoneNumberEntry from '../../RST/PhoneNumberEntry'
 
 import styles from './RSTTakeTheSurvey.module.css'
 
-const RSTTakeTheSurvey = () => {
+const RSTTakeTheSurvey = ({ config }) => {
     const [form] = Form.useForm()
     const [currentStep, setCurrentStep] = useState(0)
     const [surveyComplete, setSurveyComplete] = useState(false)
@@ -81,7 +81,7 @@ const RSTTakeTheSurvey = () => {
     return (
   
       <section className={styles.test}>
-        <Header logoColor='white' hero page='broadband-audits' />
+        <Header config={config} logoColor='white' hero page='broadband-audits' />
           
             {!enterAddress &&
               <div className={styles.beforeSurveyWrap}>

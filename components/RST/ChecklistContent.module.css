@@ -81,16 +81,16 @@
 .routerWarning [class*='ant-checkbox-wrapper']:hover [class*='ant-checkbox-inner'],
 .routerWarning [class*='ant-checkbox']:hover [class*='ant-checkbox-inner'],
 .routerWarning [class*='ant-checkbox-input']:focus + [class*='ant-checkbox-inner'] {
-  border-color: var(--ms-yellow);
+  border-color: var(--color-accent);
 }
 
 .routerWarning [class*='ant-checkbox-checked']::after {
-  border: 1px solid var(--ms-yellow) !important;
+  border: 1px solid var(--color-accent) !important;
 }
 
 .routerWarning [class*='ant-checkbox-checked'] [class*='ant-checkbox-inner'] {
-  background-color: var(--ms-yellow);
-  border-color: var(--ms-yellow);
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .closeToRouter {

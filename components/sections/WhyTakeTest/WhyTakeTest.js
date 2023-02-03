@@ -31,7 +31,7 @@ const WhyTakeTest = ({ page, stateSpecificData }) => {
                 blurb: "It's fast! Two minutes out of your day can strengthen our case and help us identify places in need of improvement."
               }
             ],
-          backgroundColor: 'var(--color-blue-9)',
+          backgroundColor: 'var(--color-background2)',
           title:'Why should you take the test?'
         }
       default:

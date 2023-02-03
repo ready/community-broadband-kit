@@ -3,7 +3,7 @@ import RSTTest from '../components/sections/RSTTest/RSTTest'
 import Layout from '../components/common/Layout/Layout'
 import { useCommunityContext } from '../components/context/CommunityContext'
 
-const Test = () => {
+const Test = ({ config }) => {
   return (
     <Layout
       title={'Broadband.Money Community Toolkit: Free Broadband Tests'}
@@ -12,7 +12,7 @@ const Test = () => {
       keywords={`Broadband, Internet Speed Test`}
       ogImage='https://storage.googleapis.com/boss-public-assets-prod/measure-broadband.png'
     >
-      <RSTTest></RSTTest>
+      <RSTTest config={config}></RSTTest>
     </Layout>
   )
 }

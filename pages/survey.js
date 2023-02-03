@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import RSTTakeTheSurvey from '../components/sections/RSTTest/RSTTakeTheSurvey'
 
-const Survey = () => {
+const Survey = ({ config }) => {
   return (
-    <RSTTakeTheSurvey></RSTTakeTheSurvey>
+    <RSTTakeTheSurvey config={config}></RSTTakeTheSurvey>
   )
 }
 

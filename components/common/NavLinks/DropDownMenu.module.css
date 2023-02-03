@@ -20,7 +20,7 @@
 
 .dropDownMenu [class*='menuContainer'] [class*='ant-menu-item'] a,
 .dropDownMenu [class*='menuContainer'] [class*='ant-menu-item'] a:hover {
-  color: var(--ms-blue);
+  color: var(--color-nav-text);
 }
 
 @media only screen and (min-width: 662px) {

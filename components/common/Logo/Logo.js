@@ -5,20 +5,10 @@ import { useRouter } from 'next/router'
 import styles from './Logo.module.css'
 import Link from 'next/link'
 
-const Logo = ({ color, className }) => {
+const Logo = ({ config, className }) => {
   const router = useRouter()
   const pathname = router.pathname
 
-  const logoSrc = {
-    black: '/logos/beam.svg',
-    blue: '/logos/beam.svg',
-    green: '/logos/beam.svg',
-    magenta: '/logos/beam.svg',
-    special: '/logos/beam.svg',
-    white: '/logos/community_logo.svg',
-    multicolor: '/logos/beam.svg',
-    tribal: '/logos/beam.svg'
-  }
   return (
     <div
       className={`${styles.logo} ${className || ''} ${
@@ -29,7 +19,7 @@ const Logo = ({ color, className }) => {
       }`}
     >
       <a href="/">
-        <img src={logoSrc[color]} alt='community logo' />
+        <img src={config.logo} alt='community logo' />
       </a>
     </div>
   )

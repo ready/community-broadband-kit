@@ -20,6 +20,6 @@
 }
 
 .lineProgress [class*='ant-progress-bg'] {
-  background-color: var(--ms-red);
+  background-color: var(--color-accent);
   background-size: 35px 20px, 100% 100%, 100% 100%;
 }

@@ -19,7 +19,7 @@
 
 .survey [class*='ant-form-item-label'] > label,
 .nested {
-  color: var(--ms-dark) !important;
+  color: var(--color-text) !important;
   font-weight: 600;
   font-size: var(--font-size-heading4);
   color: var(--color-subheading);

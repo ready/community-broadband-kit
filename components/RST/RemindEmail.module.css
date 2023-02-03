@@ -25,9 +25,9 @@
   height: 48px;
   position: absolute;
   right: -100px;
-  background: var(--ms-red);
+  background: var(--color-button);
   border-radius: 0 4px 4px 0;
-  border: 2px solid var(--ms-red);
+  border: 2px solid var(--color-button);
   font-weight: bold ;
   font-size: var(	--font-size-body3);
   color: var(--color-gray-0);

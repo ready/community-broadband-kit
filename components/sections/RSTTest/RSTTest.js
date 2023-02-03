@@ -8,7 +8,7 @@ import RSTSameSetup from './RSTSameSetup'
 import styles from './RSTTest.module.css'
 import { useCommunityContext } from '../../context/CommunityContext'
 
-const RSTTest = () => {
+const RSTTest = ({ config }) => {
   const {
     sameSetup,
     sameSetupAns,
@@ -45,7 +45,7 @@ const RSTTest = () => {
 
   return (
     <section className={styles.test}>
-      <Header logoColor='white' hero page='broadband-audits' />
+      <Header config={config} logoColor='white' hero page='broadband-audits' />
       {renderSection()}
     </section>
   )

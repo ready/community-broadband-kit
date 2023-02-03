@@ -7,7 +7,7 @@
   animation: shake 2s ease-in-out infinite both;
   animation-delay: 4s;
   margin-left: 3px;
-  color: var(--ms-red);
+  color: var(--color-subheading);
 }
 
 @media screen and (max-width: 1020px) {

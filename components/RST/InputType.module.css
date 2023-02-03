@@ -18,11 +18,11 @@
 
 .radio [class*='ant-radio-checked'] [class*='ant-radio-inner'],
 .radio [class*='ant-radio']:hover [class*='ant-radio-inner'] {
-  border-color: var(--ms-yellow) !important;
+  border-color: var(--color-accent) !important;
 }
 
 .radio [class*='ant-radio-inner']::after {
-  background-color: var(--ms-yellow) !important;
+  background-color: var(--color-accent) !important;
 }
 
 .radio [class*='ant-radio'] + * {

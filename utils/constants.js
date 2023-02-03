@@ -7,7 +7,19 @@ import React from 'react'
 // App name
 export const APP_NAME = 'graphql-frontend-template'
 
-export const DEFAULT_HOST = 'toolkit.broadband.money'
+const HOSTS = {
+  default: 'toolkit.broadband.money',
+  detroit: 'detroitspeed.broadband.money',
+  tribal: 'tribalspeed.broadband.money',
+  buchanan: 'buchananspeed.broadband.money',
+  worth: 'worthspeed.broadband.money',
+  holt: 'holtspeed.broadband.money',
+  andrew: 'andrewspeed.broadband.money',
+  test: 'testspeed.broadband.money',
+  newark: 'checknewarkinternetspeeds.org'
+}
+
+export const DEFAULT_HOST = HOSTS.newark
 
 const BASE_API_URL = localDevStageProd({
   local: 'http://localhost:4000',
