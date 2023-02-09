@@ -18,8 +18,8 @@ import { gql, useQuery } from '@apollo/client'
         toolkitData
       } = useCommunityContext()
 
-    const [cursorPagination, setCursorPagination] = useState({})
-
+    const [cursorPagination] = useState({all: true})
+    
     const {
       data: { getMultitestResults } = {}
     } = useQuery(GET_TEST_RESULTS, {
@@ -29,8 +29,6 @@ import { gql, useQuery } from '@apollo/client'
         cursorPagination: cursorPagination
       }
     })
-  
-    // console.log(getMultitestResults)
       
     const columns = [
       {
@@ -132,7 +130,9 @@ import { gql, useQuery } from '@apollo/client'
                       className={styles.historyTable}
                       rowKey='id'
                       bordered
-                      // pagination={false}
+                      pagination={{
+                        pageSize: 10,
+                      }}
                       showSorterTooltip={false}
                     />
                 </SectionContent>
@@ -143,8 +143,8 @@ import { gql, useQuery } from '@apollo/client'
   }
 
   const GET_TEST_RESULTS = gql`
-  query getMultitestResults($userId: String) {
-    getMultitestResults(userId: $userId) {
+  query getMultitestResults($userId: String, $cursorPagination: CursorPagination) {
+    getMultitestResults(userId: $userId, cursorPagination: $cursorPagination) {
       results {
         id
         medianLatency
