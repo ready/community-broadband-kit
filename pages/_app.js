@@ -119,6 +119,7 @@ async function getAssets(host) {
             logoWidth
             domainName
             isAddressRequired
+            showBbmReferences
         }
     }`
   })

@@ -25,7 +25,7 @@ const Header = ({ config, logoColor, hero, page, title, mapHeader = false }) => 
         ? (
           <div className={styles.mapHeaderInnerContain}>
             <Logo config={config} />
-            {hero && <NavLinks page={page} mapHeader={mapHeader} />}
+            {hero && <NavLinks page={page} mapHeader={mapHeader} config={config}/>}
           </div>)
         : (
           <>
@@ -35,7 +35,7 @@ const Header = ({ config, logoColor, hero, page, title, mapHeader = false }) => 
                   {title}
                 </h2>)
               : <Logo config={config} />}
-            {hero && <NavLinks page={page} mapHeader={mapHeader} logoColor={logoColor} />}
+            {hero && <NavLinks page={page} mapHeader={mapHeader} logoColor={logoColor} config={config}/>}
           </>)}
     </div>
   )

@@ -19,7 +19,7 @@ const Logo = ({ config, className }) => {
       }`}
     >
       <a href="/">
-        <img src={config.logo} alt='community logo' />
+        <img src={config?.logo} alt='community logo' />
       </a>
     </div>
   )

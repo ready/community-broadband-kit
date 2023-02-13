@@ -7,7 +7,7 @@ import { useEnableScroll } from '../../context/ScrollContext'
 
 import styles from './NavLinks.module.css'
 
-const CommunityMenu = ({ mode, logoColor }) => {
+const CommunityMenu = ({ mode, logoColor, config }) => {
   const [scroll, setScroll] = useEnableScroll()
   const [isMobileScreen, setIsMobileScreen] = useState(false)
   const [isMediumSmallScreen, setIsMediumSmallScreen] = useState(false)
@@ -59,13 +59,13 @@ const CommunityMenu = ({ mode, logoColor }) => {
             <a><b>History</b></a>
           </Link>
         </Menu.Item>
-        <Menu.Item
+        {config?.showBbmReferences && <Menu.Item
           key=''
         >
           <Link href='https://broadband.money/community-broadband-kit'>
             <a><FaExternalLinkAlt></FaExternalLinkAlt><b> Get Your Own</b></a>
           </Link>
-        </Menu.Item>
+        </Menu.Item>}
       </Menu>
           <div className={styles.iconLinkTwitter}>
               <a

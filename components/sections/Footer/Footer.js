@@ -16,17 +16,19 @@ const Footer = ({ config }) => {
   return (
     <section className={styles.footer}>
       <SectionContent>
-        <SectionLeftContent>
-          <Title className={styles.title}>Stay tuned for updates about our broadband grant journey.</Title>
-          <Description className={styles.description}>Want to stay informed about our progress? Enter your email here. We won't share it with third parties.</Description>
-          <div className={styles.newsLetter}>
-            <NewsLetter header />
-          </div>
-
+         <SectionLeftContent>
+         {config.showBbmReferences && 
+          <>
+            <Title className={styles.title}>Stay tuned for updates about our broadband grant journey.</Title>
+            <Description className={styles.description}>Want to stay informed about our progress? Enter your email here. We won't share it with third parties.</Description>
+            <div className={styles.newsLetter}>
+              <NewsLetter header />
+            </div> 
+           </>}
         </SectionLeftContent>
         <SectionRightContent className={styles.sectionRight}>
-          <FooterSegmentLinks />
-          <FooterLinks />
+          <FooterSegmentLinks config={config}/>
+          <FooterLinks/>
         </SectionRightContent>
       </SectionContent>
       <FooterBottom config={config} />

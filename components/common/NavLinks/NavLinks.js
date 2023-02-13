@@ -7,7 +7,7 @@ import CommunityMenu from './CommunityMenu'
 import TranslateSelector from '/components/common/Translate/TranslateSelector'
 import styles from './NavLinks.module.css'
 
-const NavLinks = ({ logoColor }) => {
+const NavLinks = ({ config, logoColor }) => {
   const router = useRouter()
   const pathname = router.pathname
 
@@ -32,7 +32,7 @@ const NavLinks = ({ logoColor }) => {
         <DropDownMenu openMenu={openMenu} setOpenMenu={setOpenMenu} /> */}
       </div>
       <div className={styles.navMenu}>
-        <CommunityMenu mode='horizontal' logoColor={logoColor} />
+        <CommunityMenu mode='horizontal' logoColor={logoColor} config={config}/>
         <TranslateSelector />
       </div>
     </div>

@@ -12,7 +12,7 @@ const FooterBottom = ({ config }) => {
       <div className={styles.logo} onClick={()=>router.push('/')}>
         <img src={config.logo} alt='community logo' />
       </div>
-      <Copyright />
+      {config.showBbmReferences && <Copyright />}
     </div>
   )
 }
