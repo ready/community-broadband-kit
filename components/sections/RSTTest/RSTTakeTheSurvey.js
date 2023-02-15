@@ -89,7 +89,7 @@ const RSTTakeTheSurvey = ({ config }) => {
                   title='Before We Begin...'
                   description='Your location is required to help Mississippi get better internet. Please enter your address below. It will not be shared with the public.'
                 >
-                  <AddressAutoComplete />
+                  <AddressAutoComplete config={config}/>
                   <p className={styles.beforeSurveyDescription}>
                     If you are reporting that you have no internet at home from a different location, enter in your home address and select the option below.
                   </p>
@@ -104,7 +104,7 @@ const RSTTakeTheSurvey = ({ config }) => {
                     <RSTButton
                       buttonTitle='Next'
                       onClick={() => submitAddress()}
-                      disabled={!toolkitData.address}
+                      disabled={ !toolkitData.address && config?.isAddressRequired }
                     />
                   </div>
                 </RSTCard>

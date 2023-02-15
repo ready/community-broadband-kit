@@ -9,12 +9,12 @@ import CurrentLocation from './CurrentLocation'
 
 const { googleMapLoader } = GoogleMapReact
 
-const AddressAutoComplete = () => {
+const AddressAutoComplete = ({config}) => {
   const { toolkitData, setToolkitData, surveyData, setSurveyData } = useCommunityContext()
   const [form] = Form.useForm()
   const [showCurrentLocation, setShowCurrentLocation] = useState(true)
   const autoCompleteRef = useRef(null)
-  
+
   useEffect(() => {
     let autoComplete
 
@@ -128,9 +128,9 @@ const AddressAutoComplete = () => {
         validateTrigger='onBlur'
         validateFirst
         rules={[
-          { required: true, message: 'This field is required to continue' }
+          { required: config?.isAddressRequired, message: 'This field is required to continue' }
         ]}
-        required={true}
+        required={config?.isAddressRequired}
       >
         <input
           type='search'

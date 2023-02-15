@@ -11,7 +11,7 @@ import SectionRightContent from '../../common/SectionContent/SectionRightContent
 import styles from './RSTBeforeTestSection.module.css'
 
 
-const RSTBeforeTestSection = ({ setRunTest }) => {
+const RSTBeforeTestSection = ({ setRunTest, config }) => {
   const {toolkitData, setToolkitData} = useCommunityContext()
   const [enterAddress, setEnterAddress] = useState(false)
   const [noService, setNoService] = useState(false)
@@ -44,6 +44,7 @@ const RSTBeforeTestSection = ({ setRunTest }) => {
     key: item.content,
   }))
 
+
   return (
     <div className={styles.beforeTestWrap}>
       {!enterAddress &&
@@ -51,7 +52,7 @@ const RSTBeforeTestSection = ({ setRunTest }) => {
           title='Before We Begin...'
           description='Your location is required to help Mississippi get better internet. Please enter your address below. It will not be shared with the public.'
         >
-          <AddressAutoComplete />
+          <AddressAutoComplete config={config}/>
           <p className={styles.beforeTestDescription}>
             If you are reporting that you have no internet at home from a different location, enter in your home address and select the option below.
           </p>
@@ -66,7 +67,7 @@ const RSTBeforeTestSection = ({ setRunTest }) => {
             <RSTButton
               buttonTitle='Next'
               onClick={() => submitAddress()}
-              disabled={!toolkitData.address}
+              disabled={ !toolkitData.address && config?.isAddressRequired }
             />
           </div>
         </RSTCard>}
