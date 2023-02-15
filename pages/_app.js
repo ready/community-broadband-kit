@@ -120,6 +120,7 @@ async function getAssets(host) {
             domainName
             isAddressRequired
             showBbmReferences
+            individualSurveyEnabled
         }
     }`
   })

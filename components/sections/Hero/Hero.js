@@ -45,13 +45,13 @@ const Hero = ({ config }) => {
               buttonTitle='Take the test'
               onClick={handleStartTest}
             />
-            <Button
+             {config?.individualSurveyEnabled && <Button
               size='large'
               className={styles.takeSurvey}
               onClick={handleTakeSurvey}
               >
               Take the survey
-            </Button>
+            </Button>}
           </div>
           <LearnMore />
         </SectionLeftContent>
