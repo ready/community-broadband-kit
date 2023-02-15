@@ -51,10 +51,15 @@ const RSTResultSection = ({ config }) => {
             section='hero'
           >
             <p>Here are your results. If you weren&apos;t able to complete the survey, please take the test again.</p>
-            <p>For best results, take the test once per day for the next 7 days.
-              <br />
-            Enter your email below to receive a reminder:</p>
-            <EmailReminder/>
+            
+            {config?.showEmailReminder &&
+              <>
+                <p>For best results, take the test once per day for the next 7 days.
+                <br />
+                
+                Enter your email below to receive a reminder:</p>
+                <EmailReminder/>
+              </>}
           </SectionBlurb>
         </SectionLeftContent>
         <SectionRightContent>

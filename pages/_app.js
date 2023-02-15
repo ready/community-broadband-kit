@@ -123,6 +123,7 @@ async function getAssets(host) {
             individualSurveyEnabled
             showHistory
             resultShareButtons
+            showEmailReminder
         }
     }`
   })
