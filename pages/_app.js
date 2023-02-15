@@ -122,6 +122,7 @@ async function getAssets(host) {
             showBbmReferences
             individualSurveyEnabled
             showHistory
+            resultShareButtons
         }
     }`
   })

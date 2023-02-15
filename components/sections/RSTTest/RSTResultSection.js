@@ -14,7 +14,7 @@ import RSTShareButtons from './RSTShareButtons'
 
 import styles from './RSTResultSection.module.css'
 
-const RSTResultSection = () => {
+const RSTResultSection = ({ config }) => {
   const { startTest, setStartTest, toolkitData, setRunTest, setShowResult } = useCommunityContext()
   const [resultsFields, setResultsFields] = useState()
 
@@ -58,7 +58,7 @@ const RSTResultSection = () => {
           </SectionBlurb>
         </SectionLeftContent>
         <SectionRightContent>
-          <RSTShareButtons></RSTShareButtons>
+          {config?.resultShareButtons && <RSTShareButtons></RSTShareButtons>}
           <RSTCard
             title={<>You are <ServiceStatusTag size='big' serviceStatus={resultsFields?.serviceStatusText} /></>}
             description='Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.'

@@ -38,7 +38,7 @@ const RSTTest = ({ config }) => {
 
   const renderSection = () => {
     if (sameSetup && startTest && !takeSurvey) return <RSTSameSetup />
-    else if (showResult && !sameSetup && !takeSurvey) return <RSTResultSection />
+    else if (showResult && !sameSetup && !takeSurvey) return <RSTResultSection config={config}/>
     else if (runTest && !sameSetup) return <RSTTestingSection handleShowResult={handleShowResult} />
     else if (startTest && !sameSetupAns && !showResult && !takeSurvey) return <RSTBeforeTestSection setRunTest={setRunTest} config={config} />
   }
