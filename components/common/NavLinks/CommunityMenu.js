@@ -52,20 +52,22 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
             <a href='#' onClick={(e) => handleClick(e)}><b>What's this</b></a>
           
         </Menu.Item>
-        <Menu.Item
-          key='setting:2'
-        >
-          <Link href='/history'>
-            <a><b>History</b></a>
-          </Link>
-        </Menu.Item>
-        {config?.showBbmReferences && <Menu.Item
-          key=''
-        >
-          <Link href='https://broadband.money/community-broadband-kit'>
-            <a><FaExternalLinkAlt></FaExternalLinkAlt><b> Get Your Own</b></a>
-          </Link>
-        </Menu.Item>}
+        {config?.showHistory && 
+          <Menu.Item
+            key='setting:2'
+          >
+            <Link href='/history'>
+              <a><b>History</b></a>
+            </Link>
+          </Menu.Item>}
+        {config?.showBbmReferences && 
+          <Menu.Item
+            key=''
+          >
+            <Link href='https://broadband.money/community-broadband-kit'>
+              <a><FaExternalLinkAlt></FaExternalLinkAlt><b> Get Your Own</b></a>
+            </Link>
+          </Menu.Item>}
       </Menu>
           <div className={styles.iconLinkTwitter}>
               <a

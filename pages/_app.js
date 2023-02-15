@@ -121,6 +121,7 @@ async function getAssets(host) {
             isAddressRequired
             showBbmReferences
             individualSurveyEnabled
+            showHistory
         }
     }`
   })
