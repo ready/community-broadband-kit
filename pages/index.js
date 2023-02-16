@@ -24,6 +24,7 @@ export default function TermPage({
       config={config}
     >
       {<Hero config={config}/>}
+      {config?.welcomeSectionHeading && <InfoSection section={'welcome'} config={config}/>}
       <WhyTakeTest page={'test'}/> 
       <InfoSection section={'tips'}/>
       <InfoSection section={'survey-tips'}/> 

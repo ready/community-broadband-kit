@@ -124,6 +124,9 @@ async function getAssets(host) {
             showHistory
             resultShareButtons
             showEmailReminder
+            welcomeSectionHeading
+            welcomeSectionBody
+            welcomeSectionImage
         }
     }`
   })

@@ -1,26 +1,24 @@
 import React from 'react'
 import styles from './InfoSection.module.css'
 
-const InfoSection = ({section}) => {
+const InfoSection = ({section, config}) => {
 	const getInfoSteps = (section) => {
 		switch (section) {
 		  case 'welcome':
 			return {
-			  img: <img src={''} alt={''} style={{ height:'409px', width:'272px'}}/>,
+			  img: config?.welcomeSectionImage ? <img src={config?.welcomeSectionImage} alt={''} style={{ height:'409px', width:'272px'}}/> : "",
 			  alt: "",
-				h2Title:'Welcome',
+				h2Title: config?.welcomeSectionHeading,
 				descriptionRight:
 				[
-					'Fill in text here',
+					config?.welcomeSectionBody,
 				],
 				descriptionLeft:[],
 				imgDes:(
 					<>
-						<p className={styles.governorName}></p>
-						<em className={styles.governor}></em>
 					</>
 				),
-				backgroundColor: 'var(--ms-dark)'
+				backgroundColor: 'var(--color-background1)'
 			}
 			case 'how-does-it-work':
 				return {
