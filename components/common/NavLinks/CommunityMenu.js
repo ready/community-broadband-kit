@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu } from 'antd'
 import { FaExternalLinkAlt } from "react-icons/fa"
-
+import { useRouter } from 'next/router'
 import { useEnableScroll } from '../../context/ScrollContext'
-
+import ternary from '/utils/ternary'
 import styles from './NavLinks.module.css'
 
 const CommunityMenu = ({ mode, logoColor, config }) => {
@@ -12,6 +12,9 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
   const [isMobileScreen, setIsMobileScreen] = useState(false)
   const [isMediumSmallScreen, setIsMediumSmallScreen] = useState(false)
   const [testUrl, setTestUrl] = useState('')
+  const router = useRouter()
+  const pathname = router.pathname
+  const whatsThisLink = pathname !== '/'
 
   const handleResize = () => {
     if (window.innerWidth < 828) {
@@ -25,6 +28,8 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
       setIsMediumSmallScreen(false)
     }
   }
+
+  console.log(whatsThisLink)
 
   useEffect(() => {
     handleResize()
@@ -45,13 +50,20 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
         mode={isMediumSmallScreen || isMobileScreen ? 'vertical' : mode}
         className={styles.menuContainer}
       >
-        <Menu.Item
+        {ternary(whatsThisLink, 
+          <Menu.Item
           key='setting:1'
-        >
-          
+          >
+            <Link href='/#info'>
+              <a><b>What's This</b></a>
+            </Link>
+          </Menu.Item>,
+          <Menu.Item
+          key='setting:1'
+          >
             <a href='#' onClick={(e) => handleClick(e)}><b>What's this</b></a>
-          
-        </Menu.Item>
+          </Menu.Item>
+        )}
         {config?.showHistory && 
           <Menu.Item
             key='setting:2'

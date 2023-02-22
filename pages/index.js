@@ -1,18 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '/components/common/Layout/Layout'
 import Hero from '/components/sections/Hero/Hero'
-import RSTTest from '/components/sections/RSTTest/RSTTest'
 import InfoSection from '/components/sections/RSTTest/InfoSection'
-import RSTTakeTheSurvey from '/components/sections/RSTTest/RSTTakeTheSurvey'
 import WhyTakeTest from '/components/sections/WhyTakeTest/WhyTakeTest'
-import { useCommunityContext } from '/components/context/CommunityContext'
+import { useEnableScroll } from '/components/context/ScrollContext'
+import { useRouter } from 'next/router'
 
 export default function TermPage({
   config
 }) {
-  const { startTest, takeSurvey } = useCommunityContext()
+  const [scroll, setScroll] = useEnableScroll()
+  const router = useRouter()
+  const pathname = router.asPath
 
-  console.log(config)
+  useEffect(() => {
+    if (pathname === '/#info') {
+      setScroll(true)
+      console.log('yii')
+    }
+  }, [pathname])
 
   return (
     <Layout

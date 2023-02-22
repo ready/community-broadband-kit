@@ -19,6 +19,8 @@ const ScrollContextProvider = ({ children }) => {
         top: window.innerHeight,
         behavior: 'smooth'
       })
+
+      setScroll(false)
     }
   }, [scroll])
 
