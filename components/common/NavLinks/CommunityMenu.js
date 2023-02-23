@@ -11,10 +11,10 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
   const [scroll, setScroll] = useEnableScroll()
   const [isMobileScreen, setIsMobileScreen] = useState(false)
   const [isMediumSmallScreen, setIsMediumSmallScreen] = useState(false)
-  const [testUrl, setTestUrl] = useState('')
   const router = useRouter()
   const pathname = router.pathname
   const whatsThisLink = pathname !== '/'
+  const testUrl = window.location.origin
 
   const handleResize = () => {
     if (window.innerWidth < 828) {
@@ -29,12 +29,9 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
     }
   }
 
-  console.log(whatsThisLink)
-
   useEffect(() => {
     handleResize()
     window.addEventListener('resize', handleResize)
-    setTestUrl(`${window.location.origin}`)
   }, [])
 
   const handleClick = (e) => {
@@ -125,7 +122,7 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
           </div>
           <div className={styles.iconLinkEmail}>
               <a
-                href={`https://www.facebook.com/sharer.php?u=${testUrl}`}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=${postTitle}&body=${testUrl}+&ui=2&tf=1&pli=1`}
                 target='_blank'
                 rel='noreferrer'
               >
