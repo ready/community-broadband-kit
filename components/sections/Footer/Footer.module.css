@@ -25,6 +25,7 @@ max-height: 75px;
 .sectionRight {
     width: calc(50% - 24px);
     display: flex;
+    flex-direction: column;
     position: relative;
     /* left: 80px; */
     justify-content: space-between;

@@ -88,7 +88,7 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
                 rel='noreferrer'
               >
                 <img
-                  src='/icons/twitter-solid.svg'
+                  src='/icons/twitter-2.svg'
                   height={22}
                   width={22}
                   alt='community toolkit twitter link'
@@ -102,9 +102,9 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
               rel='noreferrer'
             >
               <img
-                src='/icons/linkedin-3.svg'
-                height={17}
-                width={17}
+                src='/icons/linkedin-2.svg'
+                height={19}
+                width={19}
                 alt='community toolkit linkedin link'
               />
             </a>
@@ -116,10 +116,24 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
                 rel='noreferrer'
               >
                 <img
-                  src='/icons/facebook.svg'
+                  src='/icons/facebook-2.svg'
                   height={22}
                   width={22}
                   alt='community toolkit facebook link'
+                />
+              </a>
+          </div>
+          <div className={styles.iconLinkEmail}>
+              <a
+                href={`https://www.facebook.com/sharer.php?u=${testUrl}`}
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img
+                  src='/icons/mail.svg'
+                  height={18}
+                  width={18}
+                  alt='community toolkit email link'
                 />
               </a>
           </div>

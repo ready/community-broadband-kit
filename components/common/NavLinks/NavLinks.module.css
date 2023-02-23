@@ -118,6 +118,22 @@
   align-items: center;
 }
 
+.iconLinkEmail {
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  border-style: solid;
+  border-radius: var(--border-radius);
+  border-color: #5990d9e6;
+}
+.iconLinkEmail a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .freeButton {
   background-color: var(--color-blue-6);
   color: var(--color-gray-1);
