@@ -130,8 +130,8 @@ const CommunityMenu = ({ mode, logoColor, config }) => {
             >
               <img
                 src='/icons/mail.svg'
-                height={18}
-                width={18}
+                height={22}
+                width={22}
                 alt='community toolkit email link'
               />
             </a>
