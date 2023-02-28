@@ -9,7 +9,7 @@ import RSTButton  from './RSTButton'
 
 import styles from './RSTSurvey.module.css'
 
-const RSTSurvey = () => {
+const RSTSurvey = ({ config }) => {
   const [form] = Form.useForm()
   const [currentStep, setCurrentStep] = useState(0)
  
@@ -31,7 +31,7 @@ const RSTSurvey = () => {
       value = false
     }
 
-    const newSurveyData = { ...surveyData, [field]: value }
+    const newSurveyData = { ...surveyData, [field]: value, organizationId: config.organizationId }
     setSurveyAttribute(field)
     setSurveyData(newSurveyData)
   }

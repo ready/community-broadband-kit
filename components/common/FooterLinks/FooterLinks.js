@@ -1,44 +1,76 @@
-import React from 'react'
-import Image from 'next/image'
-import NextLink from 'next/link'
-
+import React, { useState, useEffect } from 'react'
 import Link from '../../common/Link/Link'
-
 import styles from './FooterLinks.module.css'
 
 const FooterLinks = () => {
+  const [testUrl, setTestUrl] = useState('')
+
+  const postTitle = 'Help our community in winning broadband grants by taking this internet speed test'
+
+  useEffect(() => { 
+    setTestUrl(`${window.location.origin}`)
+  }, [])
 
   return (
     <div className={styles.footerLinks}>
       <div className={`${styles.social} ${styles.horizontalLinks}`}>
-        <Link
-          className={styles.horizontalLink}
-          text={
+        <div className={styles.horizontalLink}>
+          <a
+            href={`https://twitter.com/share?url=${testUrl}&text=${postTitle}`}
+            target='_blank'
+            rel='noreferrer'
+          >
             <img
-              alt='linkedin icon'
-              src='/icons/linkedin.svg'
-              height={24}
-              width={24}
+              src='/icons/twitter-2-white.svg'
+              height={22}
+              width={22}
+              alt='community toolkit twitter link'
             />
-          }
-          href='https://www.linkedin.com/sharing/share-offsite/?url=https://toolkit.broadband.money'
-          target='_blank'
-          rel='noreferrer'
-        />
-        <Link
-          className={styles.horizontalLink}
-          text={
+          </a>
+        </div>
+        <div className={styles.horizontalLink}>
+          <a
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${testUrl}`}
+            target='_blank'
+            rel='noreferrer'
+          >
             <img
-              alt='twitter icon'
-              src='/icons/twitter.svg'
-              height={24}
-              width={24}
+              src='/icons/linkedin-2-white.svg'
+              height={22}
+              width={22}
+              alt='community toolkit linkedin link'
+              style={{ fill: 'red' }}
             />
-          }
-          href='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftoolkit.broadband.money&text=Help%20our%20community%20in%20winning%20broadband%20grants%20by%20taking%20this%20internet%20speed%20testy'
-          target='_blank'
-          rel='noreferrer'
-        />
+          </a>
+        </div>
+        <div className={styles.horizontalLink}>
+          <a
+            href={`https://www.facebook.com/sharer.php?u=${testUrl}`}
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img
+              src='/icons/facebook-2-white.svg'
+              height={22}
+              width={22}
+              alt='community toolkit facebook link'
+            />
+          </a>
+        </div>
+        <div className={styles.horizontalLink}>
+          <a
+            href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=${postTitle}&body=${testUrl}+&ui=2&tf=1&pli=1`}
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img
+              src='/icons/mail-white.svg'
+              height={20}
+              width={20}
+              alt='community toolkit email link'
+            />
+          </a>
+        </div>
       </div>
     </div>
   )

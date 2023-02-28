@@ -20,7 +20,6 @@ const CommunityContextProvider = ({ children, config }) => {
   const [surveyComplete, setSurveyComplete] = useState(false)
   const [toolkitData, setToolkitData] = useState({})
   const [surveyData, setSurveyData] = useState({})
-  const [organizationId, setOrganizationId] = useState(1411)
   const [testSource, setTestSource] = useState('')
   const [testType, setTestType] = useState('')
   const [testProgress, setTestProgress] = useState('')
@@ -37,7 +36,6 @@ const CommunityContextProvider = ({ children, config }) => {
 
     setSurveyData({
       ...surveyData,
-      organizationId: config.organizationId,
       userId: metadata.userId,
       ipAddress: metadata.ipAddress,
       ispName: metadata.ispName,
@@ -45,7 +43,6 @@ const CommunityContextProvider = ({ children, config }) => {
 
     setToolkitData({
       ...toolkitData,
-      organizationId: config.organizationId,
       userId: metadata.userId,
       ipAddress: metadata.ipAddress,
       ispName: metadata.ispName,
@@ -197,8 +194,6 @@ const CommunityContextProvider = ({ children, config }) => {
         setToolkitData,
         surveyData,
         setSurveyData,
-        organizationId,
-        setOrganizationId,
         testSource,
         setTestSource,
         testType,

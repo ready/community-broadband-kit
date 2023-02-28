@@ -10,7 +10,7 @@ import { noServiceSurvey } from '/utils/constants'
 
 import styles from './RSTSurvey.module.css'
 
-const RSTNoServiceSurvey = () => {
+const RSTNoServiceSurvey = ({ config }) => {
   const [form] = Form.useForm()
   const [currentStep, setCurrentStep] = useState(0)
   const [surveyComplete, setSurveyComplete] = useState(false)
@@ -22,7 +22,7 @@ const RSTNoServiceSurvey = () => {
   } = useCommunityContext()
 
   const handleChange = (value, field) => {
-    const newSurveyData = { ...surveyData, [field]: value }
+    const newSurveyData = { ...surveyData, [field]: value, organizationId: config.organizationId }
     setSurveyData(newSurveyData)
   }
 
@@ -36,7 +36,8 @@ const RSTNoServiceSurvey = () => {
 
         const data = {
           ...toolkitData, 
-          noService: true
+          noService: true,
+          organizationId: config?.organizationId
         }
 
         setToolkitData(data)

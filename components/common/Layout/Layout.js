@@ -78,7 +78,7 @@ export default function Layout ({
       <div id="ookla-test" style={{ display: 'none' }}></div>
       {page === 'how it works' ? null : <Footer config={config}/>}
       <script src="/test/m-lab/ndt7.min.js" type="text/javascript"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFSRcqE5mWaypizwTElZzYQA3x3IiCiaQ&libraries=places"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-MVmG3cn8NGpB5cvq5HciuFQ36LXpF1s&libraries=places"></script>
     </div>
   )
 }

@@ -48,7 +48,7 @@ const RSTTakeTheSurvey = ({ config }) => {
         value = false
       }
       
-      const newSurveyData = { ...surveyData, [field]: value }
+      const newSurveyData = { ...surveyData, [field]: value, organizationId: config.organizationId }
       setSurveyData(newSurveyData)
     }
   
@@ -95,7 +95,7 @@ const RSTTakeTheSurvey = ({ config }) => {
                   </p>
                   <Checkbox
                     className={styles.checkInternet}
-                    onChange={(e) => setToolkitData({...toolkitData, noService: e.target.checked})
+                    onChange={(e) => setToolkitData({...toolkitData, noService: e.target.checked, organizationId: config.organizationId})
                   }
                   >
                     I do not have internet service at this address

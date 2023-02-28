@@ -19,7 +19,7 @@ const HOSTS = {
   newark: 'checknewarkinternetspeeds.org'
 }
 
-export const DEFAULT_HOST = HOSTS.default
+export const DEFAULT_HOST = HOSTS.newark
 
 const BASE_API_URL = localDevStageProd({
   local: 'http://localhost:4000',

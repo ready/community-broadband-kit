@@ -16,7 +16,7 @@ const Footer = ({ config }) => {
   return (
     <section className={styles.footer}>
       <SectionContent>
-         <SectionLeftContent>
+         <SectionLeftContent className={styles.sectionRight}>
          {config.showBbmReferences && 
           <>
             <Title className={styles.title}>Stay tuned for updates about our broadband grant journey.</Title>

@@ -51,7 +51,7 @@ const RSTTestingSection = ({ handleShowResult }) => {
       results[result] = Number(results[result])
     }
 
-    const data = {...toolkitData, ...results}
+    const data = {...toolkitData, ...results, organizationId: config.organizationId}
     let res = await addMultitestData({ variables: {testData: data} })
     // console.log(res.data?.addMultitestData.id)
     setToolkitData(data)
