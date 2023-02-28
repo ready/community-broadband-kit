@@ -95,7 +95,7 @@ const RSTResult = ({ config }) => {
       config={config}
     >
     <section className={stylesTest.test}>
-      <Header logo={config?.logo} logoColor='white' hero page='broadband-audits' />
+      <Header config={config} logoColor='white' hero page='broadband-audits' />
       <div className={styles.resultSection}>
       <SectionContent>
           <RSTCard
