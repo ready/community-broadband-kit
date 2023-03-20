@@ -33,7 +33,7 @@
     "husky": "^8.0.2"
   },
   "devDependencies": {
-    "@ready.net/octogration": "^0.17.0",
+    "@ready.net/octogration": "^0.21.0",
     "commitlint": "^17.3.0"
   }
 }
