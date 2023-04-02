@@ -74,7 +74,7 @@ async function sendEmail (req, res) {
 			cc: ['welcome@broadband.money'],
 			from: {
 				email: 'welcome@broadband.money',
-				name: 'Broadband.Money'
+				name: 'Broadband.money'
 			},
 			dynamic_template_data: {
 				email
