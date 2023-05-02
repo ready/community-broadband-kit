@@ -1,0 +1,12 @@
+steps:
+- name: "gcr.io/cloud-builders/gsutil"
+  args: ["cp", "gs://toolkit-dev-384923.appspot.com/.env", ".env"]
+- name: "gcr.io/cloud-builders/gsutil"
+  args: ["cp", "gs://toolkit-dev-384923.appspot.com/GeoIP2-City.mmdb", "GeoIP2-City.mmdb"]
+- name: "gcr.io/cloud-builders/gsutil"
+  args: ["cp", "gs://toolkit-dev-384923.appspot.com/GeoIP2-ISP.mmdb", "GeoIP2-ISP.mmdb"]
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', 'app.yaml']
+  timeout: 1600s
+
+timeout: 1600s
