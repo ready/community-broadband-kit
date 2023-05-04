@@ -143,7 +143,8 @@ async function getAssets(host) {
   })
   .then(res => res.json())
   .then (result => {
-    return result.data.getCommunityApplicationsByDomain[0]
+    console.log(result)
+    return result?.data?.getCommunityApplicationsByDomain?.[0]
   })
   .catch(err => console.log(err))
 }
