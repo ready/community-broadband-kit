@@ -70,9 +70,12 @@ MyApp.getInitialProps = async (appContext) => {
 
   let host = req?.headers?.host
   let config = await getAssets(host)
+  console.log('config', config)
 
   if (!config) {
     config = await getAssets(DEFAULT_HOST)
+    console.log('default host', DEFAULT_HOST)
+    console.log('config2', config)
   }
 
   return {

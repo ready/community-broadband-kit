@@ -28,6 +28,7 @@ const BASE_API_URL = localDevStageProd({
   stage: 'https://boss-api-stage.uc.r.appspot.com',
   prod: 'https://boss-api-289815.uc.r.appspot.com'
 })
+
 export const INTERNAL_API_URL = localDevStageProd({
   local: 'http://localhost:3000',
   dev: 'https://data.broadbandms.com/',
@@ -36,6 +37,8 @@ export const INTERNAL_API_URL = localDevStageProd({
 })
 
 export const GRAPHQL_API_URL = `${BASE_API_URL}/graphql`
+console.log('GRAPHQL_API_URL', GRAPHQL_API_URL)
+
 export const API_URL = BASE_API_URL
 
 export const LOCAL_TESTING_FLAG = !process.env.NEXT_PUBLIC_ENVIORNMENT
