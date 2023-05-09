@@ -1,0 +1,84 @@
+const parser = require('ua-parser-js');
+const Reader = require('@maxmind/geoip2-node').Reader;
+const express = require('express')
+const router = express.Router()
+const { CITY_PATH, ISP_PATH } = require('../utils/constants')
+
+/**
+ * Gets the client's ip address from the request object
+ * @param {*} req A request from the client
+ * @returns The the ip address of the client
+ */
+function getIpAddress(req) {
+  if (req.headers['x-forwarded-for']) {
+    return req.headers['x-forwarded-for'].split(',')[0].trim();
+  } else {
+    return req.connection.remoteAddress;
+  }
+}
+
+/**
+ * Gets the coordinates of the client's city
+ * @param {*} address The client's ip address
+ * @param reader A reader for the city data file
+ * @returns The city coordinates associated with the client's ip address
+ */
+async function getLocation(address) {
+  try {
+    const cityReader = await Reader.open(CITY_PATH)
+    const response = cityReader.city(address);
+
+    return {
+      lat: response.location.latitude,
+      lon: response.location.longitude
+    }
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
+
+/**
+ * Gets the name of the client's isp 
+ * @param {*} address The client's ip address
+ * @param reader A reader for the isp data file
+ * @returns The name of the client's isp or an empty object if not possible
+ */
+async function getIspName(address) {
+  try {
+    const ispReader = await Reader.open(ISP_PATH)
+    const response = ispReader.isp(address);
+
+    return {
+      isp: response.isp,
+      asn: response.autonomousSystemNumber
+    }
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
+
+/**
+ * Gets the client's user agent information
+ * @param {*} req A request from the client
+ * @returns An object containg the user agent information about the client
+ */
+function getUaInfo(req) {
+  return parser(req.headers['user-agent']);
+}
+
+router.get('/metadata', async function (req, res, next) {
+  const address = getIpAddress(req)
+  
+  const outgoing = {
+      ip: address,
+      isp: await getIspName(address),
+      loc: await getLocation(address),
+      ua: getUaInfo(req)
+  };
+
+  res.send(outgoing);
+})
+
+module.exports = router;
