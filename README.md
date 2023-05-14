@@ -38,7 +38,7 @@ While communities and providers are encouraged to [launch their own ommunity Bro
 
 ### Speed test
 
-The speed test component consists of running three different speed tests in sequence: [M-Lab's ndt7](https://speed.measurementlab.net/#/), [Speedtest by Ookla](https://www.speedtest.net/), and our own speed test which can be found at [WiFi.wtf](https://wifi.wtf/). We run three different speed tests to limit the bias of any single speed test implementation on the results. The results of each the three speed tests can be viewed by the test-taker, along with an overall score determined by taking the median of the three test results in each category (ie. download, upload, latency, jitter).
+The speed test component consists of running three different speed tests in sequence: [M-Lab's ndt7](https://speed.measurementlab.net/#/), [Speedtest by Ookla](https://www.speedtest.net/), and our own Ready Strength Test which can be found at [WiFi.wtf](https://wifi.wtf/). We run three different speed tests to limit the bias of any single speed test implementation on the results. The results of each the three speed tests can be viewed by the test-taker, along with an overall score determined by taking the median of the three test results in each category (ie. download, upload, latency, jitter).
 
 ### Survey
 

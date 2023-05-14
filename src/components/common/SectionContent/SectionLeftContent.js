@@ -1,8 +1,8 @@
 import styles from './SectionContent.module.css'
 
-const SectionLeft = ({ children, className, hero, RECHero }) => {
+const SectionLeft = ({ children, className, hero }) => {
   return (
-    <div className={`${styles.sectionLeft} ${className || ''} ${hero ? styles.heroSectionLeft : ''} ${RECHero ? styles.RECHeroSectionLeft : ''}`}>
+    <div className={`${styles.sectionLeft} ${className || ''} ${hero ? styles.heroSectionLeft : ''}`}>
       {children}
     </div>
   )

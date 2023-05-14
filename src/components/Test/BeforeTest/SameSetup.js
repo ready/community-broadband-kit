@@ -1,0 +1,40 @@
+import React from 'react'
+import { Radio } from 'antd'
+import StepCard from '../../common/Card/StepCard'
+import ChecklistAnswerOption from './Checklist/ChecklistAnswerOption'
+import styles from './SameSetup.module.css'
+
+const SameSetup = ({ setCurrentDisplay }) => {
+  const handleClick = (value) => {
+    value ? setCurrentDisplay('before-test') : setCurrentDisplay('test')
+  }
+
+  return (
+    <div className={styles.sameSetupWrap}>
+      <StepCard
+        title='Is your setup the same as last time?'
+        description='If your set up has changed from the previous time, for example you are now using WiFi instead of a wired connection, select "No".'
+      >
+        <Radio.Group
+          className={styles.answerOptions}
+          onChange={(e) => handleClick(e.target.value)}
+        >
+          <ChecklistAnswerOption
+            imgSrc='/images/checkmark_icon.png'
+            imgAlt='checkmark icon'
+            optionText='Yes'
+            optionValue={true}
+          />
+          <ChecklistAnswerOption
+            imgSrc='/images/cross_icon.png'
+            imgAlt='cross icon'
+            optionText='No'
+            optionValue={false}
+          />
+        </Radio.Group>
+      </StepCard>
+    </div>
+  )
+}
+
+export default SameSetup

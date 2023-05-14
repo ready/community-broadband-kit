@@ -8,18 +8,18 @@ import runOoklaTest from './ookla.js'
  * @param {*} config An object containing callbacks to handle progress updates during the test
  * @returns An object containing the test results for each test or throws an exception if there is an error running the test
  */
-async function runTests(state, config) {
+async function runTests(stateSetters, config) {
   try {
-    const mlabResults = await runMlabTest(state, config?.mlab)
+    const mlabResults = await runMlabTest(stateSetters, config?.mlab)
 
     let ooklaResults
     if (LOCAL_TESTING_FLAG) {
       ooklaResults = {latency: 0, jitter: 0, upload: 0, download: 0}
     } else {
-      ooklaResults = await runOoklaTest(state, config?.ooklaComplete)
+      ooklaResults = await runOoklaTest(stateSetters, config?.ooklaComplete)
     }
 
-    const rstResults = await runRst(state, config?.rst)
+    const rstResults = await runRst(stateSetters, config?.rst)
 
     const results = {
       rstLatency: rstResults.latency,

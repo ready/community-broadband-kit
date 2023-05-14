@@ -8,8 +8,7 @@
   flex-wrap: wrap;
 }
 
-.heroSection,
-.RECHero {
+.heroSection {
   min-height: 600px;
   box-sizing: border-box;
   padding: 120px 0;
@@ -21,11 +20,6 @@
   height: calc(100vh - 114px);
 }
 
-.RECHero {
-  min-height: 752px;
-  padding: 0;
-}
-
 .sectionLeft {
   width: 48%;
   display: flex;
@@ -33,12 +27,6 @@
   /* align-items: center; */
   justify-content: center;
   position: relative;
-}
-
-.RECHeroSectionLeft {
-  height: 100%;
-  top: 120px;
-  justify-content: flex-start;
 }
 
 .heroSectionLeft {

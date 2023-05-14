@@ -1,0 +1,23 @@
+.header {
+  width: 100%;
+  z-index: 10;
+  max-width: var(--section-max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 28px;
+  margin-bottom: 0;
+}
+
+@media screen and (max-height: 670px) {
+  .header {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 662px) {
+  .header {
+    position: relative;
+  }
+}

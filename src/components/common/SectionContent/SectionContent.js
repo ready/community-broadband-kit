@@ -1,8 +1,8 @@
 import styles from './SectionContent.module.css'
 
-const SectionContent = ({ children, hero, RECHero }) => {
+const SectionContent = ({ children, hero }) => {
   return (
-    <div className={`${styles.section} ${hero ? styles.heroSection : ''} ${RECHero ? styles.RECHero : ''}`}>
+    <div className={`${styles.section} ${hero ? styles.heroSection : ''}`}>
       {children}
     </div>
   )

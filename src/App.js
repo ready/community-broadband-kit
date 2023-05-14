@@ -1,20 +1,20 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './components/Home/Home'
-import History from './components/History/History'
-import Survey from './components/Survey/Survey'
-import Test from './components/Test/Test'
-import Results from './components/Results/Results'
+import HomePage from './components/Home/HomePage'
+import HistoryPage from './components/History/HistoryPage'
+import SurveyPage from './components/Survey/SurveyPage'
+import TestPage from './components/Test/TestPage'
+import ResultsPage from './components/Results/ResultsPage'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/history" element={<History/>} />
-        <Route path="/survey" element={<Survey />}/>
-        <Route path="/test" element={<Test/>} />
-        <Route path="/result/:resultId" element={<Results/>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/survey" element={<SurveyPage />}/>
+        <Route path="/test" element={<TestPage />} />
+        <Route path="/result/:resultId" element={<ResultsPage />} />
       </Routes>
     </BrowserRouter>
   )

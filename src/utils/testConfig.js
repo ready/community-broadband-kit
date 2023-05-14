@@ -6,24 +6,24 @@ import { LOCAL_TESTING_FLAG } from './constants'
  * Callback to handle M-lab download throughput measurements
  * @param {*} download M-lab download throughput measurement in Mbps
  */
-const mlabDownloadProgress = (state, download) => {
-  state.setTestProgress(download)
+const mlabDownloadProgress = (stateSetters, download) => {
+  stateSetters.setTestProgress(download)
 }
 
 /**
  * Callback to handle M-lab download final results
  * @param {*} download M-lab final download throughput result
  */
-const mlabDownloadComplete = (state, download) => {
-  state.setTestType('Uploading')
+const mlabDownloadComplete = (stateSetters, download) => {
+  stateSetters.setTestType('Uploading')
 }
 
 /**
  * Callback to handle M-lab upload throughput measurements
  * @param {*} upload M-lab upload throughput measurement in Mbps
  */
-const mlabUploadProgress = (state, upload) => {
-  state.setTestProgress(upload)
+const mlabUploadProgress = (stateSetters, upload) => {
+  stateSetters.setTestProgress(upload)
 }
 
 /**
@@ -32,12 +32,12 @@ const mlabUploadProgress = (state, upload) => {
  * @param {*} latency M-lab final upload latency result
  * @param {*} jitter M-lab final upload jitter result
  */
-const mlabUploadComplete = (state, upload, latency, jitter) => {
+const mlabUploadComplete = (stateSetters, upload, latency, jitter) => {
   if (!LOCAL_TESTING_FLAG) {
-    state.setTestSource('Speedtest.net')
+    stateSetters.setTestSource('Speedtest.net')
   } else {
-    state.setTestSource('WiFi.wtf')
-    state.setTestType('Connecting')
+    stateSetters.setTestSource('RST')
+    stateSetters.setTestType('Connecting')
   }
 }
 
@@ -48,9 +48,9 @@ const mlabUploadComplete = (state, upload, latency, jitter) => {
  * @param {*} latency 
  * @param {*} jitter 
  */
-const ooklaComplete = (state, download, upload, latency, jitter) => {
-  state.setTestSource('WiFi.wtf')
-  state.setTestType('Connecting')
+const ooklaComplete = (stateSetters, download, upload, latency, jitter) => {
+  stateSetters.setTestSource('RST')
+  stateSetters.setTestType('Connecting')
 }
 
 /**
@@ -58,24 +58,24 @@ const ooklaComplete = (state, download, upload, latency, jitter) => {
  * @param {*} latency RST ping progress update
  * @param {*} jitter RST ping progress update
  */
-const rstPingProgress = (state, latency, jitter) => {
-  state.setTestProgress(latency)
+const rstPingProgress = (stateSetters, latency, jitter) => {
+  stateSetters.setTestProgress(latency)
 }
 
 /**
  * Updates the RST test progress element with live download result
  * @param {*} download RST download progress update
  */
-const rstDownloadProgress = (state, download) => {
-  state.setTestProgress(download)
+const rstDownloadProgress = (stateSetters, download) => {
+  stateSetters.setTestProgress(download)
 }
 
 /**
  * Updates the RST test progress element with live upload result
  * @param {*} download RST upload progress update
  */
-const rstUploadProgress = (state, upload) => {
- state.setTestProgress(upload)
+const rstUploadProgress = (stateSetters, upload) => {
+ stateSetters.setTestProgress(upload)
 }
 
 /**

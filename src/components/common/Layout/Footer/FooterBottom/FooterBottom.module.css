@@ -1,0 +1,21 @@
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  max-width: var(--section-max-width);
+}
+.logo {
+  margin-left: -24px;
+}
+@media screen and (max-width: 1020px) {
+  .footerBottom {
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+  }
+  .logo {
+      margin-left: 0;
+      margin-bottom: 16px;
+  }
+}

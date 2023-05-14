@@ -4,13 +4,11 @@ const fs = require("fs");
 const app = express();
 const getConfig = require('./utils/getConfig')
 const { DEFAULT_HOST } = require('./utils/constants')
-const getResultsFieldsRouter = require('./routes/getResultsFields')
 const metadataRouter = require('./routes/metadata')
 
 const PORT = process.env.PORT || 3001;
 const indexPath  = path.resolve(__dirname, '..', 'build', 'index.html');
 
-app.use('/', getResultsFieldsRouter)
 app.use('/', metadataRouter)
 
 app.get('/', (req, res, next) => {
