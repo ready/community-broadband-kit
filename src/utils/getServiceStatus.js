@@ -21,13 +21,13 @@ function getOverallServiceStatus(download, upload) {
  * @returns a string representing service status
  */
 function getUploadServiceStatus(upload) {
-    if (upload < 3) {
-        return 'Unserved'
-    } else if (upload < 20) {
-        return 'Underserved'
-    } else {
-        return 'Served'
-    }
+  if (upload < 3) {
+    return 'Unserved'
+  } else if (upload < 20) {
+    return 'Underserved'
+  } else {
+    return 'Served'
+  }
 }
 
 /**
@@ -36,28 +36,19 @@ function getUploadServiceStatus(upload) {
  * @returns a string representing service status
  */
 function getDownloadServiceStatus(download) {
-    if (download < 25) {
-        return 'Unserved'
-    } else if (download < 100) {
-        return 'Underserved'
-    } else {
-        return 'Served'
-    }
+  if (download < 25) {
+    return 'Unserved'
+  } else if (download < 100) {
+    return 'Underserved'
+  } else {
+    return 'Served'
+  }
 }
 
-/**
- * Gets the class name for styling tags based on service status
- * @param {*} status 
- * @returns a class name
- */
-function getServiceClassName(status) {
-    if (status === 'Unserved') {
-        return ' result-tag-unserved'
-    } else if (status === 'Underserved') {
-        return ' result-tag-underserved'
-    } else {
-        return ' result-tag-served'
-    }
+const classNameMap = {
+  'Unserved': 'result-tag-unserved',
+  'Underserved': 'result-tag-underserved',
+  'Served': 'result-tag-served'
 }
 
 /**
@@ -65,34 +56,34 @@ function getServiceClassName(status) {
  * @param {*} results An object containing speed test results
  * @returns An object containing information to display on the results page
  */
-export default function getResultsFields(results) {
+export default function getServiceStatus(results) {
   const serviceStatusText = getOverallServiceStatus(results.medianDownload, results.medianUpload)
-  const serviceStatusClass = getServiceClassName(serviceStatusText)
+  const serviceStatusClass = classNameMap[serviceStatusText]
   const downloadServiceStatusText = getDownloadServiceStatus(results.medianDownload)
-  const downloadServiceStatusClass = getServiceClassName(downloadServiceStatusText)
+  const downloadServiceStatusClass = classNameMap[downloadServiceStatusText]
   const uploadServiceStatusText = getUploadServiceStatus(results.medianUpload)
-  const uploadServiceStatusClass = getServiceClassName(uploadServiceStatusText)
+  const uploadServiceStatusClass = classNameMap[uploadServiceStatusText]
   
   const mlabServiceStatusText = getOverallServiceStatus(results.mlabDownload, results.mlabUpload)
-  const mlabServiceStatusClass = getServiceClassName(mlabServiceStatusText)
+  const mlabServiceStatusClass = classNameMap[mlabServiceStatusText]
   const mlabDownloadServiceStatusText = getDownloadServiceStatus(results.mlabDownload)
-  const mlabDownloadServiceStatusClass = getServiceClassName(mlabDownloadServiceStatusText)
+  const mlabDownloadServiceStatusClass = classNameMap[mlabDownloadServiceStatusText]
   const mlabUploadServiceStatusText = getUploadServiceStatus(results.mlabUpload)
-  const mlabUploadServiceStatusClass = getServiceClassName(mlabUploadServiceStatusText)
+  const mlabUploadServiceStatusClass = classNameMap[mlabUploadServiceStatusText]
 
   const rstServiceStatusText = getOverallServiceStatus(results.rstDownload, results.rstUpload)
-  const rstServiceStatusClass = getServiceClassName(rstServiceStatusText)
+  const rstServiceStatusClass = classNameMap[rstServiceStatusText]
   const rstDownloadServiceStatusText = getDownloadServiceStatus(results.rstDownload)
-  const rstDownloadServiceStatusClass = getServiceClassName(rstDownloadServiceStatusText)
+  const rstDownloadServiceStatusClass = classNameMap[rstDownloadServiceStatusText]
   const rstUploadServiceStatusText = getUploadServiceStatus(results.rstUpload)
-  const rstUploadServiceStatusClass = getServiceClassName(rstUploadServiceStatusText)
+  const rstUploadServiceStatusClass = classNameMap[rstUploadServiceStatusText]
 
   const ooklaServiceStatusText = getOverallServiceStatus(results.ooklaDownload, results.ooklaUpload)
-  const ooklaServiceStatusClass = getServiceClassName(ooklaServiceStatusText)
+  const ooklaServiceStatusClass = classNameMap[ooklaServiceStatusText]
   const ooklaDownloadServiceStatusText = getDownloadServiceStatus(results.ooklaDownload)
-  const ooklaDownloadServiceStatusClass = getServiceClassName(ooklaDownloadServiceStatusText)
+  const ooklaDownloadServiceStatusClass = classNameMap[ooklaDownloadServiceStatusText]
   const ooklaUploadServiceStatusText = getUploadServiceStatus(results.ooklaUpload)
-  const ooklaUploadServiceStatusClass = getServiceClassName(ooklaUploadServiceStatusText)
+  const ooklaUploadServiceStatusClass = classNameMap[ooklaUploadServiceStatusText]
 
   return {
       serviceStatusText,

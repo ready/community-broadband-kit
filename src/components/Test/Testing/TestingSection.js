@@ -4,9 +4,9 @@ import SectionLeftContent from '../../common/SectionContent/SectionLeftContent'
 import SectionRightContent from '../../common/SectionContent/SectionRightContent'
 import LoadBar from './LoadBar'
 import OoklaLoading from './OoklaLoading'
-import config from '../../../utils/testConfig'
-import runTests from '../../../utils/test/runTests'
-import rollupResults from '../../../utils/rollupResults'
+import config from './testSrc/testConfig'
+import runTests from './testSrc/runTests'
+import getMedianResults from '../../../utils/getMedianResults'
 import { useNavigate } from 'react-router-dom'
 import styles from './TestingSection.module.css'
 import { useToolkitContext } from '../../common/Context/ToolkitContext'
@@ -36,7 +36,7 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
       setTestType('Downloading')
   
       let results = await runTests(stateSetters, config)
-      results = {...results, ...rollupResults(results)}
+      results = {...results, ...getMedianResults(results)}
   
       for (const result in results) {
         results[result] = Number(results[result])

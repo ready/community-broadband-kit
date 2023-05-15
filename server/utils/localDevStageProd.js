@@ -1,5 +1,5 @@
 function localDevStageProd ({ local, dev, stage, prod }) {
-  const env = process.env.NEXT_PUBLIC_ENVIORNMENT
+  const env = process.env.ENVIORNMENT
   let result = local
 
   if (!env) {

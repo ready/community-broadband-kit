@@ -1,5 +1,5 @@
 import React from 'react'
-import Copyright from '../../Copyright/Copyright'
+import Copyright from '../Copyright/Copyright'
 import styles from './FooterBottom.module.css'
 import { useNavigate } from 'react-router-dom'
 import { useAppContext } from '../../../../common/Context/AppContext'

@@ -1,4 +1,4 @@
-import { LOCAL_TESTING_FLAG } from './constants'
+import { LOCAL_TESTING_FLAG } from '../../../../utils/constants'
 
 // Document selectors
 

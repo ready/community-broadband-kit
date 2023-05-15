@@ -24,7 +24,7 @@
 * @param {*} results An object containing test results
 * @returns An object containing rollup results
 */
-function rollupResults(results) {
+function getMedianResults(results) {
   const downloadMedian = getMedian([results.mlabDownload, results.rstDownload, results.ooklaDownload])
   const uploadMedian = getMedian([results.mlabUpload, results.rstUpload, results.ooklaUpload])
   const latencyMedian = getMedian([results.mlabLatency, results.rstLatency, results.ooklaLatency])
@@ -38,4 +38,4 @@ function rollupResults(results) {
   }
 }
 
-export default rollupResults
+export default getMedianResults

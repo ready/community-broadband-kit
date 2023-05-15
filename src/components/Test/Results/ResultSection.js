@@ -10,12 +10,12 @@ import EmailReminder from './EmailReminder/EmailReminder'
 import ServiceStatusTag from '../../common/Tags/ServiceStatusTag'
 import ShareButtons from './ShareButtons'
 import styles from './ResultSection.module.css'
-import getResultsFields from '../../../utils/getResultsFields'
+import getServiceStatus from '../../../utils/getServiceStatus'
 import { useToolkitContext } from '../../common/Context/ToolkitContext'
 
 const ResultSection = ({ setCurrentDisplay, testData }) => {
   const { config } = useToolkitContext()
-  const resultsFields = getResultsFields(testData)
+  const serviceStatus = getServiceStatus(testData)
 
   const handleStartTest = () => {
     setCurrentDisplay('same-setup')
@@ -44,12 +44,12 @@ const ResultSection = ({ setCurrentDisplay, testData }) => {
         <SectionRightContent>
           {config?.resultShareButtons && <ShareButtons />}
           <StepCard
-            title={<>You are <ServiceStatusTag size='big' serviceStatus={resultsFields?.serviceStatusText} /></>}
+            title={<>You are <ServiceStatusTag size='big' serviceStatus={serviceStatus?.serviceStatusText} /></>}
             description='Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.'
           >
             <Result
               results={testData}
-              resultsFields={resultsFields}
+              serviceStatus={serviceStatus}
             />
           </StepCard>
           <PrimaryButton
