@@ -7,6 +7,9 @@
   flex-direction: column;
   background-color: var(--color-gray-1);
   padding: 32px var(--section-padding);
-  align-items: flex-start;
+  align-items: center;
 }
 
+.resultSection {
+  align-self: center;
+}

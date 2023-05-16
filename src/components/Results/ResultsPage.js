@@ -33,17 +33,19 @@ const ResultPage = () => {
   return (
     <Layout>
       <section className={styles.container}>
-        <SectionContent>
-          <StepCard
-            title={<>You are <ServiceStatusTag size='big' serviceStatus={serviceStatus?.serviceStatusText} /></>}
-            description='Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.'
-          >
-            <Result
-              results={getMultitestResult}
-              serviceStatus={serviceStatus}
-            />
-          </StepCard>
-        </SectionContent>
+        <div className={styles.resultSection}>
+          <SectionContent>
+            <StepCard
+              title={<>You are <ServiceStatusTag size='big' serviceStatus={serviceStatus?.serviceStatusText} /></>}
+              description='Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.'
+            >
+              <Result
+                results={getMultitestResult}
+                serviceStatus={serviceStatus}
+              />
+            </StepCard>
+          </SectionContent>
+        </div>
       </section>
     </Layout>
   )

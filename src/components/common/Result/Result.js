@@ -5,7 +5,7 @@ import ServiceStatusTag from '../Tags/ServiceStatusTag'
 
 import styles from './Result.module.css'
 
-const Result = ({ results, resultsFields }) => {
+const Result = ({ results, serviceStatus }) => {
   const [seeMoreResults, setSeeMoreResults] = useState(false)
 
   const cards = [
@@ -37,15 +37,15 @@ const Result = ({ results, resultsFields }) => {
 
   const allResults = {
     medianResults: {
-      status: resultsFields?.serviceStatusText,
+      status: serviceStatus?.serviceStatusText,
       results: [
         {
           result: results?.medianDownload,
-          serviceStatus: resultsFields?.downloadServiceStatusText
+          serviceStatus: serviceStatus?.downloadServiceStatusText
         },
         {
           result: results?.medianUpload,
-          serviceStatus: resultsFields?.uploadServiceStatusText
+          serviceStatus: serviceStatus?.uploadServiceStatusText
         },
         {
           result: results?.medianLatency
@@ -56,15 +56,15 @@ const Result = ({ results, resultsFields }) => {
       ]
     },
     'M-Lab': {
-      status: resultsFields?.mlabServiceStatusText,
+      status: serviceStatus?.mlabServiceStatusText,
       results: [
         {
           result: results?.mlabDownload,
-          serviceStatus: resultsFields?.mlabDownloadServiceStatusText
+          serviceStatus: serviceStatus?.mlabDownloadServiceStatusText
         },
         {
           result: results?.mlabUpload,
-          serviceStatus: resultsFields?.mlabUploadServiceStatusText
+          serviceStatus: serviceStatus?.mlabUploadServiceStatusText
         },
         {
           result: results?.mlabLatency
@@ -75,15 +75,15 @@ const Result = ({ results, resultsFields }) => {
       ]
     },
     'Speedtest.net': {
-      status: resultsFields?.ooklaServiceStatusText,
+      status: serviceStatus?.ooklaServiceStatusText,
       results: [
         {
           result: results?.ooklaDownload,
-          serviceStatus: resultsFields?.ooklaDownloadServiceStatusText
+          serviceStatus: serviceStatus?.ooklaDownloadServiceStatusText
         },
         {
           result: results?.ooklaUpload,
-          serviceStatus: resultsFields?.ooklaUploadServiceStatusText
+          serviceStatus: serviceStatus?.ooklaUploadServiceStatusText
         },
         {
           result: results?.ooklaLatency
@@ -94,15 +94,15 @@ const Result = ({ results, resultsFields }) => {
       ]
     },
     'RST': {
-      status: resultsFields?.rstServiceStatusText,
+      status: serviceStatus?.rstServiceStatusText,
       results: [
         {
           result: results?.rstDownload,
-          serviceStatus: resultsFields?.rstDownloadServiceStatusText
+          serviceStatus: serviceStatus?.rstDownloadServiceStatusText
         },
         {
           result: results?.rstUpload,
-          serviceStatus: resultsFields?.rstUploadServiceStatusText
+          serviceStatus: serviceStatus?.rstUploadServiceStatusText
         },
         {
           result: results?.rstLatency
