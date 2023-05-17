@@ -43,7 +43,7 @@ const CommunityMenu = ({ mode, logoColor }) => {
   return (
     <nav className={`${styles.nav} ${styles[`${logoColor}Links`]}`}>
       <Menu
-        mode={isMediumSmallScreen || isMobileScreen ? 'vertical' : mode}
+        mode={isMobileScreen ? 'vertical' : mode}
         className={styles.menuContainer}
       >
         {ternary(whatsThisLink, 
