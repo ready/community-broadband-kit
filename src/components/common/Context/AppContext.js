@@ -149,6 +149,7 @@ const AppContextProvider = ({ children }) => {
       value={{
         config,
         survey,
+        previousResults,
         metadata,
         setMetadata,
         callUpdateMultitestSurveyResponse,

@@ -12,6 +12,7 @@ const useToolkitContext = () => {
 
 const ToolkitContextProvider = ({ 
   config,
+  previousResults,
   survey, 
   metadata, 
   setMetadata,
@@ -30,6 +31,7 @@ const ToolkitContextProvider = ({
     <ToolkitContext.Provider
       value={{
         config,
+        previousResults,
         survey,
         metadata,
         setMetadata,

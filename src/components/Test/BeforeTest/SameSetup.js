@@ -3,10 +3,30 @@ import { Radio } from 'antd'
 import StepCard from '../../common/Card/StepCard'
 import ChecklistAnswerOption from './Checklist/ChecklistAnswerOption'
 import styles from './SameSetup.module.css'
+import { useToolkitContext } from '../../common/Context/ToolkitContext'
 
 const SameSetup = ({ setCurrentDisplay }) => {
+  const {
+    previousResults,
+    metadata,
+    setMetadata
+  } = useToolkitContext
+
   const handleClick = (value) => {
-    value ? setCurrentDisplay('before-test') : setCurrentDisplay('test')
+    if (value) {
+      setMetadata({
+        ...metadata,
+        address: previousResults?.address,
+        addressLat: previousResults?.addressLat,
+        addressLon: previousResults?.addressLon,
+        connectionType: previousResults?.connectionType,
+        vpnOff: previousResults?.vpnOff,
+        noInterruptFromOtherDevices: previousResults?.noInterruptFromOtherDevices,
+      })
+      setCurrentDisplay('testing')
+    } else {
+      setCurrentDisplay('before-test')
+    }
   }
 
   return (

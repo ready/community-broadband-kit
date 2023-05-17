@@ -6,6 +6,7 @@ import { ToolkitContextProvider } from '../common/Context/ToolkitContext'
 
 const TestPage = () => {
   const {
+    previousResults,
     metadata,
     setMetadata,
     callUpdateMultitestSurveyResponse,
@@ -16,6 +17,7 @@ const TestPage = () => {
   return (
     <ToolkitContextProvider
       config={window.CONFIG}
+      previousResults={previousResults}
       metadata={metadata}
       setMetdata={setMetadata}
       callUpdateMultitestSurveyResponse={callUpdateMultitestSurveyResponse}
