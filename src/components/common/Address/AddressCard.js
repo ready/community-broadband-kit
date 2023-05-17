@@ -30,6 +30,7 @@ const AddressCard = ({ onClick }) => {
         <div className={styles.beforeSurveyButtonWrap}>
           <PrimaryButton
             buttonTitle='Next'
+            size='big'
             onClick={() => { onClick(noService) }}
             disabled={ !metadata.address && config?.isAddressRequired }
           />

@@ -1,18 +1,15 @@
 import React from 'react'
 import Copyright from '../Copyright/Copyright'
 import styles from './FooterBottom.module.css'
-import { useNavigate } from 'react-router-dom'
 import { useAppContext } from '../../../../common/Context/AppContext'
+import Logo from '../../Logo/Logo'
 
 const FooterBottom = () => {
-  const navigate = useNavigate()
   const { config } = useAppContext()
   
   return (
     <div className={styles.footerBottom}>
-      <div className={styles.logo} onClick={()=>navigate('/')}>
-        <img src={config.logo} alt='community logo' />
-      </div>
+      <Logo src={config?.logo}/>
       {config?.showBbmReferences && <Copyright />}
     </div>
   )

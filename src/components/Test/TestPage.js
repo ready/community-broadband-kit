@@ -9,7 +9,8 @@ const TestPage = () => {
     metadata,
     setMetadata,
     callUpdateMultitestSurveyResponse,
-    callAddMultitestData
+    callAddMultitestData,
+    survey
   } = useAppContext()
 
   return (
@@ -19,6 +20,7 @@ const TestPage = () => {
       setMetdata={setMetadata}
       callUpdateMultitestSurveyResponse={callUpdateMultitestSurveyResponse}
       callAddMultitestData={callAddMultitestData}
+      survey={survey}
     >
       <Layout>
         <TestWrapper />
