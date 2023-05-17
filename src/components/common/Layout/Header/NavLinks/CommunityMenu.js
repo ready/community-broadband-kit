@@ -77,7 +77,8 @@ const CommunityMenu = ({ mode, logoColor }) => {
             </Link>
           </Menu.Item>}
       </Menu>
-      <HeaderShareButtons />       
+      {!isMobileScreen &&
+      <HeaderShareButtons /> }
     </nav>
   )
 }
