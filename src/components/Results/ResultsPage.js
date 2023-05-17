@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useQuery, gql } from '@apollo/client'
 import Result from '../common/Result/Result'
 import Layout from '../common/Layout/Layout'
@@ -12,6 +12,8 @@ import styles from './ResultsPage.module.css'
 const ResultPage = () => {
   const params = useParams()
 
+  const [serviceStatus, setServiceStatus] = useState(null)
+
   const {
     data: { getMultitestResult } = {}
   } = useQuery(GET_MULTITEST_RESULT, {
@@ -22,22 +24,28 @@ const ResultPage = () => {
     }
   })
 
-  const serviceStatus = getServiceStatus(getMultitestResult)
+  useEffect(() => {
+    if (getMultitestResult) {
+      setServiceStatus(getServiceStatus(getMultitestResult))
+    }
+  }, [getMultitestResult])
 
   return (
     <Layout>
       <section className={styles.container}>
-        <SectionContent>
-          <StepCard
-            title={<>You are <ServiceStatusTag size='big' serviceStatus={serviceStatus?.serviceStatusText} /></>}
-            description='Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.'
-          >
-            <Result
-              results={getMultitestResult}
-              serviceStatus={serviceStatus}
-            />
-          </StepCard>
-        </SectionContent>
+        <div className={styles.resultSection}>
+          <SectionContent>
+            <StepCard
+              title={<>You are <ServiceStatusTag size='big' serviceStatus={serviceStatus?.serviceStatusText} /></>}
+              description='Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.'
+            >
+              <Result
+                results={getMultitestResult}
+                serviceStatus={serviceStatus}
+              />
+            </StepCard>
+          </SectionContent>
+        </div>
       </section>
     </Layout>
   )
@@ -46,26 +54,24 @@ const ResultPage = () => {
 export default ResultPage
 
 const GET_MULTITEST_RESULT = gql`
-  query getMultitestResults($id: ID!) {
-    getMultitestResults(id: $id) {
-      results {
-        mlabUpload
-        mlabDownload
-        mlabLatency
-        mlabJitter
-        rstLatency
-        rstJitter
-        rstUpload
-        rstDownload
-        ooklaLatency
-        ooklaJitter
-        ooklaUpload
-        ooklaDownload
-        medianUpload
-        medianDownload
-        medianJitter
-        medianLatency
-      }
+  query getMultitestResult($id: ID!) {
+    getMultitestResult(id: $id) {
+      mlabUpload
+      mlabDownload
+      mlabLatency
+      mlabJitter
+      rstLatency
+      rstJitter
+      rstUpload
+      rstDownload
+      ooklaLatency
+      ooklaJitter
+      ooklaUpload
+      ooklaDownload
+      medianUpload
+      medianDownload
+      medianJitter
+      medianLatency
     }
   }
 `

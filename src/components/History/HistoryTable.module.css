@@ -7,7 +7,7 @@
   flex-direction: column;
   background-color: var(--color-gray-1);
   padding: 32px var(--section-padding);
-  align-items: flex-start;
+  align-items: center;
 }
 
 .historyTable {
@@ -29,11 +29,6 @@
 .historyTable th {
 	border-color: transparent !important;
 }
-
-.historyTable [class*='ant-table-thead'] th {
-  height: 44px;
-}
-
 .historyTable [class*='ant-table-thead'] tr {
   display: grid;
   grid-template-columns: repeat(5, minmax(227px, 1fr));

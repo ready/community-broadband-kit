@@ -99,6 +99,9 @@
   --single-module-width: 1000px;
 
   --shadow-01: 0px 3px 4px 0px rgb(236, 236, 236);
+
+	/* background */
+	background-color: var(--color-gray-1);
 }
 
 .pac-container:after {

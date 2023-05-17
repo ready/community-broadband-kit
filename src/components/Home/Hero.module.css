@@ -22,20 +22,20 @@
 }
 
 .takeSurvey {
-  height: auto;
-  background: transparent;
-  border-color: var(--color-button);
-  color: var(--color-button);
-  padding: 15px 20px;
-  font-size: 24px;
-  font-weight: 700;
+  height: auto !important;;
+  background: transparent !important;
+  border-color: var(--color-button) !important;
+  color: var(--color-button) !important;
+  padding: 15px 20px !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
 }
 
 .takeSurvey:hover,
 .takeSurvey:focus {
-  background: transparent;
-  border-color: var(--color-button-hover);
-  color: var(--color-button-hover);
+  background: transparent !important;;
+  border-color: var(--color-button-hover) !important;
+  color: var(--color-button-hover) !important;
 }
 
 @media screen and (max-width: 1020px) {

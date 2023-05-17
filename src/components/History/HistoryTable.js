@@ -4,7 +4,22 @@ import styles from './HistoryTable.module.css'
 
 const HistoryTable = ({ history }) => {
   const columns = [
-    {
+      {
+        title: <p>Date</p>,
+        dataIndex: 'createdAt',
+        key: 'createdAt',
+        render: (date, record) => {
+            if (date) {
+                const dateFormatted = new Date(date).toLocaleDateString()
+                return (
+                    <>
+                      <a href={`result/${record.id}`}>{dateFormatted}</a>
+                    </>
+                ) 
+            }
+          }
+      },
+      {
         title: <p>Upload <span>Mbps</span></p>,
         dataIndex: 'medianUpload',
         key: 'medianUpload',
@@ -67,21 +82,6 @@ const HistoryTable = ({ history }) => {
               return <Tag key='jitter'>--</Tag>
             }
           }
-      },
-      {
-        title: <p>Date</p>,
-        dataIndex: 'createdAt',
-        key: 'createdAt',
-        render: (date, record) => {
-            if (date) {
-                const dateFormatted = new Date(date).toLocaleDateString()
-                return (
-                    <>
-                      <a href={`result/${record.id}`}>{dateFormatted}</a>
-                    </>
-                ) 
-            }
-          }
       }
     ]
 
@@ -98,6 +98,7 @@ const HistoryTable = ({ history }) => {
               pageSize: 10,
             }}
             showSorterTooltip={false}
+            scroll={{ x: 'max-content' }}
           />
       </SectionContent>
     </div>
