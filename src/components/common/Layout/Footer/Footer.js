@@ -18,7 +18,7 @@ const Footer = () => {
     <section className={styles.footer}>
       <SectionContent>
          <SectionLeftContent className={styles.sectionRight}>
-         {config.showBbmReferences && 
+         {config?.showBbmReferences && 
           <>
             <Title className={styles.title}>Stay tuned for updates about our broadband grant journey.</Title>
             <Description className={styles.description}>Want to stay informed about our progress? Enter your email here. We won't share it with third parties.</Description>

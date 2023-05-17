@@ -13,7 +13,7 @@ const FooterBottom = () => {
       <div className={styles.logo} onClick={()=>navigate('/')}>
         <img src={config.logo} alt='community logo' />
       </div>
-      {config.showBbmReferences && <Copyright />}
+      {config?.showBbmReferences && <Copyright />}
     </div>
   )
 }

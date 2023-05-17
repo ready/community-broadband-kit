@@ -6,7 +6,7 @@ import { useEnableScroll } from '../../../Context/ScrollContext'
 import ternary from '../../../../../utils/ternary'
 import styles from './NavLinks.module.css'
 import { useAppContext } from '../../../Context/AppContext'
-import HeaderShareButtons from './HeaderSharebuttons'
+import HeaderShareButtons from './HeaderShareButtons'
 
 const CommunityMenu = ({ mode, logoColor }) => {
   const [scroll, setScroll] = useEnableScroll()

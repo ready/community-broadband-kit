@@ -6,7 +6,7 @@ const HeaderShareButtons = ({
 }) => {
   const testUrl = window.location.origin
   return (
-    <div className={styles.headerShareButtons}>
+    <div className={styles.blueLinks}>
       <div className={styles.iconLinkTwitter}>
         <a
           href={`https://twitter.com/share?url=${testUrl}&text=${postTitle}`}

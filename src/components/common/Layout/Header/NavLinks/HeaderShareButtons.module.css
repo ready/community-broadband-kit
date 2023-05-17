@@ -1,0 +1,89 @@
+.blueLinks [class*='ant-menu-item'] a,
+.blueLinks [class*='ant-menu-item'] a:hover {
+  color: var(--color-nav-text);
+}
+
+.iconLinkTwitter {
+  padding: 1.75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  border-style: solid;
+  border-radius: var(--border-radius);
+  border-color: #5990d9e6;
+}
+.iconLinkTwitter a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconLinkLinkedIn {
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  border-style: solid;
+  border-radius: var(--border-radius);
+  border-color: #5990d9e6;
+}
+.iconLinkLinkedIn a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconLinkFacebook {
+  padding: 1.75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  border-style: solid;
+  border-radius: var(--border-radius);
+  border-color: #5990d9e6;
+}
+.iconLinkFacebook a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconLinkEmail {
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  border-style: solid;
+  border-radius: var(--border-radius);
+  border-color: #5990d9e6;
+}
+.iconLinkEmail a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+  .iconLinkTwitter {
+    display: none;
+  }
+  .iconLinkLinkedIn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 662px) {
+  .iconLinkTwitter {
+    display: flex;
+    margin-top: 16px;
+  }
+
+  .iconLinkLinkedIn {
+    display: flex;
+    margin-top: 16px;
+  }
+}

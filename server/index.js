@@ -11,7 +11,19 @@ const indexPath  = path.resolve(__dirname, '..', 'build', 'index.html');
 
 app.use('/', metadataRouter)
 
-app.get('*', (req, res, next) => {
+app.get('/', returnIndexPage)
+
+app.use(express.static(path.join(__dirname, '..', 'build')))
+app.use(returnIndexPage)
+
+app.listen(PORT, (error) => {
+  if (error) {
+      return console.log('Error during app startup', error)
+  }
+  console.log("listening on " + PORT + "...")
+})
+
+function returnIndexPage(req, res, next) {
   fs.readFile(indexPath, 'utf8', async (err, htmlData) => {
     if (err) {
         console.error('Error during file reading', err);
@@ -58,16 +70,4 @@ app.get('*', (req, res, next) => {
     
     return res.send(htmlData)
   })
-})
-
-app.use(express.static(path.join(__dirname, '..', 'build')))
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-})
-
-app.listen(PORT, (error) => {
-  if (error) {
-      return console.log('Error during app startup', error)
-  }
-  console.log("listening on " + PORT + "...")
-})
+}

@@ -36,7 +36,7 @@ export const GRAPHQL_API_URL = `${BASE_API_URL}/graphql`
 
 export const API_URL = BASE_API_URL
 
-export const LOCAL_TESTING_FLAG = !process.env.NEXT_PUBLIC_ENVIORNMENT
+export const LOCAL_TESTING_FLAG = !process.env.ENVIRONMENT
 
 // User key
 export const USER_KEY = `${APP_NAME}-user-key`
