@@ -59,7 +59,7 @@
 
 .navMenu {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   align-items: flex-end;
 }
 

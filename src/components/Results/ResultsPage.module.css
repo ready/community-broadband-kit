@@ -13,3 +13,7 @@
 .resultSection {
   align-self: center;
 }
+
+.resultSection [class*='card'] {
+  max-width: 800px;
+}

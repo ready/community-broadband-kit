@@ -8,6 +8,10 @@
   margin-right: 5px !important;
 }
 
+.button:last-child {
+  margin-right: 16px !important;
+}
+
 .icon {
   filter: brightness(0) saturate(100%) invert(62%) sepia(9%) saturate(999%) hue-rotate(195deg) brightness(87%) contrast(88%);
 }
