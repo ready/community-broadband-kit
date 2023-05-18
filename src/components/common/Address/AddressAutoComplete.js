@@ -28,20 +28,43 @@ const AddressAutoComplete = () => {
   }
 
   useEffect(() => {
-    autoCompleteRef.current = new window.google.maps.places.Autocomplete(
-     inputRef.current,
-     { 
-        types: ['address'], 
-        componentRestrictions: { country: 'us' }
-      }
-    )
+    function getGoogleMapsAPI() {
+        const googleMapsPromise = new Promise((resolve) => {
+          window.resolveGoogleMapsPromise = () => {
+            resolve(window.google)
+            delete window.resolveGoogleMapsPromise
+          }
+  
+          const script = document.createElement('script')
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places&callback=resolveGoogleMapsPromise`
+          console.log(script.src)
+          script.async = true
+          document.body.appendChild(script)
+        })
+  
+      return googleMapsPromise
+    }
 
-    autoCompleteRef.current.setFields(['formatted_address', 'geometry'])
-    autoCompleteRef.current.addListener('place_changed', async () => {
-      const place = await autoCompleteRef.current.getPlace()
-      handlePlaceSelect(place)
-    })
-   }, [])
+    async function initGoogleMapsApi() {
+      const google = await getGoogleMapsAPI()
+      console.log(google)
+      autoCompleteRef.current = new google.maps.places.Autocomplete(
+        inputRef.current,
+        { 
+           types: ['address'], 
+           componentRestrictions: { country: 'us' }
+         }
+       )
+   
+       autoCompleteRef.current.setFields(['formatted_address', 'geometry'])
+       autoCompleteRef.current.addListener('place_changed', async () => {
+         const place = await autoCompleteRef.current.getPlace()
+         handlePlaceSelect(place)
+       })
+    }
+
+    initGoogleMapsApi()
+  }, [])
 
   return (
     <Form
