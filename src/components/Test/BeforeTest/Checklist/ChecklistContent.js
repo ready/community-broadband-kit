@@ -5,7 +5,7 @@ import { ArrowRightOutlined } from '@ant-design/icons'
 import Tooltip from './Tooltip/Tooltip'
 import ChecklistAnswerOption from './ChecklistAnswerOption'
 import styles from './ChecklistContent.module.css'
-import { useToolkitContext } from '../../../common/Context/ToolkitContext'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const ChecklistContent = ({ currentChecklist }) => {
   const [term, setTerm] = useState([])

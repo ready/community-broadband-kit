@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './CurrentLocation.module.css'
-import PrimaryButton from '../../Button/PrimaryButton'
-import { useAppContext } from '../../Context/AppContext'
+import PrimaryButton from 'components/common/Button/PrimaryButton'
+import { useAppContext } from 'components/common/Context/AppContext'
 
 const CurrentLocation = ({ setShowCurrentLocation, form }) => {
   const { strengthTestData, setStrengthTestData, surveyData, setSurveyData } = useAppContext()
@@ -36,18 +36,15 @@ const CurrentLocation = ({ setShowCurrentLocation, form }) => {
    */
   
   async function getReverseGeocodingData(lat, lng) {
-    /*
-    let latlng = new google.maps.LatLng(lat, lng);
+    let latlng = new window.google.maps.LatLng(lat, lng);
     // This is making the Geocode request
-    let geocoder = new google.maps.Geocoder();
+    let geocoder = new window.google.maps.Geocoder();
     let address = geocoder.geocode({ 'latLng': latlng },  (results, status) => {
-      if (status !== google.maps.GeocoderStatus.OK) {
+      if (status !== window.google.maps.GeocoderStatus.OK) {
         alert(status);
       }
     });
     return address
-    */
-    return ''
   }
 
   /**

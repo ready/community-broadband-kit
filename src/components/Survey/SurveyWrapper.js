@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import StepCard from '../common/Card/StepCard'
-import NoServiceSurvey  from '../common/NoService/NoServiceSurvey'
-import AddressCard from '../common/Address/AddressCard'
+import StepCard from 'components/common/Card/StepCard'
+import NoServiceSurvey  from 'components/common/NoService/NoServiceSurvey'
+import AddressCard from 'components/common/Address/AddressCard'
 import styles from './SurveyWrapper.module.css'
-import PhoneNumberCard from '../common/PhoneNumber/PhoneNumberCard'
-import Survey from '../common/Survey/Survey'
+import PhoneNumberCard from 'components/common/PhoneNumber/PhoneNumberCard'
+import Survey from 'components/common/Survey/Survey'
 
 const SurveyWrapper = () => {
   const [currentDisplay, setCurrentDisplay] = useState('address-input')

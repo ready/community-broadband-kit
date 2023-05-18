@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Form, message} from 'antd'
-import StepCard from '../Card/StepCard'
+import StepCard from 'components/common/Card/StepCard'
 import SurveyProgressBar from './SurveyProgressBar'
 import SurveyForm  from './SurveyForm'
-import PrimaryButton  from '../Button/PrimaryButton'
+import PrimaryButton  from 'components/common/Button/PrimaryButton'
 import styles from './Survey.module.css'
-import { storeAnswers } from '../../../utils/localStorageSurvey'
-import { useToolkitContext } from '../Context/ToolkitContext'
+import { storeAnswers } from 'utils/localStorageSurvey'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const Survey = ({ onFinish }) => {
   const [form] = Form.useForm()

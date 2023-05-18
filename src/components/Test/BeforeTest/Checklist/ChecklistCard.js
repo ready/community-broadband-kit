@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Steps } from 'antd'
-import StepCard from '../../../common/Card/StepCard'
+import StepCard from 'components/common/Card/StepCard'
 import ChecklistContent from './ChecklistContent'
-import PrimaryButton from '../../../common/Button/PrimaryButton'
-import styles from '../../../Survey/SurveyWrapper.module.css'
+import PrimaryButton from 'components/common/Button/PrimaryButton'
+import styles from 'components/Survey/SurveyWrapper.module.css'
 
 const ChecklistCard = ({ onClick }) => {
   const [currentStep, setCurrentStep] = useState(0)

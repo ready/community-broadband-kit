@@ -1,118 +1,47 @@
 import React, { useRef, useEffect, useState } from 'react'
-import GoogleMapReact from 'google-map-react'
 import { Form } from 'antd'
-import { useAppContext } from '../../common/Context/AppContext'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 import styles from './AddressAutoComplete.module.css'
 import CurrentLocation from './CurrentLocation/CurrentLocation'
 
-const { googleMapLoader } = GoogleMapReact
-
 const AddressAutoComplete = () => {
-  const { strengthTestData, setStrengthTestData, surveyData, setSurveyData, config } = useAppContext()
+  const { 
+    config,
+    metadata,
+    setMetdata
+  } = useToolkitContext()
+
   const [form] = Form.useForm()
   const [showCurrentLocation, setShowCurrentLocation] = useState(true)
-  const autoCompleteRef = useRef(null)
-  let autoComplete
+  const autoCompleteRef = useRef()
+  const inputRef = useRef()
 
-  const handlePlaceSelect = (e) => {
-    const addressObject = autoComplete.getPlace()
-    const components = addressObject?.address_components
-    const address = {}
+  const handlePlaceSelect = (place) => {
+    form.setFieldsValue({address: place?.formatted_address})
 
-    if (components) {
-      components.forEach((item, i) => {
-        const types = item.types
-        const shortName = item.short_name
-        const longName = item.long_name
-        for (const type of types) {
-          switch (type) {
-            case 'street_number':
-              address.streetNumber = shortName
-              break
-            case 'route':
-              address.route = shortName
-              break
-            case 'locality':
-              address.city = longName
-              break
-            case ('political'): {
-              if (!address.city) {
-                address.city = longName
-              }
-              break
-            }
-            case ('administrative_area_level_3'): {
-              if (!address.city) {
-                address.city = longName
-              }
-              break
-            }
-            case 'administrative_area_level_1':
-              address.state = shortName
-              break
-            case 'administrative_area_level_2':
-              address.county = longName
-              break
-            case 'country':
-              address.country = longName
-              break
-            case 'postal_code':
-              address.zip = shortName
-              break
-            default:
-          }
-        }
-      })
-    }
-
-    address.address1 = `${address.streetNumber || ''} ${address.route || ''}`
-    delete address.streetNumber
-    delete address.route
-    if (!('zip' in address)) {
-      address.zip = ' '
-    }
-
-    form.setFieldsValue({address: addressObject?.formatted_address})
-
-    const addressLocation = {
-      lat: addressObject?.geometry?.location?.lat(), 
-      lon: addressObject?.geometry?.location?.lng(),
-      text: addressObject?.formatted_address
-    }
-
-    setStrengthTestData({
-      ...strengthTestData,
-      addressLat: addressLocation.lat,
-      addressLon: addressLocation.lon,
-      address: addressLocation.text
-    })
-
-    setSurveyData({
-      ...surveyData,
-      addressLat: addressLocation.lat,
-      addressLon: addressLocation.lon,
-      address: addressLocation.text
+    setMetdata({
+      ...metadata,
+      addressLat: place?.geometry?.location?.lat(),
+      addressLon: place?.geometry?.location?.lng(),
+      address: place?.formatted_address
     })
   }
-  
+
   useEffect(() => {
-    googleMapLoader({
-      key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-      libraries: ['places']
+    autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+     inputRef.current,
+     { 
+        types: ['address'], 
+        componentRestrictions: { country: 'us' }
+      }
+    )
+
+    autoCompleteRef.current.setFields(['formatted_address', 'geometry'])
+    autoCompleteRef.current.addListener('place_changed', async () => {
+      const place = await autoCompleteRef.current.getPlace()
+      handlePlaceSelect(place)
     })
-    .then((maps) => {
-      autoComplete = new maps.places.Autocomplete(
-        autoCompleteRef.current,
-        { types: ['address'], componentRestrictions: { country: 'us' } }
-      )
-      autoComplete.setFields(['address_components', 'formatted_address', 'geometry'])
-      autoComplete.addListener('place_changed', (i) => {
-        const place = autoComplete.getPlace()
-        handlePlaceSelect(place)
-      })
-    })
-  // eslint-disable-next-line
-  }, [strengthTestData])
+   }, [])
 
   return (
     <Form
@@ -133,7 +62,7 @@ const AddressAutoComplete = () => {
           id='autocomplete'
           className='ant-input ant-input-lg'
           autoComplete='address-line1'
-          ref={autoCompleteRef}
+          ref={inputRef}
           placeholder='Enter a location'
           onKeyDown={(e) => {
             if (e.keyCode === 13) {

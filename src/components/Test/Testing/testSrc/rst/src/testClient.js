@@ -1,4 +1,4 @@
-import { LOCAL_TESTING_FLAG, GRAPHQL_API_URL } from '../../../../../../utils/constants.js'
+import { LOCAL_TESTING_FLAG, GRAPHQL_API_URL } from 'utils/constants.js'
 
 /**
  * Creates a Web Worker to run the ping, upload, and download tests, returning the results

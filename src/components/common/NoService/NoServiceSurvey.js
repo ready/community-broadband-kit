@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Form, message} from 'antd'
-import StepCard from '../Card/StepCard'
-import SurveyProgressBar from '../Survey/SurveyProgressBar'
+import StepCard from 'components/common/Card/StepCard'
+import SurveyProgressBar from 'components/common/Survey/SurveyProgressBar'
 import NoServiceForm  from './NoServiceForm'
-import PrimaryButton  from '../Button/PrimaryButton'
-import { noServiceSurvey } from '../../../utils/constants'
-import styles from '../Survey/Survey.module.css'
-import { useToolkitContext } from '../Context/ToolkitContext'
+import PrimaryButton  from 'components/common/Button/PrimaryButton'
+import { noServiceSurvey } from 'utils/constants'
+import styles from 'components/common/Survey/Survey.module.css'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const NoServiceSurvey = () => {
   const [form] = Form.useForm()

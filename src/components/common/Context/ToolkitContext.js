@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getUnansweredQuestions } from '../../../utils/localStorageSurvey'
+import { getUnansweredQuestions } from 'utils/localStorageSurvey'
 
 const ToolkitContext = React.createContext()
 const useToolkitContext = () => {

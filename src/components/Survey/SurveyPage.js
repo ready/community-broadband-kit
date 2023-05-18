@@ -1,8 +1,8 @@
 import React from 'react'
-import Layout from '../common/Layout/Layout'
+import Layout from 'components/common/Layout/Layout'
 import SurveyWrapper from './SurveyWrapper'
-import { useAppContext } from '../common/Context/AppContext'
-import { ToolkitContextProvider } from '../common/Context/ToolkitContext'
+import { useAppContext } from 'components/common/Context/AppContext'
+import { ToolkitContextProvider } from 'components/common/Context/ToolkitContext'
 
 const SurveyPage = () => {
   const {

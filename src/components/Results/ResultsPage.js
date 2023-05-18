@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import { useQuery, gql } from '@apollo/client'
-import Result from '../common/Result/Result'
-import Layout from '../common/Layout/Layout'
-import SectionContent from '../common/SectionContent/SectionContent'
-import StepCard from '../common/Card/StepCard'
-import ServiceStatusTag from '../common/Tags/ServiceStatusTag'
-import getServiceStatus from '../../utils/getServiceStatus'
+import Result from 'components/common/Result/Result'
+import Layout from 'components/common/Layout/Layout'
+import SectionContent from 'components/common/SectionContent/SectionContent'
+import StepCard from 'components/common/Card/StepCard'
+import ServiceStatusTag from 'components/common/Tags/ServiceStatusTag'
+import getServiceStatus from 'utils/getServiceStatus'
 import styles from './ResultsPage.module.css'
 
 const ResultPage = () => {

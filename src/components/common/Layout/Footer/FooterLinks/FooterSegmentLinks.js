@@ -2,7 +2,7 @@ import React from 'react'
 
 import Link from './Link/Link'
 import styles from './FooterLinks.module.css'
-import { useAppContext } from '../../../../common/Context/AppContext'
+import { useAppContext } from 'components/common/Context/AppContext'
 
 const FooterSegmentLinks = () => {
   let links = []

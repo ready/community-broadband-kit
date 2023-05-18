@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import SectionContent from '../../common/SectionContent/SectionContent'
-import SectionLeftContent from '../../common/SectionContent/SectionLeftContent'
-import SectionRightContent from '../../common/SectionContent/SectionRightContent'
+import SectionContent from 'components/common/SectionContent/SectionContent'
+import SectionLeftContent from 'components/common/SectionContent/SectionLeftContent'
+import SectionRightContent from 'components/common/SectionContent/SectionRightContent'
 import LoadBar from './LoadBar'
 import OoklaLoading from './OoklaLoading'
 import config from './testSrc/testConfig'
 import runTests from './testSrc/runTests'
-import getMedianResults from '../../../utils/getMedianResults'
+import getMedianResults from 'utils/getMedianResults'
 import { useNavigate } from 'react-router-dom'
 import styles from './TestingSection.module.css'
-import { useToolkitContext } from '../../common/Context/ToolkitContext'
-import Survey from '../../common/Survey/Survey'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
+import Survey from 'components/common/Survey/Survey'
 
 const TestingSection = ({ setCurrentDisplay, setTestData }) => {
   const surveyComplete = false

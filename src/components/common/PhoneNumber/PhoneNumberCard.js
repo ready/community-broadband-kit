@@ -1,9 +1,9 @@
 import React from 'react'
-import StepCard from '../Card/StepCard'
+import StepCard from 'components/common/Card/StepCard'
 import PhoneNumberEntry from './PhoneNumberEntry'
-import PrimaryButton from '../Button/PrimaryButton'
-import styles from '../../Survey/SurveyWrapper.module.css'
-import { useToolkitContext } from '../Context/ToolkitContext'
+import PrimaryButton from 'components/common/Button/PrimaryButton'
+import styles from 'components/Survey/SurveyWrapper.module.css'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const PhoneNumberCard = ({ onClick }) => { 
   const { metadata } = useToolkitContext()

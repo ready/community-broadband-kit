@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form } from 'antd'
-import SurveyStepper from '../Survey/SurveyStepper'
-import { noServiceSurvey } from '../../../utils/constants'
+import SurveyStepper from 'components/common/Survey/SurveyStepper'
+import { noServiceSurvey } from 'utils/constants'
 
 const NoServiceForm = ({ form, currentStep, handleChange }) => {
   return (

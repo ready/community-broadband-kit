@@ -2,7 +2,7 @@ import React from 'react'
 import Logo from '../Logo/Logo'
 import NavLinks from './NavLinks/NavLinks'
 import styles from './Header.module.css'
-import { useAppContext } from '../../Context/AppContext'
+import { useAppContext } from 'components/common/Context/AppContext'
 
 const Header = () => {
   const { config } = useAppContext()

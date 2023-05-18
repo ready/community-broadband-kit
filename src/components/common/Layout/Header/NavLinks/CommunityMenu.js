@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu } from 'antd'
 import { FaExternalLinkAlt } from "react-icons/fa"
-import { useEnableScroll } from '../../../Context/ScrollContext'
-import ternary from '../../../../../utils/ternary'
+import { useEnableScroll } from 'components/common/Context/ScrollContext'
+import ternary from 'utils/ternary'
 import styles from './NavLinks.module.css'
-import { useAppContext } from '../../../Context/AppContext'
+import { useAppContext } from 'components/common/Context/AppContext'
 import HeaderShareButtons from './HeaderShareButtons'
 
 const CommunityMenu = ({ mode, logoColor }) => {

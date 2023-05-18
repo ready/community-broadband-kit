@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'antd';
-import styles from '../Address/AddressAutoComplete.module.css'
-import { useAppContext } from '../../common/Context/AppContext'
+import styles from 'components/common/Address/AddressAutoComplete.module.css'
+import { useAppContext } from 'components/common/Context/AppContext'
 
 const PhoneNumberEntry = () => {
 

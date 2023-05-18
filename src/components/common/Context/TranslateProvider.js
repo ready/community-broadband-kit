@@ -8,7 +8,7 @@
  */
 
  import React, { useEffect, useState } from 'react'
- import { getCookie } from '../../../utils/cookie'
+ import { getCookie } from 'utils/cookie'
 
  export const Languages = {
   af: 'Afrikaans (Afrikaans)',

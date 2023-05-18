@@ -1,9 +1,9 @@
 import React from 'react'
 import { Radio } from 'antd'
-import StepCard from '../../common/Card/StepCard'
+import StepCard from 'components/common/Card/StepCard'
 import ChecklistAnswerOption from './Checklist/ChecklistAnswerOption'
 import styles from './SameSetup.module.css'
-import { useToolkitContext } from '../../common/Context/ToolkitContext'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const SameSetup = ({ setCurrentDisplay }) => {
   const {

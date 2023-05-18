@@ -1,7 +1,7 @@
 import React from 'react'
-import SectionContent from '../../SectionContent/SectionContent'
-import SectionLeftContent from '../../SectionContent/SectionLeftContent'
-import SectionRightContent from '../../SectionContent/SectionRightContent'
+import SectionContent from 'components/common/SectionContent/SectionContent'
+import SectionLeftContent from 'components/common/SectionContent/SectionLeftContent'
+import SectionRightContent from 'components/common/SectionContent/SectionRightContent'
 import Title from './Title/Title'
 import Description from './Description/Description'
 import FooterLinks from './FooterLinks/FooterLinks'
@@ -9,7 +9,7 @@ import FooterSegmentLinks from './FooterLinks/FooterSegmentLinks'
 import FooterBottom from './FooterBottom/FooterBottom'
 import NewsLetter from './NewsLetter/NewsLetter'
 import styles from './Footer.module.css'
-import { useAppContext } from '../../../common/Context/AppContext'
+import { useAppContext } from 'components/common/Context/AppContext'
 
 const Footer = () => {
   const { config } = useAppContext()

@@ -1,15 +1,15 @@
 import React from 'react'
 import { Button } from 'antd'
-import SectionContent from '../common/SectionContent/SectionContent'
-import SectionLeftContent from '../common/SectionContent/SectionLeftContent'
-import SectionRightContent from '../common/SectionContent/SectionRightContent'
-import SectionBlurb from '../common/SectionBlurb/SectionBlurb'
-import PrimaryButton from '../common/Button/PrimaryButton'
+import SectionContent from 'components/common/SectionContent/SectionContent'
+import SectionLeftContent from 'components/common/SectionContent/SectionLeftContent'
+import SectionRightContent from 'components/common/SectionContent/SectionRightContent'
+import SectionBlurb from 'components/common/SectionBlurb/SectionBlurb'
+import PrimaryButton from 'components/common/Button/PrimaryButton'
 import LearnMore from './LearnMore/LearnMore'
 import LandscapeBackground from './LandscapeBackground/LandscapeBackground'
 import { useNavigate } from 'react-router-dom'
 import styles from './Hero.module.css'
-import { useAppContext } from '../common/Context/AppContext'
+import { useAppContext } from 'components/common/Context/AppContext'
 
 const Hero = () => {
   const { config } = useAppContext()

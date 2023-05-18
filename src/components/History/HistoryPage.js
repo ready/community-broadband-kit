@@ -1,7 +1,7 @@
 import React from 'react'
 import { gql, useQuery } from '@apollo/client'
-import { useAppContext } from '../common/Context/AppContext'
-import Layout from '../common/Layout/Layout'
+import { useAppContext } from 'components/common/Context/AppContext'
+import Layout from 'components/common/Layout/Layout'
 import HistoryTable from './HistoryTable'
 
 const HistoryPage = () => {

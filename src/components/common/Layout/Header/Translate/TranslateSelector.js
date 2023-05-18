@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { SearchOutlined, TranslationOutlined } from '@ant-design/icons'
 import { Select } from 'antd'
 
-import { useTranslateContext } from '../../../Context/TranslateProvider'
-import { Languages } from '../../../Context/TranslateProvider'
+import { useTranslateContext } from 'components/common/Context/TranslateProvider'
+import { Languages } from 'components/common/Context/TranslateProvider'
 
 import styles from './TranslateSelector.module.css'
 

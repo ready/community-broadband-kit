@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './InfoSection.module.css'
-import { useAppContext } from '../common/Context/AppContext'
+import { useAppContext } from 'components/common/Context/AppContext'
 
 const InfoSection = ({section}) => {
 	const { config } = useAppContext()

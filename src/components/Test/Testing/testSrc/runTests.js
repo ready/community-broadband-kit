@@ -1,4 +1,4 @@
-import { LOCAL_TESTING_FLAG } from '../../../../utils/constants.js'
+import { LOCAL_TESTING_FLAG } from 'utils/constants.js'
 import runRst from './rst/test.js'
 import runMlabTest from './m-lab/test.js'
 import runOoklaTest from './ookla.js'

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import styles from './LoadBar.module.css'
-import { useAppContext } from '../../common/Context/AppContext'
+import { useAppContext } from 'components/common/Context/AppContext'
 
 const LoadBar = () => {
   const { testSource } = useAppContext()

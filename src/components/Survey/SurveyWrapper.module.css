@@ -1,5 +1,5 @@
 .test {
-  composes: test from '../Test/TestWrapper.module.css';
+  composes: test from 'components/Test/TestWrapper.module.css';
 }
 
 .surveyWrap {

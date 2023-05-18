@@ -2,7 +2,7 @@ import React from 'react'
 import { ArrowRightOutlined } from '@ant-design/icons'
 
 import styles from './LearnMore.module.css'
-import { useEnableScroll } from '../../common/Context/ScrollContext'
+import { useEnableScroll } from 'components/common/Context/ScrollContext'
 
 // clicking learn more will remove the margin from hero section and also allow scroll, and overflow
 const LearnMore = () => {

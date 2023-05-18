@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ServiceStatusTag from '../Tags/ServiceStatusTag'
+import ServiceStatusTag from 'components/common/Tags/ServiceStatusTag'
 
 import styles from './ResultCard.module.css'
 

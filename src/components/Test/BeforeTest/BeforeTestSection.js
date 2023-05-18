@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import NoServiceSurvey  from '../../common/NoService/NoServiceSurvey'
+import NoServiceSurvey  from 'components/common/NoService/NoServiceSurvey'
 import styles from './BeforeTestSection.module.css'
 import ChecklistCard from './Checklist/ChecklistCard'
-import AddressCard from '../../common/Address/AddressCard'
-import { useToolkitContext } from '../../common/Context/ToolkitContext'
+import AddressCard from 'components/common/Address/AddressCard'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const BeforeTestSection = ({ setParentDisplay }) => {
   const [currentDisplay, setCurrentDisplay] = useState('address-input')

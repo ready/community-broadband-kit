@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { gql, useQuery, useMutation } from '@apollo/client'
-import { getUuid } from '../../../utils/uuid'
-import { survey } from '../../../utils/constants'
+import { getUuid } from 'utils/uuid'
+import { survey } from 'utils/constants'
 
 const AppContext = React.createContext()
 const useAppContext = () => {

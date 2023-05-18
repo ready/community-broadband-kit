@@ -4,7 +4,7 @@ import BeforeTestSection from './BeforeTest/BeforeTestSection'
 import ResultSection from './Results/ResultSection'
 import SameSetup from './BeforeTest/SameSetup'
 import styles from './TestWrapper.module.css'
-import { useToolkitContext } from '../common/Context/ToolkitContext'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const TestWrapper = () => {
   const {

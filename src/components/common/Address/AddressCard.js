@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import AddressAutoComplete from './AddressAutoComplete'
 import { Checkbox } from 'antd'
-import PrimaryButton from '../Button/PrimaryButton'
-import StepCard from '../Card/StepCard'
-import styles from '../../Survey/SurveyWrapper.module.css'
-import { useToolkitContext } from '../Context/ToolkitContext'
+import PrimaryButton from 'components/common/Button/PrimaryButton'
+import StepCard from 'components/common/Card/StepCard'
+import styles from 'components/Survey/SurveyWrapper.module.css'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const AddressCard = ({ onClick }) => {
   const [noService, setNoService] = useState(false)
