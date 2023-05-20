@@ -17,9 +17,9 @@ const PhoneNumberCard = ({ onClick }) => {
       </StepCard>
       <div className={styles.surveyButton}>
         <PrimaryButton
-        buttonTitle={'Start'}
-        onClick={onClick}
-        disabled={!metadata?.phoneNumber}
+          buttonTitle={'Start'}
+          onClick={onClick}
+          disabled={!metadata?.phoneNumber}
         />
       </div> 
     </div>

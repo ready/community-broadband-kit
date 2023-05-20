@@ -13,7 +13,7 @@ const useToolkitContext = () => {
 const ToolkitContextProvider = ({ 
   config,
   previousResults,
-  survey, 
+  survey = [], 
   metadata, 
   setMetadata,
   callUpdateMultitestSurveyResponse, 

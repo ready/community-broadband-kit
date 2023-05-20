@@ -34,7 +34,7 @@ const SurveyWrapper = () => {
   }
 
   return (
-    <section className={styles.test}>
+    <section className={styles.container}>
       {renderSection()}
     </section>   
   )

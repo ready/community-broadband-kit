@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import ResultCard from './ResultCard'
-import ServiceStatusTag from 'components/common/Tags/ServiceStatusTag'
+import ServiceStatusTag from 'components/common/Result/Tags/ServiceStatusTag'
 
 import styles from './Result.module.css'
 

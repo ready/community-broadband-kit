@@ -3,5 +3,5 @@
 }
 
 .surveyButton {
-  composes: surveyButton from 'components/Survey/SurveyWrapper.module.css';
+  composes: surveyButton from 'components/Survey/Survey.module.css';
 }

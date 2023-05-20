@@ -31,7 +31,7 @@ const AddressCard = ({ onClick }) => {
         >
           I do not have internet service at this address
         </Checkbox>
-        <div className={styles.beforeSurveyButtonWrap}>
+        <div className={styles.surveyButton}>
           <PrimaryButton
             buttonTitle='Next'
             size='big'

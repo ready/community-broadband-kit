@@ -5,7 +5,7 @@ import Result from 'components/common/Result/Result'
 import Layout from 'components/common/Layout/Layout'
 import SectionContent from 'components/common/SectionContent/SectionContent'
 import StepCard from 'components/common/Card/StepCard'
-import ServiceStatusTag from 'components/common/Tags/ServiceStatusTag'
+import ServiceStatusTag from 'components/common/Result/Tags/ServiceStatusTag'
 import getServiceStatus from 'utils/getServiceStatus'
 import styles from './ResultsPage.module.css'
 

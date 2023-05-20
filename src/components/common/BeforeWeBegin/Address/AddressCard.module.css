@@ -6,10 +6,45 @@
   composes: beforeSurveyDescription from 'components/Survey/SurveyWrapper.module.css';
 }
 
-.checkInternet {
-  composes: checkInternet from 'components/Survey/SurveyWrapper.module.css';
+.surveyButton {
+  composes: beforeSurveyButtonWrap from 'components/Survey/Survey.module.css';
 }
 
-.beforeSurveyButtonWrap {
-  composes: beforeSurveyButtonWrap from 'components/Survey/SurveyWrapper.module.css';
+.checkInternet {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkInternet [class*='ant-checkbox-wrapper'] {
+  align-items: center;
+}
+
+.checkInternet [class*='ant-checkbox-inner'] {
+  width: 22px;
+  height: 22px;
+}
+
+.checkInternet [class*='ant-checkbox'] {
+  top: -0.5px;
+}
+
+.checkInternet [class*='ant-checkbox-wrapper']:hover [class*='ant-checkbox-inner'],
+.checkInternet [class*='ant-checkbox']:hover [class*='ant-checkbox-inner'],
+.checkInternet [class*='ant-checkbox-input']:focus + [class*='ant-checkbox-inner'] {
+  border-color: var(--color-accent);
+}
+
+.checkInternet [class*='ant-checkbox-checked']::after {
+  border: 1px solid var(--color-accent) !important;
+}
+
+.checkInternet [class*='ant-checkbox-checked'] [class*='ant-checkbox-inner'] {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.checkInternet > span {
+  color: var(--color-text);
+  font-size: 18px;
 }

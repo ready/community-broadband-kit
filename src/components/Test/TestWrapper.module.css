@@ -1,4 +1,4 @@
-.test {
+.container {
   min-height: 100vh;
   height: auto;
   position: relative;
@@ -11,23 +11,23 @@
 }
 
 @media screen and (max-width: 1020px) {
-  .test [class*='section'] {
+  .container [class*='section'] {
     padding: 60px 0;
     flex-direction: column-reverse;
   }
 
-  .test [class*='section'] [class*='sectionRight'] {
+  .container [class*='section'] [class*='sectionRight'] {
     padding-top: 0 !important;
   }
 
-  .test [class*='section'] [class*='sectionRight'] [class*='card'] {
+  .container [class*='section'] [class*='sectionRight'] [class*='card'] {
     margin: 0 auto;
     margin-bottom: 2em;
   }
 }
 
 @media screen and (max-width: 662px) {
-  .test {
+  .container {
     padding: 32px;
   }
 }
