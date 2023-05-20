@@ -1,0 +1,7 @@
+.surveyWrap {
+  composes: surveyWrap from 'components/Survey/SurveyWrapper.module.css';
+}
+
+.surveyButton {
+  composes: surveyButton from 'components/Survey/SurveyWrapper.module.css';
+}

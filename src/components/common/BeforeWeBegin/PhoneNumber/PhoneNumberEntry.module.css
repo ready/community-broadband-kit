@@ -1,0 +1,3 @@
+.phoneNumber {
+  composes: address from 'components/common/BeforeWeBegin/Address/AddressAutoComplete.module.css';
+}

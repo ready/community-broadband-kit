@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import NoServiceSurvey  from 'components/common/NoService/NoServiceSurvey'
+import NoServiceSurvey  from 'components/common/BeforeWeBegin/NoService/NoServiceSurvey'
 import styles from './BeforeTestSection.module.css'
-import ChecklistCard from './Checklist/ChecklistCard'
-import AddressCard from 'components/common/Address/AddressCard'
+import ChecklistCard from '../../common/BeforeWeBegin/Checklist/ChecklistCard'
+import AddressCard from 'components/common/BeforeWeBegin/Address/AddressCard'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const BeforeTestSection = ({ setParentDisplay }) => {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import StepCard from 'components/common/Card/StepCard'
-import NoServiceSurvey  from 'components/common/NoService/NoServiceSurvey'
-import AddressCard from 'components/common/Address/AddressCard'
+import NoServiceSurvey  from 'components/common/BeforeWeBegin/NoService/NoServiceSurvey'
+import AddressCard from 'components/common/BeforeWeBegin/Address/AddressCard'
 import styles from './SurveyWrapper.module.css'
-import PhoneNumberCard from 'components/common/PhoneNumber/PhoneNumberCard'
+import PhoneNumberCard from 'components/common/BeforeWeBegin/PhoneNumber/PhoneNumberCard'
 import Survey from 'components/common/Survey/Survey'
 
 const SurveyWrapper = () => {

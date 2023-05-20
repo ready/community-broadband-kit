@@ -5,8 +5,8 @@ import SurveyProgressBar from 'components/common/Survey/SurveyProgressBar'
 import NoServiceForm  from './NoServiceForm'
 import PrimaryButton  from 'components/common/Button/PrimaryButton'
 import { noServiceSurvey } from 'utils/constants'
-import styles from 'components/common/Survey/Survey.module.css'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
+import styles from './NoServiceSurvey.module.css'
 
 const NoServiceSurvey = () => {
   const [form] = Form.useForm()

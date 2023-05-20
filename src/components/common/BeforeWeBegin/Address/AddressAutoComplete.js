@@ -1,14 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { Form } from 'antd'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
-import styles from './AddressAutoComplete.module.css'
 import CurrentLocation from './CurrentLocation/CurrentLocation'
+import styles from './AddressAutoComplete.module.css'
 
 const AddressAutoComplete = () => {
   const { 
     config,
     metadata,
-    setMetdata
+    setMetadata
   } = useToolkitContext()
 
   const [form] = Form.useForm()
@@ -19,7 +19,7 @@ const AddressAutoComplete = () => {
   const handlePlaceSelect = (place) => {
     form.setFieldsValue({address: place?.formatted_address})
 
-    setMetdata({
+    setMetadata({
       ...metadata,
       addressLat: place?.geometry?.location?.lat(),
       addressLon: place?.geometry?.location?.lng(),
@@ -37,7 +37,6 @@ const AddressAutoComplete = () => {
   
           const script = document.createElement('script')
           script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places&callback=resolveGoogleMapsPromise`
-          console.log(script.src)
           script.async = true
           document.body.appendChild(script)
         })
@@ -47,7 +46,7 @@ const AddressAutoComplete = () => {
 
     async function initGoogleMapsApi() {
       const google = await getGoogleMapsAPI()
-      console.log(google)
+
       autoCompleteRef.current = new google.maps.places.Autocomplete(
         inputRef.current,
         { 

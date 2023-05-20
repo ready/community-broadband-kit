@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddressAutoComplete from './AddressAutoComplete'
 import { Checkbox } from 'antd'
 import PrimaryButton from 'components/common/Button/PrimaryButton'
 import StepCard from 'components/common/Card/StepCard'
-import styles from 'components/Survey/SurveyWrapper.module.css'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
+import styles from './AddressCard.module.css'
 
 const AddressCard = ({ onClick }) => {
   const [noService, setNoService] = useState(false)
   const { config, metadata } = useToolkitContext()
+
+  useEffect(() => {
+    console.log(metadata)
+  }, [metadata])
 
   return (
     <div className={styles.beforeSurveyWrap}>

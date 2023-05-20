@@ -1,0 +1,7 @@
+.beforeTestSteps {
+  composes: beforeTestSteps from 'components/Survey/SurveyWrapper.module.css';
+}
+
+.beforeTestButtonWrap {
+  composes: beforeTestButtonWrap from 'components/Survey/SurveyWrapper.module.css';
+}

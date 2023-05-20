@@ -1,6 +1,5 @@
 import React from 'react'
 import { Radio } from 'antd'
-
 import styles from './ChecklistAnswerOption.module.css'
 
 const ChecklistAnswerOption = ({ imgSrc, imgAlt, optionText, optionValue }) => {

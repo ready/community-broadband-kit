@@ -1,0 +1,7 @@
+.beforeTestWrap {
+  composes: beforeTestWrap from 'components/Survey/SurveyWrapper.module.css';
+}
+
+.surveyButton {
+  composes: surveyButton from 'components/common/Survey/Survey.module.css';
+}

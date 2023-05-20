@@ -3,7 +3,7 @@ import { Steps } from 'antd'
 import StepCard from 'components/common/Card/StepCard'
 import ChecklistContent from './ChecklistContent'
 import PrimaryButton from 'components/common/Button/PrimaryButton'
-import styles from 'components/Survey/SurveyWrapper.module.css'
+import styles from './ChecklistCard.module.css'
 
 const ChecklistCard = ({ onClick }) => {
   const [currentStep, setCurrentStep] = useState(0)

@@ -1,0 +1,15 @@
+.beforeSurveyWrap {
+  composes: beforeSurveyWrap from 'components/Survey/SurveyWrapper.module.css';
+}
+
+.beforeSurveyDescription {
+  composes: beforeSurveyDescription from 'components/Survey/SurveyWrapper.module.css';
+}
+
+.checkInternet {
+  composes: checkInternet from 'components/Survey/SurveyWrapper.module.css';
+}
+
+.beforeSurveyButtonWrap {
+  composes: beforeSurveyButtonWrap from 'components/Survey/SurveyWrapper.module.css';
+}

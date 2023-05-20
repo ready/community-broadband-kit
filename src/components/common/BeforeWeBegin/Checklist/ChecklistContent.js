@@ -4,8 +4,8 @@ import { Radio, Checkbox } from 'antd'
 import { ArrowRightOutlined } from '@ant-design/icons'
 import Tooltip from './Tooltip/Tooltip'
 import ChecklistAnswerOption from './ChecklistAnswerOption'
-import styles from './ChecklistContent.module.css'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
+import styles from './ChecklistContent.module.css'
 
 const ChecklistContent = ({ currentChecklist }) => {
   const [term, setTerm] = useState([])

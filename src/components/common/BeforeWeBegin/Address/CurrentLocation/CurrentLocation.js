@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './CurrentLocation.module.css'
 import PrimaryButton from 'components/common/Button/PrimaryButton'
 import { useAppContext } from 'components/common/Context/AppContext'
+import styles from './CurrentLocation.module.css'
 
 const CurrentLocation = ({ setShowCurrentLocation, form }) => {
   const { strengthTestData, setStrengthTestData, surveyData, setSurveyData } = useAppContext()

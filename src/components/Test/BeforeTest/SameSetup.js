@@ -1,7 +1,7 @@
 import React from 'react'
 import { Radio } from 'antd'
 import StepCard from 'components/common/Card/StepCard'
-import ChecklistAnswerOption from './Checklist/ChecklistAnswerOption'
+import ChecklistAnswerOption from '../../common/BeforeWeBegin/Checklist/ChecklistAnswerOption'
 import styles from './SameSetup.module.css'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 

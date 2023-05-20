@@ -19,7 +19,7 @@ const TestPage = () => {
       config={window.CONFIG}
       previousResults={previousResults}
       metadata={metadata}
-      setMetdata={setMetadata}
+      setMetadata={setMetadata}
       callUpdateMultitestSurveyResponse={callUpdateMultitestSurveyResponse}
       callAddMultitestData={callAddMultitestData}
       survey={survey}
