@@ -7,7 +7,7 @@
 }
 
 .surveyButton {
-  composes: beforeSurveyButtonWrap from 'components/Survey/Survey.module.css';
+  composes: beforeSurveyButtonWrap from 'components/common/Survey/Survey.module.css';
 }
 
 .checkInternet {
