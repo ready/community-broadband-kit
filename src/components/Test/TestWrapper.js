@@ -21,7 +21,7 @@ const TestWrapper = () => {
     } else {
       setCurrentDisplay('before-test')
     }
-  }, [metadata])
+  }, [])
 
   const renderSection = () => {
     switch (currentDisplay) {
