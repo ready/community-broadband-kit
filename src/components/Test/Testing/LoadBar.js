@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './LoadBar.module.css'
 import { useAppContext } from 'components/common/Context/AppContext'
 
-const LoadBar = () => {
-  const { testSource } = useAppContext()
+const LoadBar = ({ testSource }) => {
   const [testsDone, setTestsDone] = useState([])
 
   useEffect(() => {
@@ -18,7 +17,7 @@ const LoadBar = () => {
       href: 'https://speed.measurementlab.net/#/'
     },
     'Speedtest.net': {
-      label: 'Speedtest',
+      label: 'Speedtest.net',
       id: 'ookla-load-bar',
       href: 'https://www.speedtest.net/'
     },
@@ -28,6 +27,7 @@ const LoadBar = () => {
       href: 'https://wifi.wtf/'
     }
   }
+
   return (
     <div className={styles.loadBar} id="load-bar">
       {Object.keys(tests)?.map((test, index) => (

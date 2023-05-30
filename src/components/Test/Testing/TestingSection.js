@@ -77,7 +77,7 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
             <h3 className={styles.testType}>
               {metadata?.ispName}
             </h3>
-            <LoadBar />
+            <LoadBar testSource={testSource} />
           </div>
         </SectionLeftContent>
       </div>
