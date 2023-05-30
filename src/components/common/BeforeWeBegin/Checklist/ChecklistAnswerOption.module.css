@@ -41,13 +41,13 @@
 .checklistIcon {
   width: 32px;
   height: 32px;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .iconText {
   font-size: 16px;
-  margin-bottom: 0;
-  color: var(--color-blue-10) !important;
+  margin-top: 0;
+  color: var(--color-text) !important;
   text-align: center;
 }
 

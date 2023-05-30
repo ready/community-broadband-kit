@@ -25,7 +25,7 @@ const ChecklistCard = ({ onClick }) => {
       <ChecklistContent
         currentChecklist={checklist[currentStep]}
       />
-      <div className={styles.beforeTestButtonWrap}>
+      <div className={styles.nextButton}>
         <PrimaryButton
           buttonTitle={currentStep === Object.keys(checklist)?.length - 1 ? 'Start test' : 'Next'}
           onClick={

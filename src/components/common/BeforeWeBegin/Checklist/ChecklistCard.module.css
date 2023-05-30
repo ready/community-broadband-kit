@@ -1,7 +1,8 @@
 .beforeTestSteps {
-  composes: beforeTestSteps from 'components/Survey/SurveyWrapper.module.css';
+  width: 80%;
+  align-self: center;
 }
 
-.beforeTestButtonWrap {
-  composes: beforeTestButtonWrap from 'components/Survey/SurveyWrapper.module.css';
+.nextButton {
+  align-self: flex-end;
 }
