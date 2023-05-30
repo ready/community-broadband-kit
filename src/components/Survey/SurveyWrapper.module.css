@@ -18,17 +18,9 @@
 .beforeSurveyWrap {
   width: 100%;
   max-width: var(--section-max-width);
-  padding: 120px 0;
+  padding: 10px 0;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.beforeSurveyDescription {
-  font-size: var(--font-size-body1);
-  color: var(--color-blue-10);
-  font-weight: normal;
-  line-height: 1.5;
-  margin-bottom: 0;
 }

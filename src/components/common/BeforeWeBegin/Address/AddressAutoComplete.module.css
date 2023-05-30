@@ -1,4 +1,13 @@
-.address [class*='ant-input']:hover,
+
 .address [class*='ant-input']:focus {
   border-color: var(--color-accent);
+}
+
+/* Make input box full width */
+.address [class*='ant-input'] {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  padding: 4px 11px;
+  color: var(--color-text);
 }

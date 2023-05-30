@@ -4,6 +4,7 @@
   background-color: var(--color-button) !important;
   border: none !important;
   font-size: 20px !important;
+  height: auto !important;
 }
 
 .big {

@@ -2,12 +2,14 @@
   composes: beforeSurveyWrap from 'components/Survey/SurveyWrapper.module.css';
 }
 
-.beforeSurveyDescription {
-  composes: beforeSurveyDescription from 'components/Survey/SurveyWrapper.module.css';
+.addressCardDescription {
+  font-weight: normal;
+  font-size: var(--font-size-body1);
+  color: var(--color-subheading);
 }
 
-.surveyButton {
-  composes: beforeSurveyButtonWrap from 'components/common/Survey/Survey.module.css';
+.nextButton {
+  align-self: flex-end;
 }
 
 .checkInternet {

@@ -21,7 +21,7 @@ const AddressCard = ({ onClick }) => {
         description='Your location is required to help your community get better internet. Please enter your address below. It will not be shared with the public.'
       >
         <AddressAutoComplete />
-        <p className={styles.beforeSurveyDescription}>
+        <p className={styles.addressCardDescription}>
           If you are reporting that you have no internet at home from a different location, enter in your home address and select the option below.
         </p>
         <Checkbox
@@ -31,10 +31,10 @@ const AddressCard = ({ onClick }) => {
         >
           I do not have internet service at this address
         </Checkbox>
-        <div className={styles.surveyButton}>
+        <div className={styles.nextButton}>
           <PrimaryButton
             buttonTitle='Next'
-            size='big'
+            //size='big'
             onClick={() => { onClick(noService) }}
             disabled={ !metadata.address && config?.isAddressRequired }
           />
