@@ -10,10 +10,6 @@ const AddressCard = ({ onClick }) => {
   const [noService, setNoService] = useState(false)
   const { config, metadata } = useToolkitContext()
 
-  useEffect(() => {
-    console.log(metadata)
-  }, [metadata])
-
   return (
     <div className={styles.beforeSurveyWrap}>
       <StepCard
