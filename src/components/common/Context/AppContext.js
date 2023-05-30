@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { gql, useQuery, useMutation } from '@apollo/client'
 import { getUuid } from 'utils/uuid'
-import { survey } from 'utils/constants'
+import { survey, SERVERLESS_TESTING_FLAG, SERVERLESS_TESTING_CONFIG } from 'utils/constants'
 
 const AppContext = React.createContext()
 const useAppContext = () => {
@@ -13,7 +13,13 @@ const useAppContext = () => {
 }
 
 const AppContextProvider = ({ children }) => {
-  const config = window.CONFIG
+  let config
+  if (SERVERLESS_TESTING_FLAG) {
+    config = SERVERLESS_TESTING_CONFIG
+  } else {
+    config = window.CONFIG
+  }
+
   const userId = getUuid()
   const [updateMultitestSurveyResponse] = useMutation(UPDATE_MULTITEST_SURVEY_RESPONSE)
   const [addMultitestData] = useMutation(ADD_MULTITEST_DATA)
@@ -128,6 +134,7 @@ const AppContextProvider = ({ children }) => {
       })
       .catch(err => console.log(err))
     }
+    if (SERVERLESS_TESTING_FLAG) return 
     getMetadata()
   }, [])
 

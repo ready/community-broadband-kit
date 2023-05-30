@@ -51,13 +51,15 @@ const CommunityMenu = ({ mode, logoColor }) => {
           key='setting:1'
           >
             <Link to='/#info'>
-              <a><b>What's This</b></a>
+              <b>What's This</b>
             </Link>
           </Menu.Item>,
           <Menu.Item
           key='setting:1'
           >
-            <a href='#' onClick={(e) => handleClick(e)}><b>What's this</b></a>
+            <a onClick={(e) => handleClick(e)}>
+              <b>What's this</b>
+            </a>
           </Menu.Item>
         )}
         {config?.showHistory && 
@@ -65,7 +67,7 @@ const CommunityMenu = ({ mode, logoColor }) => {
             key='setting:2'
           >
             <Link to='/history'>
-              <a><b>History</b></a>
+              <b>History</b>
             </Link>
           </Menu.Item>}
         {config?.showBbmReferences && 
@@ -73,7 +75,7 @@ const CommunityMenu = ({ mode, logoColor }) => {
             key=''
           >
             <Link to='https://broadband.money/community-broadband-kit'>
-              <a><FaExternalLinkAlt></FaExternalLinkAlt><b> Get Your Own</b></a>
+              <FaExternalLinkAlt></FaExternalLinkAlt><b> Get Your Own</b>
             </Link>
           </Menu.Item>}
       </Menu>

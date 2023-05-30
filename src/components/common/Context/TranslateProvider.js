@@ -197,11 +197,11 @@ const TranslateProvider = props => {
 
   // Once the page loads, add the google translator
   useEffect(() => {
+    window.googleTranslateElementInit = googleTranslateElementInit
     const addScript = document.createElement('script')
     const translateScript = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
     addScript.setAttribute('src', translateScript)
     document.body.appendChild(addScript)
-    window.googleTranslateElementInit = googleTranslateElementInit
     firstStoredUpdate()
   }, [])
 

@@ -38,6 +38,38 @@ export const API_URL = BASE_API_URL
 
 export const LOCAL_TESTING_FLAG = !process.env.ENVIRONMENT
 
+export const SERVERLESS_TESTING_FLAG = LOCAL_TESTING_FLAG && process.env.REACT_APP_SERVERLESS_TESTING_FLAG
+
+export const SERVERLESS_TESTING_CONFIG = {
+  organization:
+    {
+      id: process.env.REACT_APP_SLOCAL_ORG_ID
+    },
+    communityName: 'Test',
+    logo: 'https://storage.googleapis.com/boss-public-assets/grit-1682483122792.jpeg',
+    headerTitle: 'Community Broadband Toolkit',
+    headerDescription: null,
+    favicon: null,
+    buttonText: 'Take the test',
+    heading: 'Help Our Community Win Broadband Grants',
+    description: 'This anonymous test will help you and your community gauge your internet strength. For best results, take the test once per day for the next 7 days.',
+    themeColor: ['0693e3', '047d9f', '0653e3', '043a9f', '049f6d', '06e39c', '047d9f', '0653e3', '0653e3', '043a9f', '049f6d', '06b3e3', 'c1f1ff'],
+    ogTitle: null,
+    ogImage: null,
+    ogDescription: null,
+    logoWidth: null,
+    domainName: 'checknewarkinternetspeeds.org',
+    isAddressRequired: true,
+    showBbmReferences: true,
+    individualSurveyEnabled: true,
+    showHistory: true,
+    resultShareButtons: true,
+    showEmailReminder: true,
+    welcomeSectionHeading: null,
+    welcomeSectionBody: null,
+    welcomeSectionImage: null
+}
+
 // User key
 export const USER_KEY = `${APP_NAME}-user-key`
 
@@ -46,9 +78,6 @@ export const TOKEN_KEY = `${APP_NAME}-token-key`
 
 // Selected organization key
 export const SELECTED_ORGANIZATION_KEY = `${APP_NAME}-selected-organization-key`
-
-// // Notion key
-
 
 // Toolkit
 // Address input is required by default
