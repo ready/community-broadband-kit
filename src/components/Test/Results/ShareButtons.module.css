@@ -4,7 +4,7 @@
   margin-bottom: 5px;
   margin-right: 5px;
   margin-left: 5px;
-  color: var(--color-gray-0);
+  color: var(--color-button);
   position: relative;
 }
   
@@ -16,4 +16,10 @@
   margin: 4px;
   font-size: var(--font-size-body1);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (max-width: 1100px) {
+  .shareButtons {
+    justify-content: center;
+  }
 }

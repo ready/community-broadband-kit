@@ -12,8 +12,8 @@
 
 @media screen and (max-width: 1020px) {
   .container [class*='section'] {
-    padding: 60px 0;
-    flex-direction: column-reverse;
+    padding: 10px 0;
+    flex-direction: column;
   }
 
   .container [class*='section'] [class*='sectionRight'] {
