@@ -16,7 +16,7 @@ const SurveyPage = () => {
     <ToolkitContextProvider
       config={window.CONFIG}
       metadata={metadata}
-      setMetdata={setMetadata}
+      setMetadata={setMetadata}
       callUpdateMultitestSurveyResponse={callUpdateMultitestSurveyResponse}
       callAddMultitestData={callAddMultitestData}
     >
