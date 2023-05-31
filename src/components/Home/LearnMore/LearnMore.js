@@ -18,7 +18,7 @@ const LearnMore = () => {
         display: scroll ? 'none' : 'flex'
       }}
     >
-      <a href='#' onClick={(e) => handleClick(e)}>
+      <a href='#info' onClick={(e) => handleClick(e)}>
         <div className={styles.atag}>
           Learn More <ArrowRightOutlined />
         </div>

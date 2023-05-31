@@ -18,14 +18,9 @@ const Survey = ({
   const [currentField, setCurrentField] = useState(null)
   const {
     metadata, 
-    callUpdateMultitestSurveyResponse
+    callUpdateMultitestSurveyResponse,
+    setSurveyComplete
   } = useToolkitContext()
-
-  useEffect(() => {
-    if (currentStep === survey?.length - 1) {
-      onFinish()
-    }
-  }, [currentStep])
 
   const handleChange = (value, field) => {
     if ((field === 'usesInternetForSchool' || field === 'hasTroublePaying' || field === 'wouldUseCredit') && value === 'Yes') {
@@ -39,6 +34,9 @@ const Survey = ({
 
   const next =  async () => {
     setCurrentStep(currentStep + 1)
+    if (currentStep == survey.length - 1) {
+      setSurveyComplete(true)
+    } 
     await submitForm()
   }
 

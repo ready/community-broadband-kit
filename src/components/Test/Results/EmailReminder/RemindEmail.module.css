@@ -55,6 +55,7 @@
   height: 40px;
   transition: 0.5s;
   color: var(--color-gray-9);
+  font-size: var(--font-size-body1);
 }
 
 .headerInput {

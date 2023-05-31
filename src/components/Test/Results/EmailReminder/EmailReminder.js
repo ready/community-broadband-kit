@@ -54,7 +54,7 @@ const RemindEmail = () => {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
               />}
-          <button className={styles.button} onClick={sendEmail}>Get alerts</button>
+          <button className={styles.button} onClick={sendEmail}>Remind me</button>
           </div>
         : <>
           <p
