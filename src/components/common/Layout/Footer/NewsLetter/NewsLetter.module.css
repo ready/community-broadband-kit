@@ -106,8 +106,9 @@
     
     @media screen and (max-width: 1020px) {
       .newsLetterContainer {
-        position: relative;
-        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
     
       .textLink {

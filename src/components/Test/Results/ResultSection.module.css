@@ -4,6 +4,7 @@
 
 .resultSection [class*='sectionLeft'] {
   width: 38%;
+  margin-top: 30px
 }
 
 .resultSection [class*='sectionRight'] {
@@ -17,8 +18,8 @@
 
 
 .resultSection [class*='takeTest'] {
-  position: absolute;
-  right: 0;
+  position: absolute !important;
+  right: 0 !important;
 }
 
 @media screen and (max-width: 1100px) {
@@ -30,7 +31,7 @@
   .resultSection [class*='sectionLeft'] {
     max-width: 600px;
     width: auto;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 60px;
     flex-direction: column !important;
   }
@@ -43,4 +44,11 @@
     max-width: 900px;
     width: 100%;
   }
+
+  .resultSection [class*='takeTest'] {
+    position: relative !important;
+    top: 50% !important;
+    left: 40% !important;
+  }
+
 }

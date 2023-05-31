@@ -13,7 +13,6 @@ import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 import Survey from 'components/common/Survey/Survey'
 
 const TestingSection = ({ setCurrentDisplay, setTestData }) => {
-  const surveyComplete = false
   const navigate = useNavigate()
   const [testSource, setTestSource] = useState('')
   const [testType, setTestType] = useState('')
@@ -22,7 +21,8 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
   const {
     metadata,
     callAddMultitestData,
-    surveySegment
+    surveySegment,
+    surveyComplete,
   } = useToolkitContext()
 
   useEffect(() => {
