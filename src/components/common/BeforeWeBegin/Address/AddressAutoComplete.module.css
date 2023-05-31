@@ -1,6 +1,7 @@
 
+.address [class*='ant-input']:hover,
 .address [class*='ant-input']:focus {
-  border-color: var(--color-accent);
+  border-color: var(--color-button-hover);
 }
 
 /* Make input box full width */
