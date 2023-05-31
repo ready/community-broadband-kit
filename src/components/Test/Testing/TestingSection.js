@@ -21,7 +21,8 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
 
   const {
     metadata,
-    callAddMultitestData
+    callAddMultitestData,
+    surveySegment
   } = useToolkitContext()
 
   useEffect(() => {
@@ -86,7 +87,7 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
         style={{ display: surveyComplete ? 'none' : 'block' }}
       >
         <SectionRightContent>
-          <Survey />
+          <Survey survey={surveySegment} />
         </SectionRightContent>
       </div>
     </SectionContent>

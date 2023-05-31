@@ -1,11 +1,13 @@
-export function storeAnswers(answeredFields, ipAddress) {
+export function storeAnswers(answeredField, ipAddress) {
+  if (!ipAddress) return
+  
   let storedQuestionObjects = JSON.parse(localStorage.getItem('answeredQs'))
 
   if (storedQuestionObjects) {
     let ipExists = false
     storedQuestionObjects = storedQuestionObjects.map((questionObject) => {
       if (questionObject.ipAddress === ipAddress) {
-        questionObject.answered = [...questionObject.answered, ...answeredFields]
+        questionObject.answered = [...questionObject.answered, answeredField]
         ipExists = true
       }
       return questionObject
@@ -13,13 +15,13 @@ export function storeAnswers(answeredFields, ipAddress) {
     if (!ipExists) {
       storedQuestionObjects.push({
         ipAddress, 
-        answered: answeredFields
+        answered: [answeredField]
       })
     }
   } else {
     storedQuestionObjects = [{
       ipAddress, 
-      answered: answeredFields
+      answered: [answeredField]
     }]
   }
   localStorage.setItem('answeredQs', JSON.stringify(storedQuestionObjects))
@@ -33,22 +35,27 @@ export function getUnansweredQuestions(survey, ipAddress) {
   // If answered questions exist for the ipAddress in local storage, remove them from the testSurvey array
   if (storedQuestionObjects) {
     for (const questionObject of storedQuestionObjects) {
-      if (questionObject.ipAddress === ipAddress) {
+      if (ipAddress && questionObject.ipAddress === ipAddress) {
         for (const question of questionObject.answered) {
           // Finds the index of an attribute/survey question that has already been answered
-          const indexOfObject = survey.findIndex(surveyQuestion => {
+          const indexOfObject = newSurvey.findIndex(surveyQuestion => {
             if (surveyQuestion.type === 'nested') {
               let subQuestionArray = surveyQuestion.subquestions
               for (const subQuestion of subQuestionArray) {
-                return subQuestion.attribute === question
+                if (subQuestion.attribute === question) {
+                  return true
+                }
               }
+              return false
             }
               else {
-              return surveyQuestion.attribute === question;
+              return surveyQuestion.attribute === question
             }
           })
           // Remove survey question from testSurvey 
-          newSurvey.splice(indexOfObject, 1)
+          if (indexOfObject !== -1) {
+            newSurvey.splice(indexOfObject, 1)
+          }
         }
       }
     }

@@ -8,12 +8,15 @@ import styles from './Survey.module.css'
 import { storeAnswers } from 'utils/localStorageSurvey'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
-const Survey = ({ onFinish }) => {
+const Survey = ({ 
+  survey, 
+  onFinish = () => {}
+}) => {
   const [form] = Form.useForm()
   const [currentStep, setCurrentStep] = useState(0)
   const [surveyAnswers, setSurveyAnswers] = useState({})
+  const [currentField, setCurrentField] = useState(null)
   const {
-    survey, 
     metadata, 
     callUpdateMultitestSurveyResponse
   } = useToolkitContext()
@@ -30,6 +33,7 @@ const Survey = ({ onFinish }) => {
     } else if ((field === 'usesInternetForSchool' || field === 'hasTroublePaying' || field === 'wouldUseCredit') && value === 'No') {
       value = false
     }
+    setCurrentField(field)
     setSurveyAnswers({ ...surveyAnswers, [field]: value })
   }
 
@@ -39,12 +43,15 @@ const Survey = ({ onFinish }) => {
   }
 
   const submitForm = async () => {
+    if (currentField === null) return
+
     const success = await callUpdateMultitestSurveyResponse(surveyAnswers)
     if (success) {
       storeAnswers(Object.keys(surveyAnswers), metadata?.ipAddress)
     } else {
       message.error('Something went wrong, please try again')
     }
+    setCurrentField(null)
   }
 
   return (

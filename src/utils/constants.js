@@ -38,7 +38,7 @@ export const API_URL = BASE_API_URL
 
 export const LOCAL_TESTING_FLAG = !process.env.ENVIRONMENT
 
-export const SERVERLESS_TESTING_FLAG = LOCAL_TESTING_FLAG && process.env.REACT_APP_SERVERLESS_TESTING_FLAG
+export const SERVERLESS_TESTING_FLAG = LOCAL_TESTING_FLAG && process.env.REACT_APP_SERVERLESS_TESTING_FLAG === 'true'
 
 export const SERVERLESS_TESTING_CONFIG = {
   organization:
