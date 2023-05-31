@@ -1,7 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import 'antd/dist/reset.css'
 import './index.css';
-import App from './App';
+import App from './App'
 import { ApolloProvider } from '@apollo/client'
 import { ScrollContextProvider } from './components/common/Context/ScrollContext'
 import { AppContextProvider } from './components/common/Context/AppContext'
