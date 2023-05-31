@@ -1,6 +1,6 @@
 .logo {
   position: relative;
-  width: 181.88px;
+  /* width: 181.88px; */
   height: 81.12px;
   cursor: pointer;
 }
@@ -15,7 +15,7 @@
 
 @media screen and (max-width: 550px) {
   .logo {
-    width: 125.55px;
+    /* width: 125.55px; */
     height: 56px;
   }
   
