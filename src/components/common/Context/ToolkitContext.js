@@ -20,10 +20,8 @@ const ToolkitContextProvider = ({
   callAddMultitestData, 
   children
 }) => {
-  const [surveyComplete, setSurveyComplete] = useState(false)
-
-  console.log('surveyComplete', surveyComplete)
   const maxSurveyLength = 9
+  const [surveyComplete, setSurveyComplete] = useState(false)
   const [surveySegment, setSurveySegment] = useState(survey.slice())
 
   useEffect(() => {
