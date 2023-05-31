@@ -47,7 +47,7 @@ const Survey = ({
 
     const success = await callUpdateMultitestSurveyResponse(surveyAnswers)
     if (success) {
-      storeAnswers(Object.keys(surveyAnswers), metadata?.ipAddress)
+      storeAnswers(currentField, metadata?.ipAddress)
     } else {
       message.error('Something went wrong, please try again')
     }
