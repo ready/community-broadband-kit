@@ -51,6 +51,7 @@ const Survey = ({ onFinish }) => {
     <>
       <StepCard>
         <SurveyForm
+          survey={survey}
           form={form}
           currentStep={currentStep}
           handleChange={handleChange}
