@@ -123,13 +123,13 @@ const ChecklistContent = ({ currentChecklist }) => {
             imgSrc='/images/vpn_icon.png'
             imgAlt='vpn icon'
             optionText='Yes'
-            optionValue={true}
+            optionValue={false}
           />
           <ChecklistAnswerOption
             imgSrc='/images/cross_icon.png'
             imgAlt='cross icon'
             optionText='No'
-            optionValue={false}
+            optionValue={true}
           />
         </Radio.Group>
       </div>
@@ -147,13 +147,13 @@ const ChecklistContent = ({ currentChecklist }) => {
             imgSrc='/images/streaming_icon.png'
             imgAlt='streaming icon'
             optionText='Yes'
-            optionValue={true}
+            optionValue={false}
           />
           <ChecklistAnswerOption
             imgSrc='/images/cross_icon.png'
             imgAlt='cross icon'
             optionText='No'
-            optionValue={false}
+            optionValue={true}
           />
         </Radio.Group>
       </div>
