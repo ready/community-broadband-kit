@@ -5,7 +5,7 @@ import SurveyProgressBar from './SurveyProgressBar'
 import SurveyForm  from './SurveyForm'
 import PrimaryButton  from 'components/common/Button/PrimaryButton'
 import styles from './Survey.module.css'
-import { storeAnswers } from 'utils/localStorageSurvey'
+import { storeAnswers, storeIsHome } from 'utils/localStorageSurvey'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const Survey = ({ 
@@ -45,6 +45,21 @@ const Survey = ({
     const success = await callUpdateMultitestSurveyResponse(surveyAnswers)
     if (success) {
       storeAnswers(currentField, metadata?.ipAddress)
+
+      if (currentField === 'locationType') {
+          storeIsHome(metadata?.ipAddress, surveyAnswers.locationType)
+        
+        if (surveyAnswers.locationType !== 'Home') {
+          const questionIdsToRemove = [5, 6]
+          questionIdsToRemove.forEach(questionId => {
+            const index = survey.findIndex(question => question.id === questionId)
+            if (index > -1) {
+              survey.splice(index, 1)
+            }
+          })
+        }
+      } 
+
     } else {
       message.error('Something went wrong, please try again')
     }
