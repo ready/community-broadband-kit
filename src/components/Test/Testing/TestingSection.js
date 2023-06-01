@@ -17,12 +17,12 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
   const [testSource, setTestSource] = useState('')
   const [testType, setTestType] = useState('')
   const [testProgress, setTestProgress] = useState('')
+  const [surveyComplete, setSurveyComplete] = useState(surveySegment?.length === 0 ? true : false)
 
   const {
     metadata,
     callAddMultitestData,
-    surveySegment,
-    surveyComplete,
+    surveySegment
   } = useToolkitContext()
 
   useEffect(() => {
@@ -87,7 +87,10 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
         style={{ display: surveyComplete ? 'none' : 'block' }}
       >
         <SectionRightContent>
-          <Survey survey={surveySegment} />
+          <Survey 
+            survey={surveySegment} 
+            onFinish={() => setSurveyComplete(true)}
+          />
         </SectionRightContent>
       </div>
     </SectionContent>

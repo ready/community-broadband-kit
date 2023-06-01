@@ -3,10 +3,12 @@ import StepCard from 'components/common/Card/StepCard'
 import NoServiceSurvey  from 'components/common/BeforeWeBegin/NoService/NoServiceSurvey'
 import AddressCard from 'components/common/BeforeWeBegin/Address/AddressCard'
 import styles from './SurveyWrapper.module.css'
-import PhoneNumberCard from 'components/common/BeforeWeBegin/PhoneNumber/PhoneNumberCard'
 import Survey from 'components/common/Survey/Survey'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
+import SectionContent from 'components/common/SectionContent/SectionContent'
 
 const SurveyWrapper = () => {
+  const { survey } = useToolkitContext()
   const [currentDisplay, setCurrentDisplay] = useState('address-input')
 
   const renderSection = () => {
@@ -18,7 +20,16 @@ const SurveyWrapper = () => {
       case 'no-service':
         return <NoServiceSurvey />
       case 'survey':
-        return <Survey onFinish={() => { setCurrentDisplay('survey-complete')}}/>
+        return (
+          <div className={styles.surveyWrap}>
+            <SectionContent>
+              <Survey 
+                survey={survey} 
+                onFinish={() => { setCurrentDisplay('survey-complete')}}
+              />
+            </SectionContent>
+          </div>
+        )
       case 'survey-complete':
         return (
           <StepCard 

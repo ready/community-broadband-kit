@@ -21,18 +21,11 @@ const ToolkitContextProvider = ({
   children
 }) => {
   const maxSurveyLength = 9
-  const [surveyComplete, setSurveyComplete] = useState(false)
   const [surveySegment, setSurveySegment] = useState(survey.slice())
 
   useEffect(() => {
     setSurveySegment(getUnansweredQuestions(survey, metadata?.ipAddress).slice(0, maxSurveyLength))
   }, [metadata])
-
-  useEffect(() => {
-    if (surveySegment?.length === 0) {
-      setSurveyComplete(true)
-    }
-  }, [surveySegment])
 
   return (
     <ToolkitContext.Provider
@@ -44,9 +37,7 @@ const ToolkitContextProvider = ({
         setMetadata,
         callUpdateMultitestSurveyResponse,
         callAddMultitestData,
-        surveySegment,
-        surveyComplete,
-        setSurveyComplete
+        surveySegment
       }}
     >
       {children}

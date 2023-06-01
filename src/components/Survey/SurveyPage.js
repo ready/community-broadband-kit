@@ -6,6 +6,7 @@ import { ToolkitContextProvider } from 'components/common/Context/ToolkitContext
 
 const SurveyPage = () => {
   const {
+    survey,
     metadata,
     setMetadata,
     callUpdateMultitestSurveyResponse,
@@ -19,6 +20,7 @@ const SurveyPage = () => {
       setMetadata={setMetadata}
       callUpdateMultitestSurveyResponse={callUpdateMultitestSurveyResponse}
       callAddMultitestData={callAddMultitestData}
+      survey={survey}
     >
       <Layout>
         <SurveyWrapper />

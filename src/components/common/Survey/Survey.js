@@ -18,8 +18,7 @@ const Survey = ({
   const [currentField, setCurrentField] = useState(null)
   const {
     metadata, 
-    callUpdateMultitestSurveyResponse,
-    setSurveyComplete
+    callUpdateMultitestSurveyResponse
   } = useToolkitContext()
 
   const handleChange = (value, field) => {
@@ -35,7 +34,7 @@ const Survey = ({
   const next =  async () => {
     setCurrentStep(currentStep + 1)
     if (currentStep == survey.length - 1) {
-      setSurveyComplete(true)
+      onFinish()
     } 
     await submitForm()
   }
