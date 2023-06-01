@@ -3,6 +3,7 @@ import { Form } from 'antd'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 import CurrentLocation from './CurrentLocation/CurrentLocation'
 import styles from './AddressAutoComplete.module.css'
+import { useMapsContext } from 'components/common/Context/MapsProvider'
 
 const AddressAutoComplete = () => {
   const { 
@@ -10,6 +11,7 @@ const AddressAutoComplete = () => {
     metadata,
     setMetadata
   } = useToolkitContext()
+  const { googleMaps } = useMapsContext()
 
   const [form] = Form.useForm()
   const [showCurrentLocation, setShowCurrentLocation] = useState(true)
@@ -28,42 +30,23 @@ const AddressAutoComplete = () => {
   }
 
   useEffect(() => {
-    function getGoogleMapsAPI() {
-        const googleMapsPromise = new Promise((resolve) => {
-          window.resolveGoogleMapsPromise = () => {
-            resolve(window.google)
-            delete window.resolveGoogleMapsPromise
-          }
-  
-          const script = document.createElement('script')
-          script.src = `//maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places&callback=resolveGoogleMapsPromise`
-          script.async = true
-          document.body.appendChild(script)
-        })
-  
-      return googleMapsPromise
-    }
-
-    async function initGoogleMapsApi() {
-      const google = await getGoogleMapsAPI()
-
-      autoCompleteRef.current = new google.maps.places.Autocomplete(
+    if (googleMaps) {
+      autoCompleteRef.current = new googleMaps.maps.places.Autocomplete(
         inputRef.current,
-        { 
-           types: ['address'], 
-           componentRestrictions: { country: 'us' }
-         }
-       )
-   
-       autoCompleteRef.current.setFields(['formatted_address', 'geometry'])
-       autoCompleteRef.current.addListener('place_changed', async () => {
-         const place = await autoCompleteRef.current.getPlace()
-         handlePlaceSelect(place)
-       })
-    }
+        {
+          types: ['address'],
+          componentRestrictions: { country: 'us' }
+        }
+      )
 
-    initGoogleMapsApi()
-  }, [])
+      autoCompleteRef.current.setFields(['formatted_address', 'geometry'])
+      autoCompleteRef.current.addListener('place_changed', async () => {
+        const place = await autoCompleteRef.current.getPlace()
+        handlePlaceSelect(place)
+      }
+      )
+    } 
+  }, [googleMaps])
 
   return (
     <Form
@@ -93,7 +76,7 @@ const AddressAutoComplete = () => {
           }}
         />
       </Form.Item>
-      {showCurrentLocation && <CurrentLocation setShowCurrentLocation={setShowCurrentLocation} form={form}/>}
+      {showCurrentLocation && googleMaps && <CurrentLocation setShowCurrentLocation={setShowCurrentLocation} form={form}/>}
     </Form>
   )
 }

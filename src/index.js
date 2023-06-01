@@ -5,6 +5,7 @@ import './index.css';
 import App from './App'
 import { ApolloProvider } from '@apollo/client'
 import { AppContextProvider } from './components/common/Context/AppContext'
+import MapsProvider from './components/common/Context/MapsProvider'
 import TranslateProvider from './components/common/Context/TranslateProvider'
 import client from './utils/apollo-client'
 import LocalTestingStyle from 'LocalTestingStyle'
@@ -15,11 +16,13 @@ root.render(
   <React.StrictMode>
     {SERVERLESS_TESTING_FLAG && <LocalTestingStyle />}
     <TranslateProvider>
-      <ApolloProvider client={client}> 
-        <AppContextProvider>
-          <App />
-        </AppContextProvider>
-      </ApolloProvider>
+      <MapsProvider>
+        <ApolloProvider client={client}> 
+          <AppContextProvider>
+            <App />
+          </AppContextProvider>
+        </ApolloProvider>
+      </MapsProvider>
     </TranslateProvider>
   </React.StrictMode>
 )
