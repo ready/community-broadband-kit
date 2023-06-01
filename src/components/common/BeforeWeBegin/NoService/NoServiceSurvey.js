@@ -13,6 +13,7 @@ const NoServiceSurvey = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [surveyAnswers, setSurveyAnswers] = useState({})
   const { callUpdateMultitestSurveyResponse } = useToolkitContext()
+  const [surveyComplete, setSurveyComplete] = useState(false)
 
   const handleChange = (value, field) => {
     setSurveyAnswers({ ...surveyAnswers, [field]: value })
@@ -20,6 +21,9 @@ const NoServiceSurvey = () => {
 
   const next =  async () => {
     setCurrentStep(currentStep + 1)
+    if (currentStep === noServiceSurvey.length - 1) {
+      setSurveyComplete(true)
+    }
     await submitForm()
   }
 
@@ -32,7 +36,7 @@ const NoServiceSurvey = () => {
 
   return (
     <div className={styles.beforeTestWrap}>
-        {!(currentStep === noServiceSurvey.length - 1) &&
+        {!surveyComplete &&
           <>
             <StepCard>
               <NoServiceForm
@@ -53,7 +57,7 @@ const NoServiceSurvey = () => {
             </div>
           </>
         }
-        {(currentStep === noServiceSurvey.length - 1) &&
+        {surveyComplete &&
           <>
             <StepCard 
               title='Thank you for reporting your service status'
