@@ -4,7 +4,7 @@ import { Menu } from 'antd'
 import { FaExternalLinkAlt } from "react-icons/fa"
 import styles from './NavLinks.module.css'
 import { useAppContext } from 'components/common/Context/AppContext'
-import HeaderShareButtons from 'components/common/Layout/Header/NavLinks/HeaderShareButtons'
+import HeaderShareButtons from './HeaderShareButtons'
 
 const CommunityMenu = ({ mode, logoColor }) => {
   const [isMobileScreen, setIsMobileScreen] = useState(false)
