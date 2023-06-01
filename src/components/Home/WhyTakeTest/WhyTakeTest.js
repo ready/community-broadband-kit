@@ -39,7 +39,7 @@ const WhyTakeTest = ({ page }) => {
   return (
     <section className={styles.reportSection} style={{ backgroundColor: steps?.backgroundColor }}>
       <h2 className={styles.title}>{steps.title}</h2>
-      <div id='info' className={styles.reportContains}>
+      <div className={styles.reportContains}>
         {steps.details?.map(step => (
           <ReportContain key={step.verb} {...step} iconSrc={steps.iconSrc} page={page} />
         ))}

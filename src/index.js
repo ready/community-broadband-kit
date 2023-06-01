@@ -4,7 +4,6 @@ import 'antd/dist/reset.css'
 import './index.css';
 import App from './App'
 import { ApolloProvider } from '@apollo/client'
-import { ScrollContextProvider } from './components/common/Context/ScrollContext'
 import { AppContextProvider } from './components/common/Context/AppContext'
 import TranslateProvider from './components/common/Context/TranslateProvider'
 import client from './utils/apollo-client'
@@ -17,11 +16,9 @@ root.render(
     {SERVERLESS_TESTING_FLAG && <LocalTestingStyle />}
     <TranslateProvider>
       <ApolloProvider client={client}> 
-        <ScrollContextProvider>
-          <AppContextProvider>
-            <App />
-          </AppContextProvider>
-        </ScrollContextProvider>
+        <AppContextProvider>
+          <App />
+        </AppContextProvider>
       </ApolloProvider>
     </TranslateProvider>
   </React.StrictMode>

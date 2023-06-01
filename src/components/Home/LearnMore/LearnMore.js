@@ -1,28 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ArrowRightOutlined } from '@ant-design/icons'
-
 import styles from './LearnMore.module.css'
-import { useEnableScroll } from 'components/common/Context/ScrollContext'
+import { Link } from 'react-router-dom'
 
-// clicking learn more will remove the margin from hero section and also allow scroll, and overflow
 const LearnMore = () => {
-  const [scroll, setScroll] = useEnableScroll()
-  const handleClick = (e) => {
-    e.preventDefault()
-    setScroll(true)
-  }
+  const [showButton, setShowButton] = useState(true)
+  
   return (
     <div
       className={styles.learnMore}
       style={{
-        display: scroll ? 'none' : 'flex'
+        display: showButton ? 'flex' : 'none'
       }}
     >
-      <a href='#info' onClick={(e) => handleClick(e)}>
-        <div className={styles.atag}>
+      <div className={styles.atag}>
+        <Link to='/#info' onClick={() => setShowButton(false)}>
           Learn More <ArrowRightOutlined />
-        </div>
-      </a>
+        </Link>
+      </div>
     </div>
   )
 }

@@ -2,29 +2,18 @@ import React, { useEffect } from 'react'
 import Hero from './Hero'
 import InfoSection from './InfoSection'
 import WhyTakeTest from './WhyTakeTest/WhyTakeTest'
-import { useEnableScroll } from 'components/common/Context/ScrollContext'
-import { useLocation } from 'react-router-dom'
 import { useAppContext } from 'components/common/Context/AppContext'
 import Layout from 'components/common/Layout/Layout'
 
-const Home = () => {
-  const location = useLocation()
-  const pathname = location?.pathname
-  const [setScroll] = useEnableScroll()
-  
+const HomePage = () => {
   const {
     config
   } = useAppContext()
 
-  useEffect(() => {
-    if (pathname === '/#info') {
-      setScroll(true)
-    }
-  }, [pathname, setScroll])
-
   return (
     <Layout>
       {<Hero />}
+      <div id='info' />
       {config?.welcomeSectionHeading && <InfoSection section={'welcome'} />}
       <WhyTakeTest page={'test'}/> 
       <InfoSection section={'tips'}/>
@@ -34,4 +23,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

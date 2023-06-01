@@ -6,6 +6,7 @@ import { useAppContext } from 'components/common/Context/AppContext'
 
 const Header = () => {
   const { config } = useAppContext()
+
   return (
     <div
       className={styles.header}

@@ -5,10 +5,12 @@ import HistoryPage from './components/History/HistoryPage'
 import SurveyPage from './components/Survey/SurveyPage'
 import TestPage from './components/Test/TestPage'
 import ResultsPage from './components/Results/ResultsPage'
+import ScrollToHashElement from './components/common/ScrollToHashElement/ScrollToHashElement'
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToHashElement />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/history" element={<HistoryPage />} />

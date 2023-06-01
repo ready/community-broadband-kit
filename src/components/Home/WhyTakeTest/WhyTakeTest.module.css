@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--section-padding);
+  padding: 32px var(--section-padding);
+  min-height: 100vh;
 }
 
 .reportContains {
@@ -15,11 +16,10 @@
 
 .title {
   font-size: var(--font-size-heading2);
-    text-align: center;
-    font-weight: 700;
-    line-height: 1.05;
-    color: var(--color-gray-0);
-    padding-top: 20px;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--color-gray-0);
 }
 
 @media screen and (max-width: 1020px) {

@@ -15,7 +15,6 @@ const Hero = () => {
   const { config } = useAppContext()
   const title = config?.heading
   const description = config?.description
-  
   const navigate = useNavigate()
 
   const handleStartTest = (e) => {
