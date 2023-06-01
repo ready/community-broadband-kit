@@ -1,10 +1,15 @@
 import React from 'react'
 import PrimaryButton from 'components/common/Button/PrimaryButton'
-import { useAppContext } from 'components/common/Context/AppContext'
 import styles from './CurrentLocation.module.css'
+import { useToolkitContext } from 'components/common/Context/ToolkitContext'
+import { useMapsContext } from 'components/common/Context/MapsProvider'
 
 const CurrentLocation = ({ setShowCurrentLocation, form }) => {
-  const { strengthTestData, setStrengthTestData, surveyData, setSurveyData } = useAppContext()
+  const { 
+    metadata,
+    setMetadata
+  } = useToolkitContext()
+  const { googleMaps } = useMapsContext()
 
   async function getGeolocation() {
     return new Promise((resolve) => {
@@ -16,7 +21,6 @@ const CurrentLocation = ({ setShowCurrentLocation, form }) => {
       }
     
       function failure() {
-        console.log('hoo')
         resolve(null);
       }
   
@@ -36,14 +40,14 @@ const CurrentLocation = ({ setShowCurrentLocation, form }) => {
    */
   
   async function getReverseGeocodingData(lat, lng) {
-    let latlng = new window.google.maps.LatLng(lat, lng);
+    let latlng = new googleMaps.maps.LatLng(lat, lng)
     // This is making the Geocode request
-    let geocoder = new window.google.maps.Geocoder();
+    let geocoder = new googleMaps.maps.Geocoder()
     let address = geocoder.geocode({ 'latLng': latlng },  (results, status) => {
       if (status !== window.google.maps.GeocoderStatus.OK) {
         alert(status);
       }
-    });
+    })
     return address
   }
 
@@ -67,15 +71,8 @@ const CurrentLocation = ({ setShowCurrentLocation, form }) => {
 
       form.setFieldsValue({address: addressLocation.text})
 
-      setStrengthTestData({
-        ...strengthTestData,
-        addressLat: addressLocation.lat,
-        addressLon: addressLocation.lon,
-        address: addressLocation.text
-      })
-
-      setSurveyData({
-        ...surveyData,
+      setMetadata({
+        ...metadata,
         addressLat: addressLocation.lat,
         addressLon: addressLocation.lon,
         address: addressLocation.text
