@@ -27,12 +27,13 @@ const AppContextProvider = ({ children }) => {
   const [previousResults, setPreviousResults] = useState({})
 
   const {
-    data: { getMultitestResults } = {}
+    data: { getMultitestResults } = {},
+    refetch: refetchMultitestResults
   } = useQuery(GET_MULTITEST_RESULTS, {
     fetchPolicy: 'network-only',
-    skip: !metadata?.userId || !metadata?.ipAddress,
+    skip: !userId || !metadata?.ipAddress,
     variables: {
-      userId: metadata?.userId,
+      userId: userId,
       ipAddress: metadata?.ipAddress,
       cursorPagination: {all: true}
     }
@@ -45,7 +46,6 @@ const AppContextProvider = ({ children }) => {
           organizationId: config?.organizationId,
           userId,
           ipAddress: metadata?.ipAddress,
-          phoneNumber: metadata?.phoneNumber,
           ispName: metadata?.ispName,
           addressLat: metadata.addressLat,
           addressLon: metadata.addressLat,
@@ -131,7 +131,7 @@ const AppContextProvider = ({ children }) => {
           lat: incoming?.loc?.lat || 0,
           lon: incoming?.loc?.lon || 0
         }
-        setMetadata(data)
+        setMetadata({...metadata, ...data})
       })
       .catch(err => console.log(err))
     }
@@ -141,17 +141,14 @@ const AppContextProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    setPreviousResults(getMultitestResults?.results?.[0])
-  }, [getMultitestResults])
+    if (userId && metadata?.ipAddress) {
+      refetchMultitestResults()
+    }
+  }, [metadata])
 
   useEffect(() => {
-    setMetadata({
-      ...metadata,
-      connectionType: previousResults?.connectionType,
-      vpnOff: previousResults?.vpnOff,
-      noInterruptFromOtherDevices: previousResults?.noInterruptFromOtherDevices,
-    })
-  }, [previousResults])
+    setPreviousResults(getMultitestResults?.results?.[0])
+  }, [getMultitestResults])
 
   return (
     <AppContext.Provider
@@ -171,7 +168,7 @@ const AppContextProvider = ({ children }) => {
 }
 
 const GET_MULTITEST_RESULTS = gql`
-  query getMultitestResults($userId: String!, $cursorPagination: CursorPaginationInput) {
+  query getMultitestResults($userId: String!, $cursorPagination: CursorPagination) {
     getMultitestResults(userId: $userId, cursorPagination: $cursorPagination) {
       results {
         id

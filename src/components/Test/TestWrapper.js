@@ -9,19 +9,16 @@ import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 const TestWrapper = () => {
   const {
     config,
-    metadata
+    previousResults
   } = useToolkitContext()
 
-  const [currentDisplay, setCurrentDisplay] = useState('')
-  const [testData, setTestData] = useState({})
+  const initialDisplay = (previousResults?.address && previousResults?.connectionType
+    && previousResults?.vpnOff != null && previousResults?.noInterruptFromOtherDevices != null) 
+    ? 'same-setup' 
+    : 'before-test'
 
-  useEffect(() => {
-    if (metadata?.connectionType != null && metadata?.vpnOff != null && metadata?.noInterruptFromOtherDevices != null) {
-      setCurrentDisplay('same-setup')
-    } else {
-      setCurrentDisplay('before-test')
-    }
-  }, [])
+  const [currentDisplay, setCurrentDisplay] = useState(initialDisplay)
+  const [testData, setTestData] = useState({})
 
   const renderSection = () => {
     switch (currentDisplay) {

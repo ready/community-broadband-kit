@@ -7,7 +7,6 @@ import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 
 const BeforeTestSection = ({ setParentDisplay }) => {
   const [currentDisplay, setCurrentDisplay] = useState('address-input')
-  const { metadata, setMetadata } = useToolkitContext()
 
   const renderSection = () => {
     switch (currentDisplay) {
@@ -19,12 +18,6 @@ const BeforeTestSection = ({ setParentDisplay }) => {
         return <NoServiceSurvey />
       case 'checklist':
         return <ChecklistCard onClick={() => {
-          setMetadata({
-            ...metadata,
-            connectionType: metadata?.connectionType || '',
-            vpnOff: metadata?.vpnOff || null,
-            noInterruptFromOtherDevices: metadata?.noInterruptFromOtherDevices || null
-          })
           setParentDisplay('testing')
         }} />
       default:

@@ -10,7 +10,7 @@ const SameSetup = ({ setCurrentDisplay }) => {
     previousResults,
     metadata,
     setMetadata
-  } = useToolkitContext
+  } = useToolkitContext()
 
   const handleClick = (value) => {
     if (value) {
@@ -53,6 +53,7 @@ const SameSetup = ({ setCurrentDisplay }) => {
           />
         </Radio.Group>
       </StepCard>
+
     </div>
   )
 }
