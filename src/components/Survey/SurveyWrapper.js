@@ -13,12 +13,10 @@ const SurveyWrapper = () => {
     switch (currentDisplay) {
       case 'address-input':
         return <AddressCard onClick={(noService) => { 
-          noService ? setCurrentDisplay('no-service') : setCurrentDisplay('phone-number-input')
+          noService ? setCurrentDisplay('no-service') : setCurrentDisplay('survey')
         }}/>
       case 'no-service':
         return <NoServiceSurvey />
-      case 'phone-number-input':
-        return <PhoneNumberCard onClick={() => { setCurrentDisplay('survey') }}/>
       case 'survey':
         return <Survey onFinish={() => { setCurrentDisplay('survey-complete')}}/>
       case 'survey-complete':
