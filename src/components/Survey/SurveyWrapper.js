@@ -22,20 +22,20 @@ const SurveyWrapper = () => {
       case 'survey':
         return (
           <div className={styles.surveyWrap}>
-            <SectionContent>
               <Survey 
                 survey={survey} 
                 onFinish={() => { setCurrentDisplay('survey-complete')}}
               />
-            </SectionContent>
           </div>
         )
       case 'survey-complete':
         return (
-          <StepCard 
-            title='Thank you for completing the survey'
-            description='We have successfully recorded your response.'
-          />  
+          <div className={styles.surveyWrap}>
+            <StepCard 
+              title='Thank you for completing the survey'
+              description='We have successfully recorded your response.'
+            />  
+          </div>
         )
       default:
         return <></>

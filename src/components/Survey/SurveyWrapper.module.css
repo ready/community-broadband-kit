@@ -3,7 +3,6 @@
 }
 
 .surveyWrap {
-  width: 100%;
   max-width: var(--section-max-width);
   position: relative;
   padding: 120px 0;
@@ -12,6 +11,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.surveyWrap [class*='surveyButton'] {
+  align-self: flex-end !important;
+  margin-top: 24px !important;
+  position: relative !important;
 }
 
 /* Before survey style (address entry)*/
