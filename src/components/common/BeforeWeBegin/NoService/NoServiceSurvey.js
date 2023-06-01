@@ -35,25 +35,27 @@ const NoServiceSurvey = () => {
   }
 
   return (
-    <div className={styles.beforeTestWrap}>
+    <div className={styles.surveyWrap}>
         {!surveyComplete &&
           <>
-            <StepCard>
-              <NoServiceForm
-                form={form}
-                currentStep={currentStep}
-                handleChange={handleChange}
-              />
-              <SurveyProgressBar
-                totalQuestions={noServiceSurvey?.length}
-                completedQuestions={currentStep}
-              />
-            </StepCard>
-            <div className={styles.surveyButton}>
-              <PrimaryButton
-                buttonTitle={currentStep !== (noServiceSurvey?.length - 1) ? 'Next' : 'Finish'}
-                onClick={next}
-              />
+            <div className={styles.stepCard}>
+              <StepCard>
+                <NoServiceForm
+                  form={form}
+                  currentStep={currentStep}
+                  handleChange={handleChange}
+                />
+                <SurveyProgressBar
+                  totalQuestions={noServiceSurvey?.length}
+                  completedQuestions={currentStep}
+                />
+              </StepCard>
+              <div className={styles.surveyButton}>
+                <PrimaryButton
+                  buttonTitle={currentStep !== (noServiceSurvey?.length - 1) ? 'Next' : 'Finish'}
+                  onClick={next}
+                />
+              </div>
             </div>
           </>
         }
