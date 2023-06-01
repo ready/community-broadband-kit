@@ -3,11 +3,15 @@ import { gql, useQuery } from '@apollo/client'
 import { useAppContext } from 'components/common/Context/AppContext'
 import Layout from 'components/common/Layout/Layout'
 import HistoryTable from './HistoryTable'
+import { Spin } from 'antd'
+import { useEffect, useState } from 'react'
 
 const HistoryPage = () => {
   const {
     metadata
   } = useAppContext()
+
+  const [loading, setLoading] = useState(true)
 
   const {
     data: { getMultitestResults } = {}
@@ -19,10 +23,22 @@ const HistoryPage = () => {
     }
   })
 
+  useEffect(() => {
+    if (getMultitestResults) {
+      setLoading(false)
+    }
+  }, [getMultitestResults])
+
 
   return (
     <Layout>
-      <HistoryTable history={getMultitestResults?.results}/>
+      { loading ?  
+          <Spin tip="Loading..." style={{ height: '60%', }}>
+              <div style={{ height: 600, margin: 24 }}></div>
+          </Spin>
+        
+        : <HistoryTable history={getMultitestResults?.results}/>
+      }
     </Layout>
   )
 }
