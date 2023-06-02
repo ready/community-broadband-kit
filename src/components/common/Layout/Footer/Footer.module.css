@@ -4,14 +4,14 @@
     align-items: center;
     padding: var(--section-padding);
     background-color: var(--color-footer);
-    /* min-height: 80vh; */
+    min-height: 100vh
 }
 
 .logo img {
 max-height: 75px;
 }
   
-.title h1{
+.title h1 {
     color: white;
     font-weight: 700;
     line-height: 1.05;
@@ -36,6 +36,17 @@ max-height: 75px;
     /* left: 80px; */
     justify-content: center;
 }
+
+.newsletter {
+    font-size: var(--font-size-body0);
+    font-weight: bold;
+    color: white;
+}
+
+.newsletter:hover {
+    color: var(--color-button-hover);
+}
+
 @media screen and (max-width: 1020px) {
   .sectionRight {
     flex-direction: column;

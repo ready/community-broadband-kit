@@ -5,20 +5,27 @@ import Layout from 'components/common/Layout/Layout'
 import HistoryTable from './HistoryTable'
 import { Spin } from 'antd'
 import { useEffect, useState } from 'react'
+import StepCard from 'components/common/Card/StepCard'
+import styles from './HistoryPage.module.css'
+import LandscapeBackground from 'components/Home/LandscapeBackground/LandscapeBackground'
 
 const HistoryPage = () => {
   const {
-    metadata
+    metadata,
+    userId
   } = useAppContext()
 
   const [loading, setLoading] = useState(true)
+  const [noResults, setNoResults] = useState(false)
 
   const {
     data: { getMultitestResults } = {}
   } = useQuery(GET_TEST_RESULTS, {
     fetchPolicy: 'network-and-cache',
+    skip: !userId || !metadata?.ipAddress,
     variables: {
-      userId: metadata?.userId,
+      userId: userId,
+      ipAddress: metadata?.ipAddress,
       cursorPagination: {all: true}
     }
   })
@@ -26,19 +33,27 @@ const HistoryPage = () => {
   useEffect(() => {
     if (getMultitestResults) {
       setLoading(false)
+      setNoResults(getMultitestResults?.results?.length === 0)
     }
   }, [getMultitestResults])
 
-
   return (
     <Layout>
-      { loading ?  
+      <div className={styles.container}>
+        {loading && 
           <Spin tip="Loading..." style={{ height: '60%', }}>
-              <div style={{ height: 600, margin: 24 }}></div>
-          </Spin>
-        
-        : <HistoryTable history={getMultitestResults?.results}/>
-      }
+            <div style={{ height: 600, margin: 24 }}></div>
+          </Spin>}
+        {!loading && noResults && 
+          <StepCard
+            title='No results yet'
+            description='You may view your results after you take the performance test'
+          />}
+        {!loading && !noResults && <>
+          <HistoryTable history={getMultitestResults?.results}/>
+        </>}
+      </div>
+      <LandscapeBackground />
     </Layout>
   )
 }

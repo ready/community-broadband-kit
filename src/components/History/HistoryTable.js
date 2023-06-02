@@ -89,29 +89,28 @@ const HistoryTable = ({ history }) => {
     ]
 
   return (
-    <div className={styles.container}>
-      <SectionContent>
-          <Table
-            dataSource={history}
-            columns={columns}
-            className={styles.historyTable}
-            rowKey='id'
-            bordered
-            pagination={{
-              pageSize: 10,
-            }}
-            showSorterTooltip={false}
-            scroll={{ x: 'max-content' }}
-            onRow={(record, rowIndex) => {
-              return {
-                onClick: () => {
-                  navigate(`/result/${record.id}`)
-                }
+    <SectionContent>
+        <h2 className={styles.title}>Your Results</h2>
+        <Table
+          dataSource={history}
+          columns={columns}
+          className={styles.historyTable}
+          rowKey='id'
+          bordered
+          pagination={{
+            pageSize: 10,
+          }}
+          showSorterTooltip={false}
+          scroll={{ x: 'max-content' }}
+          onRow={(record, rowIndex) => {
+            return {
+              onClick: () => {
+                navigate(`/result/${record.id}`)
               }
-            }}
-          />
-      </SectionContent>
-    </div>
+            }
+          }}
+        />
+    </SectionContent>
   )    
 }
 

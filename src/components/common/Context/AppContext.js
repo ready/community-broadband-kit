@@ -157,6 +157,7 @@ const AppContextProvider = ({ children }) => {
         survey,
         previousResults,
         metadata,
+        userId,
         setMetadata,
         callUpdateMultitestSurveyResponse,
         callAddMultitestData

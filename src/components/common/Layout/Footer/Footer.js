@@ -3,11 +3,9 @@ import SectionContent from 'components/common/SectionContent/SectionContent'
 import SectionLeftContent from 'components/common/SectionContent/SectionLeftContent'
 import SectionRightContent from 'components/common/SectionContent/SectionRightContent'
 import Title from './Title/Title'
-import Description from './Description/Description'
 import FooterLinks from './FooterLinks/FooterLinks'
 import FooterSegmentLinks from './FooterLinks/FooterSegmentLinks'
 import FooterBottom from './FooterBottom/FooterBottom'
-import NewsLetter from './NewsLetter/NewsLetter'
 import styles from './Footer.module.css'
 import { useAppContext } from 'components/common/Context/AppContext'
 
@@ -21,10 +19,7 @@ const Footer = () => {
          {config?.showBbmReferences && 
           <>
             <Title className={styles.title}>Stay tuned for updates about our broadband grant journey.</Title>
-            <Description className={styles.description}>Want to stay informed about our progress? Enter your email here. We won't share it with third parties.</Description>
-            <div className={styles.newsLetter}>
-              <NewsLetter header />
-            </div> 
+            <a className={styles.newsletter} href='https://www.broadband.io/' target='_blank' rel='noreferrer'>Join the broadband community.</a>
            </>}
         </SectionLeftContent>
         <SectionRightContent className={styles.sectionRight}>
