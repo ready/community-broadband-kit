@@ -1,8 +1,11 @@
 import SectionContent from '../common/SectionContent/SectionContent'
 import { Table, Tag } from 'antd'
 import styles from './HistoryTable.module.css'
+import { useNavigate } from 'react-router-dom'
 
 const HistoryTable = ({ history }) => {
+  const navigate = useNavigate()
+
   const columns = [
       {
         title: <p>Date</p>,
@@ -13,7 +16,7 @@ const HistoryTable = ({ history }) => {
                 const dateFormatted = new Date(date).toLocaleDateString()
                 return (
                     <>
-                      <a href={`result/${record.id}`}>{dateFormatted}</a>
+                      <span>{dateFormatted}</span>
                     </>
                 ) 
             }
@@ -27,7 +30,7 @@ const HistoryTable = ({ history }) => {
             if (upload) {
                 return (
                     <>
-                      <a href={`result/${record.id}`}>{upload.toFixed(1)}</a>
+                      <span>{upload.toFixed(1)}</span>
                     </>
                   )
             } else {
@@ -43,7 +46,7 @@ const HistoryTable = ({ history }) => {
             if (download) {
                 return (
                     <>
-                      <a href={`result/${record.id}`}>{download.toFixed(1)}</a>
+                      <span>{download.toFixed(1)}</span>
                     </>
                   )
             } else {
@@ -59,7 +62,7 @@ const HistoryTable = ({ history }) => {
             if (latency) {
                 return (
                     <>
-                      <a href={`result/${record.id}`}>{latency.toFixed(1)}</a>
+                      <span>{latency.toFixed(1)}</span>
                     </>
                   )
             } else {
@@ -75,7 +78,7 @@ const HistoryTable = ({ history }) => {
             if (jitter) {
                 return (
                   <>
-                    <a href={`result/${record.id}`}>{jitter.toFixed(1)}</a>
+                    <span>{jitter.toFixed(1)}</span>
                   </>
                 )
             } else {
@@ -99,6 +102,13 @@ const HistoryTable = ({ history }) => {
             }}
             showSorterTooltip={false}
             scroll={{ x: 'max-content' }}
+            onRow={(record, rowIndex) => {
+              return {
+                onClick: () => {
+                  navigate(`/result/${record.id}`)
+                }
+              }
+            }}
           />
       </SectionContent>
     </div>

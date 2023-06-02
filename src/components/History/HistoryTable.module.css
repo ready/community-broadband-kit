@@ -59,6 +59,7 @@
 .historyTable [class*='ant-table-tbody'] > tr {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  cursor: pointer;
 }
 
 .historyTable [class*='ant-table-tbody'] > tr:nth-child(2n-1)  {
@@ -71,6 +72,6 @@
   font-size: var(--s-font);
 }
 
-.historyTable [class*='ant-table-tbody'] > tr > td a:hover {
+.historyTable [class*='ant-table-tbody'] > tr:hover  > td {
   color: var(--color-button-hover);
 }

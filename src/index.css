@@ -362,6 +362,9 @@ button.ant-btn-link {
   font-weight: 700;
  }
 
+:where(.css-ed5zg0) a:hover {
+	color: var(--color-button-hover) !important;
+}
 
 /** Translate style **/
 
