@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
 import styles from './LoadBar.module.css'
-import { useAppContext } from 'components/common/Context/AppContext'
 
 const LoadBar = ({ testSource }) => {
   const [testsDone, setTestsDone] = useState([])
@@ -16,8 +14,13 @@ const LoadBar = ({ testSource }) => {
       id: 'mlab-load-bar',
       href: 'https://speed.measurementlab.net/#/'
     },
+    'Cloudflare': {
+      label: 'Cloudflare',
+      id: 'cloudflare-load-bar',
+      href: 'https://speed.cloudflare.com/'
+    },
     'Speedtest.net': {
-      label: 'Speedtest.net',
+      label: 'Speedtest',
       id: 'ookla-load-bar',
       href: 'https://www.speedtest.net/'
     },
@@ -37,7 +40,7 @@ const LoadBar = ({ testSource }) => {
           className={`${styles.loadBarShape} ${(testsDone.includes(test)) ? styles.loadStarted : styles.notStarted}`}
         >
           <a
-            className={styles.loadLabel}
+            className={tests?.[test]?.label === 'RST' ? styles.loadLabelRst : styles.loadLabel}
             href={tests?.[test]?.href}
             target='_blank'
             rel='noreferrer'

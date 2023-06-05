@@ -33,6 +33,18 @@ const mlabUploadProgress = (stateSetters, upload) => {
  * @param {*} jitter M-lab final upload jitter result
  */
 const mlabUploadComplete = (stateSetters, upload, latency, jitter) => {
+  stateSetters.setTestProgress('')
+  stateSetters.setTestSource('Cloudflare')
+}
+
+/**
+ * Displays Speedtest.net upon completion of the Cloudflare test
+ * @param {*} download 
+ * @param {*} upload 
+ * @param {*} latency 
+ * @param {*} jitter 
+ */
+const cloudflareComplete = (stateSetters, upload, latency, jitter) => {
   if (!LOCAL_TESTING_FLAG) {
     stateSetters.setTestSource('Speedtest.net')
   } else {
@@ -94,6 +106,7 @@ const config = {
     uploadProgress: mlabUploadProgress,
     uploadComplete: mlabUploadComplete
   },
+  cloudflareComplete,
   ooklaComplete,
   rst: {
     pingProgress: rstPingProgress,

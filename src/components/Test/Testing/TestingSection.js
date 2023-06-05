@@ -36,15 +36,10 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
       setTestSource('M-Lab')
       setTestType('Downloading')
   
-      let results = await runTests(stateSetters, config)
-      results = {...results, ...getMedianResults(results)}
-  
-      for (const result in results) {
-        results[result] = Number(results[result])
-      }
+      let results = await runTests(stateSetters, config, metadata, callAddMultitestData)
+      const resultId = results?.id
   
       setTestData(results)
-      const resultId = await callAddMultitestData(results)
       if (resultId) {
         navigate(`/test`,`/result/${resultId}`, { shallow: true })
       }
@@ -61,12 +56,12 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
             <h2 className={styles.testHeading}>
               Running {testSource}...
             </h2>
-            {testSource === 'Speedtest.net' && <OoklaLoading />}
-            {!(testSource === 'Speedtest.net') && 
+            {(testSource === 'Speedtest.net' || testSource === 'Cloudflare') && <OoklaLoading />}
+            {!(testSource === 'Speedtest.net') && !(testSource === 'Cloudflare') && 
             <h3 className={styles.testType}>
               {testType}
             </h3>}
-            {!(testSource === 'Speedtest.net') && 
+            {!(testSource === 'Speedtest.net') && !(testSource === 'Cloudflare') && 
             <h3 className={styles.testSpeed}>
               {testProgress} 
               {

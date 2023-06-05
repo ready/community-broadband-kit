@@ -1,5 +1,5 @@
 .loadBar {
-  width: 430px;
+  width: 490px;
   height: 30px;
   position: relative;
 }
@@ -17,18 +17,25 @@
   100% {left: 5px;}
 }
 
-@keyframes ookla-animation {
+@keyframes cloudflare-animation {
   0%   {left: 125px;}
   25%  {left: 125px;}
   50%  {left: 130px;}
   100% {left: 130px;}
 }
 
-@keyframes rst-animation {
+@keyframes ookla-animation {
   0%   {left: 245px;}
   25%  {left: 255px;}
   50%  {left: 255px;}
   100% {left: 255px;}
+}
+
+@keyframes rst-animation {
+  0%   {left: 375px;}
+  25%  {left: 380px;}
+  50%  {left: 380px;}
+  100% {left: 380px;}
 }
 
 /* m-lab */
@@ -49,18 +56,17 @@
   left: 40px;
 }
 
-/* ookla */
+/* cloudflare */
 .loadBarShape:nth-child(2) {
   margin-left: 20px;
-  width: 140px;
-  animation-name: ookla-animation;
+  animation-name: cloudflare-animation;
   animation-duration: 5s;
   animation-iteration-count: infinite;
 }
 
 .loadBarShape:nth-child(2):after {
   top: 0;
-  left: 140px;
+  left: 100px;
 }
 
 .loadBarShape:nth-child(2):before {
@@ -68,12 +74,17 @@
   left: -20px;
 }
 
-/* rst */
+/* ookla */
 .loadBarShape:nth-child(3) {
-  margin-left: 60px;
-  animation-name: rst-animation;
+  margin-left: 20px;
+  animation-name: ookla-animation;
   animation-duration: 5s;
   animation-iteration-count: infinite;
+}
+
+.loadBarShape:nth-child(3):after {
+  top: 0;
+  left: 100px;
 }
 
 .loadBarShape:nth-child(3):before {
@@ -81,7 +92,20 @@
   left: -20px;
 }
 
-.loadBarShape:nth-child(3):after {
+/* rst */
+.loadBarShape:nth-child(4) {
+  margin-left: 20px;
+  animation-name: rst-animation;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+.loadBarShape:nth-child(4):before {
+  top: 0;
+  left: -20px;
+}
+
+.loadBarShape:nth-child(4):after {
   top: 0;
   left: 100px;
 }
@@ -147,11 +171,25 @@
   font-size: var(--font-size-body2);
 }
 
+.loadLabelRst {
+  position: absolute;
+  left: 30px;
+  font-size: var(--font-size-body2);
+}
+
 .loadStarted > .loadLabel {
   color: var(--color-gray-0);
 }
 
 .notStarted > .loadLabel {
+  color: var(--color-text);
+}
+
+.loadStarted > .loadLabelRst {
+  color: var(--color-gray-0);
+}
+
+.notStarted > .loadLabelRst {
   color: var(--color-text);
 }
 
