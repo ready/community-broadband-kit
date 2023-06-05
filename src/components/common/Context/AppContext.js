@@ -43,7 +43,7 @@ const AppContextProvider = ({ children }) => {
     try {
       const res = await updateMultitestSurveyResponse({ variables: {
         surveyData: {
-          organizationId: config?.organizationId,
+          organizationId: config?.organization?.id,
           userId,
           ipAddress: metadata?.ipAddress,
           ispName: metadata?.ispName,
@@ -69,7 +69,7 @@ const AppContextProvider = ({ children }) => {
       const res = await addMultitestData({ 
         variables: {
           testData: {
-            organizationId: config?.organizationId,
+            organizationId: config?.organization?.id,
             userId,
             ipAddress: metadata?.ipAddress,
             ispName: metadata?.ispName,
