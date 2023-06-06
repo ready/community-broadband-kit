@@ -36,7 +36,7 @@ export const GRAPHQL_API_URL = `${BASE_API_URL}/graphql`
 
 export const API_URL = BASE_API_URL
 
-export const LOCAL_TESTING_FLAG = !process.env.ENVIRONMENT
+export const LOCAL_TESTING_FLAG = !process.env.REACT_APP_ENVIRONMENT
 
 export const SERVERLESS_TESTING_FLAG = LOCAL_TESTING_FLAG && process.env.REACT_APP_SERVERLESS_TESTING_FLAG === 'true'
 
