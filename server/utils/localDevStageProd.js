@@ -1,6 +1,5 @@
 function localDevStageProd ({ local, dev, stage, prod }) {
   const env = process.env.REACT_APP_ENVIRONMENT
-  console.log(env)
   let result = local
 
   if (!env) {
