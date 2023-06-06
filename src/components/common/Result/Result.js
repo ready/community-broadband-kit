@@ -74,6 +74,25 @@ const Result = ({ results, serviceStatus }) => {
         }
       ]
     },
+    'Cloudflare': {
+      status: serviceStatus?.cloudflareServiceStatusText,
+      results: [
+        {
+          result: results?.cloudflareDownload,
+          serviceStatus: serviceStatus?.cloudflareDownloadServiceStatusText
+        },
+        {
+          result: results?.cloudflareUpload,
+          serviceStatus: serviceStatus?.cloudflareUploadServiceStatusText
+        },
+        {
+          result: results?.cloudflareLatency
+        },
+        {
+          result: results?.cloudflareJitter
+        }
+      ]
+    },
     'Speedtest.net': {
       status: serviceStatus?.ooklaServiceStatusText,
       results: [

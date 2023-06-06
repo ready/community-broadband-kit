@@ -71,6 +71,13 @@ export default function getServiceStatus(results) {
   const mlabUploadServiceStatusText = getUploadServiceStatus(results.mlabUpload)
   const mlabUploadServiceStatusClass = classNameMap[mlabUploadServiceStatusText]
 
+  const cloudflareServiceStatusText = getOverallServiceStatus(results.cloudflareDownload, results.cloudflareUpload)
+  const cloudflareServiceStatusClass = classNameMap[cloudflareServiceStatusText]
+  const cloudflareDownloadServiceStatusText = getDownloadServiceStatus(results.cloudflareDownload)
+  const cloudflareDownloadServiceStatusClass = classNameMap[cloudflareDownloadServiceStatusText]
+  const cloudflareUploadServiceStatusText = getUploadServiceStatus(results.cloudflareUpload)
+  const cloudflareUploadServiceStatusClass = classNameMap[cloudflareUploadServiceStatusText]
+
   const rstServiceStatusText = getOverallServiceStatus(results.rstDownload, results.rstUpload)
   const rstServiceStatusClass = classNameMap[rstServiceStatusText]
   const rstDownloadServiceStatusText = getDownloadServiceStatus(results.rstDownload)
@@ -98,6 +105,14 @@ export default function getServiceStatus(results) {
       mlabDownloadServiceStatusClass,
       mlabUploadServiceStatusText,
       mlabUploadServiceStatusClass,
+
+      cloudflareServiceStatusText,
+      cloudflareServiceStatusClass,
+      cloudflareDownloadServiceStatusText,
+      cloudflareDownloadServiceStatusClass,
+      cloudflareUploadServiceStatusText,
+      cloudflareUploadServiceStatusClass,
+      
       rstServiceStatusText,
       rstServiceStatusClass,
       rstDownloadServiceStatusText,

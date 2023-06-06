@@ -68,6 +68,10 @@ const GET_MULTITEST_RESULT = gql`
       ooklaJitter
       ooklaUpload
       ooklaDownload
+      cloudflareLatency
+      cloudflareJitter
+      cloudflareUpload
+      cloudflareDownload
       medianUpload
       medianDownload
       medianJitter
