@@ -18,7 +18,7 @@ const FooterSegmentLinks = () => {
       },
       {
         text: 'Test History',
-        href: '/',
+        href: '/history',
         target: '_blank' ,
         rel: 'noreferrer',
       },
@@ -39,7 +39,7 @@ const FooterSegmentLinks = () => {
     links = [
       {
         text: 'Test History',
-        href: '/',
+        href: '/history',
         target: '_blank' ,
         rel: 'noreferrer',
       }
