@@ -35,3 +35,13 @@
   color: #389E0D; */
   width: fit-content;
 }
+
+.Unknown {
+  /* background-color: var(--color-neutral-2); */
+  color: var(--gray);
+  border: 1px solid var(--gray);
+  box-sizing: border-box;
+  /* border-color: #B7EB8F;
+  color: #389E0D; */
+  width: fit-content;
+}
