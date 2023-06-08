@@ -1,5 +1,5 @@
 export default function localDevStageProd ({ local, dev, stage, prod }) {
-  const env = process.env.NEXT_PUBLIC_ENVIORNMENT
+  const env = process.env.REACT_APP_ENVIRONMENT
   let result = local
 
   if (!env) {

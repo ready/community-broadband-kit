@@ -6,8 +6,6 @@ const speedtestCustomLink = 'https://community.speedtestcustom.com'
  * @returns An object containing ookla speed test results
  */
 async function runOoklaTest(state, completeHandler) {
-  const ooklaElement = document.getElementById('ookla-test')
-
   const ooklaResults = new Promise((resolve) => {
     async function ooklaTestCompleted(event) {
       if (event.origin !== speedtestCustomLink) {
@@ -22,16 +20,18 @@ async function runOoklaTest(state, completeHandler) {
       }
 
       completeHandler(state, results.download, results.upload, results.latency, results.jitter)
-    
+      document.body.removeChild(document.getElementById('speedtest-custom-iframe'))
       resolve(results)
     }
     window.addEventListener("message", ooklaTestCompleted)
   })
 
   const iframe = document.createElement('iframe')
+  iframe.id = 'speedtest-custom-iframe'
   iframe.src = speedtestCustomLink
+  iframe.display = 'none'
   iframe.referrerPolicy = 'origin'
-  ooklaElement.appendChild(iframe)
+  document.body.appendChild(iframe)
 
   return ooklaResults
 }

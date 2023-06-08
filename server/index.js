@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require("fs"); 
@@ -5,11 +6,17 @@ const app = express();
 const getConfig = require('./utils/getConfig')
 const { DEFAULT_HOST } = require('./utils/constants')
 const metadataRouter = require('./routes/metadata')
+const emailReminderRouter = require('./routes/emailReminder')
+const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 3001;
 const indexPath  = path.resolve(__dirname, '..', 'build', 'index.html');
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 app.use('/', metadataRouter)
+app.use('/', emailReminderRouter)
 
 app.get('/', returnIndexPage)
 
@@ -41,13 +48,20 @@ function returnIndexPage(req, res, next) {
 
     const colors = config?.themeColor.map(color => `#${color}`)
 
-    htmlData = htmlData.replace(
-        '<title>Community Broadband Toolkit</title>',
-        `<title>${config.title}</title>`
-    )
-    .replace('__META_OG_TITLE__', config.headerTitle)
-    .replace('__META_OG_DESCRIPTION__', config.ogDescription || config.headerDescription)
-    .replace('__META_DESCRIPTION__', config.headerDescription)
+    htmlData = htmlData
+    .replace('__FAVICON__', config.favicon || 'favicon.ico')
+    .replace('<title>Community Broadband Kit</title>',
+    config.headerTitle ?
+    `<title>${config.headerTitle}</title>` :
+    `<title>${config.communityName} Community Toolkit: Free Broadband Tests</title>`)
+    .replace('__META_DESCRIPTION__', config.headerDescription || `Gather ${config.communityName}'s broadband test results to build empirical proof for BEAD's eligibility and challenge process. Find out the unserved and underserved status of broadband serviceable locations in ${config.communityName}'s area.`)
+    .replace('__META_KEYWORDS__', `free, broadband test, empirical data, performance test, eligibility, challenge process, unserved, served, underserved, broadband, state broadband office list, iija, ntia, ntia/iija, treasury cpf, cpf, award grants, win broadband grants, community, community toolkit, BEAD, NOFO, broadband grants, communities, guides, subsidiarities, census block groups, ${config.communityName}`)
+    .replace('__META_OG_TITLE__', config.ogTitle || config.headerTitle || `Be a champion of your community. Help ${config.communityName} by taking a free internet speed test.`)
+    .replace('__META_OG_DESCRIPTION__', config.ogDescription || config.headerDescription || `This quick and easy test helps you and your neighbors in ${config.communityName} win grants to deliver you better broadband service.`)
+    .replace('__META_OG_IMAGE__', config.ogImage || 'https://storage.googleapis.com/boss-public-assets-prod/measure-broadband.png')
+    .replace('__META_TWITTER_TITLE__', config.ogTitle || config.headerTitle || `Be a champion of your community. Help ${config.communityName} by taking a free internet speed test.`)
+    .replace('__META_TWITTER_DESCRIPTION__', config.ogDescription || config.headerDescription || `This quick and easy test helps you and your neighbors in ${config.communityName} win grants to deliver you better broadband service.`)
+    .replace('__META_TWITTER_IMAGE__', config.ogImage || 'https://storage.googleapis.com/boss-public-assets-prod/measure-broadband.png')
     .replace('<style></style>', `
       <style>
         :root {
