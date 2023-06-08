@@ -24,8 +24,8 @@ async function uploadResults(results, metadata, callAddMultitestData, resultId) 
   }
 
   try {
-    const res = await callAddMultitestData(data)
-    data.id = res?.data?.addMultitestData?.id
+    const id = await callAddMultitestData(testData)
+    data.id = id
 
     return data
   } catch (error) {
@@ -85,7 +85,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
   }
 
   data = await uploadResults(results, metadata, callAddMultitestData, resultId)
-  resultId = data.id
+  resultId = data?.id
 
   try {
     const cloudflareResults = await withTimeout({
@@ -107,7 +107,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
   }
 
   data = await uploadResults(results, metadata, callAddMultitestData, resultId)
-  resultId = data.id
+  resultId = data?.id
 
   try {
     let ooklaResults = {}
@@ -132,7 +132,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
   }
 
   data = await uploadResults(results, metadata, callAddMultitestData, resultId)
-  resultId = data.id
+  resultId = data?.id
 
   try {
     const rstResults = await withTimeout({
