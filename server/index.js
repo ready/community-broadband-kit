@@ -6,11 +6,17 @@ const app = express();
 const getConfig = require('./utils/getConfig')
 const { DEFAULT_HOST } = require('./utils/constants')
 const metadataRouter = require('./routes/metadata')
+const emailReminderRouter = require('./routes/emailReminder')
+const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 3001;
 const indexPath  = path.resolve(__dirname, '..', 'build', 'index.html');
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 app.use('/', metadataRouter)
+app.use('/', emailReminderRouter)
 
 app.get('/', returnIndexPage)
 

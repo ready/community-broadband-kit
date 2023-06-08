@@ -8,9 +8,12 @@ const RemindEmail = () => {
 
   const sendEmail = async () => {
     setLoading(true)
-    const results = await fetch(`/remindEmail`, {
+    const results = await fetch(`/emailReminder`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
       method: 'post',
-      body: JSON.stringify({email, domainName: window?.location?.hostname, url: window?.location?.href}),
+      body: JSON.stringify({email, url: window?.location?.href}),
     })
 
     const { error, msg } = await results.json()
@@ -23,29 +26,13 @@ const RemindEmail = () => {
     }
   }
 
-  const [allow, setAllow] = useState(true)
-
-  const allowToSendEmail = () => {
-    if (typeof allow === 'undefined') {
-      setAllow(true)
-    }
-    if (allow && email) {
-      setAllow(false)
-    } else if (allow) {
-      console.log('send email')
-    } else {
-      setAllow(true)
-    }
-  }
-
   return (
     <div className={styles.newsLetterContainer}>
-      {allow
-        ? <div className={styles.buttonContainer}>
+      <div className={styles.buttonContainer}>
           {loading
             ? <div>
-              <Spin />
-            </div>
+                <Spin />
+              </div>
             : <input
                 type='email'
                 id='email'
@@ -55,16 +42,7 @@ const RemindEmail = () => {
                 onChange={e => setEmail(e.target.value)}
               />}
           <button className={styles.button} onClick={sendEmail}>Remind me</button>
-          </div>
-        : <>
-          <p
-            className={styles.textLink}
-            onClick={allowToSendEmail}
-          >
-            Get alerts
-          </p>
-        </>}
-
+      </div>
     </div>
   )
 }
