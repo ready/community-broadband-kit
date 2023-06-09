@@ -23,8 +23,8 @@ async function uploadResults(results, callAddMultitestData, resultId) {
   }
 
   try {
-    const res = await callAddMultitestData(data)
-    data.id = res?.data?.addMultitestData?.id
+    const id = await callAddMultitestData(data)
+    data.id = id
 
     return data
   } catch (error) {
@@ -59,7 +59,7 @@ function withTimeout({
  * @param {*} config An object containing callbacks to handle progress updates during the test
  * @returns An object containing the test results for each test or throws an exception if there is an error running the test
  */
-async function runTests(stateSetters, config, metadata, callAddMultitestData) {
+async function runTests(stateSetters, config, callAddMultitestData) {
   let results = {}
   let data = {}
   let resultId
@@ -84,7 +84,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
   }
 
   data = await uploadResults(results, callAddMultitestData, resultId)
-  resultId = data.id
+  resultId = data?.id
 
   try {
     const cloudflareResults = await withTimeout({
@@ -106,7 +106,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
   }
 
   data = await uploadResults(results, callAddMultitestData, resultId)
-  resultId = data.id
+  resultId = data?.id
 
   try {
     let ooklaResults = {}
@@ -131,7 +131,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
   }
 
   data = await uploadResults(results, callAddMultitestData, resultId)
-  resultId = data.id
+  resultId = data?.id
 
   try {
     const rstResults = await withTimeout({
@@ -150,13 +150,6 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
   }
 
   data = await uploadResults(results, callAddMultitestData, resultId)
-
-  /*
-  Object
-    .keys(data)
-    .filter(key => data[key] === undefined)
-    .forEach(key => delete data[key])
-  */
 
   return data
 }

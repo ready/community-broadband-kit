@@ -16,7 +16,7 @@ const ResultCard = ({ icon, iconAlt, title, result, units, serviceStatus }) => {
         <h4>{title}</h4>
       </div>
       <div className={styles.speed}>
-        <p className={styles.result}>{result}</p>
+        <p className={styles.result}>{result || 'N/A'}</p>
         <span className={styles.units}> {units}</span>
       </div>
       {serviceStatus &&

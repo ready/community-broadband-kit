@@ -6,7 +6,6 @@ import LoadBar from './LoadBar'
 import OoklaLoading from './OoklaLoading'
 import config from './testSrc/testConfig'
 import runTests from './testSrc/runTests'
-import getMedianResults from 'utils/getMedianResults'
 import { useNavigate } from 'react-router-dom'
 import styles from './TestingSection.module.css'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
@@ -41,7 +40,8 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
   
       setTestData(results)
       if (resultId) {
-        navigate(`/test`,`/result/${resultId}`, { shallow: true })
+        const resultUrl = `${window.location.origin}/result/${resultId}`
+        window.history.replaceState({}, '', resultUrl)
       }
       setCurrentDisplay('result')
     }
