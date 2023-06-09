@@ -36,7 +36,7 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
       setTestSource('M-Lab')
       setTestType('Downloading')
   
-      let results = await runTests(stateSetters, config, metadata, callAddMultitestData)
+      let results = await runTests(stateSetters, config, callAddMultitestData)
       const resultId = results?.id
   
       setTestData(results)

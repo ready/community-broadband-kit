@@ -6,13 +6,17 @@
  * @returns a string representing service status
  */
 function getOverallServiceStatus(download, upload) {
-    if (download < 25 || upload < 3) {
-        return 'Unserved'
-    } else if (download < 100 || upload < 20) {
-        return 'Underserved'
-    } else {
-        return 'Served'
-    }
+  if (!download || !upload) {
+      return 'Unknown'
+  }
+
+  if (download < 25 || upload < 3) {
+      return 'Unserved'
+  } else if (download < 100 || upload < 20) {
+      return 'Underserved'
+  } else {
+      return 'Served'
+  }
 }
 
 /**
@@ -21,31 +25,40 @@ function getOverallServiceStatus(download, upload) {
  * @returns a string representing service status
  */
 function getUploadServiceStatus(upload) {
+  if (!upload) {
+      return 'Unknown'
+  }
+
   if (upload < 3) {
-    return 'Unserved'
+      return 'Unserved'
   } else if (upload < 20) {
-    return 'Underserved'
+      return 'Underserved'
   } else {
-    return 'Served'
+      return 'Served'
   }
 }
 
 /**
- * Gets the service status for download speed
- * @param {*} download 
- * @returns a string representing service status
- */
+* Gets the service status for download speed
+* @param {*} download 
+* @returns a string representing service status
+*/
 function getDownloadServiceStatus(download) {
+  if (!download) {
+      return 'Unknown'
+  }
+
   if (download < 25) {
-    return 'Unserved'
+      return 'Unserved'
   } else if (download < 100) {
-    return 'Underserved'
+      return 'Underserved'
   } else {
-    return 'Served'
+      return 'Served'
   }
 }
 
 const classNameMap = {
+  'Unknown': 'result-tag-unknown',
   'Unserved': 'result-tag-unserved',
   'Underserved': 'result-tag-underserved',
   'Served': 'result-tag-served'

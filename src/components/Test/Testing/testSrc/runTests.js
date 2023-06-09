@@ -11,16 +11,15 @@ import getMedianResults from 'utils/getMedianResults.js'
  * @returns An object containing the test results for each test or throws an exception if there is an error running the test
  */
 
-async function uploadResults(results, metadata, callAddMultitestData, resultId) {
+async function uploadResults(results, callAddMultitestData, resultId) {
   let data = {...results, ...getMedianResults(results)}
 
   for (const result in data) {
     data[result] = Number(data[result])
   }
 
-  let testData = {...metadata, ...data}
   if (resultId) {
-    testData.id = resultId
+    data.id = resultId
   }
 
   try {
@@ -84,7 +83,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
     config?.mlab?.uploadComplete?.(stateSetters)
   }
 
-  data = await uploadResults(results, metadata, callAddMultitestData, resultId)
+  data = await uploadResults(results, callAddMultitestData, resultId)
   resultId = data.id
 
   try {
@@ -106,7 +105,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
     config?.cloudflareComplete?.(stateSetters)
   }
 
-  data = await uploadResults(results, metadata, callAddMultitestData, resultId)
+  data = await uploadResults(results, callAddMultitestData, resultId)
   resultId = data.id
 
   try {
@@ -131,7 +130,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
     config?.ooklaComplete?.(stateSetters)
   }
 
-  data = await uploadResults(results, metadata, callAddMultitestData, resultId)
+  data = await uploadResults(results, callAddMultitestData, resultId)
   resultId = data.id
 
   try {
@@ -150,7 +149,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
     config?.error?.(error)
   }
 
-  data = await uploadResults(results, metadata, callAddMultitestData, resultId)
+  data = await uploadResults(results, callAddMultitestData, resultId)
 
   /*
   Object
