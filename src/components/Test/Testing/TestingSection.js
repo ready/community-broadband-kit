@@ -6,7 +6,6 @@ import LoadBar from './LoadBar'
 import OoklaLoading from './OoklaLoading'
 import config from './testSrc/testConfig'
 import runTests from './testSrc/runTests'
-import { useNavigate } from 'react-router-dom'
 import styles from './TestingSection.module.css'
 import { useToolkitContext } from 'components/common/Context/ToolkitContext'
 import Survey from 'components/common/Survey/Survey'
@@ -18,7 +17,6 @@ const TestingSection = ({ setCurrentDisplay, setTestData }) => {
     surveySegment
   } = useToolkitContext()
 
-  const navigate = useNavigate()
   const [testSource, setTestSource] = useState('')
   const [testType, setTestType] = useState('')
   const [testProgress, setTestProgress] = useState('')
