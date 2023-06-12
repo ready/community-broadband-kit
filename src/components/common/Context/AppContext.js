@@ -48,7 +48,7 @@ const AppContextProvider = ({ children }) => {
           ipAddress: metadata?.ipAddress,
           ispName: metadata?.ispName,
           addressLat: metadata.addressLat,
-          addressLon: metadata.addressLat,
+          addressLon: metadata.addressLon,
           address: metadata.address,
           ...surveyAnswers 
         }
@@ -87,7 +87,7 @@ const AppContextProvider = ({ children }) => {
             osVersion: metadata?.osVersion,
             cpu: metadata?.cpu,
             addressLat: metadata?.addressLat,
-            addressLon: metadata?.addressLat,
+            addressLon: metadata?.addressLon,
             address: metadata?.address,
             connectionType: metadata?.connectionType,
             vpnOff: metadata?.vpnOff,
