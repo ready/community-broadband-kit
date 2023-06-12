@@ -6,17 +6,17 @@
  * @returns a string representing service status
  */
 function getOverallServiceStatus(download, upload) {
-    if (!download || !upload) {
-      return 'Unknown'
-    }
+  if (!download || !upload) {
+    return 'Unknown'
+  }
 
-    if (download < 25 || upload < 3) {
-        return 'Unserved'
-    } else if (download < 100 || upload < 20) {
-        return 'Underserved'
-    } else {
-        return 'Served'
-    }
+  if (download < 25 || upload < 3) {
+    return 'Unserved'
+  } else if (download < 100 || upload < 20) {
+    return 'Underserved'
+  } else {
+    return 'Served'
+  }
 }
 
 /**
@@ -39,10 +39,10 @@ function getUploadServiceStatus(upload) {
 }
 
 /**
- * Gets the service status for download speed
- * @param {*} download 
- * @returns a string representing service status
- */
+* Gets the service status for download speed
+* @param {*} download 
+* @returns a string representing service status
+*/
 function getDownloadServiceStatus(download) {
   if (!download) {
     return 'Unknown'
@@ -106,37 +106,37 @@ export default function getServiceStatus(results) {
   const ooklaUploadServiceStatusClass = classNameMap[ooklaUploadServiceStatusText]
 
   return {
-      serviceStatusText,
-      serviceStatusClass,
-      downloadServiceStatusText,
-      downloadServiceStatusClass,
-      uploadServiceStatusText,
-      uploadServiceStatusClass,
-      mlabServiceStatusText,
-      mlabServiceStatusClass,
-      mlabDownloadServiceStatusText,
-      mlabDownloadServiceStatusClass,
-      mlabUploadServiceStatusText,
-      mlabUploadServiceStatusClass,
+    serviceStatusText,
+    serviceStatusClass,
+    downloadServiceStatusText,
+    downloadServiceStatusClass,
+    uploadServiceStatusText,
+    uploadServiceStatusClass,
+    mlabServiceStatusText,
+    mlabServiceStatusClass,
+    mlabDownloadServiceStatusText,
+    mlabDownloadServiceStatusClass,
+    mlabUploadServiceStatusText,
+    mlabUploadServiceStatusClass,
 
-      cloudflareServiceStatusText,
-      cloudflareServiceStatusClass,
-      cloudflareDownloadServiceStatusText,
-      cloudflareDownloadServiceStatusClass,
-      cloudflareUploadServiceStatusText,
-      cloudflareUploadServiceStatusClass,
-      
-      rstServiceStatusText,
-      rstServiceStatusClass,
-      rstDownloadServiceStatusText,
-      rstDownloadServiceStatusClass,
-      rstUploadServiceStatusText,
-      rstUploadServiceStatusClass,
-      ooklaServiceStatusText,
-      ooklaServiceStatusClass,
-      ooklaDownloadServiceStatusText,
-      ooklaDownloadServiceStatusClass,
-      ooklaUploadServiceStatusText,
-      ooklaUploadServiceStatusClass
+    cloudflareServiceStatusText,
+    cloudflareServiceStatusClass,
+    cloudflareDownloadServiceStatusText,
+    cloudflareDownloadServiceStatusClass,
+    cloudflareUploadServiceStatusText,
+    cloudflareUploadServiceStatusClass,
+    
+    rstServiceStatusText,
+    rstServiceStatusClass,
+    rstDownloadServiceStatusText,
+    rstDownloadServiceStatusClass,
+    rstUploadServiceStatusText,
+    rstUploadServiceStatusClass,
+    ooklaServiceStatusText,
+    ooklaServiceStatusClass,
+    ooklaDownloadServiceStatusText,
+    ooklaDownloadServiceStatusClass,
+    ooklaUploadServiceStatusText,
+    ooklaUploadServiceStatusClass
   }
 }

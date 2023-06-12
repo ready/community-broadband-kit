@@ -25,8 +25,8 @@ const BASE_API_URL = localDevStageProd({
 
 const GRAPHQL_API_URL = `${BASE_API_URL}/graphql`
 
-const CITY_PATH = path.join(__dirname, '../GeoIP2-City.mmdb')
-const ISP_PATH = path.join(__dirname, '../GeoIP2-ISP.mmdb')
+const CITY_PATH = path.join(__dirname, '../../GeoIP2-City.mmdb')
+const ISP_PATH = path.join(__dirname, '../../GeoIP2-ISP.mmdb')
 
 module.exports = {
   HOSTS,

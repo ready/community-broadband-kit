@@ -11,20 +11,19 @@ import getMedianResults from 'utils/getMedianResults.js'
  * @returns An object containing the test results for each test or throws an exception if there is an error running the test
  */
 
-async function uploadResults(results, metadata, callAddMultitestData, resultId) {
+async function uploadResults(results, callAddMultitestData, resultId) {
   let data = {...results, ...getMedianResults(results)}
 
   for (const result in data) {
     data[result] = Number(data[result])
   }
 
-  let testData = {...metadata, ...data}
   if (resultId) {
-    testData.id = resultId
+    data.id = resultId
   }
 
   try {
-    const id = await callAddMultitestData(testData)
+    const id = await callAddMultitestData(data)
     data.id = id
 
     return data
@@ -60,7 +59,7 @@ function withTimeout({
  * @param {*} config An object containing callbacks to handle progress updates during the test
  * @returns An object containing the test results for each test or throws an exception if there is an error running the test
  */
-async function runTests(stateSetters, config, metadata, callAddMultitestData) {
+async function runTests(stateSetters, config, callAddMultitestData) {
   let results = {}
   let data = {}
   let resultId
@@ -84,7 +83,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
     config?.mlab?.uploadComplete?.(stateSetters)
   }
 
-  data = await uploadResults(results, metadata, callAddMultitestData, resultId)
+  data = await uploadResults(results, callAddMultitestData, resultId)
   resultId = data?.id
 
   try {
@@ -106,7 +105,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
     config?.cloudflareComplete?.(stateSetters)
   }
 
-  data = await uploadResults(results, metadata, callAddMultitestData, resultId)
+  data = await uploadResults(results, callAddMultitestData, resultId)
   resultId = data?.id
 
   try {
@@ -131,7 +130,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
     config?.ooklaComplete?.(stateSetters)
   }
 
-  data = await uploadResults(results, metadata, callAddMultitestData, resultId)
+  data = await uploadResults(results, callAddMultitestData, resultId)
   resultId = data?.id
 
   try {
@@ -150,14 +149,7 @@ async function runTests(stateSetters, config, metadata, callAddMultitestData) {
     config?.error?.(error)
   }
 
-  data = await uploadResults(results, metadata, callAddMultitestData, resultId)
-
-  /*
-  Object
-    .keys(data)
-    .filter(key => data[key] === undefined)
-    .forEach(key => delete data[key])
-  */
+  data = await uploadResults(results, callAddMultitestData, resultId)
 
   return data
 }
