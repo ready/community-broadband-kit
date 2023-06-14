@@ -299,7 +299,7 @@ export const survey = [
     id: 13,
     question: "When do you struggle most with your internet?",
     type: "radio",
-    answers: ["While streaming videos", "On video calls", "While loading pages on the internet"],
+    answers: ["While streaming videos", "On video calls", "While loading pages on the internet", "I don't struggle with my internet"],
     attribute: "struggleMost",
     attributeType: "string"
   },
