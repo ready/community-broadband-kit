@@ -21,7 +21,7 @@
   "dependencies": {
     "@google-cloud/storage": "^6.7.0",
     "@maxmind/geoip2-node": "^3.5.0",
-    "@notionhq/client": "^2.2.2",
+    "@notionhq/client": "^2.2.9",
     "@sendgrid/mail": "^7.7.0",
     "body-parser": "^1.20.1",
     "cheerio": "^1.0.0-rc.12",
