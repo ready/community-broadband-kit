@@ -345,39 +345,39 @@ function getChecklistItemResponse() {
  * @param {*} ipAddress 
  * @returns 
  */
-async function getPreviousResult(ipAddress) {
-  const body = JSON.stringify({
-      query: `query {
-          getMultitestResults (userId:"${userId}",ipAddress:"${ipAddress}") {
-            results {
-                  id
-                  noInterruptFromOtherDevices
-                  vpnOff
-                  connectionType
-                  address
-                  addressLat
-                  addressLon
-                  noService
-                  createdAt
-                  noService
-            }
-          }
-      }`
-  });
+// async function getPreviousResult(ipAddress) {
+//   const body = JSON.stringify({
+//       query: `query {
+//           getMultitestResults (userId:"${userId}",ipAddress:"${ipAddress}") {
+//             results {
+//                   id
+//                   noInterruptFromOtherDevices
+//                   vpnOff
+//                   connectionType
+//                   address
+//                   addressLat
+//                   addressLon
+//                   noService
+//                   createdAt
+//                   noService
+//             }
+//           }
+//       }`
+//   });
 
-  return fetch(BGA_URL, {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body
-  })
-  .then(res => res.json())
-  .then (result => {
-      return result.data.getMultitestResults.results;
-  })
-  .catch(err => console.log(err))
-}
+//   return fetch(BGA_URL, {
+//       method: 'POST',
+//       headers: {
+//           'Content-Type': 'application/json'
+//       },
+//       body
+//   })
+//   .then(res => res.json())
+//   .then (result => {
+//       return result.data.getMultitestResults.results;
+//   })
+//   .catch(err => console.log(err))
+// }
 
 /**
  * Checks if the user has taken a test before and if so, asks if they are using 
@@ -385,12 +385,12 @@ async function getPreviousResult(ipAddress) {
  */
 async function displaySameSetupOrAddress() {
   metadata = await metadata
-  previousResults = await getPreviousResult(metadata.ip)
-  if (previousResults.length > 0) {
-    sameSetupElement.style.display = "flex"
-  } else {
+  // previousResults = await getPreviousResult(metadata.ip)
+  // if (previousResults.length > 0) {
+  //   sameSetupElement.style.display = "flex"
+  // } else {
     displayAddressPrompt()
-  }
+  // }
 }
 
 /**

@@ -15,7 +15,8 @@ function indexTemplate(config) {
   const head = headTemplate(config, config.ogImage)
   const header = headerTemplate(config)
   const footer = footerTemplate(config)
-  const map = mapTemplate(config)
+  // const map = mapTemplate(config)
+  const map = ''
   const landscapeBackground = landscapeBackgroundTemplate()
   const howBackground= howTemplate()
   const buttonText = config.buttonText ? config.buttonText : 'Take the Test'

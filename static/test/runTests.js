@@ -14,12 +14,12 @@ async function runTests(config) {
   try {
     const mlabResults = await runMlabTest(config?.mlab)
 
-    let ooklaResults
-    if (LOCAL_TESTING_FLAG) {
-      ooklaResults = {latency: 0, jitter: 0, upload: 0, download: 0}
-    } else {
-      ooklaResults = await runOoklaTest(config?.ooklaComplete)
-    }
+    // let ooklaResults
+    // if (LOCAL_TESTING_FLAG) {
+    //   ooklaResults = {latency: 0, jitter: 0, upload: 0, download: 0}
+    // } else {
+    //   ooklaResults = await runOoklaTest(config?.ooklaComplete)
+    // }
 
     const rstResults = await runRst(config?.rst)
 
@@ -32,10 +32,10 @@ async function runTests(config) {
       mlabJitter: mlabResults.jitter,
       mlabUpload: mlabResults.upload,
       mlabDownload: mlabResults.download,
-      ooklaLatency: ooklaResults.latency,
-      ooklaJitter: ooklaResults.jitter,
-      ooklaUpload: ooklaResults.upload,
-      ooklaDownload: ooklaResults.download,
+      // ooklaLatency: ooklaResults.latency,
+      // ooklaJitter: ooklaResults.jitter,
+      // ooklaUpload: ooklaResults.upload,
+      // ooklaDownload: ooklaResults.download,
     }
 
     return results

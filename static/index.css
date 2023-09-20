@@ -1458,6 +1458,13 @@ progress[value]::-webkit-progress-value {
   border-radius: 4px;
 }
 
+.result-tag-unknown {
+  background-color: #f7f7f7;
+  border-color: gray;
+  color: gray;
+  width: fit-content;
+}
+
 .result-tag-unserved {
   background-color: #FFF1F0;
   border-color: #FFA39E;

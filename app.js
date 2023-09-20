@@ -1,9 +1,9 @@
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
-const historyRouter = require('./routes/historyRouter')
+// const historyRouter = require('./routes/historyRouter')
 const indexRouter = require('./routes/indexRouter')
-const resultsRouter = require('./routes/resultsRouter')
+// const resultsRouter = require('./routes/resultsRouter')
 const testRouter = require('./routes/testRouter')
 const surveyRouter = require('./routes/surveyRouter')
 const addEmailRouter = require('./routes/addEmail')
@@ -12,7 +12,7 @@ const getResultsFieldsRouter = require('./routes/getResultsFields')
 const metadataRouter = require('./routes/metadata')
 
 const app = express()
-const port = 8080
+const port = 8070
 
 require('dotenv').config()
 
@@ -24,9 +24,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // Routes
-app.use('/', historyRouter)
+// app.use('/', historyRouter)
 app.use('/', indexRouter)
-app.use('/', resultsRouter)
+// app.use('/', resultsRouter)
 app.use('/', testRouter)
 app.use('/', surveyRouter)
 app.use('/', addEmailRouter)
