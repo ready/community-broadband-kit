@@ -16,9 +16,6 @@ function footerTemplate(config) {
 							</div>
 						</div>
 						<div class='footer-section'>
-							<ul>
-								<li><a href="/history">Test History</a></li>
-							</ul>
 							<div class='social-link'>
 								<a href="#" target="_blank" class="facebook-btn-header">
 									<i class="fa fa-facebook-square gray"></i>
@@ -58,7 +55,6 @@ function footerTemplate(config) {
 						<div class='footer-section'>
 							<ul>
 								<li><a href="https://broadband.money/community-broadband-toolkit" target='_blank' rel='noreferrer'>Get Your Community's Broadband Kit</a></li>
-								<li><a href="/history">Test History</a></li>
 								<li><a href="https://broadband.money/contact-us" target='_blank' rel='noreferrer'>Contact Us</a></li>
 								<li><a href="https://discuss.broadband.money/home" target='_blank' rel='noreferrer'>Join the Discussion</a></li>
 								<li><a href="https://broadband.money/broadband-grant-terms/broadband-audit" target='_blank' rel='noreferrer'>What are Broadband Audits?</a></li>

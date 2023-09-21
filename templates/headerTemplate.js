@@ -14,7 +14,6 @@ function headerTemplate(config) {
 				</div>
 				<ul class="menu">
 					<li><a href="/#info">What's This</a></li>
-					<li><a href="/history">History</a></li>
 					<li class="language-container"></li>
 				</ul>
 				<button class="hamburger">
@@ -25,7 +24,6 @@ function headerTemplate(config) {
 				
 				<nav class='nav-container'>
 					<a href="/#info">What's This</a>
-					<a href="/history">History</a>
 					<div class="share-buttons-header" id="header-share-buttons">
 						<a href="#" target="_blank" class="facebook-btn-header">
 							<i class="fa fa-facebook-square icon-gray"></i>
@@ -54,7 +52,6 @@ function headerTemplate(config) {
 				</div>
 				<ul class="menu">
 					<li><a href="/#info">What's This</a></li>
-					<li><a href="/history">History</a></li>
 					<li>				
 						<a class='get-your-own-btn' href="https://broadband.money/community-broadband-toolkit" target='_blank' rel='noreferrer'>
 							<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>	
@@ -71,7 +68,6 @@ function headerTemplate(config) {
 				
 				<nav class='nav-container'>
 					<a href="/#info">What's This</a>
-					<a href="/history">History</a>
 					<a class='get-your-own-btn' href="https://broadband.money/community-broadband-toolkit" target='_blank' rel='noreferrer'>
 						<i class="fas fa-external-link-alt"></i>
 						Get Your Own

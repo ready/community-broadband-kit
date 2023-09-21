@@ -69,11 +69,11 @@ const mlabUploadProgress = (upload) => {
  * @param {*} jitter M-lab final upload jitter result
  */
 const mlabUploadComplete = (upload, latency, jitter) => {
-  if (!LOCAL_TESTING_FLAG) {
-    displayOokla()
-  } else {
+  // if (!LOCAL_TESTING_FLAG) {
+  //   displayOokla()
+  // } else {
     displayRst()
-  }
+  // }
 }
 
 /**
