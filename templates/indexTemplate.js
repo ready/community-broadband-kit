@@ -15,7 +15,8 @@ function indexTemplate(config) {
   const head = headTemplate(config, config.ogImage)
   const header = headerTemplate(config)
   const footer = footerTemplate(config)
-  const map = mapTemplate(config)
+  // const map = mapTemplate(config)
+  const map = ''
   const landscapeBackground = landscapeBackgroundTemplate()
   const howBackground= howTemplate()
   const buttonText = config.buttonText ? config.buttonText : 'Take the Test'
@@ -69,8 +70,7 @@ function indexTemplate(config) {
               <img class="why-icon" src='/static/assets/icons/checked.svg' width="42" height="42" alt='report icon' />
               <h3 class="verb">It's built for privacy</h3>
             </div>
-            <p class="blurb">Ap
-            art from survey questions voluntarily taken by you, this test does not gather or disclose information about your community.</p>
+            <p class="blurb">Apart from survey questions voluntarily taken by you, this test does not gather or disclose information about your community.</p>
           </div>
           <div class="why">
             <div class="why-icon-verb">

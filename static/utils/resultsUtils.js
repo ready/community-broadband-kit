@@ -133,10 +133,10 @@ async function displayResults(results) {
     rstServiceStatus.textContent = resultsFields.rstServiceStatusText
     rstServiceStatus.className += resultsFields.rstServiceStatusClass
 
-    ooklaDownloadElement.textContent = results.ooklaDownload
-    ooklaUploadElement.textContent = results.ooklaUpload
-    ooklaLatencyElement.textContent = results.ooklaLatency
-    ooklaJitterElement.textContent = results.ooklaJitter
+    ooklaDownloadElement.textContent = results.ooklaDownload || 'N/A'
+    ooklaUploadElement.textContent = results.ooklaUpload || 'N/A'
+    ooklaLatencyElement.textContent = results.ooklaLatency || 'N/A'
+    ooklaJitterElement.textContent = results.ooklaJitter || 'N/A'
     ooklaDownloadServiceStatus.textContent = resultsFields.ooklaDownloadServiceStatusText
     ooklaDownloadServiceStatus.className += resultsFields.ooklaDownloadServiceStatusClass
     ooklaUploadServiceStatus.textContent = resultsFields.ooklaUploadServiceStatusText
@@ -145,15 +145,15 @@ async function displayResults(results) {
     ooklaServiceStatus.className += resultsFields.ooklaServiceStatusClass
 
     // Construct the link to the current result from the result id
-    resultUrl = `${window.location.origin}/results/${results.resultId}`
+    // resultUrl = `${window.location.origin}/results/${results.resultId}`
 
     // Replace the test link in history with the link to the result
-    history.replaceState({}, '', resultUrl)
+    // history.replaceState({}, '', resultUrl)
 
     // Set up the share buttons
-    if (facebookBtn) {
-        setShareButton();
-    }
+    // if (facebookBtn) {
+    //     setShareButton();
+    // }
 }
 
 /**
@@ -162,7 +162,8 @@ async function displayResults(results) {
  * @returns The median value
  */
 function getMedian(array) {
-    let concat = array;
+    let concat = array.filter(el => el)
+
     concat = concat.sort(
         function (a, b) { return a - b })
 
@@ -172,7 +173,7 @@ function getMedian(array) {
         return concat[(length / 2) - .5]
     }
     else {
-        return (concat[length / 2] + concat[(length / 2) - 1]) / 2
+        return ((parseFloat(concat[length / 2]) + parseFloat(concat[(length / 2) - 1])) / 2).toFixed(2)
     }
 }
 
