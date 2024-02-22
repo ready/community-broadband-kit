@@ -12,7 +12,7 @@ const getResultsFieldsRouter = require('./routes/getResultsFields')
 const metadataRouter = require('./routes/metadata')
 
 const app = express()
-const port = 8080
+const port = 8070
 
 require('dotenv').config()
 

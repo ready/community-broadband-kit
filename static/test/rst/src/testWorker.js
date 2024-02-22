@@ -4,7 +4,7 @@ importScripts('/static/test/rst/src/string.js');
 
 // The WebSocket address of the server
 //const url = 'ws://localhost:4000';
-const url = 'wss://wifi.wtf';
+const url = 'wss://test.ready.net';
 
 let LOCAL_TESTING_FLAG
 let BGA_URL
@@ -236,7 +236,7 @@ async function runDownloadTest() {
  * @returns An object containing the metadata info about the client
  */
 async function getMetadata() {
-    return fetch('https://wifi.wtf/metadata')
+    return fetch('https://test.ready.net/metadata')
         .then(res => res.json())
         .then(incoming => {
             return {
