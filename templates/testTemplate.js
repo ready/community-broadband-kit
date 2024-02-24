@@ -52,7 +52,7 @@ function testTemplate(config) {
                     <a href="https://www.speedtest.net/" target="_blank" class="load-label">Speedtest</a>
                   </div>
                   <div class="load-bar-shape load-bar-not-started" id="rst-load-bar">
-                    <a href="https://wifi.wtf/" target="_blank" class="load-label">WiFi.wtf</a>
+                    <a href="https://test.ready.net/" target="_blank" class="load-label">RST</a>
                   </div>
                 </div>
               </div>
@@ -234,7 +234,7 @@ function testTemplate(config) {
                     </div>
                   </div>
                   <div class="test-title">
-                    <h3>WiFi.wtf <sup class="beta">beta</sup></h3>
+                    <h3>Ready Strength Test <sup class="beta">beta</sup></h3>
                     <p class="result-tag" id="rst-service-status"></p>
                   </div>
                   <div class="results-cards-container">

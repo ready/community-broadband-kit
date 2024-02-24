@@ -38,7 +38,7 @@ While communities and providers are encouraged to [launch their own ommunity Bro
 
 ### Speed test
 
-The speed test component consists of running three different speed tests in sequence: [M-Lab's ndt7](https://speed.measurementlab.net/#/), [Speedtest by Ookla](https://www.speedtest.net/), and our own speed test which can be found at [WiFi.wtf](https://wifi.wtf/). We run three different speed tests to limit the bias of any single speed test implementation on the results. The results of each the three speed tests can be viewed by the test-taker, along with an overall score determined by taking the median of the three test results in each category (ie. download, upload, latency, jitter).
+The speed test component consists of running three different speed tests in sequence: [M-Lab's ndt7](https://speed.measurementlab.net/#/), [Speedtest by Ookla](https://www.speedtest.net/), and our own speed test which can be found at [test.ready.net](https://test.ready.net/). We run three different speed tests to limit the bias of any single speed test implementation on the results. The results of each the three speed tests can be viewed by the test-taker, along with an overall score determined by taking the median of the three test results in each category (ie. download, upload, latency, jitter).
 
 ### Survey
 
@@ -150,22 +150,22 @@ Parameters:
 
 Parameters: 
 
-`latency` The latest latency measurement from the WiFi.wtf speed test in ms
+`latency` The latest latency measurement from the Ready Strength Test in ms
 
-`jitter` The latest jitter measurement from the WiFi.wtf speed test in ms
+`jitter` The latest jitter measurement from the Ready Strength Test in ms
 
 
 ##### `config.rst.downloadProgress`
 
 Parameters: 
 
-`download` The latest download throughput measurement from the WiFi.wtf speed test in Mbps
+`download` The latest download throughput measurement from the Ready Strength Test in Mbps
 
 ##### `config.rst.uploadProgress`
 
 Parameters: 
 
-`upload` The latest upload throughput measurement from the WiFi.wtf speed test in Mbps
+`upload` The latest upload throughput measurement from the Ready Strength Test in Mbps
 
 #### Return value
 

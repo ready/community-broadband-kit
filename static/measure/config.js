@@ -33,7 +33,7 @@ function displayRst() {
   ooklaLoadingElement.style.display = 'none'
   testProgressElement.style.display = 'block'
   testTypeElement.style.display = 'block'
-  testSourceElement.textContent = 'Running WiFi.wtf...'
+  testSourceElement.textContent = 'Running Ready Strength Test...'
   testTypeElement.textContent = 'Connecting'
   rstLoadBar.classList.replace('load-bar-not-started', 'load-bar-started')
 }
