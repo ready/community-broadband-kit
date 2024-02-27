@@ -3,15 +3,15 @@
 </p>
 <h1 align="center" style="margin-top: 0px;">
   Community Broadband Kit &nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="version" src="https://img.shields.io/static/v1?label=Version&color=740e86&labelColor=555555&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAggAAAIIBsKhZvgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFsSURBVCiRjZK9S9VxFMY/53df7EVocchBuIMtZtDUEA0N/QlKtIRUY2IOpYvQVIOLQZvU0OAiIlFDYM130oiIhMhRLmZBinC7eu+n5fuzy7036pnO23PO4TwHekA9p75S19TzvWo6Cf3qQ7XuHzTUJ+qZXoRMvanWUvEXdVy9pn5KsV11Si3kpLK6mpI/1Qdqua1pnzqj7qWaFbUU6ilgH1gG7kVE7fGsw8qjaHHiCKbn5uOrOggsAGNAfzE1zoCTEVG7P7lxwxaLwGkDCnB14vq72xGxnIZkAEU6sP1j7cr30odvlYHxzaPD5mH14+LA3kHtctroGF1EgHpjp7K5/XRoa2u38DcFsu4LswE02kK/size/5O4tDTzDGIUeA2sNpvNkWp1/oV6Fqi0TbCkrqsvk3+xQ45ykiiXY10t5clMvZTshfwBkl9U76qf1Ttq15Z5k1vpzVrqW3X0v44TEc+BC8AboN5xqGP8BvQuJ7II6OtVAAAAAElFTkSuQmCC&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=1.23.0" />
+  <img alt="version" src="https://img.shields.io/static/v1?label=Version&color=740e86&labelColor=555555&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAggAAAIIBsKhZvgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFsSURBVCiRjZK9S9VxFMY/53df7EVocchBuIMtZtDUEA0N/QlKtIRUY2IOpYvQVIOLQZvU0OAiIlFDYM130oiIhMhRLmZBinC7eu+n5fuzy7036pnO23PO4TwHekA9p75S19TzvWo6Cf3qQ7XuHzTUJ+qZXoRMvanWUvEXdVy9pn5KsV11Si3kpLK6mpI/1Qdqua1pnzqj7qWaFbUU6ilgH1gG7kVE7fGsw8qjaHHiCKbn5uOrOggsAGNAfzE1zoCTEVG7P7lxwxaLwGkDCnB14vq72xGxnIZkAEU6sP1j7cr30odvlYHxzaPD5mH14+LA3kHtctroGF1EgHpjp7K5/XRoa2u38DcFsu4LswE02kK/size/5O4tDTzDGIUeA2sNpvNkWp1/oV6Fqi0TbCkrqsvk3+xQ45ykiiXY10t5clMvZTshfwBkl9U76qf1Ttq15Z5k1vpzVrqW3X0v44TEc+BC8AboN5xqGP8BvQuJ7II6OtVAAAAAElFTkSuQmCC&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=1.24.0" />
 </h1>
 <p align="center">
   <img alt="staleBranches" src="https://img.shields.io/static/v1?label=Stale%20Branches&color=33ab53&labelColor=555555&logo=Git&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=0" /> &nbsp;
   <img alt="neglectedPrs" src="https://img.shields.io/static/v1?label=Neglected%20PRs&color=33ab53&labelColor=555555&logo=Git%20Extensions&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=0" /> &nbsp;
-  <img alt="lastProd" src="https://img.shields.io/static/v1?label=Last%20Prod&color=33ab53&labelColor=555555&logo=Android%20Auto&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=10/12/23" />
+  <img alt="lastProd" src="https://img.shields.io/static/v1?label=Last%20Prod&color=33ab53&labelColor=555555&logo=Android%20Auto&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=2/27/24" />
 </p>
 <p align="center">
-  <img alt="vulnerabilities" src="https://img.shields.io/static/v1?label=Vulnerabilities&color=cf3b36&labelColor=555555&logo=Amazon%20Cloudwatch&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=3" /> &nbsp;
+  <img alt="vulnerabilities" src="https://img.shields.io/static/v1?label=Vulnerabilities&color=cf3b36&labelColor=555555&logo=Amazon%20Cloudwatch&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=7" /> &nbsp;
   <img alt="deprecations" src="https://img.shields.io/static/v1?label=Deprecations&color=33ab53&labelColor=555555&logo=Git%20LFS&logoColor=ffffff&logoWidth=14&style=for-the-badge&message=0" />
 </p>
 <p align="center">
@@ -38,7 +38,7 @@ While communities and providers are encouraged to [launch their own ommunity Bro
 
 ### Speed test
 
-The speed test component consists of running three different speed tests in sequence: [M-Lab's ndt7](https://speed.measurementlab.net/#/), [Speedtest by Ookla](https://www.speedtest.net/), and our own speed test which can be found at [WiFi.wtf](https://wifi.wtf/). We run three different speed tests to limit the bias of any single speed test implementation on the results. The results of each the three speed tests can be viewed by the test-taker, along with an overall score determined by taking the median of the three test results in each category (ie. download, upload, latency, jitter).
+The speed test component consists of running three different speed tests in sequence: [M-Lab's ndt7](https://speed.measurementlab.net/#/), [Speedtest by Ookla](https://www.speedtest.net/), and our own speed test which can be found at [test.ready.net](https://test.ready.net/). We run three different speed tests to limit the bias of any single speed test implementation on the results. The results of each the three speed tests can be viewed by the test-taker, along with an overall score determined by taking the median of the three test results in each category (ie. download, upload, latency, jitter).
 
 ### Survey
 
@@ -150,22 +150,22 @@ Parameters:
 
 Parameters: 
 
-`latency` The latest latency measurement from the WiFi.wtf speed test in ms
+`latency` The latest latency measurement from the Ready Strength Test in ms
 
-`jitter` The latest jitter measurement from the WiFi.wtf speed test in ms
+`jitter` The latest jitter measurement from the Ready Strength Test in ms
 
 
 ##### `config.rst.downloadProgress`
 
 Parameters: 
 
-`download` The latest download throughput measurement from the WiFi.wtf speed test in Mbps
+`download` The latest download throughput measurement from the Ready Strength Test in Mbps
 
 ##### `config.rst.uploadProgress`
 
 Parameters: 
 
-`upload` The latest upload throughput measurement from the WiFi.wtf speed test in Mbps
+`upload` The latest upload throughput measurement from the Ready Strength Test in Mbps
 
 #### Return value
 
