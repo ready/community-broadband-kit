@@ -29,3 +29,5 @@ const domains = {
 }
 
 exports.DEFAULT_DOMAIN = LOCAL_TESTING_FLAG ? domains.default : domains.default
+
+export const APOLLO_CLIENT_NAME = 'Community Broadband Kit'

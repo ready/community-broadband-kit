@@ -1,7 +1,8 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const {
     BGA_URL,
-    DEFAULT_DOMAIN
+    DEFAULT_DOMAIN,
+    APOLLO_CLIENT_NAME
 } = require('./constants')
 
 /**
@@ -52,7 +53,8 @@ async function getAssets(host = DEFAULT_DOMAIN) {
     return fetch(BGA_URL, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'apollographql-client-name': APOLLO_CLIENT_NAME
         },
         body
     })

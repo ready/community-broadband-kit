@@ -1,5 +1,5 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-const { BGA_URL } = require('./constants')
+const { BGA_URL, APOLLO_CLIENT_NAME } = require('./constants')
 
 /**
  * Gets the overall service status based on NTIA guidlines
@@ -103,7 +103,8 @@ exports.getResults = async (id) => {
     return fetch(BGA_URL, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'apollographql-client-name': APOLLO_CLIENT_NAME
         },
         body
     })
