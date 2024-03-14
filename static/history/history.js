@@ -1,6 +1,6 @@
 'use strict'
 
-import { BGA_URL } from '/static/utils/constants.js'
+import { BGA_URL, APOLLO_CLIENT_NAME } from '/static/utils/constants.js'
 import { getUuid } from '/static/utils/cookies.js'
 
 // Document selectors
@@ -117,7 +117,8 @@ async function getNextPage() {
     return fetch(BGA_URL, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'apollographql-client-name': APOLLO_CLIENT_NAME
         },
         body
     })

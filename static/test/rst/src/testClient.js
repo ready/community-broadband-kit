@@ -1,7 +1,7 @@
 'use strict'
 
 import { LOCAL_TESTING_FLAG } from '/static/utils/constants.js'
-import { BGA_URL } from '/static/utils/constants.js'
+import { BGA_URL, APOLLO_CLIENT_NAME } from '/static/utils/constants.js'
 
 /**
  * Creates a Web Worker to run the ping, upload, and download tests, returning the results
@@ -40,6 +40,7 @@ async function runTest(handleProgress = () => {}, metadata) {
     testWorker.postMessage({
         localFlag: LOCAL_TESTING_FLAG,
         bgaUrl: BGA_URL,
+        apolloClientName: APOLLO_CLIENT_NAME,
         metadata: metadata
     });
 

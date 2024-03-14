@@ -8,6 +8,7 @@ const url = 'wss://test.ready.net';
 
 let LOCAL_TESTING_FLAG
 let BGA_URL
+let APOLLO_CLIENT_NAME
 
 /**
  * Runs the client-side component of the ping test.
@@ -296,7 +297,8 @@ async function getMetadata() {
     return fetch(BGA_URL, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'apollographql-client-name': APOLLO_CLIENT_NAME
         },
         body: body
     })
@@ -315,6 +317,7 @@ async function getMetadata() {
 onmessage = async function(e) {
     LOCAL_TESTING_FLAG = e.data.localFlag
     BGA_URL = e.data.bgaUrl
+    APOLLO_CLIENT_NAME = e.data.apolloClientName
 
     let pingResults;
     let uploadResults;
