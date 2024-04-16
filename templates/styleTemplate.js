@@ -4,8 +4,6 @@
  * @returns an html template
  */
 function styleTemplate(config) {
-  console.log(config.themeColor[4]);
-
   return `
       <style>
         :root {

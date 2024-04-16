@@ -14,7 +14,11 @@ const BGA_URLS = {
   prod: 'https:/api.ready.net/graphql',
 };
 
+const BOSS_PLATFORM_GRAPHQL_API_URL = 'http://localhost:4001/graphql';
+
 exports.BGA_URL = LOCAL_TESTING_FLAG ? BGA_URLS.local : BGA_URLS.prod;
+
+exports.BOSS_PLATFORM_URL = BOSS_PLATFORM_GRAPHQL_API_URL;
 
 const domains = {
   default: 'toolkit.broadband.money',
