@@ -1,12 +1,11 @@
-
 /**
  * Creates the html template for the styling of the site
  * @param {*} config an object containing the test configuration
  * @returns an html template
  */
 function styleTemplate(config) {
-  config.themeColor = config.themeColor.map((color) => '#' + color)
-  
+  console.log(config.themeColor[4]);
+
   return `
       <style>
         :root {
@@ -24,7 +23,7 @@ function styleTemplate(config) {
           --color-light-accent: ${config.themeColor[12]};
         }
       </style>
-  `
+  `;
 
   /*
   return `
@@ -43,5 +42,5 @@ function styleTemplate(config) {
   `
   */
 }
-  
-  module.exports = styleTemplate
+
+module.exports = styleTemplate;
