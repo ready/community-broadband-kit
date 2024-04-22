@@ -526,7 +526,14 @@ async function uploadSurveyData(
 ) {
   let query = `mutation {
         upsertInternetSpeedSurvey(
-            internetSpeedSurvey: {\n`;
+            where: {\n${
+              phoneNumber
+                ? `phoneNumber: "${phoneNumber}"\n`
+                : ipAddress
+                ? `ipAddress: "${ipAddress}"\n`
+                : ''
+            }},
+            data: {\n`;
 
   if (ipAddress) {
     query += `ipAddress: "${ipAddress}"\n`;
