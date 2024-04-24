@@ -1,14 +1,14 @@
 'use strict'
 
 import { getUuid } from '/static/utils/cookies.js'
-import { BGA_URL } from '/static/utils/constants.js'
+import { BGA_URL, APOLLO_CLIENT_NAME } from '/static/utils/constants.js'
 import { rollupResults, displayResults } from '/static/utils/resultsUtils.js'
 import { uploadSurveyData } from '/static/measure/survey.js'
 
 // Document selectors
 const testElement = document.getElementById('test')
 const resultsElement = document.getElementById('results')
-const endLinks = document.getElementById('end-links')
+// const endLinks = document.getElementById('end-links')
 
 /**
  * Uploads multitest data results to the database
@@ -46,10 +46,6 @@ async function uploadData(results) {
       mlabJitter: ${results.mlabJitter},
       mlabUpload: ${results.mlabUpload},
       mlabDownload: ${results.mlabDownload},
-      ooklaLatency: ${results.ooklaLatency},
-      ooklaJitter: ${results.ooklaJitter},
-      ooklaUpload: ${results.ooklaUpload},
-      ooklaDownload: ${results.ooklaDownload},
       medianLatency: ${results.medianLatency},
       medianJitter: ${results.medianJitter},
       medianUpload: ${results.medianUpload},
@@ -66,7 +62,8 @@ async function uploadData(results) {
   return fetch(BGA_URL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'apollographql-client-name': APOLLO_CLIENT_NAME
     },
     body: body
   })
@@ -102,7 +99,8 @@ async function uploadNoServiceData(results) {
   return fetch(BGA_URL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'apollographql-client-name': APOLLO_CLIENT_NAME
     },
     body: body
   })
@@ -176,7 +174,7 @@ async function handleResults(metadata, checklistResponses, address, results) {
 
   testElement.style.display = 'none'
   resultsElement.style.display = 'flex'
-  endLinks.style.display = 'flex'
+  // endLinks.style.display = 'flex'
 
   await displayResults(data)
 }

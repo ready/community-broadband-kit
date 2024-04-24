@@ -4,10 +4,11 @@ importScripts('/static/test/rst/src/string.js');
 
 // The WebSocket address of the server
 //const url = 'ws://localhost:4000';
-const url = 'wss://wifi.wtf';
+const url = 'wss://test.ready.net';
 
 let LOCAL_TESTING_FLAG
 let BGA_URL
+let APOLLO_CLIENT_NAME
 
 /**
  * Runs the client-side component of the ping test.
@@ -236,7 +237,7 @@ async function runDownloadTest() {
  * @returns An object containing the metadata info about the client
  */
 async function getMetadata() {
-    return fetch('https://wifi.wtf/metadata')
+    return fetch('https://test.ready.net/metadata')
         .then(res => res.json())
         .then(incoming => {
             return {
@@ -296,7 +297,8 @@ async function getMetadata() {
     return fetch(BGA_URL, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'apollographql-client-name': APOLLO_CLIENT_NAME
         },
         body: body
     })
@@ -315,6 +317,7 @@ async function getMetadata() {
 onmessage = async function(e) {
     LOCAL_TESTING_FLAG = e.data.localFlag
     BGA_URL = e.data.bgaUrl
+    APOLLO_CLIENT_NAME = e.data.apolloClientName
 
     let pingResults;
     let uploadResults;

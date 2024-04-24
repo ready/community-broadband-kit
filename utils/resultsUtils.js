@@ -1,5 +1,5 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-const { BGA_URL } = require('./constants')
+const { BGA_URL, APOLLO_CLIENT_NAME } = require('./constants')
 
 /**
  * Gets the overall service status based on NTIA guidlines
@@ -9,6 +9,7 @@ const { BGA_URL } = require('./constants')
  * @returns a string representing service status
  */
 function getOverallServiceStatus(download, upload) {
+    if (!download || !upload) return 'Unknown'
     // if (download < 25 || upload < 3 || latency >= 100 ) {
     if (download < 25 || upload < 3) {
         return 'Unserved'
@@ -25,6 +26,8 @@ function getOverallServiceStatus(download, upload) {
  * @returns a string representing service status
  */
 function getUploadServiceStatus(upload) {
+    if (!upload) return 'Unknown'
+
     if (upload < 3) {
         return 'Unserved'
     } else if (upload < 20) {
@@ -40,6 +43,8 @@ function getUploadServiceStatus(upload) {
  * @returns a string representing service status
  */
 function getDownloadServiceStatus(download) {
+    if (!download) return 'Unknown'
+    
     if (download < 25) {
         return 'Unserved'
     } else if (download < 100) {
@@ -55,7 +60,9 @@ function getDownloadServiceStatus(download) {
  * @returns a class name
  */
 function getServiceClassName(status) {
-    if (status === 'Unserved') {
+    if (status === 'Unknown') {
+        return ' result-tag-unknown'
+    } else if (status === 'Unserved') {
         return ' result-tag-unserved'
     } else if (status === 'Underserved') {
         return ' result-tag-underserved'
@@ -96,7 +103,8 @@ exports.getResults = async (id) => {
     return fetch(BGA_URL, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'apollographql-client-name': APOLLO_CLIENT_NAME
         },
         body
     })

@@ -35,7 +35,7 @@ async function runTests(config) {
       ooklaLatency: ooklaResults.latency,
       ooklaJitter: ooklaResults.jitter,
       ooklaUpload: ooklaResults.upload,
-      ooklaDownload: ooklaResults.download,
+      ooklaDownload: ooklaResults.download
     }
 
     return results

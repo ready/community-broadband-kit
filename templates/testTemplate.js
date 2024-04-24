@@ -52,7 +52,7 @@ function testTemplate(config) {
                     <a href="https://www.speedtest.net/" target="_blank" class="load-label">Speedtest</a>
                   </div>
                   <div class="load-bar-shape load-bar-not-started" id="rst-load-bar">
-                    <a href="https://wifi.wtf/" target="_blank" class="load-label">WiFi.wtf</a>
+                    <a href="https://test.ready.net/" target="_blank" class="load-label">RST</a>
                   </div>
                 </div>
               </div>
@@ -85,21 +85,6 @@ function testTemplate(config) {
               </div>
             </div>
             <div class="section-right" id="historic-results">
-              <div class="share-buttons" id="end-links" style="align-self: flex-end">
-                <div style="color: var(--color-3);">Share Your Results</div>
-                <a href="#" target="_blank" class="facebook-btn">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" target="_blank" class="twitter-btn">
-                  <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" target="_blank" class="linkedin-btn">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#" target="_blank" class="email-btn">
-                  <i class="fas fa-envelope"></i>
-                </a>
-              </div>
               <div class="wide-background-container">
                 <h3 class="small-heading">You are <span class='large-result-tag' id="service-status">test</span></h3>
                 <p class="default-color">Following NTIA grant guidelines, reliable broadband connections should have at least 100 Mbps download and 20 Mbps upload.</p>
@@ -249,7 +234,7 @@ function testTemplate(config) {
                     </div>
                   </div>
                   <div class="test-title">
-                    <h3>WiFi.wtf <sup class="beta">beta</sup></h3>
+                    <h3>Ready Strength Test <sup class="beta">beta</sup></h3>
                     <p class="result-tag" id="rst-service-status"></p>
                   </div>
                   <div class="results-cards-container">

@@ -324,3 +324,5 @@ export const MAP_LIGHT_STYLE = "mapbox://styles/mapbox/light-v10"
 export const MAP_COUNTY_LAYER_ID = "bosscounty_mapbox"
 export const MAP_COUNTY_LAYER_URL = "mapbox://readygeo.boss_county"
 export const DETROIT_COUNTY_GEOIDS = ['26163']
+
+export const APOLLO_CLIENT_NAME = 'Community Broadband Kit'

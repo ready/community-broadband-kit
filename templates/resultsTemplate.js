@@ -194,7 +194,7 @@ async function resultsTemplate(id, config) {
                 </div>
               </div>
               <div class="test-title">
-                <h3>WiFi.wtf <sup class="beta">beta</sup></h3>
+                <h3>Ready Strength Test <sup class="beta">beta</sup></h3>
                 <p class="result-tag ${resultsFields.rstServiceStatusClass}" id="rst-service-status">${resultsFields.rstServiceStatusText}</p>
               </div>
               <div class="results-cards-container">
