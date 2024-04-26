@@ -1,7 +1,7 @@
 'use strict'
 
 import { getUuid } from '/static/utils/cookies.js'
-import { BGA_URL } from '/static/utils/constants.js'
+import { BGA_URL, APOLLO_CLIENT_NAME } from '/static/utils/constants.js'
 import { rollupResults, displayResults } from '/static/utils/resultsUtils.js'
 import { uploadSurveyData } from '/static/measure/survey.js'
 
@@ -62,7 +62,8 @@ async function uploadData(results) {
   return fetch(BGA_URL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'apollographql-client-name': APOLLO_CLIENT_NAME
     },
     body: body
   })
@@ -98,7 +99,8 @@ async function uploadNoServiceData(results) {
   return fetch(BGA_URL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'apollographql-client-name': APOLLO_CLIENT_NAME
     },
     body: body
   })

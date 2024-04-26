@@ -13,7 +13,8 @@ import {
     MAP_COUNTY_LAYER_ID,
     MAP_COUNTY_LAYER_URL,
     DEFAULT_ORG_ID,
-    DETROIT_COUNTY_GEOIDS
+    DETROIT_COUNTY_GEOIDS,
+    APOLLO_CLIENT_NAME
 } from '/static/utils/constants.js'
 
 // Document selectors
@@ -197,7 +198,8 @@ function getZones() {
     return fetch(BGA_URL, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'apollographql-client-name': APOLLO_CLIENT_NAME
         },
         body: getZonesQuery({ filterByOrgId: filterByOrgId })
     })
@@ -216,7 +218,8 @@ function getMultiTestData() {
     return fetch(BGA_URL, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'apollographql-client-name': APOLLO_CLIENT_NAME
         },
         body: getAggregateMultitestResultsQuery({ filterByOrgAndCounty: filterByOrgAndCounty })
     })
