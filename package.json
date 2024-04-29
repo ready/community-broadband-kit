@@ -37,6 +37,6 @@
   },
   "devDependencies": {
     "@ready.net/octogration": "^0.21.0",
-    "commitlint": "^17.7.1"
+    "commitlint": "^19.3.0"
   }
 }
